@@ -5,6 +5,7 @@ module.exports = {
     'eslint:recommended',
     'plugin:react/recommended',
   ],
+
   plugins: ['react', 'react-hooks'],
   parser: 'babel-eslint',
   globals: {
@@ -12,7 +13,15 @@ module.exports = {
     document: true,
     localStorage: true,
   },
+  settings: {
+    'import/resolver': {
+      node: {
+        paths: ['src'],
+      },
+    },
+  },
   rules: {
+    'jsx-quotes': ['error', 'prefer-single'],
     'linebreak-style': 0,
     'react/display-name': 0,
     'import/no-absolute-path': 0,

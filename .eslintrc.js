@@ -4,23 +4,21 @@ module.exports = {
     'airbnb/hooks',
     'eslint:recommended',
     'plugin:react/recommended',
+    'prettier'
   ],
 
-  plugins: ['react', 'react-hooks'],
+  plugins: ['react', 'react-hooks', 'prettier'],
   parser: 'babel-eslint',
   globals: {
     window: true,
     document: true,
     localStorage: true,
   },
-  settings: {
-    'import/resolver': {
-      node: {
-        paths: ['src'],
-      },
-    },
+  env: {
+    jest: true,
   },
   rules: {
+    'no-confusing-arrow': 0,
     'jsx-quotes': ['error', 'prefer-single'],
     'linebreak-style': 0,
     'react/display-name': 0,
@@ -53,6 +51,16 @@ module.exports = {
       },
     ],
     'react/jsx-tag-spacing': 1,
+    'prettier/prettier': [
+      'error',
+      {
+        trailingComma: 'es5',
+        singleQuote: true,
+        printWidth: 80,
+        endOfLine: 'auto',
+        jsxSingleQuote: true,
+      },
+    ],
   },
   settings: {
     'import/resolver': {

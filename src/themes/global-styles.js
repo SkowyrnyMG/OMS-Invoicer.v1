@@ -14,8 +14,39 @@ html {
 }
 
 body {
-  font-size: 1.6rem;
+  font-size: ${({ theme: { fontSize } }) => fontSize.regular};
+  font-family: "Montserrat", sans-serif;
+  line-height: 1.6;
+  min-height: 100vh;
 }
+
+h1,
+h2,
+h3 {
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: ${({ theme: { fontSize } }) => fontSize.heading};
+}
+
+h2 {
+  font-size: ${({ theme: { fontSize } }) => fontSize.headingSmall}
+}
+
+h3 {
+  font-size: ${({ theme: { fontSize } }) => fontSize.l};
+}
+
+p {
+  font-size: ${({ theme: { fontSize } }) => fontSize.regular}
+}
+
+a,
+a:visited {
+  text-decoration: none;
+}
+
 
 `;
 

@@ -1,4 +1,5 @@
 {
   "testPath": ["**/__tests__/*.js", "**/*.test.js"],
-  "collectCoverageFrom": ["*.js"]
+  "collectCoverageFrom": ["*.js"],
+  "testEnvironment": "node"
 }

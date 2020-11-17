@@ -4,5 +4,7 @@
   "tabWidth": 2,
   "semi": true,
   "jsxSingleQuote": true,
-  "endOfLine": "lf"
+  "endOfLine": "lf",
+  "arrowParens": "always",
+  "printWidht": 100
 }

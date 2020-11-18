@@ -15,7 +15,7 @@ const Wrapper = styled.div`
           grid-template-columns: [top-bar-start] 1fr [content-start] 6fr [content-end] 1fr [top-bar-end];
 
           > * {
-            grid-column: content-start / content-end;
+            grid-column: 1 / -1;
           }
         `
       : css`
@@ -29,7 +29,9 @@ const Wrapper = styled.div`
         `};
 `;
 
-const Main = styled.main``;
+const Main = styled.main`
+  background-color: ${({ theme: { color } }) => color.bg};
+`;
 
 const Layout = ({ children, location }) => (
   <ThemeProvider theme={theme}>

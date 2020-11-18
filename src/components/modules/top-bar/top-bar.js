@@ -8,12 +8,14 @@ const Wrapper = styled.header`
   grid-column: top-bar-start / top-bar-end !important;
   display: grid;
   grid-template-columns: [logo-start] 24rem [logo-end middle-bar-start] 1fr [middle-bar-end nav-start] 27rem [nav-end];
-  margin-top: 0;
-  height: 6rem;
   justify-items: center;
   justify-content: center;
   align-items: center;
+  margin-top: 0;
+  height: 6rem;
   border-bottom: 1px solid ${({ theme: { color } }) => color.devider};
+  box-shadow: ${({ theme: { shadow } }) => shadow.bottom};
+  z-index: 50;
 `;
 
 const Logo = styled.span`

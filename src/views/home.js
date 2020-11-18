@@ -1,12 +1,13 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 import Layout from 'utils/layout';
+import HomePageHeader from 'components/organisms/home-page/header/home-page-header';
+import HomePageBody from 'components/organisms/home-page/body/home-page-body';
 
 const Home = () => (
   <Layout location='home'>
-    <h2>Home works</h2>
-    <Link to='/app'>App</Link>
+    <HomePageHeader />
+    <HomePageBody />
   </Layout>
 );
 

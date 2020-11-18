@@ -4,6 +4,7 @@ export const theme = {
     bgSecondary: '#FFFFFF',
     mainFont: '#000',
     secondaryFont: '#595959',
+    tertiaryFont: '#FFFFFF',
     devider: '#F0F0FD',
     primary: '#446DF6',
     success: '#00A896',
@@ -16,11 +17,17 @@ export const theme = {
     cta: '24px',
     l: '20px',
     regular: '18px',
-    ms: '14px',
+    ms: '16px',
+    s: '14px',
   },
   fontWeight: {
     light: 300,
     regular: 400,
     bold: 700,
+  },
+  shadow: {
+    around: '0 0 10px -4px rgba(0, 0, 0, 0.25)',
+    bottom: '0 4px 5px rgba(0, 0, 0, 0.1)',
+    right: '4px 0 5px rgba(0, 0, 0, 0.1)',
   },
 };

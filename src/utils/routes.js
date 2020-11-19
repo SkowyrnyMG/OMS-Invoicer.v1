@@ -8,8 +8,8 @@ import Register from 'views/register';
 export const routes = {
   home: '/',
   app: '/app',
-  login: '/app/login',
-  register: '/app/register',
+  login: '/login',
+  register: '/register',
 };
 
 export const AppRouter = () => (

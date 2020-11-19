@@ -37,7 +37,7 @@ describe('TopBar', () => {
     );
 
     const linkRegex = /sign up/i;
-    const REGISTER_LINK = '/app/register';
+    const REGISTER_LINK = '/register';
 
     linkChecker(history, getByText, REGISTER_LINK, linkRegex);
   });
@@ -50,7 +50,7 @@ describe('TopBar', () => {
     );
 
     const linkRegex = /sign in/i;
-    const LOGIN_LINK = '/app/login';
+    const LOGIN_LINK = '/login';
 
     linkChecker(history, getByText, LOGIN_LINK, linkRegex);
   });

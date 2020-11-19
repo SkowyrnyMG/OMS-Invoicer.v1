@@ -9,7 +9,7 @@ import { ReactComponent as InvoiceIcon } from 'assets/svg/invoice-icon.svg';
 const BodyWrapper = styled.div`
   display: grid;
   grid-template-columns: [start] repeat(3, 1fr) [end];
-  grid-gap: 8%;
+  grid-gap: 3%;
   margin: 0 10% 20rem;
   padding-top: 10rem;
 `;

@@ -61,6 +61,7 @@ module.exports = {
         jsxSingleQuote: true,
       },
     ],
+    "jsx-a11y/label-has-associated-control": "off",
   },
   settings: {
     'import/resolver': {

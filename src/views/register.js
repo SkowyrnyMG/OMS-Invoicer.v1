@@ -1,9 +1,14 @@
 import React from 'react';
+
 import Layout from 'utils/layout';
+import AuthFormWrapper from 'components/modules/auth-form-wrapper/auth-form-wrapper';
+import RegisterForm from 'components/organisms/register-form/register-form';
 
 const Register = () => (
   <Layout>
-    <h2>Register works</h2>
+    <AuthFormWrapper>
+      <RegisterForm />
+    </AuthFormWrapper>
   </Layout>
 );
 

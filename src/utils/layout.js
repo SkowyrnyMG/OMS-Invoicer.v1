@@ -10,21 +10,21 @@ import TopBar from 'components/modules/top-bar/top-bar';
 const Wrapper = styled.div`
   display: grid;
   ${({ location }) =>
-    location === 'home'
+    location === 'app'
       ? css`
-          grid-template-columns: [top-bar-start] 1fr [content-start] 6fr [content-end] 1fr [top-bar-end];
-
-          > * {
-            grid-column: 1 / -1;
-          }
-        `
-      : css`
           grid-template-columns:
             repeat(2, 1fr) [top-bar-start content-start]
             repeat(10, 1fr) [content-end top-bar-end];
 
           > * {
             grid-column: content-start / content-end;
+          }
+        `
+      : css`
+          grid-template-columns: [top-bar-start] 1fr [content-start] 6fr [content-end] 1fr [top-bar-end];
+
+          > * {
+            grid-column: 1 / -1;
           }
         `};
 `;

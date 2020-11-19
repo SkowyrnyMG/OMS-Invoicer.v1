@@ -21,7 +21,7 @@ function App() {
       .then(({ data }) => console.log(data));
   };
   return (
-    <Layout>
+    <Layout location='app'>
       <div>
         <header>
           <h2>{testState}</h2>

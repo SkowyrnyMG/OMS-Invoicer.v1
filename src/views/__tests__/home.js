@@ -12,7 +12,7 @@ describe('Home', () => {
 
   test('should redirect to register page after click on CTA link', () => {
     const { getByText, history } = renderWithRouter(<Home />);
-    const registerPath = '/app/register';
+    const registerPath = '/register';
 
     const initialPath = history.location.pathname;
     const CtaLink = getByText(/TRY FOR FREE AND SEND ME SOME FEEDBACK/i);

@@ -5,7 +5,7 @@ import HomePageHeader from 'components/organisms/home-page/header/home-page-head
 import HomePageBody from 'components/organisms/home-page/body/home-page-body';
 
 const Home = () => (
-  <Layout location='home'>
+  <Layout>
     <HomePageHeader />
     <HomePageBody />
   </Layout>

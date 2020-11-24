@@ -6,6 +6,9 @@ import GlobalStyles from 'themes/global-styles';
 import { theme } from 'themes/theme';
 
 import TopBar from 'components/modules/top-bar/top-bar';
+import Loader from 'components/modules/loader/loader';
+
+import { useIsLoading } from 'hooks/useIsLoading';
 
 const Wrapper = styled.div`
   display: grid;
@@ -33,15 +36,19 @@ const Main = styled.main`
   background-color: ${({ theme: { color } }) => color.bg};
 `;
 
-const Layout = ({ children, location }) => (
-  <ThemeProvider theme={theme}>
-    <GlobalStyles />
-    <Wrapper location={location}>
-      <TopBar />
-      <Main>{children}</Main>
-    </Wrapper>
-  </ThemeProvider>
-);
+const Layout = ({ children, location }) => {
+  const isLoading = useIsLoading();
+  return (
+    <ThemeProvider theme={theme}>
+      <GlobalStyles />
+      <Wrapper location={location}>
+        {isLoading && <Loader />}
+        <TopBar />
+        <Main>{children}</Main>
+      </Wrapper>
+    </ThemeProvider>
+  );
+};
 
 Layout.defaultProps = {
   location: '',

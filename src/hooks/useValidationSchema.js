@@ -28,6 +28,9 @@ export const useValidationSchema = (type) => {
             'Must contain one uppercase, one lowercase, one Number and one special case character'
           )
           .required('Required!'),
+        passwordConfirmation: Yup.string()
+          .oneOf([Yup.ref('password'), null], 'Passwords must match')
+          .required('Required!'),
       });
     default:
       return '';

@@ -3,6 +3,7 @@ export const theme = {
     bg: '#F8F8FF',
     bgSecondary: '#FFFFFF',
     mainFont: '#000',
+    transparentMain: '#446DF644',
     secondaryFont: '#8F8F8F',
     tertiaryFont: '#FFFFFF',
     devider: '#F0F0FD',

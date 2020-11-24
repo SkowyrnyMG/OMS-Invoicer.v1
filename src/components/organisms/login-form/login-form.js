@@ -5,9 +5,14 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import FormikControl from 'components/modules/formik-control/formik-control';
 import Button from 'components/atoms/button/button';
+import ErrorMsg from 'components/atoms/error-msg/error-msg';
+import SuccessMsg from 'components/atoms/success-msg/success-msg';
 
 import { useValidationSchema } from 'hooks/useValidationSchema';
-import { getSignInUserStatus, selectStatus } from 'store/slices/auth-slice';
+import {
+  signInWithEmailAndPassword,
+  getUserStatus,
+} from 'store/slices/auth-slice/auth-slice';
 
 const StyledForm = styled(Form)`
   display: flex;
@@ -19,7 +24,7 @@ const StyledForm = styled(Form)`
 
 const LoginForm = () => {
   const dispatch = useDispatch();
-  const userStatus = useSelector(selectStatus);
+  const userStatus = useSelector(getUserStatus);
   const validationSchema = useValidationSchema('login');
 
   return (
@@ -30,7 +35,7 @@ const LoginForm = () => {
       }}
       validationSchema={validationSchema}
       onSubmit={async (values) => {
-        await dispatch(getSignInUserStatus(values));
+        await dispatch(signInWithEmailAndPassword(values));
       }}
     >
       {({ errors, touched }) => (
@@ -51,7 +56,11 @@ const LoginForm = () => {
             touched={touched.password}
             placeholder='Your password'
           />
-          <p>{userStatus}</p>
+          {userStatus.match(/success/i) ? (
+            <SuccessMsg>{userStatus}</SuccessMsg>
+          ) : (
+            <ErrorMsg>{userStatus}</ErrorMsg>
+          )}
           <Button type='submit'>Submit</Button>
         </StyledForm>
       )}

@@ -25,6 +25,7 @@ const RegisterForm = () => {
         lastname: '',
         email: '',
         password: '',
+        passwordConfirmation: '',
       }}
       validationSchema={validationSchema}
       onSubmit={(values) => {
@@ -64,6 +65,14 @@ const RegisterForm = () => {
             error={errors.password}
             touched={touched.password}
             placeholder='Your password'
+          />
+          <FormikControl
+            type='password'
+            control='input'
+            name='passwordConfirmation'
+            error={errors.passwordConfirmation}
+            touched={touched.passwordConfirmation}
+            placeholder='Repeat password'
           />
           <Button type='submit'>Submit</Button>
         </StyledForm>

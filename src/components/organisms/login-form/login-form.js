@@ -1,11 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Formik, Form } from 'formik';
+import { useDispatch, useSelector } from 'react-redux';
 
 import FormikControl from 'components/modules/formik-control/formik-control';
 import Button from 'components/atoms/button/button';
 
 import { useValidationSchema } from 'hooks/useValidationSchema';
+import { getSignInUserStatus, selectStatus } from 'store/slices/auth-slice';
 
 const StyledForm = styled(Form)`
   display: flex;
@@ -16,6 +18,8 @@ const StyledForm = styled(Form)`
 `;
 
 const LoginForm = () => {
+  const dispatch = useDispatch();
+  const userStatus = useSelector(selectStatus);
   const validationSchema = useValidationSchema('login');
 
   return (
@@ -25,8 +29,8 @@ const LoginForm = () => {
         password: '',
       }}
       validationSchema={validationSchema}
-      onSubmit={(values) => {
-        console.log(values);
+      onSubmit={async (values) => {
+        await dispatch(getSignInUserStatus(values));
       }}
     >
       {({ errors, touched }) => (
@@ -47,6 +51,7 @@ const LoginForm = () => {
             touched={touched.password}
             placeholder='Your password'
           />
+          <p>{userStatus}</p>
           <Button type='submit'>Submit</Button>
         </StyledForm>
       )}

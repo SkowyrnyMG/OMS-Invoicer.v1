@@ -15,7 +15,7 @@ const StyledForm = styled(Form)`
   width: 45rem;
 `;
 
-const LoginForm = () => {
+const RegisterForm = () => {
   const validationSchema = useValidationSchema('register');
 
   return (
@@ -72,4 +72,4 @@ const LoginForm = () => {
   );
 };
 
-export default LoginForm;
+export default RegisterForm;

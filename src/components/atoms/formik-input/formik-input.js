@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { ErrorMessage, Field } from 'formik';
+import ErrorMsg from 'components/atoms/error-msg/error-msg';
 
 const StyledLabel = styled.label`
   display: block;
@@ -42,7 +43,9 @@ const StyledLabel = styled.label`
 const FormikInput = ({ name, tagType, error, touched, ...rest }) => (
   <StyledLabel htmlFor={name} error={error} touched={touched}>
     <Field as={tagType} name={name} id={name} {...rest} />
-    <ErrorMessage name={name} />
+    <ErrorMsg>
+      <ErrorMessage name={name} />
+    </ErrorMsg>
   </StyledLabel>
 );
 

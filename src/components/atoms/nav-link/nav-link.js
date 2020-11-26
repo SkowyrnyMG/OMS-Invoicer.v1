@@ -18,8 +18,10 @@ const StyledLink = styled(Link)`
         return color.mainFont;
     }
   }};
-  transition: transform 0.25s;
   border-left: 1px solid ${({ theme: { color } }) => color.devider};
+  background: none;
+  transition: transform 0.25s;
+  border: none;
 
   &:hover {
     transform: translateY(-2px);

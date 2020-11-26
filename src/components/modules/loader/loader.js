@@ -65,7 +65,6 @@ const Loader = () => {
     const animationContainer = animationWrapper.current;
     const loader = animationContainer.querySelector('div');
     const dots = loader.querySelectorAll('div');
-    console.log(dots);
 
     const tl = gsap.timeline({ repeat: -1 });
     tl.to(loader, { duration: 2, rotate: 360, ease: 'none' });

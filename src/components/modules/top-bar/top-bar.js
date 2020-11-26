@@ -1,6 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { getUserData, logoutUser } from 'store/slices/auth-slice/auth-slice';
+
 import NavLink from 'components/atoms/nav-link/nav-link';
+import UserInfo from 'components/modules/user-info/user-info';
+import { ReactComponent as LogoutIcon } from 'assets/svg/logout-icon.svg';
 
 import { routes } from 'utils/routes';
 
@@ -27,22 +33,72 @@ const StyledLoginNav = styled.nav`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  > * {
+    padding: 1rem 2rem;
+    border-left: 1px solid ${({ theme: { color } }) => color.devider};
+  }
 `;
 
-const TopBar = () => (
-  <Wrapper>
-    <NavLink path={routes.home}>
-      <Logo>OMS Invoicer.v1</Logo>
-    </NavLink>
-    <StyledLoginNav>
-      <NavLink linktype='login' path={routes.login}>
-        Sign in
+const LogoutBtn = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10rem;
+  font-size: ${({ theme: { fontSize } }) => fontSize.regular};
+  font-weight: ${({ theme: { fontWeight } }) => fontWeight.bold};
+  color: ${({ theme: { color } }) => color.danger};
+  background: none;
+  border: none;
+  border-left: 1px solid ${({ theme: { color } }) => color.devider};
+  cursor: pointer;
+  transition: 0.25s transform;
+
+  *:not(:last-child) {
+    margin-right: 1rem;
+  }
+  :hover {
+    transform: translateX(5px);
+  }
+`;
+
+const StyledLogoutIcon = styled(LogoutIcon)`
+  fill: ${({ theme: { color } }) => color.danger};
+`;
+
+const TopBar = () => {
+  const { uuid, userInfo } = useSelector(getUserData);
+  const dispatch = useDispatch();
+  const handleClick = () => {
+    dispatch(logoutUser());
+  };
+  return (
+    <Wrapper>
+      <NavLink path={routes.home}>
+        <Logo>OMS Invoicer.v1</Logo>
       </NavLink>
-      <NavLink linktype='logout' path={routes.register}>
-        Sign up
-      </NavLink>
-    </StyledLoginNav>
-  </Wrapper>
-);
+      <StyledLoginNav>
+        {uuid === '' || uuid === null ? (
+          <>
+            <NavLink linktype='login' path={routes.login}>
+              Sign in
+            </NavLink>
+            <NavLink linktype='logout' path={routes.register}>
+              Sign up
+            </NavLink>
+          </>
+        ) : (
+          <>
+            <UserInfo>{userInfo}</UserInfo>
+            <LogoutBtn onClick={handleClick}>
+              <span>Logout</span>
+              <StyledLogoutIcon />
+            </LogoutBtn>
+          </>
+        )}
+      </StyledLoginNav>
+    </Wrapper>
+  );
+};
 
 export default TopBar;

@@ -5,8 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import FormikControl from 'components/modules/formik-control/formik-control';
 import Button from 'components/atoms/button/button';
-import ErrorMsg from 'components/atoms/error-msg/error-msg';
-import SuccessMsg from 'components/atoms/success-msg/success-msg';
+import NotificationPopup from 'components/modules/notification-popup/notification-popup';
 
 import { useValidationSchema } from 'hooks/useValidationSchema';
 import {
@@ -25,6 +24,7 @@ const StyledForm = styled(Form)`
 const LoginForm = () => {
   const dispatch = useDispatch();
   const userStatus = useSelector(getUserStatus);
+
   const validationSchema = useValidationSchema('login');
 
   return (
@@ -56,11 +56,11 @@ const LoginForm = () => {
             touched={touched.password}
             placeholder='Your password'
           />
-          {userStatus.match(/success/i) ? (
-            <SuccessMsg>{userStatus}</SuccessMsg>
-          ) : (
-            <ErrorMsg>{userStatus}</ErrorMsg>
-          )}
+
+          <NotificationPopup successRegexp='success'>
+            {userStatus}
+          </NotificationPopup>
+
           <Button type='submit'>Submit</Button>
         </StyledForm>
       )}

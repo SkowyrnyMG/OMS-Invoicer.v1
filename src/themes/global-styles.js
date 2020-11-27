@@ -18,6 +18,7 @@ body {
   font-family: "Montserrat", sans-serif;
   line-height: 1.6;
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 h1,

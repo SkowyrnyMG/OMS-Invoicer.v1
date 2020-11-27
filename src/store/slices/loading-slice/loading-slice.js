@@ -1,5 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { signInWithEmailAndPassword } from 'store/slices/auth-slice/auth-slice';
+import {
+  signInWithEmailAndPassword,
+  registerWithEmailAndPassword,
+} from 'store/slices/auth-slice/auth-slice';
 
 export const loadingSlice = createSlice({
   name: 'loading',
@@ -8,6 +11,10 @@ export const loadingSlice = createSlice({
     [signInWithEmailAndPassword.pending]: () => true,
     [signInWithEmailAndPassword.fulfilled]: () => false,
     [signInWithEmailAndPassword.rejected]: () => false,
+
+    [registerWithEmailAndPassword.pending]: () => true,
+    [registerWithEmailAndPassword.fulfilled]: () => false,
+    [registerWithEmailAndPassword.rejected]: () => false,
   },
 });
 

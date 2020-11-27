@@ -67,7 +67,10 @@ const StyledLogoutIcon = styled(LogoutIcon)`
 `;
 
 const TopBar = () => {
-  const { uuid, userInfo } = useSelector(getUserData);
+  const {
+    uuid,
+    userInfo: { email },
+  } = useSelector(getUserData);
   const dispatch = useDispatch();
   const handleClick = () => {
     dispatch(logoutUser());
@@ -89,7 +92,7 @@ const TopBar = () => {
           </>
         ) : (
           <>
-            <UserInfo>{userInfo}</UserInfo>
+            <UserInfo>{email}</UserInfo>
             <LogoutBtn onClick={handleClick}>
               <span>Logout</span>
               <StyledLogoutIcon />

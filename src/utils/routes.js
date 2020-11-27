@@ -1,5 +1,13 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect,
+} from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { getUserData } from 'store/slices/auth-slice/auth-slice';
+
 import App from 'views/app';
 import Home from 'views/home';
 import Login from 'views/login';
@@ -12,21 +20,29 @@ export const routes = {
   register: '/register',
 };
 
-export const AppRouter = () => (
-  <Router>
-    <Switch>
-      <Route exact path={routes.home}>
-        <Home />
-      </Route>
-      <Route exact path={routes.app}>
-        <App />
-      </Route>
-      <Route path={routes.login}>
-        <Login />
-      </Route>
-      <Route path={routes.register}>
-        <Register />
-      </Route>
-    </Switch>
-  </Router>
-);
+export const AppRouter = () => {
+  const userInfo = useSelector(getUserData);
+
+  return (
+    <Router>
+      <Switch>
+        <Route exact path={routes.home}>
+          {userInfo.uuid.length > 0 ? <Redirect to={routes.app} /> : <Home />}
+        </Route>
+        <Route exact path={routes.app}>
+          {userInfo.uuid.length === 0 ? <Redirect to={routes.home} /> : <App />}
+        </Route>
+        <Route path={routes.login}>
+          {userInfo.uuid.length > 0 ? <Redirect to={routes.app} /> : <Login />}
+        </Route>
+        <Route path={routes.register}>
+          {userInfo.uuid.length > 0 ? (
+            <Redirect to={routes.app} />
+          ) : (
+            <Register />
+          )}
+        </Route>
+      </Switch>
+    </Router>
+  );
+};

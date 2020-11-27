@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { auth } from 'firebase.config';
 
 import { setLocalValue, getLocalValue } from 'hooks/useLocalStorage';
+import { db } from 'utils/axios-helper';
 
 const localUuid = getLocalValue('uuid');
 const localUser = getLocalValue('user');
@@ -12,16 +13,65 @@ const signInWithEmailAndPassword = createAsyncThunk(
     try {
       return await auth
         .signInWithEmailAndPassword(email, password)
-        .then((res) => {
+        .then(async (res) => {
           const uuid = res.user.uid;
-          const userInfo = res.user.email;
           const message = 'Success!';
-          setLocalValue('user', userInfo);
+          const userInfo = await db
+            .get(`/users/${uuid}.json`)
+            .then(({ data }) => {
+              return data;
+            });
+
+          setLocalValue('user', userInfo.email);
           setLocalValue('uuid', uuid);
+
           return { uuid, userInfo, message };
         });
     } catch ({ message }) {
       return { uuid: '', userInfo: '', message };
+    }
+  }
+);
+
+const registerWithEmailAndPassword = createAsyncThunk(
+  'auth/registerWithEmailAndPassword',
+  async ({ email, password, name, lastname }) => {
+    try {
+      return await auth
+        .createUserWithEmailAndPassword(email, password)
+        .then(async (res) => {
+          const uuid = res.user.uid;
+          const userEmail = res.user.email;
+          const message = 'Succesfuly registered!';
+          const userInfo = {
+            email: userEmail,
+            name,
+            lastname,
+          };
+
+          await db.put(`/users/${uuid}.json`, {
+            uuid,
+            email: userEmail,
+            name,
+            lastname,
+          });
+
+          return {
+            uuid,
+            userInfo,
+            message,
+          };
+        });
+    } catch ({ message }) {
+      return {
+        uuid: '',
+        userInfo: {
+          email: '',
+          name: '',
+          lastname: '',
+        },
+        message,
+      };
     }
   }
 );
@@ -31,7 +81,11 @@ export const AuthSlice = createSlice({
   initialState: {
     login: {
       uuid: localUuid,
-      userInfo: localUser,
+      userInfo: {
+        email: localUser,
+        name: '',
+        lastname: '',
+      },
       message: '',
     },
   },
@@ -45,6 +99,9 @@ export const AuthSlice = createSlice({
         message: '',
       };
     },
+    resetMessage: (state) => {
+      state.login.message = '';
+    },
   },
   extraReducers: {
     [signInWithEmailAndPassword.fulfilled]: (state, { payload }) => {
@@ -53,13 +110,19 @@ export const AuthSlice = createSlice({
     [signInWithEmailAndPassword.rejected]: (state, { payload }) => {
       state.login = payload;
     },
+    [registerWithEmailAndPassword.fulfilled]: (state, { payload }) => {
+      state.login = payload;
+    },
+    [registerWithEmailAndPassword.rejected]: (state, { payload }) => {
+      state.login = payload;
+    },
   },
 });
 
 export const getUserStatus = (state) => state.auth.login.message;
 export const getUserData = (state) => state.auth.login;
 
-export const { logoutUser } = AuthSlice.actions;
+export const { logoutUser, resetMessage } = AuthSlice.actions;
 
-export { signInWithEmailAndPassword };
+export { signInWithEmailAndPassword, registerWithEmailAndPassword };
 export default AuthSlice.reducer;

@@ -1,11 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Formik, Form } from 'formik';
+import { useDispatch, useSelector } from 'react-redux';
 
 import FormikControl from 'components/modules/formik-control/formik-control';
 import Button from 'components/atoms/button/button';
+import NotificationPopup from 'components/modules/notification-popup/notification-popup';
 
 import { useValidationSchema } from 'hooks/useValidationSchema';
+import {
+  registerWithEmailAndPassword,
+  getUserStatus,
+} from 'store/slices/auth-slice/auth-slice';
 
 const StyledForm = styled(Form)`
   display: flex;
@@ -16,6 +22,8 @@ const StyledForm = styled(Form)`
 `;
 
 const RegisterForm = () => {
+  const dispatch = useDispatch();
+  const userStatus = useSelector(getUserStatus);
   const validationSchema = useValidationSchema('register');
 
   return (
@@ -29,7 +37,7 @@ const RegisterForm = () => {
       }}
       validationSchema={validationSchema}
       onSubmit={(values) => {
-        console.log(values);
+        dispatch(registerWithEmailAndPassword(values));
       }}
     >
       {({ errors, touched }) => (
@@ -74,6 +82,11 @@ const RegisterForm = () => {
             touched={touched.passwordConfirmation}
             placeholder='Repeat password'
           />
+
+          <NotificationPopup successRegexp='Succesfuly registered!'>
+            {userStatus}
+          </NotificationPopup>
+
           <Button type='submit'>Submit</Button>
         </StyledForm>
       )}

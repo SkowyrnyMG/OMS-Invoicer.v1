@@ -10,6 +10,7 @@ const Wrapper = styled.div`
 `;
 
 const StyledSpan = styled.span`
+  width: fit-content;
   font-size: ${({ theme: { fontSize } }) => fontSize.s};
   color: ${({ theme: { color } }) => color.primary};
 `;

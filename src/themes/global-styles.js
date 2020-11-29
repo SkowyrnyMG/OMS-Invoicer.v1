@@ -46,6 +46,7 @@ p {
 a,
 a:visited {
   text-decoration: none;
+  color: ${({ theme: { color } }) => color.mainFont};
 }
 
 

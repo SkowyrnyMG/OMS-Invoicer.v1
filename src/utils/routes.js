@@ -15,9 +15,15 @@ import Register from 'views/register';
 
 export const routes = {
   home: '/',
-  app: '/app',
   login: '/login',
   register: '/register',
+  app: '/app',
+  appInvoices: 'app/invoices',
+  appPayments: 'app/payments',
+  appOrders: 'app/orders',
+  appCustomers: 'app/customers',
+  appHelp: '/app/help',
+  appSettings: '/app/settings',
 };
 
 export const AppRouter = () => {

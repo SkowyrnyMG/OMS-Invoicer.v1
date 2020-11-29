@@ -1,22 +1,24 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled, { ThemeProvider, css } from 'styled-components';
 
 import GlobalStyles from 'themes/global-styles';
 import { theme } from 'themes/theme';
 
-import TopBar from 'components/modules/top-bar/top-bar';
 import Loader from 'components/modules/loader/loader';
+import TopBar from 'components/modules/top-bar/top-bar';
+import AppNavigation from 'components/modules/app-navigation/app-navigation';
 
 import { useIsLoading } from 'hooks/useIsLoading';
+import { usePathname } from 'hooks/usePathname';
 
 const Wrapper = styled.div`
   display: grid;
-  ${({ location }) =>
-    location === 'app'
+  ${({ pathname }) =>
+    pathname.includes('/app')
       ? css`
           grid-template-columns:
-            repeat(2, 1fr) [top-bar-start content-start]
+            [app-nav-start] 15%
+            [app-nav-end top-bar-start content-start]
             repeat(10, 1fr) [content-end top-bar-end];
 
           > * {
@@ -36,26 +38,20 @@ const Main = styled.main`
   background-color: ${({ theme: { color } }) => color.bg};
 `;
 
-const Layout = ({ children, location }) => {
+const Layout = ({ children }) => {
   const isLoading = useIsLoading();
+  const pathname = usePathname();
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />
-      <Wrapper location={location}>
+      <Wrapper pathname={pathname}>
         {isLoading && <Loader />}
         <TopBar />
+        {pathname.includes('/app') && <AppNavigation />}
         <Main>{children}</Main>
       </Wrapper>
     </ThemeProvider>
   );
-};
-
-Layout.defaultProps = {
-  location: '',
-};
-
-Layout.propTypes = {
-  location: PropTypes.string,
 };
 
 export default Layout;

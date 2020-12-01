@@ -1,4 +1,5 @@
 import React, { useRef, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { gsap } from 'gsap';
 
@@ -42,6 +43,10 @@ const NotificationPopup = ({ children, successRegexp }) => {
       )}
     </Wrapper>
   );
+};
+
+NotificationPopup.propTypes = {
+  successRegexp: PropTypes.string.isRequired,
 };
 
 export default NotificationPopup;

@@ -17,7 +17,7 @@ const StyledLink = styled(Link)`
       default:
         return color.mainFont;
     }
-  }};
+  }} !important;
   border-left: 1px solid ${({ theme: { color } }) => color.devider};
   background: none;
   transition: transform 0.25s;
@@ -40,6 +40,7 @@ NavLink.defaultProps = {
 
 NavLink.propTypes = {
   linktype: PropTypes.string,
+  path: PropTypes.string.isRequired,
 };
 
 export default NavLink;

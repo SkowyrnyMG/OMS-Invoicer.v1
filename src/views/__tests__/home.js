@@ -1,17 +1,17 @@
 import React from 'react';
-import { renderWithRouter, fireEvent, leftClick } from 'utils/test-helper';
+import { renderWithReduxRouter, fireEvent, leftClick } from 'utils/test-helper';
 import Home from '../home';
 
 describe('Home', () => {
   test('should render into document', () => {
-    const { container } = renderWithRouter(<Home />);
+    const { container } = renderWithReduxRouter(<Home />);
     const appContainer = container.firstChild;
 
     expect(appContainer).toBeInTheDocument();
   });
 
   test('should redirect to register page after click on CTA link', () => {
-    const { getByText, history } = renderWithRouter(<Home />);
+    const { getByText, history } = renderWithReduxRouter(<Home />);
     const registerPath = '/register';
 
     const initialPath = history.location.pathname;

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { ErrorMessage, Field } from 'formik';
 import ErrorMsg from 'components/atoms/error-msg/error-msg';
@@ -63,5 +64,18 @@ const FormikInput = ({ name, tagType, error, touched, ...rest }) => (
     </ErrorMsg>
   </StyledLabel>
 );
+
+FormikInput.defaultProps = {
+  tagType: 'input',
+  error: undefined,
+  touched: undefined,
+};
+
+FormikInput.propTypes = {
+  name: PropTypes.string.isRequired,
+  tagType: PropTypes.string,
+  error: PropTypes.string,
+  touched: PropTypes.bool,
+};
 
 export default FormikInput;

@@ -7,6 +7,7 @@ import LoginForm from 'components/organisms/login-form/login-form';
 const Login = () => (
   <Layout>
     <AuthFormWrapper>
+      <h2>Login</h2>
       <LoginForm />
     </AuthFormWrapper>
   </Layout>

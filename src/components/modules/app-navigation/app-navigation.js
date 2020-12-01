@@ -93,21 +93,24 @@ const AppNavigation = () => (
         </StyledListItem>
 
         <StyledListItem>
-          <AppNavLink to={routes.appPayments}>
+          <AppNavLink to={routes.appPayments} activeClassName='active-app-link'>
             <PaymentIcon />
             <AppNavLinkText>Payments</AppNavLinkText>
           </AppNavLink>
         </StyledListItem>
 
         <StyledListItem>
-          <AppNavLink to={routes.appOrders}>
+          <AppNavLink to={routes.appOrders} activeClassName='active-app-link'>
             <OrdersIcon />
             <AppNavLinkText>Orders</AppNavLinkText>
           </AppNavLink>
         </StyledListItem>
 
         <StyledListItem>
-          <AppNavLink to={routes.appCustomers}>
+          <AppNavLink
+            to={routes.appCustomers}
+            activeClassName='active-app-link'
+          >
             <ClientsIcon />
             <AppNavLinkText>Customers</AppNavLinkText>
           </AppNavLink>
@@ -125,7 +128,11 @@ const AppNavigation = () => (
           </AppNavLink>
         </StyledListItem>
         <StyledListItem>
-          <AppNavLink to={routes.appHelp}>
+          <AppNavLink
+            exact
+            to={routes.appHelp}
+            activeClassName='active-app-link'
+          >
             <HelpIcon />
             <AppNavLinkText>Help</AppNavLinkText>
           </AppNavLink>

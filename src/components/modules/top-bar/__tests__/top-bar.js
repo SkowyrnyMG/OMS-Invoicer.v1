@@ -1,9 +1,9 @@
 import React from 'react';
-import { fireEvent } from '@testing-library/react';
 import {
+  fireEvent,
   TestThemeProvider,
   leftClick,
-  renderWithRouter,
+  renderWithReduxRouter,
 } from 'utils/test-helper';
 import TopBar from '../top-bar';
 
@@ -19,7 +19,7 @@ const linkChecker = (history, getByText, directPath, regex) => {
 
 describe('TopBar', () => {
   test('should render into document', () => {
-    const { container } = renderWithRouter(
+    const { container } = renderWithReduxRouter(
       <TestThemeProvider>
         <TopBar />
       </TestThemeProvider>
@@ -30,7 +30,7 @@ describe('TopBar', () => {
   });
 
   test('should redirect to register page after click on Sign up link', () => {
-    const { getByText, history } = renderWithRouter(
+    const { getByText, history } = renderWithReduxRouter(
       <TestThemeProvider>
         <TopBar />
       </TestThemeProvider>
@@ -43,7 +43,7 @@ describe('TopBar', () => {
   });
 
   test('should redirect to login page after click on Sign in link', () => {
-    const { getByText, history } = renderWithRouter(
+    const { getByText, history } = renderWithReduxRouter(
       <TestThemeProvider>
         <TopBar />
       </TestThemeProvider>

@@ -13,19 +13,25 @@ const renderWithRedux = (
   ui,
   { store = configureStore({ reducer }), ...renderOptions } = {}
 ) => {
-  const utils = render(<Provider store={store}>{ui}</Provider>, renderOptions);
+  const utils = render(
+    <Provider store={store}>
+      <ThemeProvider theme={theme}>{ui}</ThemeProvider>
+    </Provider>,
+    renderOptions
+  );
   return {
     ...utils,
   };
 };
 
-export const TestThemeProvider = ({ children }) => (
-  <ThemeProvider theme={theme}>{children}</ThemeProvider>
-);
-
 const renderWithRouter = (ui, { route = '/', ...renderOptions } = {}) => {
   const history = createMemoryHistory({ initialEntries: [route] });
-  const utils = render(<Router history={history}>{ui}</Router>, renderOptions);
+  const utils = render(
+    <Router history={history}>
+      <ThemeProvider theme={theme}>{ui}</ThemeProvider>
+    </Router>,
+    renderOptions
+  );
   return {
     ...utils,
     history,
@@ -44,7 +50,9 @@ const renderWithReduxRouter = (
   const history = createMemoryHistory({ initialEntries: [route] });
   const utils = render(
     <Provider store={store}>
-      <Router history={history}>{ui}</Router>
+      <Router history={history}>
+        <ThemeProvider theme={theme}>{ui}</ThemeProvider>
+      </Router>
     </Provider>,
     renderOptions
   );

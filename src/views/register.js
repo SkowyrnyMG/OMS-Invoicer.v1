@@ -6,7 +6,7 @@ import RegisterForm from 'components/organisms/register-form/register-form';
 
 const Register = () => (
   <Layout>
-    <AuthFormWrapper>
+    <AuthFormWrapper title='Register now!'>
       <RegisterForm />
     </AuthFormWrapper>
   </Layout>

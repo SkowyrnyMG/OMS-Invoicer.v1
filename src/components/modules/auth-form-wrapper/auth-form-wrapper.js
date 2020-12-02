@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
@@ -15,10 +16,15 @@ const Wrapper = styled.div`
 
 const FormBox = styled.div`
   margin-bottom: 5rem;
-  padding: 3rem 5rem;
+  padding: 4rem 5rem 3rem;
   background-color: ${({ theme: { color } }) => color.bgSecondary};
   border-radius: 5px;
   box-shadow: ${({ theme: { shadow } }) => shadow.around};
+`;
+
+const StyledHeading = styled.h2`
+  margin-bottom: 3rem;
+  text-align: center;
 `;
 
 const StyledLink = styled(Link)`
@@ -26,11 +32,18 @@ const StyledLink = styled(Link)`
   color: ${({ theme: { color } }) => color.mainFont};
 `;
 
-const AuthFormWrapper = ({ children }) => (
+const AuthFormWrapper = ({ children, title }) => (
   <Wrapper>
-    <FormBox>{children}</FormBox>
+    <FormBox>
+      <StyledHeading>{title}</StyledHeading>
+      {children}
+    </FormBox>
     <StyledLink to={routes.home}>Take me from here!</StyledLink>
   </Wrapper>
 );
+
+AuthFormWrapper.propTypes = {
+  title: PropTypes.string.isRequired,
+};
 
 export default AuthFormWrapper;

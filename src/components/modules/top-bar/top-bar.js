@@ -9,6 +9,7 @@ import UserInfo from 'components/modules/user-info/user-info';
 import { ReactComponent as LogoutIcon } from 'assets/svg/logout-icon.svg';
 
 import { routes } from 'utils/routes';
+import { useModuleName } from 'hooks/useModuleName';
 
 const Wrapper = styled.header`
   grid-column: top-bar-start / top-bar-end !important;
@@ -19,15 +20,23 @@ const Wrapper = styled.header`
   align-items: center;
   margin-top: 0;
   height: 6rem;
-  border-bottom: 1px solid ${({ theme: { color } }) => color.devider};
-  box-shadow: ${({ theme: { shadow } }) => shadow.bottom};
+  background: ${({ theme: { color } }) => color.bg};
+  border-bottom: 2px solid ${({ theme: { color } }) => color.devider};
   z-index: 50;
+`;
+
+const CurrentModule = styled.span`
+  font-size: ${({ theme: { fontSize } }) => fontSize.l};
+  font-weight: ${({ theme: { fontWeight } }) => fontWeight.regular};
+  font-style: italic;
+  color: ${({ theme: { color } }) => color.primary};
 `;
 
 const Logo = styled.span`
   font-size: ${({ theme: { fontSize } }) => fontSize.cta};
   font-weight: ${({ theme: { fontWeight } }) => fontWeight.bold};
 `;
+
 const StyledLoginNav = styled.nav`
   grid-column: nav-start / nav-end;
   display: flex;
@@ -72,14 +81,21 @@ const TopBar = () => {
     userInfo: { email },
   } = useSelector(getUserData);
   const dispatch = useDispatch();
+  const currentModule = useModuleName();
+
   const handleClick = () => {
     dispatch(logoutUser());
   };
+
   return (
     <Wrapper>
-      <NavLink path={routes.home}>
-        <Logo>OMS Invoicer.v1</Logo>
-      </NavLink>
+      {currentModule !== '' ? (
+        <CurrentModule>{currentModule}</CurrentModule>
+      ) : (
+        <NavLink path={routes.home}>
+          <Logo>OMS Invoicer.v1</Logo>
+        </NavLink>
+      )}
       <StyledLoginNav>
         {uuid === '' || uuid === null ? (
           <>

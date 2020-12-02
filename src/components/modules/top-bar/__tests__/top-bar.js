@@ -1,10 +1,5 @@
 import React from 'react';
-import {
-  fireEvent,
-  TestThemeProvider,
-  leftClick,
-  renderWithReduxRouter,
-} from 'utils/test-helper';
+import { fireEvent, leftClick, renderWithReduxRouter } from 'utils/test-helper';
 import TopBar from '../top-bar';
 
 const linkChecker = (history, getByText, directPath, regex) => {
@@ -19,22 +14,14 @@ const linkChecker = (history, getByText, directPath, regex) => {
 
 describe('TopBar', () => {
   test('should render into document', () => {
-    const { container } = renderWithReduxRouter(
-      <TestThemeProvider>
-        <TopBar />
-      </TestThemeProvider>
-    );
+    const { container } = renderWithReduxRouter(<TopBar />);
     const topBarContainer = container.firstChild;
 
     expect(topBarContainer).toBeInTheDocument();
   });
 
   test('should redirect to register page after click on Sign up link', () => {
-    const { getByText, history } = renderWithReduxRouter(
-      <TestThemeProvider>
-        <TopBar />
-      </TestThemeProvider>
-    );
+    const { getByText, history } = renderWithReduxRouter(<TopBar />);
 
     const linkRegex = /sign up/i;
     const REGISTER_LINK = '/register';
@@ -43,11 +30,7 @@ describe('TopBar', () => {
   });
 
   test('should redirect to login page after click on Sign in link', () => {
-    const { getByText, history } = renderWithReduxRouter(
-      <TestThemeProvider>
-        <TopBar />
-      </TestThemeProvider>
-    );
+    const { getByText, history } = renderWithReduxRouter(<TopBar />);
 
     const linkRegex = /sign in/i;
     const LOGIN_LINK = '/login';

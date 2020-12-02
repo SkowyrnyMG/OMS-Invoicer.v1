@@ -35,7 +35,10 @@ const Wrapper = styled.div`
 `;
 
 const Main = styled.main`
+  padding: ${({ pathname }) =>
+    pathname.includes('/app') ? '4.5rem 7.5rem' : 0};
   background-color: ${({ theme: { color } }) => color.bg};
+  min-height: calc(90vh - 6rem);
 `;
 
 const Layout = ({ children }) => {
@@ -48,7 +51,7 @@ const Layout = ({ children }) => {
         {isLoading && <Loader />}
         <TopBar />
         {pathname.includes('/app') && <AppNavigation />}
-        <Main>{children}</Main>
+        <Main pathname={pathname}>{children}</Main>
       </Wrapper>
     </ThemeProvider>
   );

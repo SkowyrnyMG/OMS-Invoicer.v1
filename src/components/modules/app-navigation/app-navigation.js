@@ -22,6 +22,7 @@ const Wrapper = styled.div`
   grid-template-rows: 6rem 1fr;
   background: ${({ theme: { color } }) => color.bgSecondary};
   box-shadow: ${({ theme: { shadow } }) => shadow.right};
+  z-index: 1000;
 `;
 
 const StyledNav = styled.nav`
@@ -61,8 +62,9 @@ const AppNavLink = styled(Link)`
 
 const AppNavLinkText = styled.span`
   display: inline-block;
-  border-bottom: 1px solid ${({ theme: { color } }) => color.devider};
+  width: calc(100% - 5rem);
   height: 6rem;
+  border-bottom: 1px solid ${({ theme: { color } }) => color.devider};
   line-height: 6rem;
 `;
 
@@ -79,28 +81,45 @@ const AppNavigation = () => (
     <StyledNav>
       <StyledList>
         <StyledListItem>
-          <AppNavLink exact to={routes.app} activeClassName='active-app-link'>
+          <AppNavLink
+            exact
+            to={routes.app}
+            activeClassName='active-app-link'
+            data-testid='maindesk-link'
+          >
             <HomeIcon />
             <AppNavLinkText>Main desk</AppNavLinkText>
           </AppNavLink>
         </StyledListItem>
 
         <StyledListItem>
-          <AppNavLink to={routes.appInvoices} activeClassName='active-app-link'>
+          <AppNavLink
+            to={routes.appInvoices}
+            activeClassName='active-app-link'
+            data-testid='invoices-link'
+          >
             <InvoiceIcon />
             <AppNavLinkText>Invoices</AppNavLinkText>
           </AppNavLink>
         </StyledListItem>
 
         <StyledListItem>
-          <AppNavLink to={routes.appPayments} activeClassName='active-app-link'>
+          <AppNavLink
+            to={routes.appPayments}
+            activeClassName='active-app-link'
+            data-testid='payments-link'
+          >
             <PaymentIcon />
             <AppNavLinkText>Payments</AppNavLinkText>
           </AppNavLink>
         </StyledListItem>
 
         <StyledListItem>
-          <AppNavLink to={routes.appOrders} activeClassName='active-app-link'>
+          <AppNavLink
+            to={routes.appOrders}
+            activeClassName='active-app-link'
+            data-testid='orders-link'
+          >
             <OrdersIcon />
             <AppNavLinkText>Orders</AppNavLinkText>
           </AppNavLink>
@@ -110,6 +129,7 @@ const AppNavigation = () => (
           <AppNavLink
             to={routes.appCustomers}
             activeClassName='active-app-link'
+            data-testid='customers-link'
           >
             <ClientsIcon />
             <AppNavLinkText>Customers</AppNavLinkText>
@@ -122,6 +142,7 @@ const AppNavigation = () => (
             exact
             to={routes.appSettings}
             activeClassName='active-app-link'
+            data-testid='settings-link'
           >
             <SettingsIcon />
             <AppNavLinkText>Settings</AppNavLinkText>
@@ -132,6 +153,7 @@ const AppNavigation = () => (
             exact
             to={routes.appHelp}
             activeClassName='active-app-link'
+            data-testid='help-link'
           >
             <HelpIcon />
             <AppNavLinkText>Help</AppNavLinkText>

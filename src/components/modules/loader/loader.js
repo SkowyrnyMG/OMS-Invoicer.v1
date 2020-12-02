@@ -11,7 +11,6 @@ const Wrapper = styled.div`
   flex-direction: column;
   height: 100vh;
   width: 100%;
-  /* background: ${({ theme: { color } }) => color.transparentMain}; */
   z-index: 9999;
   transition: 0.25 all;
 `;
@@ -76,7 +75,7 @@ const Loader = () => {
     tl.to(dots[2], { duration: 1, y: '0', delay: 1 }, '-=2');
     tl.to(dots[3], { duration: 1, x: '20' }, '-=2');
     tl.to(dots[3], { duration: 1, x: '0', delay: 1 }, '-=2');
-  });
+  }, []);
 
   return (
     <Wrapper ref={animationWrapper}>

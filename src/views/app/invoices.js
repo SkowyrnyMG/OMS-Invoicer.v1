@@ -1,13 +1,13 @@
 import React from 'react';
 // import styled from 'styled-components';
 
+import InvoicesModule from 'components/organisms/invoices-module/invoices-module';
+
 import Layout from 'utils/layout';
 
 const Invoices = () => (
   <Layout>
-    <div>
-      <h2>Invoices</h2>
-    </div>
+    <InvoicesModule />
   </Layout>
 );
 

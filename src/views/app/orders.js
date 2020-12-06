@@ -2,12 +2,11 @@ import React from 'react';
 // import styled from 'styled-components';
 
 import Layout from 'utils/layout';
+import OrdersModule from 'components/organisms/orders-module/orders-module';
 
 const Orders = () => (
   <Layout>
-    <div>
-      <h2>Orders</h2>
-    </div>
+    <OrdersModule />
   </Layout>
 );
 

@@ -5,14 +5,18 @@ import {
   useRowSelect,
   useGlobalFilter,
   useSortBy,
+  usePagination,
 } from 'react-table';
 
 import AppBodyContainer from 'components/atoms/app-body-container/app-body-container';
 import { ReactComponent as SearchIcon } from 'assets/svg/search-icon.svg';
+import { ReactComponent as LeftArrow } from 'assets/svg/larr-icon.svg';
+import { ReactComponent as RightArrow } from 'assets/svg/rarr-icon.svg';
 
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
+  overflow-x: scroll;
 `;
 
 const SearchBox = styled.div`
@@ -64,10 +68,91 @@ const StyledTable = styled.table`
 
   td {
     padding: 0.3rem 1rem !important;
+    min-width: 20rem;
   }
 
   tbody * {
     border-bottom: 1px solid ${({ theme: { color } }) => color.devider} !important;
+  }
+`;
+
+const PaginatonNavWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-top: 2rem;
+  align-self: center;
+`;
+
+const StyledButton = styled.button`
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+
+  svg {
+    padding: 0 0.5rem;
+    width: 1.5rem;
+    height: 1.5rem;
+    fill: ${({ theme: { color } }) => color.transparentMain};
+    transition: 0.25s all;
+  }
+
+  :hover svg {
+    fill: ${({ theme: { color } }) => color.primary};
+  }
+
+  :active svg {
+    transform: translateY(2px);
+  }
+`;
+
+const SelectWrapper = styled.div`
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+  padding: 0.25rem;
+  border: 1px solid ${({ theme: { color } }) => color.transparentMain};
+  border-radius: 0.5rem;
+  transition: 0.25s all;
+
+  ::after {
+    content: '';
+    position: absolute;
+    display: block;
+    right: 5%;
+    top: 50%;
+    width: 1rem;
+    height: 1rem;
+    background: ${({ theme: { color } }) => color.transparentMain};
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
+    transform: translateY(-50%);
+    z-index: 1000;
+    transition: 0.25s all;
+  }
+
+  :hover {
+    border-color: ${({ theme: { color } }) => color.primary};
+    ::after {
+      background: ${({ theme: { color } }) => color.primary};
+    }
+  }
+
+  :active ::after {
+    background: #000;
+  }
+`;
+
+const StyledSelect = styled.select`
+  padding: 0.1rem;
+  width: 100%;
+  appearance: none;
+  background: none;
+  border: none;
+  outline: none;
+
+  option * {
+    width: 100%;
   }
 `;
 
@@ -77,24 +162,39 @@ const AppTableBody = ({ columns, data }) => {
     getTableBodyProps,
     headerGroups,
     // footerGroups,
-    rows,
+    // rows,
     prepareRow,
     selectedFlatRows,
     toggleRowSelected,
     toggleAllRowsSelected,
     state,
     setGlobalFilter,
+    page,
+    setPageSize,
+    canPreviousPage,
+    canNextPage,
+    previousPage,
+    nextPage,
+    // gotoPage,
+    // pageCount,
+    pageOptions,
   } = useTable(
     {
       columns,
       data,
+      initialState: {
+        pageSize: 25,
+      },
     },
     useGlobalFilter,
     useSortBy,
+    usePagination,
     useRowSelect
   );
 
-  const { globalFilter } = state;
+  const { globalFilter, pageIndex, pageSize } = state;
+
+  const pageSizeOptions = [25, 50, 100];
 
   const handleClick = (rowId) => {
     toggleAllRowsSelected(false);
@@ -135,7 +235,7 @@ const AppTableBody = ({ columns, data }) => {
             ))}
           </thead>
           <tbody {...getTableBodyProps()}>
-            {rows.map((row) => {
+            {page.map((row) => {
               prepareRow(row);
 
               return (
@@ -171,6 +271,38 @@ const AppTableBody = ({ columns, data }) => {
           )}
         </span>
       </AppBodyContainer>
+      <PaginatonNavWrapper>
+        <div>
+          <StyledButton
+            onClick={() => previousPage()}
+            disabled={!canPreviousPage}
+          >
+            <LeftArrow />
+          </StyledButton>
+          <span>
+            <strong>
+              {` ${pageSize * (pageIndex + 1)} / ${
+                pageOptions.length * pageSize
+              } `}
+            </strong>
+          </span>
+          <StyledButton onClick={() => nextPage()} disabled={!canNextPage}>
+            <RightArrow />
+          </StyledButton>
+        </div>
+        <SelectWrapper>
+          <StyledSelect
+            value={pageSize}
+            onChange={(e) => setPageSize(Number(e.target.value))}
+          >
+            {pageSizeOptions.map((pageSizeSetter) => (
+              <option value={pageSizeSetter} key={pageSizeSetter}>
+                {pageSizeSetter}
+              </option>
+            ))}
+          </StyledSelect>
+        </SelectWrapper>
+      </PaginatonNavWrapper>
     </Wrapper>
   );
 };

@@ -32,6 +32,36 @@ export const useValidationSchema = (type) => {
           .oneOf([Yup.ref('password'), null], 'Passwords must match')
           .required('Required!'),
       });
+    case 'customers':
+      return Yup.object().shape({
+        nameOfCompany: Yup.string()
+          .min(5, 'Too short! At least 5 signs long!')
+          .max(35, 'Too long! not longer thatn 35 signs')
+          .required('Required!'),
+        vat: Yup.string()
+          .min(6, 'At least 6 signs!')
+          .max(12, 'VAT cannot be longer than 12 signs')
+          .required('Required!'),
+        country: Yup.string()
+          .min(3, 'At least 3 signs long!')
+          .max(25, 'Not longer than 25 signs')
+          .required('Required!'),
+        town: Yup.string()
+          .min(5, 'At least 5 sighns long')
+          .max(25, 'Not longer than 25 signs')
+          .required('Required!'),
+        postCode: Yup.string()
+          .min(5, 'not shortern thant 5 signs')
+          .max(8, 'not longer than 8 signs')
+          .required('Required'),
+        contactPerson: Yup.string()
+          .min(6, 'Should be longer thatnm 16 signs')
+          .max(30, 'Not logner than 30 signs'),
+        contactEmail: Yup.string().email('Provide correct email!'),
+        contactPhone: Yup.string()
+          .min(6, 'Phone cannot be shorter thatn 6 signs')
+          .max(20, 'Phone cannot be longer than 20 signs'),
+      });
     default:
       return '';
   }

@@ -1,30 +1,24 @@
 import React, { useMemo } from 'react';
-import styled from 'styled-components';
 
+import AppGridContainer from 'components/atoms/app-grid-container/app-grid-container';
 import AppTableBody from 'components/modules/app-table-body/app-table-body';
 import ActionMenu from 'components/modules/action-menu/action-menu';
 import Button from 'components/atoms/button/button';
 
 import { CUSTOMERS_COLUMNS } from 'utils/table-columns';
-import { MOCK_DATA } from 'utils/dummy-data';
+// import { MOCK_DATA } from 'utils/dummy-data';
 import { useDefaultColumn } from 'hooks/useDefaultColumn';
 
-const Wrapper = styled.div`
-  display: grid;
-  grid-template-columns: 6fr 1fr;
-  grid-column-gap: 2rem;
-`;
-
-const CustomersModule = () => {
+const CustomersModule = ({ customersList }) => {
   const columns = useMemo(() => CUSTOMERS_COLUMNS, []);
-  const data = useMemo(() => MOCK_DATA, []);
+  const data = useMemo(() => customersList, [customersList]);
   const defaultColumnValues = useDefaultColumn(columns.length);
   const defaultColumn = useMemo(() => defaultColumnValues, [
     defaultColumnValues,
   ]);
 
   return (
-    <Wrapper>
+    <AppGridContainer>
       <AppTableBody
         columns={columns}
         data={data}
@@ -35,7 +29,7 @@ const CustomersModule = () => {
         <Button>Edit</Button>
         <Button>delete</Button>
       </ActionMenu>
-    </Wrapper>
+    </AppGridContainer>
   );
 };
 

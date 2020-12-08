@@ -89,6 +89,9 @@ const StyledButton = styled.button`
   border: none;
   outline: none;
   cursor: pointer;
+  :disabled {
+    pointer-events: none;
+  }
 
   svg {
     padding: 0 0.5rem;
@@ -128,7 +131,7 @@ const SelectWrapper = styled.div`
     background: ${({ theme: { color } }) => color.transparentMain};
     clip-path: polygon(0 0, 100% 0, 50% 100%);
     transform: translateY(-50%);
-    z-index: 1000;
+    z-index: 300;
     transition: 0.25s all;
   }
 
@@ -275,7 +278,10 @@ const AppTableBody = ({ columns, data, defaultColumn }) => {
                   }}
                 >
                   {row.cells.map((cell) => (
-                    <td {...cell.getCellProps()} key={cell.id}>
+                    <td
+                      {...cell.getCellProps()}
+                      key={`${cell.column.id}-${cell.row.id}`}
+                    >
                       {cell.render('Cell')}
                     </td>
                   ))}

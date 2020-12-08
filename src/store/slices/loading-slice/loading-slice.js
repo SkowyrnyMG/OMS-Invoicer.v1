@@ -3,6 +3,7 @@ import {
   signInWithEmailAndPassword,
   registerWithEmailAndPassword,
 } from 'store/slices/auth-slice/auth-slice';
+import { getAllCustomers } from 'store/slices/db-slice/db-slice';
 
 export const loadingSlice = createSlice({
   name: 'loading',
@@ -15,6 +16,10 @@ export const loadingSlice = createSlice({
     [registerWithEmailAndPassword.pending]: () => true,
     [registerWithEmailAndPassword.fulfilled]: () => false,
     [registerWithEmailAndPassword.rejected]: () => false,
+
+    [getAllCustomers.pending]: () => true,
+    [getAllCustomers.fulfilled]: () => false,
+    [getAllCustomers.rejected]: () => false,
   },
 });
 

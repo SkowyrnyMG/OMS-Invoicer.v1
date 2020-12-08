@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
-import styled from 'styled-components';
 
+import AppGridContainer from 'components/atoms/app-grid-container/app-grid-container';
 import AppTableBody from 'components/modules/app-table-body/app-table-body';
 import ActionMenu from 'components/modules/action-menu/action-menu';
 import Button from 'components/atoms/button/button';
@@ -8,12 +8,6 @@ import Button from 'components/atoms/button/button';
 import { ORDERS_COUMNS } from 'utils/table-columns';
 import { MOCK_DATA_ORDERS } from 'utils/dummy-data';
 import { useDefaultColumn } from 'hooks/useDefaultColumn';
-
-const Wrapper = styled.div`
-  display: grid;
-  grid-template-columns: 6fr 1fr;
-  grid-column-gap: 2rem;
-`;
 
 const OrdersModule = () => {
   const columns = useMemo(() => ORDERS_COUMNS, []);
@@ -24,7 +18,7 @@ const OrdersModule = () => {
   ]);
 
   return (
-    <Wrapper>
+    <AppGridContainer>
       <AppTableBody
         columns={columns}
         data={data}
@@ -36,7 +30,7 @@ const OrdersModule = () => {
         <Button>Issue invoice</Button>
         <Button>delete</Button>
       </ActionMenu>
-    </Wrapper>
+    </AppGridContainer>
   );
 };
 

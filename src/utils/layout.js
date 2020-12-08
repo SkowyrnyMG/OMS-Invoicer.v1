@@ -35,6 +35,7 @@ const Wrapper = styled.div`
 `;
 
 const Main = styled.main`
+  position: relative;
   padding: ${({ pathname }) =>
     pathname.includes('/app') ? '4.5rem 7.5rem' : 0};
   background-color: ${({ theme: { color } }) => color.bg};

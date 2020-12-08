@@ -30,6 +30,26 @@ I have made this app with:
 To download code into your PC/MAC you have to clone repo by: git clone
 <br/>
 
+You have to set up firebase confing with your own firebase database to run it localy, otherwise app won't compile.
+<br/>
+To do that you have to create ".env" fille in the root of the project and put your firebase config data.
+
+```
+// fill X'es with your API keys etc.
+REACT_APP_FIREBASE_API_KEY=XXXXXXXXXXXXX
+REACT_APP_FIREBASE_AUTH_DOMAIN=XXXXXXXXXXXXX
+REACT_APP_FIREBASE_DB_URL=XXXXXXXXXXXXX
+REACT_APP_FIREBASE_PROJECT_ID=XXXXXXXXXXXXX
+REACT_APP_FIREBASE_STORAGE_BUCKET=XXXXXXXXXXXXX
+REACT_APP_FIREBASE_MESSAGING_SENNDER_ID=XXXXXXXXXXXXX
+REACT_APP_FIREBASE_APP_ID=XXXXXXXXXXXXX
+REACT_APP_FIREBASE_MEASUREMENT_ID=XXXXXXXXXXXXX
+```
+
+<br/>
+After setting firebase up you can try the app localy on your maschine!
+<br/>
+
 For now, you can preview the app by using the command "yarn start" in your command prompt.
 This will run the app in dev mode on [http://localhost:3000](http://localhost:3000) in your browser.
 <br/>

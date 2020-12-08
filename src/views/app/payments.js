@@ -2,12 +2,11 @@ import React from 'react';
 // import styled from 'styled-components';
 
 import Layout from 'utils/layout';
+import PaymentsModule from 'components/organisms/payments-module/payments-module';
 
 const Payments = () => (
   <Layout>
-    <div>
-      <h2>Payments</h2>
-    </div>
+    <PaymentsModule />
   </Layout>
 );
 

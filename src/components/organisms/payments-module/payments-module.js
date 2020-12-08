@@ -5,8 +5,8 @@ import AppTableBody from 'components/modules/app-table-body/app-table-body';
 import ActionMenu from 'components/modules/action-menu/action-menu';
 import Button from 'components/atoms/button/button';
 
-import { ORDERS_COUMNS } from 'utils/table-columns';
-import { MOCK_DATA_ORDERS } from 'utils/dummy-data';
+import { PAYMENTS_COLUMNS } from 'utils/table-columns';
+import { MOCK_DATA_PAYMENTS } from 'utils/dummy-data';
 import { useDefaultColumn } from 'hooks/useDefaultColumn';
 
 const Wrapper = styled.div`
@@ -15,9 +15,9 @@ const Wrapper = styled.div`
   grid-column-gap: 2rem;
 `;
 
-const OrdersModule = () => {
-  const columns = useMemo(() => ORDERS_COUMNS, []);
-  const data = useMemo(() => MOCK_DATA_ORDERS, []);
+const PaymentsModule = () => {
+  const columns = useMemo(() => PAYMENTS_COLUMNS, []);
+  const data = useMemo(() => MOCK_DATA_PAYMENTS, []);
   const defaultColumnValues = useDefaultColumn(columns.length);
   const defaultColumn = useMemo(() => defaultColumnValues, [
     defaultColumnValues,
@@ -33,11 +33,11 @@ const OrdersModule = () => {
       <ActionMenu>
         <Button>Add new</Button>
         <Button>Edit</Button>
-        <Button>Issue invoice</Button>
-        <Button>delete</Button>
+        <Button>Mark payment</Button>
+        <Button>Delete</Button>
       </ActionMenu>
     </Wrapper>
   );
 };
 
-export default OrdersModule;
+export default PaymentsModule;

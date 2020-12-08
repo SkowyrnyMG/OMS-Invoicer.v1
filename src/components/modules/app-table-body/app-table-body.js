@@ -6,6 +6,8 @@ import {
   useGlobalFilter,
   useSortBy,
   usePagination,
+  useBlockLayout,
+  useResizeColumns,
 } from 'react-table';
 
 import AppBodyContainer from 'components/atoms/app-body-container/app-body-container';
@@ -16,7 +18,6 @@ import { ReactComponent as RightArrow } from 'assets/svg/rarr-icon.svg';
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  overflow-x: scroll;
 `;
 
 const SearchBox = styled.div`
@@ -45,7 +46,6 @@ const StyledSearchInput = styled.input`
 `;
 
 const StyledTable = styled.table`
-  width: 100%;
   border-spacing: 0;
   border-collapse: separate;
 
@@ -63,12 +63,13 @@ const StyledTable = styled.table`
 
   td,
   th {
+    position: relative;
     cursor: pointer;
   }
 
   td {
     padding: 0.3rem 1rem !important;
-    min-width: 20rem;
+    overflow-x: hidden;
   }
 
   tbody * {
@@ -156,13 +157,29 @@ const StyledSelect = styled.select`
   }
 `;
 
-const AppTableBody = ({ columns, data }) => {
+const Resizer = styled.div`
+  position: absolute;
+  display: block;
+  width: 30px;
+  height: 100%;
+  top: 0;
+  right: 0;
+  transform: translateX(50%);
+  z-index: 5000 !important;
+`;
+
+const AppTableBody = ({ columns, data, defaultColumn }) => {
+  const initialState = React.useMemo(
+    () => ({
+      pageSize: 25,
+    }),
+    []
+  );
+
   const {
     getTableProps,
     getTableBodyProps,
     headerGroups,
-    // footerGroups,
-    // rows,
     prepareRow,
     selectedFlatRows,
     toggleRowSelected,
@@ -175,21 +192,20 @@ const AppTableBody = ({ columns, data }) => {
     canNextPage,
     previousPage,
     nextPage,
-    // gotoPage,
-    // pageCount,
     pageOptions,
   } = useTable(
     {
       columns,
       data,
-      initialState: {
-        pageSize: 25,
-      },
+      initialState,
+      defaultColumn,
     },
     useGlobalFilter,
     useSortBy,
     usePagination,
-    useRowSelect
+    useRowSelect,
+    useBlockLayout,
+    useResizeColumns
   );
 
   const { globalFilter, pageIndex, pageSize } = state;
@@ -221,6 +237,13 @@ const AppTableBody = ({ columns, data }) => {
                     {...column.getHeaderProps(column.getSortByToggleProps())}
                     key={column.id}
                   >
+                    <Resizer
+                      {...column.getResizerProps({
+                        onClick(ev) {
+                          ev.stopPropagation();
+                        },
+                      })}
+                    />
                     {column.render('Header')}
                     <span>
                       {column.isSorted

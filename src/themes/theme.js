@@ -31,4 +31,7 @@ export const theme = {
     bottom: '0 4px 5px rgba(0, 0, 0, 0.1)',
     right: '4px 0 5px rgba(0, 0, 0, 0.1)',
   },
+  defaultSizes: {
+    appBody: '1268px',
+  },
 };

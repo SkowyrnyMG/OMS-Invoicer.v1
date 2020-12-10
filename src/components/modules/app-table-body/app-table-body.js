@@ -171,7 +171,7 @@ const Resizer = styled.div`
   z-index: 5000 !important;
 `;
 
-const AppTableBody = ({ columns, data, defaultColumn }) => {
+const AppTableBody = ({ columns, data, defaultColumn, setCurrentCustomer }) => {
   const initialState = React.useMemo(
     () => ({
       pageSize: 25,
@@ -215,9 +215,10 @@ const AppTableBody = ({ columns, data, defaultColumn }) => {
 
   const pageSizeOptions = [25, 50, 100];
 
-  const handleClick = (rowId) => {
+  const handleClick = (rowId, row) => {
     toggleAllRowsSelected(false);
     toggleRowSelected(rowId);
+    setCurrentCustomer(row);
   };
   return (
     <Wrapper>
@@ -260,6 +261,7 @@ const AppTableBody = ({ columns, data, defaultColumn }) => {
               </tr>
             ))}
           </thead>
+
           <tbody {...getTableBodyProps()}>
             {page.map((row) => {
               prepareRow(row);
@@ -274,7 +276,7 @@ const AppTableBody = ({ columns, data, defaultColumn }) => {
                     },
                   })}
                   onClick={() => {
-                    handleClick(row.id);
+                    handleClick(row.id, row.original);
                   }}
                 >
                   {row.cells.map((cell) => (
@@ -300,38 +302,40 @@ const AppTableBody = ({ columns, data, defaultColumn }) => {
           )}
         </span>
       </AppBodyContainer>
-      <PaginatonNavWrapper>
-        <div>
-          <StyledButton
-            onClick={() => previousPage()}
-            disabled={!canPreviousPage}
-          >
-            <LeftArrow />
-          </StyledButton>
-          <span>
-            <strong>
-              {` ${pageSize * (pageIndex + 1)} / ${
-                pageOptions.length * pageSize
-              } `}
-            </strong>
-          </span>
-          <StyledButton onClick={() => nextPage()} disabled={!canNextPage}>
-            <RightArrow />
-          </StyledButton>
-        </div>
-        <SelectWrapper>
-          <StyledSelect
-            value={pageSize}
-            onChange={(e) => setPageSize(Number(e.target.value))}
-          >
-            {pageSizeOptions.map((pageSizeSetter) => (
-              <option value={pageSizeSetter} key={pageSizeSetter}>
-                {pageSizeSetter}
-              </option>
-            ))}
-          </StyledSelect>
-        </SelectWrapper>
-      </PaginatonNavWrapper>
+      {data.length > 0 && (
+        <PaginatonNavWrapper>
+          <div>
+            <StyledButton
+              onClick={() => previousPage()}
+              disabled={!canPreviousPage}
+            >
+              <LeftArrow />
+            </StyledButton>
+            <span>
+              <strong>
+                {` ${pageSize * (pageIndex + 1)} / ${
+                  pageOptions.length * pageSize
+                } `}
+              </strong>
+            </span>
+            <StyledButton onClick={() => nextPage()} disabled={!canNextPage}>
+              <RightArrow />
+            </StyledButton>
+          </div>
+          <SelectWrapper>
+            <StyledSelect
+              value={pageSize}
+              onChange={(e) => setPageSize(Number(e.target.value))}
+            >
+              {pageSizeOptions.map((pageSizeSetter) => (
+                <option value={pageSizeSetter} key={pageSizeSetter}>
+                  {pageSizeSetter}
+                </option>
+              ))}
+            </StyledSelect>
+          </SelectWrapper>
+        </PaginatonNavWrapper>
+      )}
     </Wrapper>
   );
 };

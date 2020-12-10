@@ -121,6 +121,7 @@ export const AuthSlice = createSlice({
 
 export const getUserStatus = (state) => state.auth.login.message;
 export const getUserData = (state) => state.auth.login;
+export const getUid = (state) => state.auth.login.uuid;
 
 export const { logoutUser, resetMessage } = AuthSlice.actions;
 

@@ -17,6 +17,10 @@ const Button = styled.button`
   :active {
     transform: translateX(2px);
   }
+  :disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
 `;
 
 export default Button;

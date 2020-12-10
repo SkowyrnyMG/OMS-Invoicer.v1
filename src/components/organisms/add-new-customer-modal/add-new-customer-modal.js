@@ -123,13 +123,12 @@ const AddNewCustomerModal = ({ closeModal }) => {
             }}
             validationSchema={validationSchema}
             onSubmit={(values) => {
-              console.log(values);
               const parsedValues = {
                 ...values,
                 address: `${values.country}, ${values.postCode}, ${values.town}`,
               };
               dispatch(addNewCustomer(parsedValues));
-              console.log(parsedValues);
+              closeModal();
             }}
           >
             {({ errors, touched }) => (

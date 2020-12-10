@@ -9,7 +9,7 @@ import { CUSTOMERS_COLUMNS } from 'utils/table-columns';
 // import { MOCK_DATA } from 'utils/dummy-data';
 import { useDefaultColumn } from 'hooks/useDefaultColumn';
 
-const CustomersModule = ({ customersList }) => {
+const CustomersModule = ({ customersList, openModal }) => {
   const columns = useMemo(() => CUSTOMERS_COLUMNS, []);
   const data = useMemo(() => customersList, [customersList]);
   const defaultColumnValues = useDefaultColumn(columns.length);
@@ -25,7 +25,7 @@ const CustomersModule = ({ customersList }) => {
         defaultColumn={defaultColumn}
       />
       <ActionMenu>
-        <Button>Add new</Button>
+        <Button onClick={openModal}>Add new</Button>
         <Button>Edit</Button>
         <Button>delete</Button>
       </ActionMenu>

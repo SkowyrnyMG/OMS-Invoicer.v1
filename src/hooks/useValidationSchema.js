@@ -34,11 +34,11 @@ export const useValidationSchema = (type) => {
       });
     case 'customers':
       return Yup.object().shape({
-        nameOfCompany: Yup.string()
+        name: Yup.string()
           .min(5, 'Too short! At least 5 signs long!')
           .max(35, 'Too long! not longer thatn 35 signs')
           .required('Required!'),
-        vat: Yup.string()
+        vat_number: Yup.string()
           .min(6, 'At least 6 signs!')
           .max(12, 'VAT cannot be longer than 12 signs')
           .required('Required!'),

@@ -1,15 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Formik, Form } from 'formik';
+import { useDispatch } from 'react-redux';
 
 import AppGridContainer from 'components/atoms/app-grid-container/app-grid-container';
 import AppBodyContainer from 'components/atoms/app-body-container/app-body-container';
 import FormikControl from 'components/modules/formik-control/formik-control';
 import ActionMenu from 'components/modules/action-menu/action-menu';
 import Button from 'components/atoms/button/button';
+import { ReactComponent as SearchIcon } from 'assets/svg/search-icon.svg';
 import Input from 'components/atoms/input/input';
 
 import { useValidationSchema } from 'hooks/useValidationSchema';
+import { addNewCustomer } from 'store/slices/db-slice/db-slice';
 
 const Wrapper = styled.div`
   display: flex;
@@ -48,10 +51,6 @@ const StyledForm = styled(Form)`
   }
 `;
 
-const ViesWrapper = styled.div`
-  margin-bottom: 5rem;
-`;
-
 const StyledButton = styled(Button)`
   align-self: flex-end;
   justify-self: flex-end;
@@ -61,20 +60,60 @@ const StyledHeading = styled.h4`
   margin-bottom: 2rem;
 `;
 
+const ViesWrapper = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: 2rem;
+  align-items: center;
+  margin-bottom: 5rem;
+`;
 const StyledParagraph = styled.p`
+  grid-column: -1 / 1;
   font-size: ${({ theme: { fontSize } }) => fontSize.s};
 `;
 
-const AddNewCustomerModal = () => {
+const StyledViesButton = styled(Button)`
+  grid-column: 3 / 4;
+  width: fit-content;
+  height: fit-content;
+
+  svg {
+    width: 2rem;
+    height: 2rem;
+    fill: ${({ theme: { color } }) => color.bg};
+  }
+`;
+
+const StyledInput = styled(Input)`
+  grid-column: 1 / 3;
+`;
+
+const AddNewCustomerModal = ({ closeModal }) => {
+  const dispatch = useDispatch();
+  const [initValues, setInitValues] = useState({
+    name: '',
+    vat_number: '',
+    country: '',
+    town: '',
+    postCode: '',
+    contactPerson: '',
+    contactEmail: '',
+    contactPhone: '',
+  });
   const validationSchema = useValidationSchema('customers');
+  const handleViesClick = () => {
+    setInitValues((state) => ({ ...state, nameOfCompany: 'lol' }));
+  };
+
   return (
     <Wrapper>
       <AppGridContainer>
         <StyledAppBodyContainer>
           <Formik
+            enableReinitialize
             initialValues={{
-              nameOfCompany: '',
-              vat: '',
+              name: initValues.name,
+              vat_number: '',
               country: '',
               town: '',
               postCode: '',
@@ -85,6 +124,12 @@ const AddNewCustomerModal = () => {
             validationSchema={validationSchema}
             onSubmit={(values) => {
               console.log(values);
+              const parsedValues = {
+                ...values,
+                address: `${values.country}, ${values.postCode}, ${values.town}`,
+              };
+              dispatch(addNewCustomer(parsedValues));
+              console.log(parsedValues);
             }}
           >
             {({ errors, touched }) => (
@@ -95,23 +140,26 @@ const AddNewCustomerModal = () => {
                       Put VAT Number below and search customer details in VIES
                       database
                     </StyledParagraph>
-                    <Input placeholder='Search in VIES' />
+                    <StyledInput placeholder='Search  in VIES' />
+                    <StyledViesButton type='button' onClick={handleViesClick}>
+                      <SearchIcon />
+                    </StyledViesButton>
                   </ViesWrapper>
                   <StyledHeading>Base company details</StyledHeading>
                   <FormikControl
                     type='text'
                     control='input'
-                    name='nameOfCompany'
-                    error={errors.nameOfCompany}
-                    touched={touched.nameOfCompany}
+                    name='name'
+                    error={errors.name}
+                    touched={touched.name}
                     placeholder='Name of Company'
                   />
                   <FormikControl
                     type='text'
                     control='input'
-                    name='vat'
-                    error={errors.vat}
-                    touched={touched.vat}
+                    name='vat_number'
+                    error={errors.vat_number}
+                    touched={touched.vat_number}
                     placeholder='VAT'
                   />
                   <FormikControl
@@ -172,7 +220,7 @@ const AddNewCustomerModal = () => {
           </Formik>
         </StyledAppBodyContainer>
         <ActionMenu>
-          <Button>Exit without save</Button>
+          <Button onClick={closeModal}>Exit without save</Button>
         </ActionMenu>
       </AppGridContainer>
     </Wrapper>

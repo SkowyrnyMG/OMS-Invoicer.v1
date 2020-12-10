@@ -15,6 +15,19 @@ export const getAllCustomers = createAsyncThunk(
   }
 );
 
+export const addNewCustomer = createAsyncThunk(
+  'db/addNewCustomer',
+  async (cred) => {
+    try {
+      return await db
+        .put(`/customers/${cred.vat_number}.json`, cred)
+        .then(({ data }) => Object.values(data));
+    } catch (err) {
+      return err;
+    }
+  }
+);
+
 const dbSlice = createSlice({
   name: 'database',
   initialState: {
@@ -26,6 +39,13 @@ const dbSlice = createSlice({
       state.customers = payload;
     },
     [getAllCustomers.rejected]: (state, { payload }) => {
+      state.customers = payload;
+    },
+
+    [addNewCustomer.fulfilled]: (state, { payload }) => {
+      state.customers = [...state.customers, payload];
+    },
+    [addNewCustomer.rejected]: (state, { payload }) => {
       state.customers = payload;
     },
   },

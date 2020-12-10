@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 // import styled from 'styled-components';
 
@@ -16,14 +16,21 @@ const Customers = () => {
   const dispatch = useDispatch();
   const customersList = useSelector(selectCustomers);
 
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   useEffect(() => {
     dispatch(getAllCustomers());
   }, [dispatch]);
 
   return (
     <Layout>
-      <AddNewCustomerModal />
-      <CustomersModule customersList={customersList} />
+      {isModalOpen ?? (
+        <AddNewCustomerModal closeModal={() => setIsModalOpen(false)} />
+      )}
+      <CustomersModule
+        customersList={customersList}
+        openModal={() => setIsModalOpen(true)}
+      />
     </Layout>
   );
 };

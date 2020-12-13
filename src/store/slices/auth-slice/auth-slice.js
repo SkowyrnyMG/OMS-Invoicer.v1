@@ -1,9 +1,15 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { auth } from 'firebase.config';
 
-import { setLocalValue, getLocalValue } from 'hooks/useLocalStorage';
+import {
+  setLocalValue,
+  getLocalValue,
+  defaultLocalStorage,
+} from 'hooks/useLocalStorage';
 import { db } from 'utils/axios-helper';
 
+defaultLocalStorage('uuid', '');
+defaultLocalStorage('user', '');
 const localUuid = getLocalValue('uuid');
 const localUser = getLocalValue('user');
 

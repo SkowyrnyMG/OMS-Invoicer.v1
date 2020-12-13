@@ -43,12 +43,16 @@ export const useValidationSchema = (type) => {
           .max(12, 'VAT cannot be longer than 12 signs')
           .required('Required!'),
         country: Yup.string()
-          .min(3, 'At least 3 signs long!')
+          .min(2, 'At least 2 signs long!')
           .max(25, 'Not longer than 25 signs')
           .required('Required!'),
         town: Yup.string()
           .min(5, 'At least 5 sighns long')
           .max(25, 'Not longer than 25 signs')
+          .required('Required!'),
+        street: Yup.string()
+          .min(5, 'At least 5 sighns long')
+          .max(70, 'Not longer than 25 signs')
           .required('Required!'),
         postCode: Yup.string()
           .min(5, 'not shortern thant 5 signs')

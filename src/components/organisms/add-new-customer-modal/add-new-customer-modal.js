@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Formik, Form } from 'formik';
 import { useDispatch } from 'react-redux';
+import axios from 'axios';
 
 import AppGridContainer from 'components/atoms/app-grid-container/app-grid-container';
 import AppBodyContainer from 'components/atoms/app-body-container/app-body-container';
@@ -95,14 +96,38 @@ const AddNewCustomerModal = ({ closeModal }) => {
     vat_number: '',
     country: '',
     town: '',
+    street: '',
     postCode: '',
     contactPerson: '',
     contactEmail: '',
     contactPhone: '',
   });
   const validationSchema = useValidationSchema('customers');
-  const handleViesClick = () => {
-    setInitValues((state) => ({ ...state, nameOfCompany: 'lol' }));
+  const [verifyInput, setVerifyInput] = useState('');
+
+  const handleViesClick = async () => {
+    const result = await axios.get(`/api/verify?vat=${verifyInput}`);
+    const {
+      data: { data },
+    } = result;
+    console.log(data);
+
+    if (data.valid) {
+      const splittedAddres = data.address.split(',');
+      const streetVies = splittedAddres[0];
+      const postCodeVies = splittedAddres[1].split(' ')[1].replace('-', '');
+      const townVies = splittedAddres[1].split(' ')[2];
+
+      setInitValues((state) => ({
+        ...state,
+        name: data.name,
+        vat_number: data.countryCode + data.vatNumber,
+        country: data.countryCode,
+        town: townVies,
+        street: streetVies,
+        postCode: data.countryCode + postCodeVies,
+      }));
+    }
   };
 
   return (
@@ -113,10 +138,11 @@ const AddNewCustomerModal = ({ closeModal }) => {
             enableReinitialize
             initialValues={{
               name: initValues.name,
-              vat_number: '',
-              country: '',
-              town: '',
-              postCode: '',
+              vat_number: initValues.vat_number,
+              country: initValues.country,
+              town: initValues.town,
+              street: initValues.street,
+              postCode: initValues.postCode,
               contactPerson: '',
               contactEmail: '',
               contactPhone: '',
@@ -125,7 +151,7 @@ const AddNewCustomerModal = ({ closeModal }) => {
             onSubmit={(values) => {
               const parsedValues = {
                 ...values,
-                address: `${values.country}, ${values.postCode}, ${values.town}`,
+                address: `${values.street}, ${values.postCode}, ${values.town}, ${values.country},`,
               };
               dispatch(addNewCustomer(parsedValues));
               closeModal();
@@ -139,8 +165,15 @@ const AddNewCustomerModal = ({ closeModal }) => {
                       Put VAT Number below and search customer details in VIES
                       database
                     </StyledParagraph>
-                    <StyledInput placeholder='Search  in VIES' />
-                    <StyledViesButton type='button' onClick={handleViesClick}>
+                    <StyledInput
+                      placeholder='Search  in VIES'
+                      value={verifyInput}
+                      onChange={(e) => setVerifyInput(e.target.value)}
+                    />
+                    <StyledViesButton
+                      type='button'
+                      onClick={() => handleViesClick('verify')}
+                    >
                       <SearchIcon />
                     </StyledViesButton>
                   </ViesWrapper>
@@ -168,6 +201,14 @@ const AddNewCustomerModal = ({ closeModal }) => {
                     error={errors.country}
                     touched={touched.country}
                     placeholder='Country'
+                  />
+                  <FormikControl
+                    type='text'
+                    control='input'
+                    name='street'
+                    error={errors.street}
+                    touched={touched.street}
+                    placeholder='Street'
                   />
                   <FormikControl
                     type='text'

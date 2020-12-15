@@ -12,6 +12,10 @@ import {
 export const loadingSlice = createSlice({
   name: 'loading',
   initialState: false,
+  reducers: {
+    setLoadingOn: () => true,
+    setLoadingOff: () => false,
+  },
   extraReducers: {
     [signInWithEmailAndPassword.pending]: () => true,
     [signInWithEmailAndPassword.fulfilled]: () => false,
@@ -36,5 +40,6 @@ export const loadingSlice = createSlice({
 });
 
 export const selectLoading = (state) => state.loading;
+export const { setLoadingOn, setLoadingOff } = loadingSlice.actions;
 
 export default loadingSlice.reducer;

@@ -25,7 +25,7 @@ export const addNewCustomer = createAsyncThunk(
       return await db
         .put(`/data/${localUuid}/customers/${cred.vat_number}.json`, cred)
         .then(({ data }) => {
-          console.log(data);
+          // console.log(data);
           return data;
         });
     } catch (err) {

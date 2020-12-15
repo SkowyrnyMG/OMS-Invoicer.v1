@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Formik, Form } from 'formik';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 
 import AppGridContainer from 'components/atoms/app-grid-container/app-grid-container';
@@ -13,7 +13,14 @@ import { ReactComponent as SearchIcon } from 'assets/svg/search-icon.svg';
 import Input from 'components/atoms/input/input';
 
 import { useValidationSchema } from 'hooks/useValidationSchema';
-import { addNewCustomer } from 'store/slices/db-slice/db-slice';
+import {
+  addNewCustomer,
+  selectCustomers,
+} from 'store/slices/db-slice/db-slice';
+import {
+  setLoadingOn,
+  setLoadingOff,
+} from 'store/slices/loading-slice/loading-slice';
 
 const Wrapper = styled.div`
   display: flex;
@@ -55,6 +62,7 @@ const StyledForm = styled(Form)`
 const StyledButton = styled(Button)`
   align-self: flex-end;
   justify-self: flex-end;
+  margin-bottom: 3rem;
 `;
 
 const StyledHeading = styled.h4`
@@ -71,6 +79,7 @@ const ViesWrapper = styled.div`
 const StyledParagraph = styled.p`
   grid-column: -1 / 1;
   font-size: ${({ theme: { fontSize } }) => fontSize.s};
+  color: ${({ theme: { color }, isNoError }) => !isNoError && color.error};
 `;
 
 const StyledViesButton = styled(Button)`
@@ -91,6 +100,7 @@ const StyledInput = styled(Input)`
 
 const AddNewCustomerModal = ({ closeModal }) => {
   const dispatch = useDispatch();
+  const allCustomers = useSelector(selectCustomers);
   const [initValues, setInitValues] = useState({
     name: '',
     vat_number: '',
@@ -104,15 +114,26 @@ const AddNewCustomerModal = ({ closeModal }) => {
   });
   const validationSchema = useValidationSchema('customers');
   const [verifyInput, setVerifyInput] = useState('');
+  const [isViesValid, setIsViesValid] = useState(true);
+  const [isVatDoubledMsg, setIsVatDoubledMsg] = useState(false);
 
   const handleViesClick = async () => {
+    dispatch(setLoadingOn());
     const result = await axios.get(`/api/verify?vat=${verifyInput}`);
     const {
       data: { data },
     } = result;
     console.log(data);
 
+    dispatch(setLoadingOff());
+    if (!data) {
+      setIsViesValid(false);
+      return;
+    }
+
     if (data.valid) {
+      setIsViesValid(true);
+
       const splittedAddres = data.address.split(',');
       const streetVies = splittedAddres[0];
       const postCodeVies = splittedAddres[1].split(' ')[1].replace('-', '');
@@ -127,6 +148,10 @@ const AddNewCustomerModal = ({ closeModal }) => {
         street: streetVies,
         postCode: data.countryCode + postCodeVies,
       }));
+    }
+
+    if (!data.valid) {
+      setIsViesValid(false);
     }
   };
 
@@ -149,19 +174,28 @@ const AddNewCustomerModal = ({ closeModal }) => {
             }}
             validationSchema={validationSchema}
             onSubmit={(values) => {
-              const parsedValues = {
-                ...values,
-                address: `${values.street}, ${values.postCode}, ${values.town}, ${values.country},`,
-              };
-              dispatch(addNewCustomer(parsedValues));
-              closeModal();
+              const isVatDoubled = allCustomers.filter(
+                (customer) => customer.vat_number === values.vat_number
+              );
+
+              if (isVatDoubled.length === 0) {
+                setIsVatDoubledMsg(false);
+                const parsedValues = {
+                  ...values,
+                  address: `${values.street}, ${values.postCode}, ${values.town}, ${values.country},`,
+                };
+                dispatch(addNewCustomer(parsedValues));
+                closeModal();
+              } else {
+                setIsVatDoubledMsg(true);
+              }
             }}
           >
             {({ errors, touched }) => (
               <StyledForm>
                 <div>
                   <ViesWrapper>
-                    <StyledParagraph>
+                    <StyledParagraph isNoError>
                       Put VAT Number below and search customer details in VIES
                       database
                     </StyledParagraph>
@@ -176,6 +210,11 @@ const AddNewCustomerModal = ({ closeModal }) => {
                     >
                       <SearchIcon />
                     </StyledViesButton>
+                    {!isViesValid && (
+                      <StyledParagraph isNoError={isViesValid}>
+                        Your customer&apos;s VAT number is not valid/active!
+                      </StyledParagraph>
+                    )}
                   </ViesWrapper>
                   <StyledHeading>Base company details</StyledHeading>
                   <FormikControl
@@ -254,6 +293,12 @@ const AddNewCustomerModal = ({ closeModal }) => {
                     placeholder='Phone'
                   />
                   <StyledButton type='submit'>Save</StyledButton>
+                  {isVatDoubledMsg !== false && (
+                    <StyledParagraph isNoError={!isVatDoubledMsg}>
+                      This customer is already present in your client list
+                      database!
+                    </StyledParagraph>
+                  )}
                 </div>
               </StyledForm>
             )}

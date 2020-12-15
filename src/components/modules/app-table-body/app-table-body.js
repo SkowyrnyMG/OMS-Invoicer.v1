@@ -171,7 +171,12 @@ const Resizer = styled.div`
   z-index: 5000 !important;
 `;
 
-const AppTableBody = ({ columns, data, defaultColumn, setCurrentCustomer }) => {
+const AppTableBody = ({
+  columns,
+  data,
+  defaultColumn,
+  setCurrentPosValues,
+}) => {
   const initialState = React.useMemo(
     () => ({
       pageSize: 25,
@@ -218,7 +223,7 @@ const AppTableBody = ({ columns, data, defaultColumn, setCurrentCustomer }) => {
   const handleClick = (rowId, row) => {
     toggleAllRowsSelected(false);
     toggleRowSelected(rowId);
-    setCurrentCustomer(row);
+    setCurrentPosValues(row);
   };
   return (
     <Wrapper>

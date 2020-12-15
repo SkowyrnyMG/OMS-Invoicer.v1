@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
 
 import AppGridContainer from 'components/atoms/app-grid-container/app-grid-container';
 import AppTableBody from 'components/modules/app-table-body/app-table-body';
@@ -10,12 +10,14 @@ import { INVOICES_COLUMNS } from 'utils/table-columns';
 import { useDefaultColumn } from 'hooks/useDefaultColumn';
 
 const InvoicesModule = () => {
+  const [currentInvoice, setCurrentInvoice] = useState(null);
   const columns = useMemo(() => INVOICES_COLUMNS, []);
   const data = useMemo(() => MOCK_DATA_INVOICES, []);
   const defaultColumnValues = useDefaultColumn(columns.length);
   const defaultColumn = useMemo(() => defaultColumnValues, [
     defaultColumnValues,
   ]);
+  console.log(currentInvoice);
 
   return (
     <AppGridContainer>
@@ -23,6 +25,7 @@ const InvoicesModule = () => {
         columns={columns}
         data={data}
         defaultColumn={defaultColumn}
+        setCurrentPosValues={setCurrentInvoice}
       />
       <ActionMenu>
         <Button>Add new</Button>

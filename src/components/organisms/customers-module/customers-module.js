@@ -38,7 +38,7 @@ const CustomersModule = ({ customersList }) => {
         <AddNewCustomerModal closeModal={() => setIsModalOpen(false)} />
       )}
       <AppTableBody
-        setCurrentCustomer={setCurrentCustomer}
+        setCurrentPosValues={setCurrentCustomer}
         columns={columns}
         data={data}
         defaultColumn={defaultColumn}

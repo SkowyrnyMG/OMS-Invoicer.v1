@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
 
 import AppGridContainer from 'components/atoms/app-grid-container/app-grid-container';
 import AppTableBody from 'components/modules/app-table-body/app-table-body';
@@ -10,12 +10,14 @@ import { MOCK_DATA_ORDERS } from 'utils/dummy-data';
 import { useDefaultColumn } from 'hooks/useDefaultColumn';
 
 const OrdersModule = () => {
+  const [currentOrder, setCurrentOrder] = useState(null);
   const columns = useMemo(() => ORDERS_COUMNS, []);
   const data = useMemo(() => MOCK_DATA_ORDERS, []);
   const defaultColumnValues = useDefaultColumn(columns.length);
   const defaultColumn = useMemo(() => defaultColumnValues, [
     defaultColumnValues,
   ]);
+  console.log(currentOrder);
 
   return (
     <AppGridContainer>
@@ -23,6 +25,7 @@ const OrdersModule = () => {
         columns={columns}
         data={data}
         defaultColumn={defaultColumn}
+        setCurrentPosValues={setCurrentOrder}
       />
       <ActionMenu>
         <Button>Add new</Button>

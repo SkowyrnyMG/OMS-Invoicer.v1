@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
 
 import AppGridContainer from 'components/atoms/app-grid-container/app-grid-container';
 import AppTableBody from 'components/modules/app-table-body/app-table-body';
@@ -10,6 +10,7 @@ import { MOCK_DATA_PAYMENTS } from 'utils/dummy-data';
 import { useDefaultColumn } from 'hooks/useDefaultColumn';
 
 const PaymentsModule = () => {
+  const [currentPayment, setCurrentPayments] = useState(null);
   const columns = useMemo(() => PAYMENTS_COLUMNS, []);
   const data = useMemo(() => MOCK_DATA_PAYMENTS, []);
   const defaultColumnValues = useDefaultColumn(columns.length);
@@ -17,12 +18,15 @@ const PaymentsModule = () => {
     defaultColumnValues,
   ]);
 
+  console.log(currentPayment);
+
   return (
     <AppGridContainer>
       <AppTableBody
         columns={columns}
         data={data}
         defaultColumn={defaultColumn}
+        setCurrentPosValues={setCurrentPayments}
       />
       <ActionMenu>
         <Button>Add new</Button>

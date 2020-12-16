@@ -48,10 +48,22 @@ export const deleteCustomer = createAsyncThunk(
   }
 );
 
+export const getUserConfig = createAsyncThunk('db/getUserConfing', async () => {
+  const localUuid = getLocalValue('uuid');
+  try {
+    return await db
+      .get(`data/${localUuid}/config.json`)
+      .then(({ data }) => data);
+  } catch (error) {
+    return error;
+  }
+});
+
 const dbSlice = createSlice({
   name: 'database',
   initialState: {
     customers: [],
+    config: {},
   },
   reducers: {},
   extraReducers: {
@@ -80,9 +92,17 @@ const dbSlice = createSlice({
     [deleteCustomer.rejected]: (state, { payload }) => {
       state.customers = payload;
     },
+
+    [getUserConfig.fulfilled]: (state, { payload }) => {
+      state.config = payload;
+    },
+    [getUserConfig.rejected]: (state) => {
+      state.config = null;
+    },
   },
 });
 
 export const selectCustomers = (state) => state.db.customers;
+export const selectUserConfig = (state) => state.db.config;
 
 export default dbSlice.reducer;

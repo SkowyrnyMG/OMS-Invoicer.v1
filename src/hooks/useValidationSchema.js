@@ -66,6 +66,13 @@ export const useValidationSchema = (type) => {
           .min(6, 'Phone cannot be shorter thatn 6 signs')
           .max(20, 'Phone cannot be longer than 20 signs'),
       });
+    case 'config':
+      return Yup.object().shape({
+        mainInvoicePrefix: Yup.string()
+          .min(2, 'Prefix should be at least two sing long!')
+          .max(5, 'Prefix cannot be longer than 5 signs!')
+          .required('Prefix is required'),
+      });
     default:
       return '';
   }

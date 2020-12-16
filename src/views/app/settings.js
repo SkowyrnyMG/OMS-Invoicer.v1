@@ -1,13 +1,13 @@
 import React from 'react';
 // import styled from 'styled-components';
 
+import SearchModule from 'components/organisms/search-module/search-module';
+
 import Layout from 'utils/layout';
 
 const Settings = () => (
   <Layout>
-    <div>
-      <h2>Settings</h2>
-    </div>
+    <SearchModule />
   </Layout>
 );
 

@@ -51,7 +51,6 @@ const FirstConfigModal = () => {
 
   const handleSubmit = async (cred) => {
     await dispatch(addUserConfig(cred));
-    await dispatch(getUserConfig());
   };
 
   return (
@@ -69,7 +68,7 @@ const FirstConfigModal = () => {
                 positions.
               </p>
             </div>
-            <ConfigForm onSubmit={handleSubmit} userConfig={userConfig} />
+            <ConfigForm onSubmit={handleSubmit} />
             {/* {userConfig.mainOrderPrefix} */}
           </StyledAppBodyContainer>
         </Wrapper>

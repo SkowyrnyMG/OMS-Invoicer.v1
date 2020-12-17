@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useSelector } from 'react-redux';
 import { Formik, Form } from 'formik';
 
 import FormikControl from 'components/modules/formik-control/formik-control';
@@ -7,6 +8,7 @@ import HeadingBlue from 'components/atoms/heading-blue/heading-blue';
 import Button from 'components/atoms/button/button';
 
 import { useValidationSchema } from 'hooks/useValidationSchema';
+import { selectUserConfig } from 'store/slices/db-slice/db-slice';
 
 const StyledForm = styled(Form)`
   display: grid;
@@ -40,15 +42,20 @@ const StyledButton = styled(Button)`
   margin-top: 3rem;
 `;
 
-const ConfigForm = ({ onSubmit, userConfig }) => {
+const ConfigForm = ({ onSubmit }) => {
+  const userConfig = useSelector(selectUserConfig);
   const validationSchema = useValidationSchema('config');
-  console.log(userConfig);
+
   return (
     <Formik
-      initialValues={{ mainInvoicePrefix: '', mainOrderPrefix: '' }}
+      enableReinitialize
+      initialValues={{
+        mainInvoicePrefix:
+          userConfig !== null ? userConfig.mainInvoicePrefix : '',
+        mainOrderPrefix: userConfig !== null ? userConfig.mainOrderPrefix : '',
+      }}
       validationSchema={validationSchema}
       onSubmit={(values) => onSubmit(values)}
-      enableReinitialize
     >
       {({ errors, touched }) => (
         <StyledForm>
@@ -62,6 +69,7 @@ const ConfigForm = ({ onSubmit, userConfig }) => {
                 name='mainInvoicePrefix'
                 error={errors.mainInvoicePrefix}
                 touched={touched.mainInvoicePrefix}
+                disabled={userConfig}
               />
             </ConfigOption>
             <ConfigOption htmlFor='mainOrderPrefix'>
@@ -72,9 +80,12 @@ const ConfigForm = ({ onSubmit, userConfig }) => {
                 name='mainOrderPrefix'
                 error={errors.mainOrderPrefix}
                 touched={touched.mainOrderPrefix}
+                disabled={userConfig}
               />
             </ConfigOption>
-            <StyledButton type='submit'>Save</StyledButton>
+            <StyledButton disabled={userConfig} type='submit'>
+              Save
+            </StyledButton>
           </ConfigWrapper>
         </StyledForm>
       )}

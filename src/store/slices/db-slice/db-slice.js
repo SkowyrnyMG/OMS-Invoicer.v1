@@ -70,18 +70,34 @@ export const addUserConfig = createAsyncThunk(
     try {
       return await db
         .put(`data/${localUuid}/config.json`, cred)
-        .then(({ data }) => data);
+        .then(({ data }) => {
+          return data;
+        });
     } catch (error) {
       return error;
     }
   }
 );
 
+export const getAllOrders = createAsyncThunk('db/getAllOrders', async () => {
+  const localUuid = getLocalValue('uuid');
+  try {
+    return await db.get(`data/${localUuid}/orders.json`).then(({ data }) => {
+      console.log(data);
+      return data;
+    });
+  } catch (error) {
+    return error;
+  }
+});
+
+// {order_number: 719, price: "€348,08", status: "finished", desc: "Maecenas pulvinar lobortis est. Phasellus sit amet…turpis a pede posuere nonummy. Integer non velit.", email: "bbrimming0@ow.ly"}desc: "Maecenas pulvinar lobortis est. Phasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum. Proin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem. Duis aliquam convallis nunc. Proin at turpis a pede posuere nonummy. Integer non velit."email: "bbrimming0@ow.ly"order_number: 719price: "€348,08"status: "finished"}
 const dbSlice = createSlice({
   name: 'database',
   initialState: {
     customers: [],
     config: {},
+    orders: [],
   },
   reducers: {},
   extraReducers: {
@@ -116,6 +132,10 @@ const dbSlice = createSlice({
     },
     [getUserConfig.rejected]: (state) => {
       state.config = null;
+    },
+
+    [addUserConfig.fulfilled]: (state, { payload }) => {
+      state.config = payload;
     },
   },
 });

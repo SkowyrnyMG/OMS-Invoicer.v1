@@ -174,7 +174,6 @@ const AddNewCustomerModal = ({ closeModal }) => {
             }}
             validationSchema={validationSchema}
             onSubmit={(values) => {
-              console.log(allCustomers);
               const isVatDoubled =
                 allCustomers !== null && allCustomers !== false
                   ? allCustomers.filter(

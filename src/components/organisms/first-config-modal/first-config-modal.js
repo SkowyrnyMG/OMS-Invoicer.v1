@@ -69,7 +69,7 @@ const FirstConfigModal = () => {
                 positions.
               </p>
             </div>
-            <ConfigForm onSubmit={handleSubmit} />
+            <ConfigForm onSubmit={handleSubmit} userConfig={userConfig} />
             {/* {userConfig.mainOrderPrefix} */}
           </StyledAppBodyContainer>
         </Wrapper>

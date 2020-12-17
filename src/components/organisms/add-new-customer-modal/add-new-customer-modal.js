@@ -174,9 +174,13 @@ const AddNewCustomerModal = ({ closeModal }) => {
             }}
             validationSchema={validationSchema}
             onSubmit={(values) => {
-              const isVatDoubled = allCustomers.filter(
-                (customer) => customer.vat_number === values.vat_number
-              );
+              console.log(allCustomers);
+              const isVatDoubled =
+                allCustomers !== null && allCustomers !== false
+                  ? allCustomers.filter(
+                      (customer) => customer.vat_number === values.vat_number
+                    )
+                  : [];
 
               if (isVatDoubled.length === 0) {
                 setIsVatDoubledMsg(false);

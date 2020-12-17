@@ -36,7 +36,7 @@ export const useValidationSchema = (type) => {
       return Yup.object().shape({
         name: Yup.string()
           .min(5, 'Too short! At least 5 signs long!')
-          .max(35, 'Too long! not longer thatn 35 signs')
+          .max(60, 'Too long! not longer thatn 60 signs')
           .required('Required!'),
         vat_number: Yup.string()
           .min(6, 'At least 6 signs!')

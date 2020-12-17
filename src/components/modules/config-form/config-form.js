@@ -40,13 +40,15 @@ const StyledButton = styled(Button)`
   margin-top: 3rem;
 `;
 
-const ConfigForm = ({ onSubmit }) => {
+const ConfigForm = ({ onSubmit, userConfig }) => {
   const validationSchema = useValidationSchema('config');
+  console.log(userConfig);
   return (
     <Formik
       initialValues={{ mainInvoicePrefix: '', mainOrderPrefix: '' }}
       validationSchema={validationSchema}
       onSubmit={(values) => onSubmit(values)}
+      enableReinitialize
     >
       {({ errors, touched }) => (
         <StyledForm>

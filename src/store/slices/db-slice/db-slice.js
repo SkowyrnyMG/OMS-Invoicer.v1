@@ -9,7 +9,10 @@ export const getAllCustomers = createAsyncThunk(
     try {
       return await db
         .get(`data/${localUuid}/customers.json`)
-        .then(({ data }) => Object.values(data));
+        .then(({ data }) => {
+          console.log(data);
+          return data !== null && Object.values(data);
+        });
     } catch (err) {
       console.log(err);
       return err;

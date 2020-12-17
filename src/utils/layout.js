@@ -7,6 +7,7 @@ import { theme } from 'themes/theme';
 import Loader from 'components/modules/loader/loader';
 import TopBar from 'components/modules/top-bar/top-bar';
 import AppNavigation from 'components/modules/app-navigation/app-navigation';
+import FirstConfigModal from 'components/organisms/first-config-modal/first-config-modal';
 
 import { useIsLoading } from 'hooks/useIsLoading';
 import { usePathname } from 'hooks/usePathname';
@@ -49,6 +50,7 @@ const Layout = ({ children }) => {
     <ThemeProvider theme={theme}>
       <GlobalStyles />
       <Wrapper pathname={pathname}>
+        <FirstConfigModal />
         {isLoading && <Loader />}
         <TopBar />
         {pathname.includes('/app') && <AppNavigation />}

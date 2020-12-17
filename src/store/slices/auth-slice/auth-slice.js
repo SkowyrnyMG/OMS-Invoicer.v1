@@ -62,6 +62,9 @@ const registerWithEmailAndPassword = createAsyncThunk(
             lastname,
           });
 
+          setLocalValue('user', userInfo.email);
+          setLocalValue('uuid', uuid);
+
           return {
             uuid,
             userInfo,

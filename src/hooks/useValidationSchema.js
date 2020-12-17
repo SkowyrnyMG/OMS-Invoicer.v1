@@ -69,8 +69,14 @@ export const useValidationSchema = (type) => {
     case 'config':
       return Yup.object().shape({
         mainInvoicePrefix: Yup.string()
-          .min(2, 'Prefix should be at least two sing long!')
+          .min(2, 'Prefix should be at least two signs long!')
           .max(5, 'Prefix cannot be longer than 5 signs!')
+          .matches(/^[a-zA-Z]+$/, 'Prefix should contain only letters')
+          .required('Prefix is required'),
+        mainOrderPrefix: Yup.string()
+          .min(2, 'Prefix should be at least two signs long!')
+          .max(5, 'Prefix cannot be longer than 5 signs!')
+          .matches(/^[a-zA-Z]+$/, 'Prefix should contain only letters')
           .required('Prefix is required'),
       });
     default:

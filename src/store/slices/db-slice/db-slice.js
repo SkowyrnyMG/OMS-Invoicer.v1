@@ -51,13 +51,28 @@ export const deleteCustomer = createAsyncThunk(
 export const getUserConfig = createAsyncThunk('db/getUserConfing', async () => {
   const localUuid = getLocalValue('uuid');
   try {
-    return await db
-      .get(`data/${localUuid}/config.json`)
-      .then(({ data }) => data);
+    return await db.get(`data/${localUuid}/config.json`).then(({ data }) => {
+      console.log(data);
+      return data;
+    });
   } catch (error) {
     return error;
   }
 });
+
+export const addUserConfig = createAsyncThunk(
+  'db/addUserCofig',
+  async (cred) => {
+    const localUuid = getLocalValue('uuid');
+    try {
+      return await db
+        .put(`data/${localUuid}/config.json`, cred)
+        .then(({ data }) => data);
+    } catch (error) {
+      return error;
+    }
+  }
+);
 
 const dbSlice = createSlice({
   name: 'database',

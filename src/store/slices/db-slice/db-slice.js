@@ -84,7 +84,7 @@ export const getAllOrders = createAsyncThunk('db/getAllOrders', async () => {
   try {
     return await db.get(`data/${localUuid}/orders.json`).then(({ data }) => {
       console.log(data);
-      return data;
+      return data !== null && Object.values(data);
     });
   } catch (error) {
     return error;
@@ -137,10 +137,18 @@ const dbSlice = createSlice({
     [addUserConfig.fulfilled]: (state, { payload }) => {
       state.config = payload;
     },
+
+    [getAllOrders.fulfilled]: (state, { payload }) => {
+      state.orders = payload;
+    },
+    [getAllOrders.rejected]: (state, { payload }) => {
+      state.orders = payload;
+    },
   },
 });
 
 export const selectCustomers = (state) => state.db.customers;
 export const selectUserConfig = (state) => state.db.config;
+export const selectOrders = (state) => state.db.orders;
 
 export default dbSlice.reducer;

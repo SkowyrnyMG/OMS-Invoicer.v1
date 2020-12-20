@@ -10,7 +10,6 @@ export const getAllCustomers = createAsyncThunk(
       return await db
         .get(`data/${localUuid}/customers.json`)
         .then(({ data }) => {
-          console.log(data);
           return data !== null && Object.values(data);
         });
     } catch (err) {
@@ -28,7 +27,6 @@ export const addNewCustomer = createAsyncThunk(
       return await db
         .put(`/data/${localUuid}/customers/${cred.vat_number}.json`, cred)
         .then(({ data }) => {
-          // console.log(data);
           return data;
         });
     } catch (err) {
@@ -55,7 +53,6 @@ export const getUserConfig = createAsyncThunk('db/getUserConfing', async () => {
   const localUuid = getLocalValue('uuid');
   try {
     return await db.get(`data/${localUuid}/config.json`).then(({ data }) => {
-      console.log(data);
       return data;
     });
   } catch (error) {
@@ -84,20 +81,44 @@ export const getAllOrders = createAsyncThunk('db/getAllOrders', async () => {
   try {
     return await db.get(`data/${localUuid}/orders.json`).then(({ data }) => {
       console.log(data);
-      return data !== null && Object.values(data);
+
+      return data !== null && [Object.values(data.firstReg), data.lastOrder];
     });
   } catch (error) {
     return error;
   }
 });
 
-// {order_number: 719, price: "€348,08", status: "finished", desc: "Maecenas pulvinar lobortis est. Phasellus sit amet…turpis a pede posuere nonummy. Integer non velit.", email: "bbrimming0@ow.ly"}desc: "Maecenas pulvinar lobortis est. Phasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum. Proin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem. Duis aliquam convallis nunc. Proin at turpis a pede posuere nonummy. Integer non velit."email: "bbrimming0@ow.ly"order_number: 719price: "€348,08"status: "finished"}
+export const addNewOrder = createAsyncThunk('db/addNewOrder', async (cred) => {
+  const localUuid = getLocalValue('uuid');
+  try {
+    console.log(cred);
+    return await db
+      .put(`/data/${localUuid}/orders/firstReg/${cred.order_number}.json`, cred)
+      .then(({ data }) => {
+        console.log(data);
+        return data;
+      });
+
+    // await db
+    //   .push(
+    //     `/data/${localUuid}/orders/firstReg/lastOrder.json`,
+    //     cred.order_number
+    //   )
+    //   .then(({ data }) => {
+    //     return data;
+    //   });
+  } catch (err) {
+    return err;
+  }
+});
+
 const dbSlice = createSlice({
   name: 'database',
   initialState: {
     customers: [],
     config: {},
-    orders: [],
+    orders: { firstReg: [], lastOrder: { firstReg: '' } },
   },
   reducers: {},
   extraReducers: {
@@ -139,16 +160,35 @@ const dbSlice = createSlice({
     },
 
     [getAllOrders.fulfilled]: (state, { payload }) => {
-      state.orders = payload;
+      const [ordersList, lastOrder] = payload;
+
+      console.log(ordersList);
+      state.orders.firstReg = ordersList;
+      state.orders.lastOrder = lastOrder;
     },
     [getAllOrders.rejected]: (state, { payload }) => {
-      state.orders = payload;
+      state.orders.firstReg = payload;
+    },
+
+    [addNewOrder.fulfilled]: (state, { payload }) => {
+      console.log('state');
+      console.log(state.orders.firstReg);
+      console.log('payload');
+      console.log(payload);
+      state.orders.firstReg = state.orders.firstReg
+        ? [...state.orders.firstReg, payload]
+        : [payload];
+    },
+    [addNewOrder.rejected]: (state) => {
+      state.orders.firstReg =
+        'Error, something went wrong.. Please refresh website and try one more time';
     },
   },
 });
 
 export const selectCustomers = (state) => state.db.customers;
 export const selectUserConfig = (state) => state.db.config;
-export const selectOrders = (state) => state.db.orders;
+export const selectOrders = (state) => state.db.orders.firstReg;
+export const selectLastOrder = (state) => state.db.orders.lastOrder.firstReg;
 
 export default dbSlice.reducer;

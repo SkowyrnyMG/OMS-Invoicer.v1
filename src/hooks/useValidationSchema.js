@@ -79,6 +79,15 @@ export const useValidationSchema = (type) => {
           .matches(/^[a-zA-Z]+$/, 'Prefix should contain only letters')
           .required('Prefix is required'),
       });
+    case 'newOrder':
+      return Yup.object().shape({
+        price: Yup.number().required('Price is required!'),
+        desc: Yup.string()
+          .min(5, 'Description should be at least 5 signs long!')
+          .max(120, 'Description should not be longer than 120 signs!')
+          .required('Description is required'),
+        status: Yup.string().required('Status is required!'),
+      });
     default:
       return '';
   }

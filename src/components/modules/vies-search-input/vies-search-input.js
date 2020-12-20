@@ -34,7 +34,6 @@ const StyledInput = styled(Input)`
 
 const ViesSearchInput = ({ newValues }) => {
   const handleViesSubmit = () => {
-    console.log('clicked');
     newValues({
       nameOfCompany: 'lol',
     });

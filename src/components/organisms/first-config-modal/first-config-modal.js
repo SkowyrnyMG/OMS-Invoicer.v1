@@ -44,7 +44,6 @@ const FirstConfigModal = () => {
   const dispatch = useDispatch();
   const userConfig = useSelector(selectUserConfig);
 
-  console.log(userConfig);
   useEffect(() => {
     dispatch(getUserConfig());
   }, [dispatch]);

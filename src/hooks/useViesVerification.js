@@ -5,7 +5,6 @@ export const useViesVerification = async (searchVatId, handleChange) => {
   const {
     data: { data },
   } = result;
-  console.log(data);
 
   if (data.valid) {
     const splittedAddres = data.address.split(',');

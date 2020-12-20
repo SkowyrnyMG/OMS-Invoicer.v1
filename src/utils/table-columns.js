@@ -13,7 +13,7 @@ export const CUSTOMERS_COLUMNS = [
   },
 ];
 
-export const ORDERS_COUMNS = [
+export const ORDERS_COLUMNS = [
   {
     Header: 'ORDER NR',
     accessor: 'order_number',

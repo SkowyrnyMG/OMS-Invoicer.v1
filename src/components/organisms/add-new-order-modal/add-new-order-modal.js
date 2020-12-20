@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { Formik, Form } from 'formik';
-import { useDispatch, useSelector } from 'react-redux';
-import axios from 'axios';
+import { useDispatch } from 'react-redux';
+// import axios from 'axios';
 
 import AppGridContainer from 'components/atoms/app-grid-container/app-grid-container';
 import AppBodyContainer from 'components/atoms/app-body-container/app-body-container';
@@ -11,10 +11,8 @@ import ActionMenu from 'components/modules/action-menu/action-menu';
 import Button from 'components/atoms/button/button';
 
 import { useValidationSchema } from 'hooks/useValidationSchema';
-// import {
-//   addNewCustomer,
-//   selectCustomers,
-// } from 'store/slices/db-slice/db-slice';
+import { useNextOrder } from 'hooks/useNextOrder';
+import { addNewOrder } from 'store/slices/db-slice/db-slice';
 // import {
 //   setLoadingOn,
 //   setLoadingOff,
@@ -67,20 +65,29 @@ const StyledHeading = styled.h4`
   margin-bottom: 2rem;
 `;
 
-const StyledParagraph = styled.p`
-  grid-column: -1 / 1;
-  font-size: ${({ theme: { fontSize } }) => fontSize.s};
-  color: ${({ theme: { color }, isNoError }) => !isNoError && color.error};
+// const StyledParagraph = styled.p`
+//   grid-column: -1 / 1;
+//   font-size: ${({ theme: { fontSize } }) => fontSize.s};
+//   color: ${({ theme: { color }, isNoError }) => !isNoError && color.error};
+// `;
+
+const RadioGroup = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
 `;
 
+const StyledSpan = styled.span``;
+
 const AddNewCustomerModal = ({ closeModal }) => {
-  // const dispatch = useDispatch();
+  const newOrder = useNextOrder();
+  const dispatch = useDispatch();
   // const [initValues, setInitValues] = useState({
   //   name: '',
 
   // });
-  const validationSchema = useValidationSchema('customers');
-  const [isVatDoubledMsg] = useState(false);
+
+  const validationSchema = useValidationSchema('newOrder');
 
   return (
     <Wrapper>
@@ -89,100 +96,65 @@ const AddNewCustomerModal = ({ closeModal }) => {
           <Formik
             enableReinitialize
             initialValues={{
-              order_number: '',
+              price: '',
+              status: 'in progress',
+              desc: '',
+              email: '',
             }}
             validationSchema={validationSchema}
-            onSubmit={(values) => {
-              console.log(values);
+            onSubmit={async (values) => {
+              const orderValues = await {
+                order_number: newOrder,
+                price: values.price,
+                desc: values.desc,
+                email: values.email,
+                status: values.status,
+              };
+              console.log(orderValues);
+              dispatch(addNewOrder(orderValues));
             }}
           >
             {({ errors, touched }) => (
               <StyledForm>
                 <div>
                   <StyledHeading>Order details</StyledHeading>
+                  <StyledHeading>
+                    <span>Order Number: </span>
+                    {newOrder}
+                  </StyledHeading>
                   <FormikControl
-                    type='text'
+                    type='number'
                     control='input'
-                    name='name'
-                    error={errors.name}
-                    touched={touched.name}
-                    placeholder='Name of Company'
+                    name='price'
+                    error={errors.price}
+                    touched={touched.price}
+                    placeholder='PRICE'
                   />
                   <FormikControl
                     type='text'
                     control='input'
-                    name='vat_number'
-                    error={errors.vat_number}
-                    touched={touched.vat_number}
-                    placeholder='VAT'
+                    name='desc'
+                    error={errors.desc}
+                    touched={touched.desc}
+                    placeholder='DESCRIPTION'
                   />
-                  <FormikControl
-                    type='text'
-                    control='input'
-                    name='country'
-                    error={errors.country}
-                    touched={touched.country}
-                    placeholder='Country'
-                  />
-                  <FormikControl
-                    type='text'
-                    control='input'
-                    name='street'
-                    error={errors.street}
-                    touched={touched.street}
-                    placeholder='Street'
-                  />
-                  <FormikControl
-                    type='text'
-                    control='input'
-                    name='town'
-                    error={errors.town}
-                    touched={touched.town}
-                    placeholder='Town'
-                  />
-                  <FormikControl
-                    type='text'
-                    control='input'
-                    name='postCode'
-                    error={errors.postCode}
-                    touched={touched.postCode}
-                    placeholder='Post-code'
-                  />
+                  <RadioGroup>
+                    <StyledSpan>STATUS:</StyledSpan>
+                    <FormikControl
+                      type='radio'
+                      control='radio'
+                      name='status'
+                      value='in progress'
+                    />
+                    <FormikControl
+                      type='radio'
+                      control='radio'
+                      name='status'
+                      value='finished'
+                    />
+                  </RadioGroup>
                 </div>
-                <div>
-                  <StyledHeading>Contact person</StyledHeading>
-                  <FormikControl
-                    type='text'
-                    control='input'
-                    name='contactPerson'
-                    error={errors.contactPerson}
-                    touched={touched.contactPerson}
-                    placeholder='Contact person name'
-                  />
-                  <FormikControl
-                    type='text'
-                    control='input'
-                    name='contactEmail'
-                    error={errors.contactEmail}
-                    touched={touched.contactEmail}
-                    placeholder='email'
-                  />
-                  <FormikControl
-                    type='phone'
-                    control='input'
-                    name='contactPhone'
-                    error={errors.contactPhone}
-                    touched={touched.contactPhone}
-                    placeholder='Phone'
-                  />
-                  <StyledButton type='submit'>Save</StyledButton>
-                  {isVatDoubledMsg !== false && (
-                    <StyledParagraph isNoError={!isVatDoubledMsg}>
-                      This customer is already present in your client list
-                      database!
-                    </StyledParagraph>
-                  )}
-                </div>
+                <StyledButton type='submit'>Save</StyledButton>
               </StyledForm>
             )}
           </Formik>

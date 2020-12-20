@@ -123,7 +123,6 @@ const AddNewCustomerModal = ({ closeModal }) => {
     const {
       data: { data },
     } = result;
-    console.log(data);
 
     dispatch(setLoadingOff());
     if (!data) {

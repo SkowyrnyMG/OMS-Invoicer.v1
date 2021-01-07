@@ -75,6 +75,9 @@ const StyledTable = styled.table`
   tbody * {
     border-bottom: 1px solid ${({ theme: { color } }) => color.devider} !important;
   }
+  tr .cancel {
+    color: red !important;
+  }
 `;
 
 const PaginatonNavWrapper = styled.div`
@@ -217,7 +220,6 @@ const AppTableBody = ({
   );
 
   const { globalFilter, pageIndex, pageSize } = state;
-
   const pageSizeOptions = [25, 50, 100];
 
   const handleClick = (rowId, row) => {
@@ -277,7 +279,8 @@ const AppTableBody = ({
                   {...row.getRowProps({
                     style: {
                       backgroundColor: row.isSelected ? '#446DF644' : '',
-                      color: row.isSelected ? '#000' : '',
+                      color: row.original.status === 'Cancelled' ? 'red' : '',
+                      opacity: row.original.status === 'Cancelled' ? 0.5 : 1,
                     },
                   })}
                   onClick={() => {

@@ -83,7 +83,7 @@ export const getAllOrders = createAsyncThunk('db/getAllOrders', async () => {
       return (
         data !== null && [
           Object.values(data.firstReg),
-          data.lastOrder !== null && data.lastOrder,
+          data.lastOrder !== null ? data.lastOrder : undefined,
         ]
       );
     });
@@ -114,6 +114,35 @@ export const addNewOrder = createAsyncThunk('db/addNewOrder', async (cred) => {
     return err;
   }
 });
+
+export const cancelOrder = createAsyncThunk(
+  'db/cancelOrder',
+  async (orderNumber) => {
+    const localUuid = getLocalValue('uuid');
+    const canceledStatus = 'Cancelled';
+    try {
+      const res = await db
+        .put(
+          `/data/${localUuid}/orders/firstReg/${orderNumber}/status.json`,
+          JSON.stringify(canceledStatus),
+          {
+            headers: {
+              Accept: 'application/json',
+              'Content-type': 'application/json',
+            },
+          }
+        )
+        .then(({ data }) => {
+          console.log(data);
+          return data;
+        });
+      return { status: res, orderNumber };
+    } catch (error) {
+      console.error(error);
+      return error;
+    }
+  }
+);
 
 const dbSlice = createSlice({
   name: 'database',
@@ -163,23 +192,25 @@ const dbSlice = createSlice({
 
     [getAllOrders.fulfilled]: (state, { payload }) => {
       console.log('FULLFILED');
+      console.log(payload);
       const defaultOder = 'ZL-0-2020';
 
-      // console.log(ordersList);
-      if (payload.length) {
+      if (payload) {
         const [orderList, lastOrder] = payload;
-        state.orders.lastOrder.firstReg = lastOrder ? lastOrder : defaultOder;
+        state.orders.lastOrder.firstReg = lastOrder
+          ? lastOrder.firstReg
+          : defaultOder;
         state.orders.firstReg = orderList;
         console.log(orderList);
-      }
-      if (!payload.length) {
+      } else {
         state.orders.lastOrder.firstReg = defaultOder;
       }
     },
     [getAllOrders.rejected]: (state) => {
+      const defaultOder = 'ZL-0-2020';
       console.log('REJECTED');
       state.orders.firstReg = [];
-      state.orders.lastOrder.firstReg = '';
+      state.orders.lastOrder.firstReg = defaultOder;
     },
 
     [addNewOrder.fulfilled]: (state, { payload }) => {
@@ -190,10 +221,15 @@ const dbSlice = createSlice({
       state.orders.firstReg = state.orders.firstReg
         ? [...state.orders.firstReg, payload]
         : [payload];
+      state.orders.lastOrder.firstReg = payload.order_number;
     },
     [addNewOrder.rejected]: (state) => {
       state.orders.firstReg =
         'Error, something went wrong.. Please refresh website and try one more time';
+    },
+
+    [cancelOrder.rejected]: (state) => {
+      state.orders.firstReg = ['ERROR! REFRESH THE PAGE!'];
     },
   },
 });
@@ -201,6 +237,6 @@ const dbSlice = createSlice({
 export const selectCustomers = (state) => state.db.customers;
 export const selectUserConfig = (state) => state.db.config;
 export const selectOrders = (state) => state.db.orders.firstReg;
-export const selectLastOrder = (state) => state.db.orders.lastOrder.firstReg;
+export const selectLastOrder = (state) => state.db.orders.lastOrder;
 
 export default dbSlice.reducer;

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import styled, { ThemeProvider, css } from 'styled-components';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import GlobalStyles from 'themes/global-styles';
 import { theme } from 'themes/theme';
@@ -12,7 +12,10 @@ import FirstConfigModal from 'components/organisms/first-config-modal/first-conf
 
 import { useIsLoading } from 'hooks/useIsLoading';
 import { usePathname } from 'hooks/usePathname';
-import { getUserConfig } from 'store/slices/db-slice/db-slice';
+import {
+  getUserConfig,
+  selectUserConfig,
+} from 'store/slices/db-slice/db-slice';
 
 const Wrapper = styled.div`
   display: grid;
@@ -46,13 +49,15 @@ const Main = styled.main`
 `;
 
 const Layout = ({ children }) => {
+  const config = useSelector(selectUserConfig);
   const dispatch = useDispatch();
-  const isLoading = useIsLoading();
-  const pathname = usePathname();
-
   useEffect(() => {
     dispatch(getUserConfig());
   }, [dispatch]);
+  const isLoading = useIsLoading();
+  const pathname = usePathname();
+  console.log(config);
+
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />

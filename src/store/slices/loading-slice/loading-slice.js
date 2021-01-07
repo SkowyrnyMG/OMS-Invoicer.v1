@@ -7,7 +7,8 @@ import {
   getAllCustomers,
   addNewCustomer,
   deleteCustomer,
-  getUserConfig,
+  getAllOrders,
+  addNewOrder,
 } from 'store/slices/db-slice/db-slice';
 
 export const loadingSlice = createSlice({
@@ -38,9 +39,13 @@ export const loadingSlice = createSlice({
     [deleteCustomer.fulfilled]: () => false,
     [deleteCustomer.rejected]: () => false,
 
-    [getUserConfig.pending]: () => true,
-    [getUserConfig.fulfilled]: () => false,
-    [getUserConfig.rejected]: () => false,
+    [addNewOrder.pending]: () => true,
+    [addNewOrder.fulfilled]: () => false,
+    [addNewOrder.rejected]: () => false,
+
+    [getAllOrders.pending]: () => true,
+    [getAllOrders.fulfilled]: () => false,
+    [getAllOrders.rejected]: () => false,
   },
 });
 

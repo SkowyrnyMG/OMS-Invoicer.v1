@@ -80,7 +80,7 @@ const RadioGroup = styled.div`
 const StyledSpan = styled.span``;
 
 const AddNewCustomerModal = ({ closeModal }) => {
-  const newOrder = useNextOrder('firstReg');
+  const newOrder = useNextOrder();
   const dispatch = useDispatch();
   // const [initValues, setInitValues] = useState({
   //   name: '',
@@ -112,6 +112,7 @@ const AddNewCustomerModal = ({ closeModal }) => {
               };
               console.log(orderValues);
               dispatch(addNewOrder(orderValues));
+              closeModal();
             }}
           >
             {({ errors, touched }) => (

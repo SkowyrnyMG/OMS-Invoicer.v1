@@ -1,4 +1,5 @@
 import React, { useMemo, useState } from 'react';
+import { useDispatch } from 'react-redux';
 
 import AppGridContainer from 'components/atoms/app-grid-container/app-grid-container';
 import AppTableBody from 'components/modules/app-table-body/app-table-body';
@@ -8,8 +9,10 @@ import Button from 'components/atoms/button/button';
 
 import { ORDERS_COLUMNS } from 'utils/table-columns';
 import { useDefaultColumn } from 'hooks/useDefaultColumn';
+import { cancelOrder, getAllOrders } from 'store/slices/db-slice/db-slice';
 
 const OrdersModule = ({ ordersList }) => {
+  const dispatch = useDispatch();
   const [currentOrder, setCurrentOrder] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const columns = useMemo(() => ORDERS_COLUMNS, []);
@@ -28,6 +31,12 @@ const OrdersModule = ({ ordersList }) => {
   console.log('lista orderdów');
   console.log(ordersList);
 
+  const handleDeleteClick = async () => {
+    const orderNumber = currentOrder.order_number;
+    await dispatch(cancelOrder(orderNumber));
+    dispatch(getAllOrders());
+  };
+
   return (
     <AppGridContainer>
       {isModalOpen && (
@@ -43,7 +52,7 @@ const OrdersModule = ({ ordersList }) => {
         <Button onClick={() => setIsModalOpen(true)}>Add new</Button>
         <Button>Edit</Button>
         <Button>Issue invoice</Button>
-        <Button>delete</Button>
+        <Button onClick={handleDeleteClick}>Cancel</Button>
       </ActionMenu>
     </AppGridContainer>
   );

@@ -15,7 +15,7 @@ const OrdersModule = ({ ordersList }) => {
   const columns = useMemo(() => ORDERS_COLUMNS, []);
   const data = useMemo(
     () =>
-      ordersList.length > 0
+      ordersList
         ? ordersList
         : [{ desc: '', order_number: '', price: '', status: '', email: '' }],
     [ordersList]

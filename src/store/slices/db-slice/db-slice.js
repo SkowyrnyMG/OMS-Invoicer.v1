@@ -80,9 +80,12 @@ export const getAllOrders = createAsyncThunk('db/getAllOrders', async () => {
   const localUuid = getLocalValue('uuid');
   try {
     return await db.get(`data/${localUuid}/orders.json`).then(({ data }) => {
-      console.log(data);
-
-      return data !== null && [Object.values(data.firstReg), data.lastOrder];
+      return (
+        data !== null && [
+          Object.values(data.firstReg),
+          data.lastOrder !== null && data.lastOrder,
+        ]
+      );
     });
   } catch (error) {
     return error;
@@ -93,21 +96,20 @@ export const addNewOrder = createAsyncThunk('db/addNewOrder', async (cred) => {
   const localUuid = getLocalValue('uuid');
   try {
     console.log(cred);
+
     return await db
       .put(`/data/${localUuid}/orders/firstReg/${cred.order_number}.json`, cred)
-      .then(({ data }) => {
+      .then(async ({ data }) => {
+        await db
+          .put(`/data/${localUuid}/orders/lastOrder.json`, {
+            firstReg: cred.order_number,
+          })
+          .then(({ orderNumber }) => {
+            return orderNumber;
+          });
         console.log(data);
         return data;
       });
-
-    // await db
-    //   .push(
-    //     `/data/${localUuid}/orders/firstReg/lastOrder.json`,
-    //     cred.order_number
-    //   )
-    //   .then(({ data }) => {
-    //     return data;
-    //   });
   } catch (err) {
     return err;
   }
@@ -160,14 +162,24 @@ const dbSlice = createSlice({
     },
 
     [getAllOrders.fulfilled]: (state, { payload }) => {
-      const [ordersList, lastOrder] = payload;
+      console.log('FULLFILED');
+      const defaultOder = 'ZL-0-2020';
 
-      console.log(ordersList);
-      state.orders.firstReg = ordersList;
-      state.orders.lastOrder = lastOrder;
+      // console.log(ordersList);
+      if (payload.length) {
+        const [orderList, lastOrder] = payload;
+        state.orders.lastOrder.firstReg = lastOrder ? lastOrder : defaultOder;
+        state.orders.firstReg = orderList;
+        console.log(orderList);
+      }
+      if (!payload.length) {
+        state.orders.lastOrder.firstReg = defaultOder;
+      }
     },
-    [getAllOrders.rejected]: (state, { payload }) => {
-      state.orders.firstReg = payload;
+    [getAllOrders.rejected]: (state) => {
+      console.log('REJECTED');
+      state.orders.firstReg = [];
+      state.orders.lastOrder.firstReg = '';
     },
 
     [addNewOrder.fulfilled]: (state, { payload }) => {

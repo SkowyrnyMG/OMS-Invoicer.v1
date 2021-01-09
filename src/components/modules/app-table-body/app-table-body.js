@@ -183,6 +183,16 @@ const AppTableBody = ({
   const initialState = React.useMemo(
     () => ({
       pageSize: 25,
+      sortBy: [
+        {
+          id: 'order_number',
+          desc: true,
+        },
+        {
+          id: 'name',
+          desc: false,
+        },
+      ],
     }),
     []
   );

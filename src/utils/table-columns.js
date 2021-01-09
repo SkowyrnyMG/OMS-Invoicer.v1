@@ -23,12 +23,28 @@ export const ORDERS_COLUMNS = [
     accessor: 'price',
   },
   {
+    Header: 'CURRENCY',
+    accessor: 'currency',
+  },
+  {
     Header: 'STATUS',
     accessor: 'status',
   },
   {
     Header: 'DESCRIPTION',
     accessor: 'desc',
+  },
+  {
+    Header: 'CUSTOMER NAME',
+    accessor: 'customer_name',
+  },
+  {
+    Header: 'CUSTOMER VAT',
+    accessor: 'customer_vat',
+  },
+  {
+    Header: 'CUSTOMER_ADDRESS',
+    accessor: 'customer_address',
   },
   {
     Header: 'EMAIL OF CONTACT PERSON',

@@ -82,6 +82,10 @@ export const useValidationSchema = (type) => {
     case 'newOrder':
       return Yup.object().shape({
         price: Yup.number().required('Price is required!'),
+        currency: Yup.string()
+          .min(2, 'Currency shortcut should be at least 2 signs long!')
+          .max(4, 'Currency shortcut should be not longer than 3 signs')
+          .required('Currency is required!'),
         desc: Yup.string()
           .min(5, 'Description should be at least 5 signs long!')
           .max(120, 'Description should not be longer than 120 signs!')

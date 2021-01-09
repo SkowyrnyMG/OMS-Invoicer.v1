@@ -38,6 +38,10 @@ const StyledLabel = styled.label`
     :focus {
       transform: translateX(2px);
     }
+
+    :disabled {
+      cursor: not-allowed;
+    }
   }
 
   input,

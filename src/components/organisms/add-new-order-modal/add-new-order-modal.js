@@ -1,18 +1,23 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { Formik, Form } from 'formik';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 // import axios from 'axios';
 
 import AppGridContainer from 'components/atoms/app-grid-container/app-grid-container';
 import AppBodyContainer from 'components/atoms/app-body-container/app-body-container';
 import FormikControl from 'components/modules/formik-control/formik-control';
+import ComboboxMenu from 'components/modules/combobox-menu/combobox-menu';
 import ActionMenu from 'components/modules/action-menu/action-menu';
 import Button from 'components/atoms/button/button';
 
 import { useValidationSchema } from 'hooks/useValidationSchema';
 import { useNextOrder } from 'hooks/useNextOrder';
-import { addNewOrder } from 'store/slices/db-slice/db-slice';
+import {
+  addNewOrder,
+  getAllCustomers,
+  selectCustomers,
+} from 'store/slices/db-slice/db-slice';
 // import {
 //   setLoadingOn,
 //   setLoadingOff,
@@ -79,16 +84,48 @@ const RadioGroup = styled.div`
 
 const StyledSpan = styled.span``;
 
+const OrderDetailsWrapper = styled.div`
+  opacity: ${({ initValues }) => (initValues.customerVat !== '' ? 1 : 0.5)};
+  pointer-events: ${({ initValues }) =>
+    initValues.customerVat !== '' ? 'auto' : 'none'};
+  cursor: ${({ initValues }) =>
+    initValues.customerVat !== '' ? 'arrow' : 'not-allowed'};
+`;
+
 const AddNewCustomerModal = ({ closeModal }) => {
-  const newOrder = useNextOrder();
   const dispatch = useDispatch();
+  const customers = useSelector(selectCustomers);
+  const [initValues, setInitValues] = useState({
+    customerName: '',
+    customerVat: '',
+    customerAddress: '',
+  });
+  const validationSchema = useValidationSchema('newOrder');
+  const newOrder = useNextOrder();
   // const [initValues, setInitValues] = useState({
   //   name: '',
 
   // });
 
-  const validationSchema = useValidationSchema('newOrder');
+  console.log(customers);
 
+  useEffect(() => {
+    if (!customers.length) {
+      dispatch(getAllCustomers());
+    }
+  }, [dispatch, customers.length]);
+
+  const handleSetItemFn = (item) => {
+    if (item === null) {
+      return;
+    }
+    setInitValues((state) => ({
+      ...state,
+      customerName: item.name,
+      customerVat: item.vat_number,
+      customerAddress: item.address,
+    }));
+  };
   return (
     <Wrapper>
       <AppGridContainer>
@@ -97,18 +134,26 @@ const AddNewCustomerModal = ({ closeModal }) => {
             enableReinitialize
             initialValues={{
               price: '',
+              currency: '',
               status: 'in progress',
               desc: '',
               email: '',
+              customerName: initValues.customerName,
+              customerVat: initValues.customerVat,
+              customerAddress: initValues.customerAddress,
             }}
             validationSchema={validationSchema}
             onSubmit={async (values) => {
               const orderValues = await {
                 order_number: newOrder,
                 price: values.price,
+                currency: values.currency,
                 desc: values.desc,
                 email: values.email,
                 status: values.status,
+                customer_name: values.customerName,
+                customer_vat: values.customerVat,
+                customer_address: values.customerAddress,
               };
               console.log(orderValues);
               dispatch(addNewOrder(orderValues));
@@ -118,6 +163,40 @@ const AddNewCustomerModal = ({ closeModal }) => {
             {({ errors, touched }) => (
               <StyledForm>
                 <div>
+                  <StyledHeading>Customer info</StyledHeading>
+                  <ComboboxMenu
+                    items={customers}
+                    handleSetItemFn={handleSetItemFn}
+                  />
+                  <FormikControl
+                    type='text'
+                    control='input'
+                    name='customerName'
+                    error={errors.customerName}
+                    touched={touched.customerName}
+                    placeholder='CUSTOMER NAME'
+                    disabled
+                  />
+                  <FormikControl
+                    type='text'
+                    control='input'
+                    name='customerVat'
+                    error={errors.customerVat}
+                    touched={touched.customerVat}
+                    placeholder='CUSTOMER VAT'
+                    disabled
+                  />
+                  <FormikControl
+                    type='text'
+                    control='input'
+                    name='customerAddress'
+                    error={errors.customerAddress}
+                    touched={touched.customerAddress}
+                    placeholder='CUSTOMER ADDRESS'
+                    disabled
+                  />
+                </div>
+                <OrderDetailsWrapper initValues={initValues}>
                   <StyledHeading>Order details</StyledHeading>
                   <StyledHeading>
                     <span>Order Number: </span>
@@ -130,6 +209,14 @@ const AddNewCustomerModal = ({ closeModal }) => {
                     error={errors.price}
                     touched={touched.price}
                     placeholder='PRICE'
+                  />
+                  <FormikControl
+                    type='text'
+                    control='input'
+                    name='currency'
+                    error={errors.currency}
+                    touched={touched.currency}
+                    placeholder='CURRENCY'
                   />
                   <FormikControl
                     type='text'
@@ -154,7 +241,8 @@ const AddNewCustomerModal = ({ closeModal }) => {
                       value='finished'
                     />
                   </RadioGroup>
-                </div>
+                </OrderDetailsWrapper>
+
                 <StyledButton type='submit'>Save</StyledButton>
               </StyledForm>
             )}

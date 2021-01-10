@@ -5,6 +5,7 @@ import { ErrorMessage, Field } from 'formik';
 import ErrorMsg from 'components/atoms/error-msg/error-msg';
 
 const StyledLabel = styled.label`
+  position: relative;
   display: block;
   width: 100%;
   margin-bottom: 3rem;
@@ -42,6 +43,11 @@ const StyledLabel = styled.label`
     :disabled {
       cursor: not-allowed;
     }
+
+    :placeholder-shown + div {
+      opacity: 0;
+      top: 50%;
+    }
   }
 
   input,
@@ -60,9 +66,32 @@ const StyledLabel = styled.label`
   }
 `;
 
-const FormikInput = ({ name, tagType, error, touched, ...rest }) => (
+const StyledPlaceholder = styled.div`
+  position: absolute;
+  top: -1rem;
+  left: 0.5rem;
+  font-size: ${({ theme: { fontSize } }) => fontSize.s};
+  transform: translateY(-50%);
+  transition: all 0.25s;
+`;
+
+const FormikInput = ({
+  name,
+  tagType,
+  error,
+  touched,
+  placeholder,
+  ...rest
+}) => (
   <StyledLabel htmlFor={name} error={error} touched={touched}>
-    <Field as={tagType} name={name} id={name} {...rest} />
+    <Field
+      as={tagType}
+      name={name}
+      id={name}
+      placeholder={placeholder}
+      {...rest}
+    />
+    <StyledPlaceholder>{placeholder}</StyledPlaceholder>
     <ErrorMsg>
       <ErrorMessage name={name} />
     </ErrorMsg>

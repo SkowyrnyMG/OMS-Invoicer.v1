@@ -126,6 +126,16 @@ const AddNewCustomerModal = ({ closeModal }) => {
       customerAddress: item.address,
     }));
   };
+
+  const handleResetItemFn = () => {
+    setInitValues((state) => ({
+      ...state,
+      customerName: '',
+      customerVat: '',
+      customerAddress: '',
+    }));
+  };
+
   return (
     <Wrapper>
       <AppGridContainer>
@@ -167,6 +177,7 @@ const AddNewCustomerModal = ({ closeModal }) => {
                   <ComboboxMenu
                     items={customers}
                     handleSetItemFn={handleSetItemFn}
+                    handleResetItemFn={handleResetItemFn}
                   />
                   <FormikControl
                     type='text'
@@ -241,9 +252,8 @@ const AddNewCustomerModal = ({ closeModal }) => {
                       value='finished'
                     />
                   </RadioGroup>
+                  <StyledButton type='submit'>Save</StyledButton>
                 </OrderDetailsWrapper>
-
-                <StyledButton type='submit'>Save</StyledButton>
               </StyledForm>
             )}
           </Formik>

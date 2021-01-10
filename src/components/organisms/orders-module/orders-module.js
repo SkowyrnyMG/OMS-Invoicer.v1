@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 
 import AppGridContainer from 'components/atoms/app-grid-container/app-grid-container';
 import AppTableBody from 'components/modules/app-table-body/app-table-body';
-import AddNewOrderModal from 'components/organisms/add-new-order-modal/add-new-order-modal';
+import OrderControlModal from 'components/organisms/order-control-modal/order-control-modal';
 import ActionMenu from 'components/modules/action-menu/action-menu';
 import Button from 'components/atoms/button/button';
 
@@ -37,10 +37,23 @@ const OrdersModule = ({ ordersList }) => {
     dispatch(getAllOrders());
   };
 
+  // TODO optionaly add possibility to edit order status by using button from quick menu
+  const handleAddNewClick = () => {
+    setCurrentOrder(null);
+    setIsModalOpen(true);
+  };
+
+  const handleEditClick = () => {
+    setIsModalOpen(true);
+  };
+
   return (
     <AppGridContainer>
       {isModalOpen && (
-        <AddNewOrderModal closeModal={() => setIsModalOpen(false)} />
+        <OrderControlModal
+          closeModal={() => setIsModalOpen(false)}
+          currentOrder={currentOrder}
+        />
       )}
       <AppTableBody
         columns={columns}
@@ -49,10 +62,23 @@ const OrdersModule = ({ ordersList }) => {
         setCurrentPosValues={setCurrentOrder}
       />
       <ActionMenu>
-        <Button onClick={() => setIsModalOpen(true)}>Add new</Button>
-        <Button>Edit</Button>
-        <Button>Issue invoice</Button>
-        <Button onClick={handleDeleteClick}>Cancel</Button>
+        <Button onClick={handleAddNewClick}>Add new</Button>
+        <Button onClick={handleEditClick}>Edit</Button>
+        <Button
+          disabled={
+            currentOrder === null || !currentOrder.status.match(/finished/i)
+          }
+        >
+          Issue invoice
+        </Button>
+        <Button
+          disabled={
+            currentOrder === null || currentOrder.status.match(/cancelled/i)
+          }
+          onClick={handleDeleteClick}
+        >
+          Cancel
+        </Button>
       </ActionMenu>
     </AppGridContainer>
   );

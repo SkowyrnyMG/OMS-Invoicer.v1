@@ -69,6 +69,7 @@ const ComboboxMenu = ({ items, handleSetItemFn, handleResetItemFn }) => {
     getComboboxProps,
     highlightedIndex,
     getItemProps,
+    selectItem,
     selectedItem,
   } = useCombobox({
     items: inputItems,
@@ -96,6 +97,11 @@ const ComboboxMenu = ({ items, handleSetItemFn, handleResetItemFn }) => {
     console.log(selectedItem);
   };
 
+  const handleResetClick = () => {
+    handleResetItemFn();
+    selectItem(null);
+  };
+
   return (
     <Wrapper>
       <label {...getLabelProps()}>Choose a Customer:</label>
@@ -112,7 +118,7 @@ const ComboboxMenu = ({ items, handleSetItemFn, handleResetItemFn }) => {
           <StyledComboButton type='button' onClick={handleSearchClick}>
             Accept
           </StyledComboButton>
-          <StyledComboButton type='button' onClick={handleResetItemFn}>
+          <StyledComboButton type='button' onClick={handleResetClick}>
             Reset
           </StyledComboButton>
         </ComboBtnWrapper>

@@ -121,6 +121,7 @@ const AddNewCustomerModal = ({ closeModal }) => {
 
   const handleViesClick = async () => {
     dispatch(setLoadingOn());
+    // * get request to the local lambda funciton. Query string params are later beeing used to get response from vies
     const result = await axios.get(
       `/api/verify?vat=${verifyInput}&countrycode=${verifyCuntryCode}`
     );
@@ -139,6 +140,7 @@ const AddNewCustomerModal = ({ closeModal }) => {
       setIsViesValid(true);
       console.log(data);
 
+      // * sometimes data from vies response is not fully complete and it returns --- instead. Without below conditinals app would crash on try to split ---.
       const splittedAddres = address !== '---' ? address.split(',') : '---';
       const streetVies = address !== '---' ? splittedAddres[0] : '---';
       const postCodeVies =

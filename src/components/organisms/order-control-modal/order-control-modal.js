@@ -85,20 +85,25 @@ const RadioGroup = styled.div`
 const StyledSpan = styled.span``;
 
 const OrderDetailsWrapper = styled.div`
-  opacity: ${({ initValues }) => (initValues.customerVat !== '' ? 1 : 0.5)};
+  opacity: ${({ initValues }) => (initValues.customer_vat !== '' ? 1 : 0.5)};
   pointer-events: ${({ initValues }) =>
-    initValues.customerVat !== '' ? 'auto' : 'none'};
+    initValues.customer_vat !== '' ? 'auto' : 'none'};
   cursor: ${({ initValues }) =>
-    initValues.customerVat !== '' ? 'arrow' : 'not-allowed'};
+    initValues.customer_vat !== '' ? 'arrow' : 'not-allowed'};
 `;
 
-const AddNewCustomerModal = ({ closeModal }) => {
+const OrderControlModal = ({ closeModal, currentOrder }) => {
   const dispatch = useDispatch();
   const customers = useSelector(selectCustomers);
   const [initValues, setInitValues] = useState({
-    customerName: '',
-    customerVat: '',
-    customerAddress: '',
+    price: '',
+    currency: '',
+    status: 'in progress',
+    desc: '',
+    email: '',
+    customer_name: '',
+    customer_vat: '',
+    customer_address: '',
   });
   const validationSchema = useValidationSchema('newOrder');
   const newOrder = useNextOrder();
@@ -107,13 +112,18 @@ const AddNewCustomerModal = ({ closeModal }) => {
 
   // });
 
-  console.log(customers);
+  console.log(currentOrder);
 
   useEffect(() => {
+    // * if there is no customers in app store then get it from the database
     if (!customers.length) {
       dispatch(getAllCustomers());
     }
-  }, [dispatch, customers.length]);
+    if (currentOrder) {
+      console.log(currentOrder);
+      setInitValues(currentOrder);
+    }
+  }, [dispatch, customers.length, currentOrder, setInitValues]);
 
   const handleSetItemFn = (item) => {
     if (item === null) {
@@ -121,20 +131,23 @@ const AddNewCustomerModal = ({ closeModal }) => {
     }
     setInitValues((state) => ({
       ...state,
-      customerName: item.name,
-      customerVat: item.vat_number,
-      customerAddress: item.address,
+      customer_name: item.name,
+      customer_vat: item.vat_number,
+      customer_address: item.address,
     }));
   };
 
   const handleResetItemFn = () => {
     setInitValues((state) => ({
       ...state,
-      customerName: '',
-      customerVat: '',
-      customerAddress: '',
+      customer_name: '',
+      customer_vat: '',
+      customer_address: '',
     }));
   };
+
+  const orderNumberSetter = () =>
+    currentOrder ? currentOrder.order_number : newOrder;
 
   return (
     <Wrapper>
@@ -143,27 +156,27 @@ const AddNewCustomerModal = ({ closeModal }) => {
           <Formik
             enableReinitialize
             initialValues={{
-              price: '',
-              currency: '',
-              status: 'in progress',
-              desc: '',
-              email: '',
-              customerName: initValues.customerName,
-              customerVat: initValues.customerVat,
-              customerAddress: initValues.customerAddress,
+              price: initValues.price,
+              currency: initValues.currency,
+              status: initValues.status,
+              desc: initValues.desc,
+              email: initValues.email,
+              customer_name: initValues.customer_name,
+              customer_vat: initValues.customer_vat,
+              customer_address: initValues.customer_address,
             }}
             validationSchema={validationSchema}
             onSubmit={async (values) => {
               const orderValues = await {
-                order_number: newOrder,
+                order_number: orderNumberSetter(),
                 price: values.price,
                 currency: values.currency,
                 desc: values.desc,
                 email: values.email,
                 status: values.status,
-                customer_name: values.customerName,
-                customer_vat: values.customerVat,
-                customer_address: values.customerAddress,
+                customer_name: values.customer_name,
+                customer_vat: values.customer_vat,
+                customer_address: values.customer_address,
               };
               console.log(orderValues);
               dispatch(addNewOrder(orderValues));
@@ -182,27 +195,27 @@ const AddNewCustomerModal = ({ closeModal }) => {
                   <FormikControl
                     type='text'
                     control='input'
-                    name='customerName'
-                    error={errors.customerName}
-                    touched={touched.customerName}
+                    name='customer_name'
+                    error={errors.customer_name}
+                    touched={touched.customer_name}
                     placeholder='CUSTOMER NAME'
                     disabled
                   />
                   <FormikControl
                     type='text'
                     control='input'
-                    name='customerVat'
-                    error={errors.customerVat}
-                    touched={touched.customerVat}
+                    name='customer_vat'
+                    error={errors.customer_vat}
+                    touched={touched.customer_vat}
                     placeholder='CUSTOMER VAT'
                     disabled
                   />
                   <FormikControl
                     type='text'
                     control='input'
-                    name='customerAddress'
-                    error={errors.customerAddress}
-                    touched={touched.customerAddress}
+                    name='customer_address'
+                    error={errors.customer_address}
+                    touched={touched.customer_address}
                     placeholder='CUSTOMER ADDRESS'
                     disabled
                   />
@@ -211,7 +224,7 @@ const AddNewCustomerModal = ({ closeModal }) => {
                   <StyledHeading>Order details</StyledHeading>
                   <StyledHeading>
                     <span>Order Number: </span>
-                    {newOrder}
+                    {orderNumberSetter()}
                   </StyledHeading>
                   <FormikControl
                     type='number'
@@ -266,4 +279,4 @@ const AddNewCustomerModal = ({ closeModal }) => {
   );
 };
 
-export default AddNewCustomerModal;
+export default OrderControlModal;

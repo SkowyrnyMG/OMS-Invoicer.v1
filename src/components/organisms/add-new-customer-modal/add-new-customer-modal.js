@@ -21,6 +21,7 @@ import {
   setLoadingOn,
   setLoadingOff,
 } from 'store/slices/loading-slice/loading-slice';
+import { COUNTRY_CODES } from 'utils/constant-data';
 
 const Wrapper = styled.div`
   display: flex;
@@ -113,13 +114,16 @@ const AddNewCustomerModal = ({ closeModal }) => {
     contactPhone: '',
   });
   const validationSchema = useValidationSchema('customers');
+  const [verifyCuntryCode, setVerifyCountryCode] = useState('PL');
   const [verifyInput, setVerifyInput] = useState('');
   const [isViesValid, setIsViesValid] = useState(true);
   const [isVatDoubledMsg, setIsVatDoubledMsg] = useState(false);
 
   const handleViesClick = async () => {
     dispatch(setLoadingOn());
-    const result = await axios.get(`/api/verify?vat=${verifyInput}`);
+    const result = await axios.get(
+      `/api/verify?vat=${verifyInput}&countrycode=${verifyCuntryCode}`
+    );
     const {
       data: { data },
     } = result;
@@ -131,12 +135,18 @@ const AddNewCustomerModal = ({ closeModal }) => {
     }
 
     if (data.valid) {
+      const { address } = data;
       setIsViesValid(true);
+      console.log(data);
 
-      const splittedAddres = data.address.split(',');
-      const streetVies = splittedAddres[0];
-      const postCodeVies = splittedAddres[1].split(' ')[1].replace('-', '');
-      const townVies = splittedAddres[1].split(' ')[2];
+      const splittedAddres = address !== '---' ? address.split(',') : '---';
+      const streetVies = address !== '---' ? splittedAddres[0] : '---';
+      const postCodeVies =
+        address !== '---'
+          ? splittedAddres[1].split(' ')[1].replace('-', '')
+          : '---';
+      const townVies =
+        address !== '---' ? splittedAddres[1].split(' ')[2] : '---';
 
       setInitValues((state) => ({
         ...state,
@@ -201,6 +211,17 @@ const AddNewCustomerModal = ({ closeModal }) => {
                       Put VAT Number below and search customer details in VIES
                       database
                     </StyledParagraph>
+                    <select
+                      name='countryCode'
+                      onChange={(e) => setVerifyCountryCode(e.target.value)}
+                      defaultValue='PL'
+                    >
+                      {COUNTRY_CODES.map((code) => (
+                        <option key={code} value={code}>
+                          {code}
+                        </option>
+                      ))}
+                    </select>
                     <StyledInput
                       placeholder='Search  in VIES'
                       value={verifyInput}

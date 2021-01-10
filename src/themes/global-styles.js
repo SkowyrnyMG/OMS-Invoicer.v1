@@ -69,7 +69,6 @@ a:visited {
   background-color: ${({ theme: { color } }) => color.transparentMain};
 }
 }
-
 `;
 
 export default GlobalStyles;

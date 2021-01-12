@@ -82,11 +82,21 @@ export const registrySetup = createAsyncThunk(
   async (reg) => {
     const localUuid = getLocalValue('uuid');
     const year = new Date().getFullYear();
-    const firstReg = `${reg.mainOrderPrefix}-0-${year}`;
+    const firstRegOrder = `${reg.mainOrderPrefix}-0-${year}`;
+    const firstRegInvoice = `${reg.mainInvoicePrefix}-0-${year}`;
     try {
-      return await db
-        .put(`data/${localUuid}/orders/lastOrder.json`, { firstReg })
+      const defaultOrder = await db
+        .put(`data/${localUuid}/orders/lastOrder.json`, {
+          firstReg: firstRegOrder,
+        })
         .then(({ data }) => data);
+      const defaultInvoice = await db
+        .put(`data/${localUuid}/invoices/lastInvoice.json`, {
+          firstReg: firstRegInvoice,
+        })
+        .then(({ data }) => data);
+
+      return { defaultOrder, defaultInvoice };
     } catch (error) {
       return error;
     }
@@ -99,6 +109,7 @@ export const getAllOrders = createAsyncThunk('db/getAllOrders', async () => {
     return await db.get(`data/${localUuid}/orders.json`).then(({ data }) => {
       console.log(data.firstReg);
       return (
+        // * if there is no order list created in DB, action will return empty array to the reducer
         data !== null && [
           data.firstReg === null || data.firstReg === undefined
             ? []
@@ -170,12 +181,55 @@ export const cancelOrder = createAsyncThunk(
   }
 );
 
+export const getAllInvoices = createAsyncThunk(
+  'db/getAllInvoices',
+  async () => {
+    const localUuid = getLocalValue('uuid');
+    try {
+      return await db
+        .get(`/data/${localUuid}/invoices.json`)
+        .then(({ data }) => {
+          console.log(data);
+          return (
+            // * if there is no invoices list created in DB, action will return empty array to the reducer
+            data !== null && [
+              data.firstReg !== null && data.firstReg !== undefined
+                ? Object.values(data.firstReg)
+                : [],
+              data.lastInvoice !== null ? data.lastInvoice : undefined,
+            ]
+          );
+        });
+    } catch (error) {
+      return error;
+    }
+  }
+);
+
+export const getLastInvoice = createAsyncThunk(
+  'db/getLastInvoice',
+  async () => {
+    const localUuid = getLocalValue('uuid');
+    try {
+      return await db
+        .get(`/data/${localUuid}/invoices/lastOrder.json`)
+        .then(({ data }) => {
+          console.log(data);
+          return data;
+        });
+    } catch (error) {
+      return error;
+    }
+  }
+);
+
 const dbSlice = createSlice({
   name: 'database',
   initialState: {
     customers: [],
     config: {},
     orders: { firstReg: [], lastOrder: { firstReg: '' } },
+    invoices: { firstReg: [], lastInvoice: { firstReg: '' } },
   },
   reducers: {},
   extraReducers: {
@@ -217,8 +271,9 @@ const dbSlice = createSlice({
     },
 
     [registrySetup.fulfilled]: (state, { payload }) => {
-      state.orders.lastOrder = payload;
-      // state.orders.lastOrder;
+      const { defaultOrder, defaultInvoice } = payload;
+      state.orders.lastOrder = defaultOrder;
+      state.invoices.lastInvoice = defaultInvoice;
     },
     [registrySetup.rejected]: (state) => {
       state.orders.lastOrder = 'Something went wrong - please reset your app';
@@ -265,6 +320,14 @@ const dbSlice = createSlice({
     [cancelOrder.rejected]: (state) => {
       state.orders.firstReg = ['ERROR! REFRESH THE PAGE!'];
     },
+
+    [getAllInvoices.fulfilled]: (state, { payload }) => {
+      if (payload) {
+        const [invoicesList, lastInvoice] = payload;
+        state.invoices.firstReg = invoicesList;
+        state.invoices.lastInvoice = lastInvoice;
+      }
+    },
   },
 });
 
@@ -272,5 +335,7 @@ export const selectCustomers = (state) => state.db.customers;
 export const selectUserConfig = (state) => state.db.config;
 export const selectOrders = (state) => state.db.orders.firstReg;
 export const selectLastOrder = (state) => state.db.orders.lastOrder;
+export const selectLastInvoice = (state) => state.db.invoices.lastInvoice;
+export const selectInvoices = (state) => state.db.invoices.firstReg;
 
 export default dbSlice.reducer;

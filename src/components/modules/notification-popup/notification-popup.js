@@ -47,6 +47,7 @@ const NotificationPopup = ({ children, successRegexp }) => {
 
 NotificationPopup.propTypes = {
   successRegexp: PropTypes.string.isRequired,
+  children: PropTypes.string.isRequired,
 };
 
 export default NotificationPopup;

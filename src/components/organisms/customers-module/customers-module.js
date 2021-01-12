@@ -1,4 +1,5 @@
 import React, { useState, useMemo } from 'react';
+import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 
 import AppGridContainer from 'components/atoms/app-grid-container/app-grid-container';
@@ -57,4 +58,20 @@ const CustomersModule = ({ customersList }) => {
   );
 };
 
+CustomersModule.propTypes = {
+  customersList: PropTypes.arrayOf(
+    PropTypes.shape({
+      address: PropTypes.string.isRequired,
+      contactEmail: PropTypes.string.isRequired,
+      contactPerson: PropTypes.string.isRequired,
+      contactPhone: PropTypes.string.isRequired,
+      country: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      postCode: PropTypes.string.isRequired,
+      street: PropTypes.string.isRequired,
+      town: PropTypes.string.isRequired,
+      vat_number: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+};
 export default CustomersModule;

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Formik, Form } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
@@ -335,6 +336,10 @@ const AddNewCustomerModal = ({ closeModal }) => {
       </AppGridContainer>
     </Wrapper>
   );
+};
+
+AddNewCustomerModal.propTypes = {
+  closeModal: PropTypes.func.isRequired,
 };
 
 export default AddNewCustomerModal;

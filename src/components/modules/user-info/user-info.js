@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import { ReactComponent as UserIcon } from 'assets/svg/user-icon.svg';
@@ -26,5 +27,9 @@ const UserInfo = ({ children }) => (
     <StyledSpan>{children}</StyledSpan>
   </Wrapper>
 );
+
+UserInfo.propTypes = {
+  children: PropTypes.string.isRequired,
+};
 
 export default UserInfo;

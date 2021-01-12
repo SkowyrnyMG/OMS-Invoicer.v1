@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { useSelector, useDispatch } from 'react-redux';
 import { Formik, Form } from 'formik';
@@ -192,6 +193,10 @@ const ConfigForm = ({ onSubmit }) => {
       )}
     </Formik>
   );
+};
+
+ConfigForm.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
 };
 
 export default ConfigForm;

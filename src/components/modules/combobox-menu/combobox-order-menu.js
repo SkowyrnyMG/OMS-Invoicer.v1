@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { useCombobox } from 'downshift';
 
@@ -55,7 +56,7 @@ const NotFoundInfo = styled.div`
   display: ${({ isNotFoundVisible }) => (isNotFoundVisible ? 'auto' : 'none')};
 `;
 
-const ComboboxMenu = ({ items, handleSetItemFn, handleResetItemFn }) => {
+const ComboboxOrderMenu = ({ items, handleSetItemFn, handleResetItemFn }) => {
   const [inputItems, setInputItems] = useState(items);
   const [isNotFoundVisible, setIsNotFoundVisible] = useState(false);
   const itemToString = (item) =>
@@ -144,4 +145,10 @@ const ComboboxMenu = ({ items, handleSetItemFn, handleResetItemFn }) => {
   );
 };
 
-export default ComboboxMenu;
+ComboboxOrderMenu.propTypes = {
+  items: PropTypes.arrayOf(PropTypes.object).isRequired,
+  handleSetItemFn: PropTypes.func.isRequired,
+  handleResetItemFn: PropTypes.func.isRequired,
+};
+
+export default ComboboxOrderMenu;

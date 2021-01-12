@@ -41,6 +41,7 @@ NavLink.defaultProps = {
 NavLink.propTypes = {
   linktype: PropTypes.string,
   path: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
 };
 
 export default NavLink;

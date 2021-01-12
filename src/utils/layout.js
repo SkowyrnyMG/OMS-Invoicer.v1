@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
 import styled, { ThemeProvider, css } from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -70,6 +71,10 @@ const Layout = ({ children }) => {
       </Wrapper>
     </ThemeProvider>
   );
+};
+
+Layout.propTypes = {
+  children: PropTypes.node.isRequired,
 };
 
 export default Layout;

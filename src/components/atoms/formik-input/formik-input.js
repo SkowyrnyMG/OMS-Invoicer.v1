@@ -100,12 +100,14 @@ const FormikInput = ({
 
 FormikInput.defaultProps = {
   tagType: 'input',
+  placeholder: '',
   error: undefined,
   touched: undefined,
 };
 
 FormikInput.propTypes = {
   name: PropTypes.string.isRequired,
+  placeholder: PropTypes.string,
   tagType: PropTypes.string,
   error: PropTypes.string,
   touched: PropTypes.bool,

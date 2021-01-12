@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Formik, Form } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
@@ -8,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import AppGridContainer from 'components/atoms/app-grid-container/app-grid-container';
 import AppBodyContainer from 'components/atoms/app-body-container/app-body-container';
 import FormikControl from 'components/modules/formik-control/formik-control';
-import ComboboxOrderMenu from 'components/modules/combobox-menu/combobox-order-menu';
+import ComboboxMenu from 'components/modules/combobox-menu/combobox-order-menu';
 import ActionMenu from 'components/modules/action-menu/action-menu';
 import Button from 'components/atoms/button/button';
 
@@ -76,29 +75,28 @@ const RadioGroup = styled.div`
 
 const StyledSpan = styled.span``;
 
-const OrderDetailsWrapper = styled.div`
-  opacity: ${({ initValues }) => (initValues.customer_vat !== '' ? 1 : 0.5)};
-  pointer-events: ${({ initValues }) =>
-    initValues.customer_vat !== '' ? 'auto' : 'none'};
-  cursor: ${({ initValues }) =>
-    initValues.customer_vat !== '' ? 'arrow' : 'not-allowed'};
-`;
+// const OrderDetailsWrapper = styled.div`
+//   opacity: ${({ initValues }) => (initValues.customer_vat !== '' ? 1 : 0.5)};
+//   pointer-events: ${({ initValues }) =>
+//     initValues.customer_vat !== '' ? 'auto' : 'none'};
+//   cursor: ${({ initValues }) =>
+//     initValues.customer_vat !== '' ? 'arrow' : 'not-allowed'};
+// `;
 
-const OrderControlModal = ({ closeModal, currentOrder }) => {
+const InvoiceControlModal = ({ closeModal, currentOrder }) => {
   const dispatch = useDispatch();
   const customers = useSelector(selectCustomers);
   const [initValues, setInitValues] = useState({
     price: '',
     currency: '',
-    status: 'in progress',
+    status: 'unpaid',
     desc: '',
-    email: '',
     customer_name: '',
     customer_vat: '',
     customer_address: '',
   });
   const validationSchema = useValidationSchema('newOrder');
-  const newOrder = useAutoNumeration('order');
+  const newOrder = useAutoNumeration();
 
   useEffect(() => {
     // * if there is no customers in app store then get it from the database
@@ -145,7 +143,6 @@ const OrderControlModal = ({ closeModal, currentOrder }) => {
               currency: initValues.currency,
               status: initValues.status,
               desc: initValues.desc,
-              email: initValues.email,
               customer_name: initValues.customer_name,
               customer_vat: initValues.customer_vat,
               customer_address: initValues.customer_address,
@@ -157,7 +154,6 @@ const OrderControlModal = ({ closeModal, currentOrder }) => {
                 price: values.price,
                 currency: values.currency,
                 desc: values.desc,
-                email: values.email,
                 status: values.status,
                 customer_name: values.customer_name,
                 customer_vat: values.customer_vat,
@@ -181,7 +177,7 @@ const OrderControlModal = ({ closeModal, currentOrder }) => {
               <StyledForm>
                 <div>
                   <StyledHeading>Customer info</StyledHeading>
-                  <ComboboxOrderMenu
+                  <ComboboxMenu
                     items={customers}
                     handleSetItemFn={handleSetItemFn}
                     handleResetItemFn={handleResetItemFn}
@@ -214,7 +210,7 @@ const OrderControlModal = ({ closeModal, currentOrder }) => {
                     disabled
                   />
                 </div>
-                <OrderDetailsWrapper initValues={initValues}>
+                <div>
                   <StyledHeading>Order details</StyledHeading>
                   <StyledHeading>
                     <span>Order Number: </span>
@@ -250,17 +246,23 @@ const OrderControlModal = ({ closeModal, currentOrder }) => {
                       type='radio'
                       control='radio'
                       name='status'
-                      value='in progress'
+                      value='unpaid'
                     />
                     <FormikControl
                       type='radio'
                       control='radio'
                       name='status'
-                      value='finished'
+                      value='paid'
+                    />
+                    <FormikControl
+                      type='radio'
+                      control='radio'
+                      name='status'
+                      value='partialy paid'
                     />
                   </RadioGroup>
                   <StyledButton type='submit'>Save</StyledButton>
-                </OrderDetailsWrapper>
+                </div>
               </StyledForm>
             )}
           </Formik>
@@ -273,31 +275,4 @@ const OrderControlModal = ({ closeModal, currentOrder }) => {
   );
 };
 
-OrderControlModal.defaultProps = {
-  currentOrder: {
-    price: '',
-    currency: '',
-    status: 'in progress',
-    desc: '',
-    email: '',
-    customer_name: '',
-    customer_vat: '',
-    customer_address: '',
-  },
-};
-
-OrderControlModal.propTypes = {
-  closeModal: PropTypes.func.isRequired,
-  currentOrder: PropTypes.shape({
-    price: PropTypes.number.isRequired,
-    currency: PropTypes.string.isRequired,
-    status: PropTypes.string.isRequired,
-    desc: PropTypes.string.isRequired,
-    email: PropTypes.string.isRequired,
-    customer_name: PropTypes.string.isRequired,
-    customer_vat: PropTypes.string.isRequired,
-    customer_address: PropTypes.string.isRequired,
-  }),
-};
-
-export default OrderControlModal;
+export default InvoiceControlModal;

@@ -63,6 +63,7 @@ FormikRadio.propTypes = {
   name: PropTypes.string.isRequired,
   error: PropTypes.string,
   touched: PropTypes.bool,
+  value: PropTypes.string.isRequired,
 };
 
 export default FormikRadio;

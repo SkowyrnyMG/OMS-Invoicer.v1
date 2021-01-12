@@ -44,6 +44,7 @@ const AuthFormWrapper = ({ children, title }) => (
 
 AuthFormWrapper.propTypes = {
   title: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
 };
 
 export default AuthFormWrapper;

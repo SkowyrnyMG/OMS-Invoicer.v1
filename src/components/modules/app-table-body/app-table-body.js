@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import {
   useTable,
@@ -356,6 +357,17 @@ const AppTableBody = ({
       )}
     </Wrapper>
   );
+};
+
+AppTableBody.propTypes = {
+  columns: PropTypes.arrayOf(PropTypes.object).isRequired,
+  data: PropTypes.arrayOf(PropTypes.object).isRequired,
+  defaultColumn: PropTypes.shape({
+    minWidth: PropTypes.number.isRequired,
+    width: PropTypes.number.isRequired,
+    maxWidth: PropTypes.number.isRequired,
+  }).isRequired,
+  setCurrentPosValues: PropTypes.func.isRequired,
 };
 
 export default AppTableBody;

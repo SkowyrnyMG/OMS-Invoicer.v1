@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import { ReactComponent as SearchIcon } from 'assets/svg/search-icon.svg';
@@ -35,7 +36,7 @@ const StyledInput = styled(Input)`
 const ViesSearchInput = ({ newValues }) => {
   const handleViesSubmit = () => {
     newValues({
-      nameOfCompany: 'lol',
+      nameOfCompany: '',
     });
   };
 
@@ -50,6 +51,10 @@ const ViesSearchInput = ({ newValues }) => {
       </StyledButton>
     </Wrapper>
   );
+};
+
+ViesSearchInput.propTypes = {
+  newValues: PropTypes.func.isRequired,
 };
 
 export default ViesSearchInput;

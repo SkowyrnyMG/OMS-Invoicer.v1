@@ -1,4 +1,5 @@
 import React, { useMemo, useState } from 'react';
+import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 
 import AppGridContainer from 'components/atoms/app-grid-container/app-grid-container';
@@ -82,6 +83,25 @@ const OrdersModule = ({ ordersList }) => {
       </ActionMenu>
     </AppGridContainer>
   );
+};
+
+OrdersModule.defaultProps = {
+  ordersList: [],
+};
+
+OrdersModule.propTypes = {
+  ordersList: PropTypes.arrayOf(
+    PropTypes.shape({
+      price: PropTypes.number.isRequired,
+      currency: PropTypes.string.isRequired,
+      status: PropTypes.string.isRequired,
+      desc: PropTypes.string.isRequired,
+      email: PropTypes.string.isRequired,
+      customer_name: PropTypes.string.isRequired,
+      customer_vat: PropTypes.string.isRequired,
+      customer_address: PropTypes.string.isRequired,
+    })
+  ),
 };
 
 export default OrdersModule;

@@ -15,13 +15,10 @@ import { useValidationSchema } from 'hooks/useValidationSchema';
 import { useNextOrder } from 'hooks/useNextOrder';
 import {
   addNewOrder,
+  getAllOrders,
   getAllCustomers,
   selectCustomers,
 } from 'store/slices/db-slice/db-slice';
-// import {
-//   setLoadingOn,
-//   setLoadingOff,
-// } from 'store/slices/loading-slice/loading-slice';
 
 const Wrapper = styled.div`
   display: flex;
@@ -70,12 +67,6 @@ const StyledHeading = styled.h4`
   margin-bottom: 2rem;
 `;
 
-// const StyledParagraph = styled.p`
-//   grid-column: -1 / 1;
-//   font-size: ${({ theme: { fontSize } }) => fontSize.s};
-//   color: ${({ theme: { color }, isNoError }) => !isNoError && color.error};
-// `;
-
 const RadioGroup = styled.div`
   display: flex;
   justify-content: space-evenly;
@@ -107,12 +98,6 @@ const OrderControlModal = ({ closeModal, currentOrder }) => {
   });
   const validationSchema = useValidationSchema('newOrder');
   const newOrder = useNextOrder();
-  // const [initValues, setInitValues] = useState({
-  //   name: '',
-
-  // });
-
-  console.log(currentOrder);
 
   useEffect(() => {
     // * if there is no customers in app store then get it from the database
@@ -120,7 +105,6 @@ const OrderControlModal = ({ closeModal, currentOrder }) => {
       dispatch(getAllCustomers());
     }
     if (currentOrder) {
-      console.log(currentOrder);
       setInitValues(currentOrder);
     }
   }, [dispatch, customers.length, currentOrder, setInitValues]);
@@ -178,8 +162,17 @@ const OrderControlModal = ({ closeModal, currentOrder }) => {
                 customer_vat: values.customer_vat,
                 customer_address: values.customer_address,
               };
-              console.log(orderValues);
-              dispatch(addNewOrder(orderValues));
+
+              const isNewOrder = currentOrder ? false : true;
+
+              const submitData = {
+                orderValues,
+                isNewOrder,
+              };
+
+              await dispatch(addNewOrder(submitData));
+              await dispatch(getAllOrders());
+
               closeModal();
             }}
           >

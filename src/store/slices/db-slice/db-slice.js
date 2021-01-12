@@ -76,13 +76,33 @@ export const addUserConfig = createAsyncThunk(
   }
 );
 
+// * add base registry options for invoices and orders to proceed autonumeration
+export const registrySetup = createAsyncThunk(
+  'db/registrySetup',
+  async (reg) => {
+    const localUuid = getLocalValue('uuid');
+    const year = new Date().getFullYear();
+    const firstReg = `${reg.mainOrderPrefix}-0-${year}`;
+    try {
+      return await db
+        .put(`data/${localUuid}/orders/lastOrder.json`, { firstReg })
+        .then(({ data }) => data);
+    } catch (error) {
+      return error;
+    }
+  }
+);
+
 export const getAllOrders = createAsyncThunk('db/getAllOrders', async () => {
   const localUuid = getLocalValue('uuid');
   try {
     return await db.get(`data/${localUuid}/orders.json`).then(({ data }) => {
+      console.log(data.firstReg);
       return (
         data !== null && [
-          Object.values(data.firstReg),
+          data.firstReg === null || data.firstReg === undefined
+            ? []
+            : Object.values(data.firstReg),
           data.lastOrder !== null ? data.lastOrder : undefined,
         ]
       );
@@ -92,28 +112,34 @@ export const getAllOrders = createAsyncThunk('db/getAllOrders', async () => {
   }
 });
 
-export const addNewOrder = createAsyncThunk('db/addNewOrder', async (cred) => {
-  const localUuid = getLocalValue('uuid');
-  try {
-    console.log(cred);
+export const addNewOrder = createAsyncThunk(
+  'db/addNewOrder',
+  async ({ orderValues, isNewOrder }) => {
+    const localUuid = getLocalValue('uuid');
+    try {
+      return await db
+        .put(
+          `/data/${localUuid}/orders/firstReg/${orderValues.order_number}.json`,
+          orderValues
+        )
+        .then(async ({ data }) => {
+          if (isNewOrder) {
+            await db
+              .put(`/data/${localUuid}/orders/lastOrder.json`, {
+                firstReg: orderValues.order_number,
+              })
+              .then(({ orderNumber }) => {
+                return orderNumber;
+              });
+          }
 
-    return await db
-      .put(`/data/${localUuid}/orders/firstReg/${cred.order_number}.json`, cred)
-      .then(async ({ data }) => {
-        await db
-          .put(`/data/${localUuid}/orders/lastOrder.json`, {
-            firstReg: cred.order_number,
-          })
-          .then(({ orderNumber }) => {
-            return orderNumber;
-          });
-        console.log(data);
-        return data;
-      });
-  } catch (err) {
-    return err;
+          return data;
+        });
+    } catch (err) {
+      return err;
+    }
   }
-});
+);
 
 export const cancelOrder = createAsyncThunk(
   'db/cancelOrder',
@@ -188,6 +214,14 @@ const dbSlice = createSlice({
 
     [addUserConfig.fulfilled]: (state, { payload }) => {
       state.config = payload;
+    },
+
+    [registrySetup.fulfilled]: (state, { payload }) => {
+      state.orders.lastOrder = payload;
+      // state.orders.lastOrder;
+    },
+    [registrySetup.rejected]: (state) => {
+      state.orders.lastOrder = 'Something went wrong - please reset your app';
     },
 
     [getAllOrders.fulfilled]: (state, { payload }) => {

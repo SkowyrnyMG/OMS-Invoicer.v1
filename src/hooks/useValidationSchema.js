@@ -71,13 +71,36 @@ export const useValidationSchema = (type) => {
         mainInvoicePrefix: Yup.string()
           .min(2, 'Prefix should be at least two signs long!')
           .max(5, 'Prefix cannot be longer than 5 signs!')
-          .matches(/^[a-zA-Z]+$/, 'Prefix should contain only letters')
-          .required('Prefix is required'),
+          .matches(/^[a-zA-Z]+$/, 'Prefix should contain only letters!')
+          .required('Prefix is required!'),
         mainOrderPrefix: Yup.string()
           .min(2, 'Prefix should be at least two signs long!')
           .max(5, 'Prefix cannot be longer than 5 signs!')
-          .matches(/^[a-zA-Z]+$/, 'Prefix should contain only letters')
-          .required('Prefix is required'),
+          .matches(/^[a-zA-Z]+$/, 'Prefix should contain only letters!')
+          .required('Prefix is required!'),
+        rootCompanyName: Yup.string()
+          .min(4, 'Company name should be at least 4 signs long!')
+          .max(100, 'Company name should not be longer than 100 signs!')
+          .required('Company name is required!'),
+        rootVat: Yup.string()
+          .min(6, 'VAT number should be at least 6 signs long!')
+          .max(16, 'VAT number should not be longer than 10 signs!')
+          .required('VAT number is required!'),
+        rootStreet: Yup.string()
+          .min(4, 'Street should be at least 4 signs long!')
+          .max(75, 'Street should not be longer than 75 signs!')
+          .required('Street is required!'),
+        rootPostCode: Yup.string()
+          .min(4, 'Post code should be at least 4 signs long!')
+          .max(8, 'Post code should not be longer than 8 signs long!')
+          .required('Post code is required!'),
+        rootTown: Yup.string()
+          .min(3, 'Town should be at lest 3 signs long!')
+          .max(40, 'Town should not be longer than 40 signs!')
+          .required('Town is required'),
+        rootCountry: Yup.string()
+          .min(3, 'Country should be at lest 3 signs long!')
+          .max(30, 'Country should not be longer than 30 signs long!'),
       });
     case 'newOrder':
       return Yup.object().shape({

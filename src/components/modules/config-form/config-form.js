@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { Formik, Form } from 'formik';
 
 import FormikControl from 'components/modules/formik-control/formik-control';
@@ -8,12 +8,19 @@ import HeadingBlue from 'components/atoms/heading-blue/heading-blue';
 import Button from 'components/atoms/button/button';
 
 import { useValidationSchema } from 'hooks/useValidationSchema';
-import { selectUserConfig } from 'store/slices/db-slice/db-slice';
+import {
+  selectUserConfig,
+  registrySetup,
+} from 'store/slices/db-slice/db-slice';
 
 const StyledForm = styled(Form)`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-auto-rows: 1fr;
+`;
+
+const StyledHeadingBlue = styled(HeadingBlue)`
+  margin-bottom: 3rem;
 `;
 
 const ConfigWrapper = styled.div`
@@ -43,6 +50,7 @@ const StyledButton = styled(Button)`
 `;
 
 const ConfigForm = ({ onSubmit }) => {
+  const dispatch = useDispatch();
   const userConfig = useSelector(selectUserConfig);
   const validationSchema = useValidationSchema('config');
 
@@ -53,9 +61,53 @@ const ConfigForm = ({ onSubmit }) => {
         mainInvoicePrefix:
           userConfig !== null ? userConfig.mainInvoicePrefix : '',
         mainOrderPrefix: userConfig !== null ? userConfig.mainOrderPrefix : '',
+        rootCompanyName:
+          userConfig !== null
+            ? userConfig.rootCompanyDetails.rootCompanyName
+            : '',
+        rootVat:
+          userConfig !== null ? userConfig.rootCompanyDetails.rootVat : '',
+        rootStreet:
+          userConfig !== null ? userConfig.rootCompanyDetails.rootStreet : '',
+        rootPostCode:
+          userConfig !== null ? userConfig.rootCompanyDetails.rootPostCode : '',
+        rootTown:
+          userConfig !== null ? userConfig.rootCompanyDetails.rootTown : '',
+        rootCountry:
+          userConfig !== null ? userConfig.rootCompanyDetails.rootCountry : '',
       }}
       validationSchema={validationSchema}
-      onSubmit={(values) => onSubmit(values)}
+      onSubmit={(values) => {
+        const {
+          mainInvoicePrefix,
+          mainOrderPrefix,
+          rootCompanyName,
+          rootVat,
+          rootStreet,
+          rootPostCode,
+          rootTown,
+          rootCountry,
+        } = values;
+
+        const submitData = {
+          mainInvoicePrefix,
+          mainOrderPrefix,
+          rootCompanyDetails: {
+            rootCompanyName,
+            rootVat,
+            rootStreet,
+            rootPostCode,
+            rootTown,
+            rootCountry,
+          },
+        };
+        onSubmit(submitData);
+
+        if (userConfig === null) {
+          const defaultPrefixes = { mainOrderPrefix, mainInvoicePrefix };
+          dispatch(registrySetup(defaultPrefixes));
+        }
+      }}
     >
       {({ errors, touched }) => (
         <StyledForm>
@@ -83,9 +135,58 @@ const ConfigForm = ({ onSubmit }) => {
                 disabled={userConfig}
               />
             </ConfigOption>
-            <StyledButton disabled={userConfig} type='submit'>
-              Save
-            </StyledButton>
+          </ConfigWrapper>
+          <ConfigWrapper>
+            <StyledHeadingBlue>Company info</StyledHeadingBlue>
+            <FormikControl
+              type='text'
+              control='input'
+              name='rootCompanyName'
+              error={errors.rootCompanyName}
+              touched={touched.rootCompanyName}
+              placeholder='COMPANY NAME'
+            />
+            <FormikControl
+              type='text'
+              control='input'
+              name='rootVat'
+              error={errors.rootVat}
+              touched={touched.rootVat}
+              placeholder='VAT NUMBER'
+            />
+            <FormikControl
+              type='text'
+              control='input'
+              name='rootStreet'
+              error={errors.rootStreet}
+              touched={touched.rootStreet}
+              placeholder='STREET'
+            />
+            <FormikControl
+              type='text'
+              control='input'
+              name='rootPostCode'
+              error={errors.rootPostCode}
+              touched={touched.rootPostCode}
+              placeholder='POST CODE'
+            />
+            <FormikControl
+              type='text'
+              control='input'
+              name='rootTown'
+              error={errors.rootTown}
+              touched={touched.rootTown}
+              placeholder='TOWN'
+            />
+            <FormikControl
+              type='text'
+              control='input'
+              name='rootCountry'
+              error={errors.rootCountry}
+              touched={touched.rootCountry}
+              placeholder='COUNTRY'
+            />
+            <StyledButton type='submit'>Save</StyledButton>
           </ConfigWrapper>
         </StyledForm>
       )}

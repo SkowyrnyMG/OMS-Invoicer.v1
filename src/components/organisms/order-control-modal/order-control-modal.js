@@ -65,16 +65,24 @@ const StyledButton = styled(Button)`
 `;
 
 const StyledHeading = styled.h4`
-  margin-bottom: 2rem;
+  margin-bottom: 4rem;
+`;
+
+const StatusWrapper = styled.div`
+  display: grid;
+  grid-template-columns: min-content 1fr;
 `;
 
 const RadioGroup = styled.div`
   display: flex;
   justify-content: space-evenly;
+  margin-bottom: 2rem;
   width: 100%;
 `;
 
-const StyledSpan = styled.span``;
+const StyledSpan = styled.span`
+  font-weight: ${({ theme: { fontWeight } }) => fontWeight.bold};
+`;
 
 const OrderDetailsWrapper = styled.div`
   opacity: ${({ initValues }) => (initValues.customer_vat !== '' ? 1 : 0.5)};
@@ -99,6 +107,11 @@ const OrderControlModal = ({ closeModal, currentOrder }) => {
   });
   const validationSchema = useValidationSchema('newOrder');
   const newOrder = useAutoNumeration('order');
+  const isInvoiceIssued = currentOrder
+    ? currentOrder.status.match(/invoice issued/i)
+      ? true
+      : false
+    : false;
 
   useEffect(() => {
     // * if there is no customers in app store then get it from the database
@@ -139,6 +152,7 @@ const OrderControlModal = ({ closeModal, currentOrder }) => {
       <AppGridContainer>
         <StyledAppBodyContainer>
           <Formik
+            disabled
             enableReinitialize
             initialValues={{
               price: initValues.price,
@@ -184,11 +198,14 @@ const OrderControlModal = ({ closeModal, currentOrder }) => {
               <StyledForm>
                 <div>
                   <StyledHeading>Customer info</StyledHeading>
-                  <ComboboxOrderMenu
-                    items={customers}
-                    handleSetItemFn={handleSetItemFn}
-                    handleResetItemFn={handleResetItemFn}
-                  />
+                  {!isInvoiceIssued && (
+                    <ComboboxOrderMenu
+                      items={customers}
+                      handleSetItemFn={handleSetItemFn}
+                      handleResetItemFn={handleResetItemFn}
+                      isDisabled={isInvoiceIssued}
+                    />
+                  )}
                   <FormikControl
                     type='text'
                     control='input'
@@ -230,6 +247,7 @@ const OrderControlModal = ({ closeModal, currentOrder }) => {
                     error={errors.price}
                     touched={touched.price}
                     placeholder='PRICE'
+                    disabled={isInvoiceIssued}
                   />
                   <FormikControl
                     type='text'
@@ -238,6 +256,7 @@ const OrderControlModal = ({ closeModal, currentOrder }) => {
                     error={errors.currency}
                     touched={touched.currency}
                     placeholder='CURRENCY'
+                    disabled={isInvoiceIssued}
                   />
                   <FormikControl
                     type='text'
@@ -246,23 +265,37 @@ const OrderControlModal = ({ closeModal, currentOrder }) => {
                     error={errors.desc}
                     touched={touched.desc}
                     placeholder='DESCRIPTION'
+                    disabled={isInvoiceIssued}
                   />
-                  <RadioGroup>
+                  <StatusWrapper>
                     <StyledSpan>STATUS:</StyledSpan>
-                    <FormikControl
-                      type='radio'
-                      control='radio'
-                      name='status'
-                      value='in progress'
-                    />
-                    <FormikControl
-                      type='radio'
-                      control='radio'
-                      name='status'
-                      value='finished'
-                    />
-                  </RadioGroup>
-                  <StyledButton type='submit'>Save</StyledButton>
+                    <RadioGroup>
+                      {currentOrder &&
+                      currentOrder.status.match(/invoice issued/i) ? (
+                        currentOrder.status
+                      ) : (
+                        <>
+                          <FormikControl
+                            type='radio'
+                            control='radio'
+                            name='status'
+                            value='in progress'
+                            disabled={isInvoiceIssued}
+                          />
+                          <FormikControl
+                            type='radio'
+                            control='radio'
+                            name='status'
+                            value='finished'
+                            disabled={isInvoiceIssued}
+                          />
+                        </>
+                      )}
+                    </RadioGroup>
+                  </StatusWrapper>
+                  <StyledButton disabled={isInvoiceIssued} type='submit'>
+                    Save
+                  </StyledButton>
                 </OrderDetailsWrapper>
               </StyledForm>
             )}

@@ -186,7 +186,12 @@ const AppTableBody = ({
       pageSize: 25,
       sortBy: [
         {
-          id: 'order_number',
+          // * if columns return invoice_number item it will have its length, after that check conditionals - one sorting will be used in invoice module second in order module
+          id: columns.filter((item) => {
+            return item.accessor === 'invoice_number' ? true : false;
+          }).length
+            ? 'invoice_number'
+            : 'order_number',
           desc: true,
         },
         {
@@ -195,7 +200,7 @@ const AppTableBody = ({
         },
       ],
     }),
-    []
+    [columns]
   );
 
   const {

@@ -65,7 +65,9 @@ const OrdersModule = ({ ordersList }) => {
       />
       <ActionMenu>
         <Button onClick={handleAddNewClick}>Add new</Button>
-        <Button onClick={handleEditClick}>Edit</Button>
+        <Button disabled={currentOrder === null} onClick={handleEditClick}>
+          Edit
+        </Button>
         <Button
           disabled={
             currentOrder === null || !currentOrder.status.match(/finished/i)
@@ -75,7 +77,9 @@ const OrdersModule = ({ ordersList }) => {
         </Button>
         <Button
           disabled={
-            currentOrder === null || currentOrder.status.match(/cancelled/i)
+            currentOrder === null ||
+            currentOrder.status.match(/invoice issued/i) ||
+            currentOrder.status.match(/cancelled/i)
           }
           onClick={handleDeleteClick}
         >

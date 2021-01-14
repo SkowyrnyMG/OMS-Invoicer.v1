@@ -52,6 +52,11 @@ export const ORDERS_COLUMNS = [
   },
 ];
 
+//                 desc: values.desc,
+//                 customer_name: values.customer_name,
+//                 customer_vat: values.customer_vat,
+//                 customer_address: values.customer_address,
+
 export const INVOICES_COLUMNS = [
   {
     Header: 'INVOICE NUMBER',
@@ -64,6 +69,22 @@ export const INVOICES_COLUMNS = [
   {
     Header: 'PRICE',
     accessor: 'price',
+  },
+  {
+    Header: 'CURRENCY',
+    accessor: 'currency',
+  },
+  {
+    Header: 'STATUS',
+    accessor: 'payment_status',
+  },
+  {
+    Header: 'CUSTOMER NAME',
+    accessor: 'customer_name',
+  },
+  {
+    Header: 'CUSTOMER VAT',
+    accessor: 'customer_vat',
   },
 ];
 

@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import AppGridContainer from 'components/atoms/app-grid-container/app-grid-container';
 import AppBodyContainer from 'components/atoms/app-body-container/app-body-container';
 import FormikControl from 'components/modules/formik-control/formik-control';
-import ComboboxOrderMenu from 'components/modules/combobox-menu/combobox-order-menu';
+import ComboboxOrderMenu from 'components/modules/combobox-order-menu/combobox-order-menu';
 import ActionMenu from 'components/modules/action-menu/action-menu';
 import Button from 'components/atoms/button/button';
 
@@ -172,7 +172,10 @@ const OrderControlModal = ({ closeModal, currentOrder }) => {
               };
 
               await dispatch(addNewOrder(submitData));
-              await dispatch(getAllOrders());
+
+              if (!isNewOrder) {
+                await dispatch(getAllOrders());
+              }
 
               closeModal();
             }}

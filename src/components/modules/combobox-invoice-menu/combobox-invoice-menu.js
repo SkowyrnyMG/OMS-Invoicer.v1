@@ -3,34 +3,18 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { useCombobox } from 'downshift';
 
+import ComboButton from 'components/atoms/combo-button/combo-button';
+import ComboList from 'components/atoms/combo-list/combo-list';
+import ComboInput from 'components/atoms/combo-input/combo-input';
+
 const Wrapper = styled.div`
+  grid-column: 1 / -1 !important;
   position: relative;
   margin-bottom: 3rem;
 `;
 
-const StyledList = styled.ul`
-  position: absolute;
-  max-height: 25rem;
-  padding: 2rem;
-  list-style: none;
-  overflow-y: auto;
-  background: ${({ theme: { color } }) => color.bg};
-  box-shadow: ${({ theme: { shadow } }) => shadow.bottom};
-  opacity: ${({ isOpen }) => (isOpen ? 1 : 0)};
-  visibility: ${({ isOpen }) => (isOpen ? 'visible' : 'hidden')};
-  z-index: 1000;
-`;
-
 const StyledListItem = styled.li`
   cursor: pointer;
-`;
-
-const StyledInput = styled.input`
-  padding-left: 0.5rem;
-  margin-bottom: 1rem;
-  width: 100%;
-  height: 3rem;
-  font-size: ${({ theme: { fontSize } }) => fontSize.ms};
 `;
 
 const ComboBtnWrapper = styled.div`
@@ -38,29 +22,18 @@ const ComboBtnWrapper = styled.div`
   width: 100%;
 `;
 
-const StyledComboButton = styled.button`
-  padding: 0.2rem;
-  width: 5rem;
-  height: 2rem;
-  border: 2px solid ${({ theme: { color } }) => color.primary};
-  background: none;
-  cursor: pointer;
-
-  &:not(:first-child) {
-    margin-left: 2rem;
-  }
-`;
-
 const NotFoundInfo = styled.div`
   opacity: ${({ isNotFoundVisible }) => (isNotFoundVisible ? 1 : 0)};
   display: ${({ isNotFoundVisible }) => (isNotFoundVisible ? 'auto' : 'none')};
 `;
 
-const ComboboxOrderMenu = ({ items, handleSetItemFn, handleResetItemFn }) => {
+const ComboboxInvoiceMenu = ({ items, handleSetItemFn, handleResetItemFn }) => {
   const [inputItems, setInputItems] = useState(items);
   const [isNotFoundVisible, setIsNotFoundVisible] = useState(false);
   const itemToString = (item) =>
-    item ? `${item.vat_number} - ${item.name}` : '';
+    item
+      ? `${item.order_number} - ${item.price} ${item.currency} - ${item.customer_name}`
+      : '';
   const {
     isOpen,
     getToggleButtonProps,
@@ -77,10 +50,11 @@ const ComboboxOrderMenu = ({ items, handleSetItemFn, handleResetItemFn }) => {
     itemToString,
     onInputValueChange: ({ inputValue }) => {
       const filteredItems = items.filter((item) => {
-        const searchResult = `${item.vat_number} - ${item.name}`;
+        const searchResult = `${item.order_number} - ${item.price} ${item.currency} - ${item.customer_name}`;
         return (
-          item.vat_number.toLowerCase().includes(inputValue.toLowerCase()) ||
-          item.name.toLowerCase().includes(inputValue.toLowerCase()) ||
+          item.customer_vat.toLowerCase().includes(inputValue.toLowerCase()) ||
+          item.customer_name.toLowerCase().includes(inputValue.toLowerCase()) ||
+          item.order_number.toLowerCase().includes(inputValue.toLowerCase()) ||
           searchResult.toLowerCase().match(inputValue.toLowerCase())
         );
       });
@@ -105,50 +79,49 @@ const ComboboxOrderMenu = ({ items, handleSetItemFn, handleResetItemFn }) => {
 
   return (
     <Wrapper>
-      <label {...getLabelProps()}>Choose a Customer:</label>
+      <label {...getLabelProps()}>Choose a finished order:</label>
       <div {...getComboboxProps()}>
-        <StyledInput {...getInputProps()} />
+        <ComboInput {...getInputProps()} />
         <ComboBtnWrapper>
-          <StyledComboButton
+          <ComboButton
             type='button'
             {...getToggleButtonProps()}
             aria-label='toggle menu'
           >
             {isOpen ? 'Hide' : 'Show'}
-          </StyledComboButton>
-          <StyledComboButton type='button' onClick={handleSearchClick}>
+          </ComboButton>
+          <ComboButton type='button' onClick={handleSearchClick}>
             Accept
-          </StyledComboButton>
-          <StyledComboButton type='button' onClick={handleResetClick}>
+          </ComboButton>
+          <ComboButton type='button' onClick={handleResetClick}>
             Reset
-          </StyledComboButton>
+          </ComboButton>
         </ComboBtnWrapper>
       </div>
-      <StyledList isOpen={isOpen} {...getMenuProps()}>
-        {isOpen &&
-          inputItems.map((item, index) => (
-            <StyledListItem
-              style={
-                highlightedIndex === index ? { backgroundColor: '#bde4ff' } : {}
-              }
-              key={`${item.vat_number}`}
-              {...getItemProps({ item, index })}
-            >
-              {`${item.vat_number} - ${item.name}`}
-            </StyledListItem>
-          ))}
+      <ComboList isOpen={isOpen} {...getMenuProps()}>
+        {inputItems.map((item, index) => (
+          <StyledListItem
+            style={
+              highlightedIndex === index ? { backgroundColor: '#bde4ff' } : {}
+            }
+            key={`${item.order_number}`}
+            {...getItemProps({ item, index })}
+          >
+            {`${item.order_number} - ${item.price} ${item.currency} - ${item.customer_name}`}
+          </StyledListItem>
+        ))}
         <NotFoundInfo isNotFoundVisible={isNotFoundVisible}>
           Nothing found...
         </NotFoundInfo>
-      </StyledList>
+      </ComboList>
     </Wrapper>
   );
 };
 
-ComboboxOrderMenu.propTypes = {
+ComboboxInvoiceMenu.propTypes = {
   items: PropTypes.arrayOf(PropTypes.object).isRequired,
   handleSetItemFn: PropTypes.func.isRequired,
   handleResetItemFn: PropTypes.func.isRequired,
 };
 
-export default ComboboxOrderMenu;
+export default ComboboxInvoiceMenu;

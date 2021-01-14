@@ -10,7 +10,7 @@ import Button from 'components/atoms/button/button';
 
 import { ORDERS_COLUMNS } from 'utils/table-columns';
 import { useDefaultColumn } from 'hooks/useDefaultColumn';
-import { cancelOrder, getAllOrders } from 'store/slices/db-slice/db-slice';
+import { setOrderStatus, getAllOrders } from 'store/slices/db-slice/db-slice';
 
 const OrdersModule = ({ ordersList }) => {
   const dispatch = useDispatch();
@@ -33,8 +33,9 @@ const OrdersModule = ({ ordersList }) => {
   console.log(ordersList);
 
   const handleDeleteClick = async () => {
+    const status = 'Cancelled';
     const orderNumber = currentOrder.order_number;
-    await dispatch(cancelOrder(orderNumber));
+    await dispatch(setOrderStatus({ orderNumber, status }));
     dispatch(getAllOrders());
   };
 

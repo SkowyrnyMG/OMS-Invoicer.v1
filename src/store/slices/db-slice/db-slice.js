@@ -152,16 +152,15 @@ export const addNewOrder = createAsyncThunk(
   }
 );
 
-export const cancelOrder = createAsyncThunk(
-  'db/cancelOrder',
-  async (orderNumber) => {
+export const setOrderStatus = createAsyncThunk(
+  'db/setOrderStatus',
+  async ({ orderNumber, status }) => {
     const localUuid = getLocalValue('uuid');
-    const canceledStatus = 'Cancelled';
     try {
       const res = await db
         .put(
           `/data/${localUuid}/orders/firstReg/${orderNumber}/status.json`,
-          JSON.stringify(canceledStatus),
+          JSON.stringify(status),
           {
             headers: {
               Accept: 'application/json',
@@ -215,6 +214,36 @@ export const getLastInvoice = createAsyncThunk(
         .get(`/data/${localUuid}/invoices/lastOrder.json`)
         .then(({ data }) => {
           console.log(data);
+          return data;
+        });
+    } catch (error) {
+      return error;
+    }
+  }
+);
+
+export const addNewInvoice = createAsyncThunk(
+  'db/addNewInvoice',
+  async ({ invoiceValues, isNewInvoice }) => {
+    const localUuid = getLocalValue('uuid');
+    console.log(invoiceValues);
+    try {
+      return await db
+        .put(
+          `/data/${localUuid}/invoices/firstReg/${invoiceValues.invoice_number}.json`,
+          invoiceValues
+        )
+        .then(async ({ data }) => {
+          if (isNewInvoice) {
+            await db
+              .put(`/data/${localUuid}/invoices/lastInvoice.json`, {
+                firstReg: invoiceValues.invoice_number,
+              })
+              .then(({ invoiceNumber }) => {
+                return invoiceNumber;
+              });
+          }
+
           return data;
         });
     } catch (error) {
@@ -316,8 +345,7 @@ const dbSlice = createSlice({
       state.orders.firstReg =
         'Error, something went wrong.. Please refresh website and try one more time';
     },
-
-    [cancelOrder.rejected]: (state) => {
+    [setOrderStatus.rejected]: (state) => {
       state.orders.firstReg = ['ERROR! REFRESH THE PAGE!'];
     },
 
@@ -327,6 +355,22 @@ const dbSlice = createSlice({
         state.invoices.firstReg = invoicesList;
         state.invoices.lastInvoice = lastInvoice;
       }
+    },
+    [getAllInvoices.rejected]: (state) => {
+      state.invoices.fistReg =
+        'Error something went wrong.. Please refresh website and try one more time';
+    },
+
+    [addNewInvoice.fulfilled]: (state, { payload }) => {
+      state.invoices.firstReg = state.invoices.firstReg
+        ? [...state.invoices.firstReg, payload]
+        : [payload];
+      state.invoices.lastInvoice.firstReg = payload.invoice_number;
+    },
+    [addNewInvoice.rejected]: (state) => {
+      state.invoices.firstReg = {
+        invoice_number: 'Error something went wrong. Please refresh the page',
+      };
     },
   },
 });

@@ -124,6 +124,29 @@ export const useValidationSchema = (type) => {
           'You have to choose client from your database'
         ),
       });
+    case 'newInvoice':
+      return Yup.object().shape({
+        order_number: Yup.string().required('Order is required!'),
+        price: Yup.number().required('Price is required!'),
+        currency: Yup.string()
+          .min(2, 'Currency shortcut should be at least 2 signs long!')
+          .max(4, 'Currency shortcut should be not longer than 3 signs')
+          .required('Currency is required!'),
+        desc: Yup.string()
+          .min(5, 'Description should be at least 5 signs long!')
+          .max(120, 'Description should not be longer than 120 signs!')
+          .required('Description is required'),
+        payment_status: Yup.string().required('Status is required!'),
+        customer_name: Yup.string().required(
+          'You have to choose client from your database'
+        ),
+        customer_vat: Yup.string().required(
+          'You have to choose client from your database'
+        ),
+        customer_address: Yup.string().required(
+          'You have to choose client from your database'
+        ),
+      });
     default:
       return '';
   }

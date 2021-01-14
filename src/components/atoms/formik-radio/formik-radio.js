@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { Field } from 'formik';
+import { ErrorMessage, Field } from 'formik';
+import ErrorMsg from 'components/atoms/error-msg/error-msg';
 
 const StyledRadio = styled(Field)`
   position: absolute;
@@ -45,11 +46,21 @@ const StyledLabel = styled.label`
   /* } */
 `;
 
-const FormikRadio = ({ name, error, touched, value, ...rest }) => (
+const FormikRadio = ({
+  name,
+  error,
+  touched,
+  value,
+  displayError,
+  ...rest
+}) => (
   <>
     <StyledRadio name={name} id={`${name}-${value}`} value={value} {...rest} />
     <StyledLabel htmlFor={`${name}-${value}`} error={error} touched={touched}>
       {value}
+      <ErrorMsg>
+        <ErrorMessage name={name} />
+      </ErrorMsg>
     </StyledLabel>
   </>
 );

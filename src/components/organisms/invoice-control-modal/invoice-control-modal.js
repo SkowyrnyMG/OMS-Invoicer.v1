@@ -7,17 +7,18 @@ import { useDispatch, useSelector } from 'react-redux';
 import AppGridContainer from 'components/atoms/app-grid-container/app-grid-container';
 import AppBodyContainer from 'components/atoms/app-body-container/app-body-container';
 import FormikControl from 'components/modules/formik-control/formik-control';
-import ComboboxMenu from 'components/modules/combobox-menu/combobox-order-menu';
+import ComboboxInvoiceMenu from 'components/modules/combobox-invoice-menu/combobox-invoice-menu';
 import ActionMenu from 'components/modules/action-menu/action-menu';
 import Button from 'components/atoms/button/button';
 
 import { useValidationSchema } from 'hooks/useValidationSchema';
 import { useAutoNumeration } from 'hooks/useAutoNumeration';
 import {
-  addNewOrder,
+  addNewInvoice,
   getAllOrders,
-  getAllCustomers,
-  selectCustomers,
+  // getAllCustomers,
+  setOrderStatus,
+  selectOrders,
 } from 'store/slices/db-slice/db-slice';
 
 const Wrapper = styled.div`
@@ -38,8 +39,8 @@ const StyledAppBodyContainer = styled(AppBodyContainer)`
 `;
 
 const StyledForm = styled(Form)`
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   padding: 5rem;
 
   > div {
@@ -83,30 +84,21 @@ const StyledSpan = styled.span``;
 //     initValues.customer_vat !== '' ? 'arrow' : 'not-allowed'};
 // `;
 
-const InvoiceControlModal = ({ closeModal, currentOrder }) => {
+const InvoiceControlModal = ({ closeModal, currentInvoice }) => {
   const dispatch = useDispatch();
-  const customers = useSelector(selectCustomers);
+  const orders = useSelector(selectOrders);
   const [initValues, setInitValues] = useState({
+    order_number: '',
     price: '',
     currency: '',
-    status: 'unpaid',
+    payment_status: 'unpaid',
     desc: '',
     customer_name: '',
     customer_vat: '',
     customer_address: '',
   });
-  const validationSchema = useValidationSchema('newOrder');
-  const newOrder = useAutoNumeration();
-
-  useEffect(() => {
-    // * if there is no customers in app store then get it from the database
-    if (!customers.length) {
-      dispatch(getAllCustomers());
-    }
-    if (currentOrder) {
-      setInitValues(currentOrder);
-    }
-  }, [dispatch, customers.length, currentOrder, setInitValues]);
+  const validationSchema = useValidationSchema('newInvoice');
+  const newInvoice = useAutoNumeration();
 
   const handleSetItemFn = (item) => {
     if (item === null) {
@@ -114,23 +106,38 @@ const InvoiceControlModal = ({ closeModal, currentOrder }) => {
     }
     setInitValues((state) => ({
       ...state,
-      customer_name: item.name,
-      customer_vat: item.vat_number,
-      customer_address: item.address,
+      ...item,
     }));
   };
 
   const handleResetItemFn = () => {
     setInitValues((state) => ({
       ...state,
+      order_number: '',
+      price: '',
+      currency: '',
+      payment_status: 'unpaid',
+      desc: '',
       customer_name: '',
       customer_vat: '',
       customer_address: '',
     }));
   };
 
-  const orderNumberSetter = () =>
-    currentOrder ? currentOrder.order_number : newOrder;
+  const invoiceNumberSetter = () =>
+    currentInvoice ? currentInvoice.invoice_number : newInvoice;
+
+  useEffect(() => {
+    // * if there is no orders in app store then get it from the database
+    if (!orders.length) {
+      dispatch(getAllOrders());
+    }
+    if (currentInvoice) {
+      setInitValues(currentInvoice);
+    }
+  }, [dispatch, orders.length, currentInvoice, setInitValues, orders]);
+
+  const finishedOrders = orders.filter((order) => order.status === 'finished');
 
   return (
     <Wrapper>
@@ -139,9 +146,10 @@ const InvoiceControlModal = ({ closeModal, currentOrder }) => {
           <Formik
             enableReinitialize
             initialValues={{
+              order_number: initValues.order_number,
               price: initValues.price,
               currency: initValues.currency,
-              status: initValues.status,
+              payment_status: initValues.payment_status,
               desc: initValues.desc,
               customer_name: initValues.customer_name,
               customer_vat: initValues.customer_vat,
@@ -149,25 +157,30 @@ const InvoiceControlModal = ({ closeModal, currentOrder }) => {
             }}
             validationSchema={validationSchema}
             onSubmit={async (values) => {
-              const orderValues = await {
-                order_number: orderNumberSetter(),
+              const invoiceValues = await {
+                invoice_number: invoiceNumberSetter(),
+                order_number: values.order_number,
                 price: values.price,
                 currency: values.currency,
                 desc: values.desc,
-                status: values.status,
+                payment_status: values.payment_status,
                 customer_name: values.customer_name,
                 customer_vat: values.customer_vat,
                 customer_address: values.customer_address,
               };
 
-              const isNewOrder = currentOrder ? false : true;
+              const isNewInvoice = currentInvoice ? false : true;
 
               const submitData = {
-                orderValues,
-                isNewOrder,
+                invoiceValues,
+                isNewInvoice,
               };
 
-              await dispatch(addNewOrder(submitData));
+              const status = `Invoice issued: ${invoiceNumberSetter()}`;
+              await dispatch(addNewInvoice(submitData));
+              await dispatch(
+                setOrderStatus({ orderNumber: values.order_number, status })
+              );
               await dispatch(getAllOrders());
 
               closeModal();
@@ -175,13 +188,13 @@ const InvoiceControlModal = ({ closeModal, currentOrder }) => {
           >
             {({ errors, touched }) => (
               <StyledForm>
+                <ComboboxInvoiceMenu
+                  items={finishedOrders}
+                  handleSetItemFn={handleSetItemFn}
+                  handleResetItemFn={handleResetItemFn}
+                />
                 <div>
                   <StyledHeading>Customer info</StyledHeading>
-                  <ComboboxMenu
-                    items={customers}
-                    handleSetItemFn={handleSetItemFn}
-                    handleResetItemFn={handleResetItemFn}
-                  />
                   <FormikControl
                     type='text'
                     control='input'
@@ -211,11 +224,20 @@ const InvoiceControlModal = ({ closeModal, currentOrder }) => {
                   />
                 </div>
                 <div>
-                  <StyledHeading>Order details</StyledHeading>
+                  <StyledHeading>Invoice details</StyledHeading>
                   <StyledHeading>
-                    <span>Order Number: </span>
-                    {orderNumberSetter()}
+                    <span>Invoice Number: </span>
+                    {invoiceNumberSetter()}
                   </StyledHeading>
+                  <FormikControl
+                    type='text'
+                    control='input'
+                    name='order_number'
+                    error={errors.order_number}
+                    touched={touched.order_number}
+                    placeholder='ORDER NUMBER'
+                    disabled
+                  />
                   <FormikControl
                     type='number'
                     control='input'
@@ -245,19 +267,20 @@ const InvoiceControlModal = ({ closeModal, currentOrder }) => {
                     <FormikControl
                       type='radio'
                       control='radio'
-                      name='status'
+                      name='payment_status'
                       value='unpaid'
+                      displayError
                     />
                     <FormikControl
                       type='radio'
                       control='radio'
-                      name='status'
+                      name='payment_status'
                       value='paid'
                     />
                     <FormikControl
                       type='radio'
                       control='radio'
-                      name='status'
+                      name='payment_status'
                       value='partialy paid'
                     />
                   </RadioGroup>

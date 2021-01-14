@@ -24,7 +24,10 @@ const InvoicesModule = ({ invoicesList }) => {
   return (
     <AppGridContainer>
       {isModalOpen && (
-        <InvoiceControlModal closeModal={() => setIsModalOpen(false)} />
+        <InvoiceControlModal
+          closeModal={() => setIsModalOpen(false)}
+          currentInvoice={currentInvoice}
+        />
       )}
       <AppTableBody
         columns={columns}

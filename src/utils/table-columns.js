@@ -75,6 +75,10 @@ export const INVOICES_COLUMNS = [
     accessor: 'currency',
   },
   {
+    Header: 'LEFT TO PAY (in invoice currency)',
+    accessor: 'left_to_pay',
+  },
+  {
     Header: 'STATUS',
     accessor: 'payment_status',
   },

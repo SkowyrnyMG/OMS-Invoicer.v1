@@ -21,6 +21,15 @@ const InvoicesModule = ({ invoicesList }) => {
   ]);
   console.log(currentInvoice);
 
+  const handleEditClick = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleAddNewClick = () => {
+    setCurrentInvoice(null);
+    setIsModalOpen(true);
+  };
+
   return (
     <AppGridContainer>
       {isModalOpen && (
@@ -36,9 +45,10 @@ const InvoicesModule = ({ invoicesList }) => {
         setCurrentPosValues={setCurrentInvoice}
       />
       <ActionMenu>
-        <Button onClick={() => setIsModalOpen(true)}>Add new</Button>
-        <Button>Edit</Button>
-        <Button>delete</Button>
+        <Button onClick={handleAddNewClick}>Add new</Button>
+        <Button disabled={currentInvoice === null} onClick={handleEditClick}>
+          Edit
+        </Button>
       </ActionMenu>
     </AppGridContainer>
   );

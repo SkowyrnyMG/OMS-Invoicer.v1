@@ -137,6 +137,7 @@ export const useValidationSchema = (type) => {
           .max(120, 'Description should not be longer than 120 signs!')
           .required('Description is required'),
         payment_status: Yup.string().required('Status is required!'),
+        payment_value: Yup.number().required('Payment value is required!'),
         customer_name: Yup.string().required(
           'You have to choose client from your database'
         ),

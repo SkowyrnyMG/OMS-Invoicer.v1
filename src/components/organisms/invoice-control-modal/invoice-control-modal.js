@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { Formik, Form } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
-// import axios from 'axios';
 
 import AppGridContainer from 'components/atoms/app-grid-container/app-grid-container';
 import AppBodyContainer from 'components/atoms/app-body-container/app-body-container';
@@ -16,6 +15,7 @@ import { useAutoNumeration } from 'hooks/useAutoNumeration';
 import {
   addNewInvoice,
   getAllOrders,
+  getAllInvoices,
   // getAllCustomers,
   setOrderStatus,
   selectOrders,
@@ -92,6 +92,8 @@ const InvoiceControlModal = ({ closeModal, currentInvoice }) => {
     price: '',
     currency: '',
     payment_status: 'unpaid',
+    payment_value: 0,
+    left_to_pay: 0,
     desc: '',
     customer_name: '',
     customer_vat: '',
@@ -117,6 +119,8 @@ const InvoiceControlModal = ({ closeModal, currentInvoice }) => {
       price: '',
       currency: '',
       payment_status: 'unpaid',
+      payment_value: 0,
+      left_to_pay: 0,
       desc: '',
       customer_name: '',
       customer_vat: '',
@@ -150,6 +154,8 @@ const InvoiceControlModal = ({ closeModal, currentInvoice }) => {
               price: initValues.price,
               currency: initValues.currency,
               payment_status: initValues.payment_status,
+              payment_value: initValues.payment_value,
+              left_to_pay: initValues.left_to_pay,
               desc: initValues.desc,
               customer_name: initValues.customer_name,
               customer_vat: initValues.customer_vat,
@@ -164,6 +170,11 @@ const InvoiceControlModal = ({ closeModal, currentInvoice }) => {
                 currency: values.currency,
                 desc: values.desc,
                 payment_status: values.payment_status,
+                payment_value: values.payment_value,
+                left_to_pay:
+                  values.payment_status === 'paid'
+                    ? 0
+                    : values.price - values.payment_value,
                 customer_name: values.customer_name,
                 customer_vat: values.customer_vat,
                 customer_address: values.customer_address,
@@ -181,18 +192,22 @@ const InvoiceControlModal = ({ closeModal, currentInvoice }) => {
               await dispatch(
                 setOrderStatus({ orderNumber: values.order_number, status })
               );
-              await dispatch(getAllOrders());
+              if (!isNewInvoice) {
+                await dispatch(getAllInvoices());
+              }
 
               closeModal();
             }}
           >
-            {({ errors, touched }) => (
+            {({ errors, touched, values }) => (
               <StyledForm>
-                <ComboboxInvoiceMenu
-                  items={finishedOrders}
-                  handleSetItemFn={handleSetItemFn}
-                  handleResetItemFn={handleResetItemFn}
-                />
+                {!currentInvoice && (
+                  <ComboboxInvoiceMenu
+                    items={finishedOrders}
+                    handleSetItemFn={handleSetItemFn}
+                    handleResetItemFn={handleResetItemFn}
+                  />
+                )}
                 <div>
                   <StyledHeading>Customer info</StyledHeading>
                   <FormikControl
@@ -247,6 +262,15 @@ const InvoiceControlModal = ({ closeModal, currentInvoice }) => {
                     placeholder='PRICE'
                   />
                   <FormikControl
+                    type='number'
+                    control='input'
+                    name='left_to_pay'
+                    error={errors.left_to_pay}
+                    touched={touched.left_to_pay}
+                    placeholder='LEFT TO PAY'
+                    disabled
+                  />
+                  <FormikControl
                     type='text'
                     control='input'
                     name='currency'
@@ -284,6 +308,16 @@ const InvoiceControlModal = ({ closeModal, currentInvoice }) => {
                       value='partialy paid'
                     />
                   </RadioGroup>
+                  {values.payment_status === 'partialy paid' && (
+                    <FormikControl
+                      type='number'
+                      control='input'
+                      name='payment_value'
+                      error={errors.payment_value}
+                      touched={touched.payment_value}
+                      placeholder='PAYMENT VALUE'
+                    />
+                  )}
                   <StyledButton type='submit'>Save</StyledButton>
                 </div>
               </StyledForm>

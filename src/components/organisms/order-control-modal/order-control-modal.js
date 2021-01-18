@@ -12,6 +12,7 @@ import ComboboxOrderMenu from 'components/modules/combobox-order-menu/combobox-o
 import ActionMenu from 'components/modules/action-menu/action-menu';
 import Button from 'components/atoms/button/button';
 
+import { CURRENCY } from 'utils/constant-data';
 import { useValidationSchema } from 'hooks/useValidationSchema';
 import { useAutoNumeration } from 'hooks/useAutoNumeration';
 import {
@@ -249,7 +250,7 @@ const OrderControlModal = ({ closeModal, currentOrder }) => {
                     placeholder='PRICE'
                     disabled={isInvoiceIssued}
                   />
-                  <FormikControl
+                  {/* <FormikControl
                     type='text'
                     control='input'
                     name='currency'
@@ -257,6 +258,16 @@ const OrderControlModal = ({ closeModal, currentOrder }) => {
                     touched={touched.currency}
                     placeholder='CURRENCY'
                     disabled={isInvoiceIssued}
+                  /> */}
+                  <FormikControl
+                    type='select'
+                    control='select'
+                    name='currency'
+                    error={errors.currency}
+                    touched={touched.currency}
+                    placeholder='CURRENCY'
+                    options={CURRENCY}
+                    // disabled={isInvoiceIssued}
                   />
                   <FormikControl
                     type='text'

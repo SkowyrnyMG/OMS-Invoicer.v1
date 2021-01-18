@@ -49,19 +49,28 @@ const ComboboxInvoiceMenu = ({ items, handleSetItemFn, handleResetItemFn }) => {
     items: inputItems,
     itemToString,
     onInputValueChange: ({ inputValue }) => {
-      const filteredItems = items.filter((item) => {
-        const searchResult = `${item.order_number} - ${item.price} ${item.currency} - ${item.customer_name}`;
-        return (
-          item.customer_vat.toLowerCase().includes(inputValue.toLowerCase()) ||
-          item.customer_name.toLowerCase().includes(inputValue.toLowerCase()) ||
-          item.order_number.toLowerCase().includes(inputValue.toLowerCase()) ||
-          searchResult.toLowerCase().match(inputValue.toLowerCase())
-        );
-      });
+      if (items) {
+        const filteredItems = items.filter((item) => {
+          const searchResult = `${item.order_number} - ${item.price} ${item.currency} - ${item.customer_name}`;
+          return (
+            item.customer_vat
+              .toLowerCase()
+              .includes(inputValue.toLowerCase()) ||
+            item.customer_name
+              .toLowerCase()
+              .includes(inputValue.toLowerCase()) ||
+            item.order_number
+              .toLowerCase()
+              .includes(inputValue.toLowerCase()) ||
+            searchResult.toLowerCase().match(inputValue.toLowerCase()) ||
+            inputValue === ''
+          );
+        });
 
-      setIsNotFoundVisible(false);
-      setInputItems(filteredItems);
-      if (!filteredItems.length) {
+        setIsNotFoundVisible(false);
+        setInputItems(filteredItems);
+      }
+      if (!items.length || (!items.length && inputValue === '')) {
         setIsNotFoundVisible(true);
       }
     },

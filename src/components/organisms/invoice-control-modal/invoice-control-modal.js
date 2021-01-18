@@ -10,6 +10,7 @@ import ComboboxInvoiceMenu from 'components/modules/combobox-invoice-menu/combob
 import ActionMenu from 'components/modules/action-menu/action-menu';
 import Button from 'components/atoms/button/button';
 
+import { STATUS_OPTION } from 'utils/constant-data';
 import { useValidationSchema } from 'hooks/useValidationSchema';
 import { useAutoNumeration } from 'hooks/useAutoNumeration';
 import {
@@ -109,6 +110,7 @@ const InvoiceControlModal = ({ closeModal, currentInvoice }) => {
     setInitValues((state) => ({
       ...state,
       ...item,
+      left_to_pay: item.price,
     }));
   };
 
@@ -141,7 +143,9 @@ const InvoiceControlModal = ({ closeModal, currentInvoice }) => {
     }
   }, [dispatch, orders.length, currentInvoice, setInitValues, orders]);
 
-  const finishedOrders = orders.filter((order) => order.status === 'finished');
+  const finishedOrders = orders.filter(
+    (order) => order.status === STATUS_OPTION.order.finished
+  );
 
   return (
     <Wrapper>
@@ -194,6 +198,9 @@ const InvoiceControlModal = ({ closeModal, currentInvoice }) => {
               );
               if (!isNewInvoice) {
                 await dispatch(getAllInvoices());
+              }
+              if (isNewInvoice) {
+                await dispatch(getAllOrders());
               }
 
               closeModal();

@@ -51,3 +51,13 @@ export const COUNTRY_CODES = [
   'GB',
   'IT',
 ];
+
+export const STATUS_OPTION = {
+  invoice: {
+    cancelled: 'Cancelled',
+  },
+  order: {
+    cancelled: 'Cancelled',
+    finished: 'finished',
+  },
+};

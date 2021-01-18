@@ -10,6 +10,7 @@ import Button from 'components/atoms/button/button';
 
 import { ORDERS_COLUMNS } from 'utils/table-columns';
 import { useDefaultColumn } from 'hooks/useDefaultColumn';
+import { STATUS_OPTION } from 'utils/constant-data';
 import { setOrderStatus, getAllOrders } from 'store/slices/db-slice/db-slice';
 
 const OrdersModule = ({ ordersList }) => {
@@ -32,13 +33,7 @@ const OrdersModule = ({ ordersList }) => {
   console.log('lista orderdów');
   console.log(ordersList);
 
-  const STATUS_OPTION = {
-    cancelled: 'Cancelled',
-    finished: 'finished',
-  };
-
-  const handleActionClick = async (status) => {
-    // const status = 'Cancelled';
+  const handleStatusClick = async (status) => {
     const orderNumber = currentOrder.order_number;
     await dispatch(setOrderStatus({ orderNumber, status }));
     dispatch(getAllOrders());
@@ -75,26 +70,26 @@ const OrdersModule = ({ ordersList }) => {
         </Button>
         <Button
           disabled={
-            !currentOrder !== null && !currentOrder.status.match(/in progress/i)
+            currentOrder === null || !currentOrder.status.match(/in progress/i)
           }
-          onClick={() => handleActionClick(STATUS_OPTION.finished)}
+          onClick={() => handleStatusClick(STATUS_OPTION.order.finished)}
         >
           Finish order
         </Button>
-        <Button
+        {/* <Button
           disabled={
             currentOrder === null || !currentOrder.status.match(/finished/i)
           }
         >
           Issue invoice
-        </Button>
+        </Button> */}
         <Button
           disabled={
             currentOrder === null ||
             currentOrder.status.match(/invoice issued/i) ||
             currentOrder.status.match(/cancelled/i)
           }
-          onClick={() => handleActionClick(STATUS_OPTION.cancelled)}
+          onClick={() => handleStatusClick(STATUS_OPTION.order.cancelled)}
         >
           Cancel
         </Button>

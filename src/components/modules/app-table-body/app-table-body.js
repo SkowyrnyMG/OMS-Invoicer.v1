@@ -295,8 +295,16 @@ const AppTableBody = ({
                   {...row.getRowProps({
                     style: {
                       backgroundColor: row.isSelected ? '#446DF644' : '',
-                      color: row.original.status === 'Cancelled' ? 'red' : '',
-                      opacity: row.original.status === 'Cancelled' ? 0.5 : 1,
+                      color:
+                        row.original.status === 'Cancelled' ||
+                        row.original.payment_status === 'Cancelled'
+                          ? 'red'
+                          : '',
+                      opacity:
+                        row.original.status === 'Cancelled' ||
+                        row.original.payment_status === 'Cancelled'
+                          ? 0.5
+                          : 1,
                     },
                   })}
                   onClick={() => {

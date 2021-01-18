@@ -252,6 +252,33 @@ export const addNewInvoice = createAsyncThunk(
   }
 );
 
+export const setInvoiceStatus = createAsyncThunk(
+  'db/setInvoiceStatus',
+  async ({ invoiceNumber, status }) => {
+    const localUuid = getLocalValue('uuid');
+    try {
+      const res = await db
+        .put(
+          `/data/${localUuid}/invoices/firstReg/${invoiceNumber}/payment_status.json`,
+          JSON.stringify(status),
+          {
+            headers: {
+              Accept: 'application/json',
+              'Content-type': 'application/json',
+            },
+          }
+        )
+        .then(({ data }) => {
+          console.log(data);
+          return data;
+        });
+      return { status: res, invoiceNumber };
+    } catch (error) {
+      return error;
+    }
+  }
+);
+
 const dbSlice = createSlice({
   name: 'database',
   initialState: {
@@ -345,6 +372,7 @@ const dbSlice = createSlice({
       state.orders.firstReg =
         'Error, something went wrong.. Please refresh website and try one more time';
     },
+
     [setOrderStatus.rejected]: (state) => {
       state.orders.firstReg = ['ERROR! REFRESH THE PAGE!'];
     },
@@ -371,6 +399,10 @@ const dbSlice = createSlice({
       state.invoices.firstReg = {
         invoice_number: 'Error something went wrong. Please refresh the page',
       };
+    },
+
+    [setInvoiceStatus.rejected]: (state) => {
+      state.orders.firstReg = ['ERROR! REFRESH THE PAGE!'];
     },
   },
 });

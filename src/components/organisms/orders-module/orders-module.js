@@ -32,8 +32,13 @@ const OrdersModule = ({ ordersList }) => {
   console.log('lista orderdów');
   console.log(ordersList);
 
-  const handleDeleteClick = async () => {
-    const status = 'Cancelled';
+  const STATUS_OPTION = {
+    cancelled: 'Cancelled',
+    finished: 'finished',
+  };
+
+  const handleActionClick = async (status) => {
+    // const status = 'Cancelled';
     const orderNumber = currentOrder.order_number;
     await dispatch(setOrderStatus({ orderNumber, status }));
     dispatch(getAllOrders());
@@ -70,6 +75,14 @@ const OrdersModule = ({ ordersList }) => {
         </Button>
         <Button
           disabled={
+            !currentOrder !== null && !currentOrder.status.match(/in progress/i)
+          }
+          onClick={() => handleActionClick(STATUS_OPTION.finished)}
+        >
+          Finish order
+        </Button>
+        <Button
+          disabled={
             currentOrder === null || !currentOrder.status.match(/finished/i)
           }
         >
@@ -81,7 +94,7 @@ const OrdersModule = ({ ordersList }) => {
             currentOrder.status.match(/invoice issued/i) ||
             currentOrder.status.match(/cancelled/i)
           }
-          onClick={handleDeleteClick}
+          onClick={() => handleActionClick(STATUS_OPTION.cancelled)}
         >
           Cancel
         </Button>

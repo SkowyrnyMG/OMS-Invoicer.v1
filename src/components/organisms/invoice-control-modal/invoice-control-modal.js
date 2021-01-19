@@ -286,14 +286,14 @@ const InvoiceControlModal = ({ closeModal, currentInvoice }) => {
                     placeholder='CURRENCY'
                   /> */}
                   <FormikControl
-                    type='select'
+                    type='input'
                     control='select'
                     name='currency'
                     error={errors.currency}
                     touched={touched.currency}
                     placeholder='CURRENCY'
-                    defaultValue={
-                      currentInvoice ? currentInvoice.currency : 'EUR'
+                    value={
+                      currentInvoice ? currentInvoice.currency : values.currency
                     }
                     options={CURRENCY}
                   />

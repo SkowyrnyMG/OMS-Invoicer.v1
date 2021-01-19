@@ -39,7 +39,6 @@ const OrdersModule = ({ ordersList }) => {
     dispatch(getAllOrders());
   };
 
-  // TODO optionaly add possibility to edit order status by using button from quick menu
   const handleAddNewClick = () => {
     setCurrentOrder(null);
     setIsModalOpen(true);

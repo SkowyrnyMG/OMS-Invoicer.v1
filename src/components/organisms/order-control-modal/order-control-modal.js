@@ -250,15 +250,6 @@ const OrderControlModal = ({ closeModal, currentOrder }) => {
                     placeholder='PRICE'
                     disabled={isInvoiceIssued}
                   />
-                  {/* <FormikControl
-                    type='text'
-                    control='input'
-                    name='currency'
-                    error={errors.currency}
-                    touched={touched.currency}
-                    placeholder='CURRENCY'
-                    disabled={isInvoiceIssued}
-                  /> */}
                   <FormikControl
                     type='input'
                     control='select'
@@ -268,7 +259,7 @@ const OrderControlModal = ({ closeModal, currentOrder }) => {
                     placeholder='CURRENCY'
                     defaultValue={currentOrder ? currentOrder.currency : 'EUR'}
                     options={CURRENCY}
-                    // disabled={isInvoiceIssued}
+                    disabled={isInvoiceIssued}
                   />
                   <FormikControl
                     type='text'

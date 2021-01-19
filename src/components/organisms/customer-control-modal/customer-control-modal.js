@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Formik, Form } from 'formik';
@@ -15,6 +15,7 @@ import Input from 'components/atoms/input/input';
 
 import { useValidationSchema } from 'hooks/useValidationSchema';
 import {
+  getAllCustomers,
   addNewCustomer,
   selectCustomers,
 } from 'store/slices/db-slice/db-slice';
@@ -100,7 +101,8 @@ const StyledInput = styled(Input)`
   grid-column: 1 / 3;
 `;
 
-const AddNewCustomerModal = ({ closeModal }) => {
+const AddNewCustomerModal = ({ closeModal, currentCustomer }) => {
+  console.log(currentCustomer);
   const dispatch = useDispatch();
   const allCustomers = useSelector(selectCustomers);
   const [initValues, setInitValues] = useState({
@@ -119,6 +121,12 @@ const AddNewCustomerModal = ({ closeModal }) => {
   const [verifyInput, setVerifyInput] = useState('');
   const [isViesValid, setIsViesValid] = useState(true);
   const [isVatDoubledMsg, setIsVatDoubledMsg] = useState(false);
+
+  useEffect(() => {
+    if (currentCustomer) {
+      setInitValues(currentCustomer);
+    }
+  }, [currentCustomer]);
 
   const handleViesClick = async () => {
     dispatch(setLoadingOn());
@@ -185,24 +193,29 @@ const AddNewCustomerModal = ({ closeModal }) => {
               contactPhone: '',
             }}
             validationSchema={validationSchema}
-            onSubmit={(values) => {
+            onSubmit={async (values) => {
+              const parsedValues = {
+                ...values,
+                address: `${values.street}, ${values.postCode}, ${values.town}, ${values.country},`,
+              };
+              const isNewCustomer = currentCustomer === null ? true : false;
               const isVatDoubled =
-                allCustomers !== null && allCustomers !== false
+                allCustomers !== null && allCustomers !== false && isNewCustomer
                   ? allCustomers.filter(
                       (customer) => customer.vat_number === values.vat_number
                     )
                   : [];
 
+              // * app prevents to add a customer more than once
               if (isVatDoubled.length === 0) {
                 setIsVatDoubledMsg(false);
-                const parsedValues = {
-                  ...values,
-                  address: `${values.street}, ${values.postCode}, ${values.town}, ${values.country},`,
-                };
-                dispatch(addNewCustomer(parsedValues));
+                await dispatch(addNewCustomer(parsedValues));
                 closeModal();
               } else {
                 setIsVatDoubledMsg(true);
+              }
+              if (isVatDoubled.length === 0 && !isNewCustomer) {
+                await dispatch(getAllCustomers());
               }
             }}
           >

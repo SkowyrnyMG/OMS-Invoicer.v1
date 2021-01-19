@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 
 import AppGridContainer from 'components/atoms/app-grid-container/app-grid-container';
 import AppTableBody from 'components/modules/app-table-body/app-table-body';
-import AddNewCustomerModal from 'components/organisms/add-new-customer-modal/add-new-customer-modal';
+import CustomerCotrolModal from 'components/organisms/customer-control-modal/customer-control-modal';
 import ActionMenu from 'components/modules/action-menu/action-menu';
 import Button from 'components/atoms/button/button';
 
@@ -33,10 +33,22 @@ const CustomersModule = ({ customersList }) => {
     dispatch(deleteCustomer(cred));
   };
 
+  const handleAddNewClick = () => {
+    setCurrentCustomer(null);
+    setIsModalOpen(true);
+  };
+
+  const handleEditClick = () => {
+    setIsModalOpen(true);
+  };
+
   return (
     <AppGridContainer>
       {isModalOpen && (
-        <AddNewCustomerModal closeModal={() => setIsModalOpen(false)} />
+        <CustomerCotrolModal
+          currentCustomer={currentCustomer}
+          closeModal={() => setIsModalOpen(false)}
+        />
       )}
       <AppTableBody
         setCurrentPosValues={setCurrentCustomer}
@@ -45,8 +57,10 @@ const CustomersModule = ({ customersList }) => {
         defaultColumn={defaultColumn}
       />
       <ActionMenu>
-        <Button onClick={() => setIsModalOpen(true)}>Add new</Button>
-        <Button>Edit</Button>
+        <Button onClick={handleAddNewClick}>Add new</Button>
+        <Button onClick={handleEditClick} disabled={currentCustomer === null}>
+          Edit
+        </Button>
         <Button
           onClick={() => handleDeleteClick(currentCustomer)}
           disabled={currentCustomer === null}

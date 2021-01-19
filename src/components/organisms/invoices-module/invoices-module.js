@@ -73,6 +73,16 @@ const InvoicesModule = ({ invoicesList }) => {
         >
           Cancel
         </Button>
+        <Button
+          disabled={
+            currentInvoice === null ||
+            currentInvoice.payment_status.match(/cancelled/i) ||
+            currentInvoice.payment_status.match(/^\paid/i)
+          }
+          onClick={() => handleStatusClick(STATUS_OPTION.invoice.paid)}
+        >
+          Mark as paid
+        </Button>
       </ActionMenu>
     </AppGridContainer>
   );

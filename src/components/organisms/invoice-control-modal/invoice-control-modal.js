@@ -277,14 +277,6 @@ const InvoiceControlModal = ({ closeModal, currentInvoice }) => {
                     placeholder='LEFT TO PAY'
                     disabled
                   />
-                  {/* <FormikControl
-                    type='text'
-                    control='input'
-                    name='currency'
-                    error={errors.currency}
-                    touched={touched.currency}
-                    placeholder='CURRENCY'
-                  /> */}
                   <FormikControl
                     type='input'
                     control='select'

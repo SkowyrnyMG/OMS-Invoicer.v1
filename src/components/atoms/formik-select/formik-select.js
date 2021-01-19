@@ -19,8 +19,6 @@ const StyledLabel = styled.label`
   margin-bottom: 3rem;
   width: 100%;
   color: ${({ theme: { color } }) => color.mainFont};
-  /* opacity: 0.5; */
-  cursor: pointer;
 
   :not(:last-child) {
     border-right: 1px solid ${({ theme: { color } }) => color.devider};
@@ -33,6 +31,7 @@ const StyledLabel = styled.label`
   select {
     padding: 0.25rem 1rem;
     font-size: ${({ theme: { fontSize } }) => fontSize.regular};
+    cursor: pointer;
   }
 `;
 

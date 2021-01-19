@@ -94,6 +94,7 @@ export const CURRENCY = [
 export const STATUS_OPTION = {
   invoice: {
     cancelled: 'Cancelled',
+    paid: 'paid',
   },
   order: {
     cancelled: 'Cancelled',

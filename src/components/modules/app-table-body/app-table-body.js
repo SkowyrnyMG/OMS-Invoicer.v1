@@ -345,9 +345,9 @@ const AppTableBody = ({
             </StyledButton>
             <span>
               <strong>
-                {` ${pageSize * (pageIndex + 1)} / ${
-                  pageOptions.length * pageSize
-                } `}
+                {` ${pageSize * (pageIndex + 1) + 1 - pageSize} / ${
+                  pageSize * (pageIndex + 1)
+                }  of ${pageOptions.length * pageSize}`}
               </strong>
             </span>
             <StyledButton onClick={() => nextPage()} disabled={!canNextPage}>

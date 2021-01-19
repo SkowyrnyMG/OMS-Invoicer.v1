@@ -47,8 +47,8 @@ export const useValidationSchema = (type) => {
           .max(25, 'Not longer than 25 signs')
           .required('Required!'),
         town: Yup.string()
-          .min(5, 'At least 5 sighns long')
-          .max(25, 'Not longer than 25 signs')
+          .min(2, 'At least 5 sighns long')
+          .max(35, 'Not longer than 25 signs')
           .required('Required!'),
         street: Yup.string()
           .min(5, 'At least 5 sighns long')

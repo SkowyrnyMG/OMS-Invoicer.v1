@@ -257,7 +257,7 @@ export const setInvoiceStatus = createAsyncThunk(
   async ({ invoiceNumber, status }) => {
     const localUuid = getLocalValue('uuid');
     try {
-      const res = await db
+      const statusRes = await db
         .put(
           `/data/${localUuid}/invoices/firstReg/${invoiceNumber}/payment_status.json`,
           JSON.stringify(status),
@@ -272,7 +272,24 @@ export const setInvoiceStatus = createAsyncThunk(
           console.log(data);
           return data;
         });
-      return { status: res, invoiceNumber };
+
+      const leftToPayRes =
+        statusRes && status === 'paid'
+          ? await db
+              .put(
+                `/data/${localUuid}/invoices/firstReg/${invoiceNumber}/left_to_pay.json`,
+                JSON.stringify(0),
+                {
+                  headers: {
+                    Accept: 'application/json',
+                    'Content-type': 'application/json',
+                  },
+                }
+              )
+              .then(({ data }) => data)
+          : null;
+
+      return { status: statusRes, invoiceNumber, left_to_pay: leftToPayRes };
     } catch (error) {
       return error;
     }

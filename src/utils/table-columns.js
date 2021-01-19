@@ -67,8 +67,12 @@ export const INVOICES_COLUMNS = [
     accessor: 'order_number',
   },
   {
-    Header: 'PRICE',
-    accessor: 'price',
+    Header: 'PRICE NET',
+    accessor: 'price_net',
+  },
+  {
+    Header: 'PRICE GROSS',
+    accessor: 'price_gross',
   },
   {
     Header: 'CURRENCY',

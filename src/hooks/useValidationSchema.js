@@ -65,6 +65,11 @@ export const useValidationSchema = (type) => {
         contactPhone: Yup.string()
           .min(6, 'Phone cannot be shorter thatn 6 signs')
           .max(20, 'Phone cannot be longer than 20 signs'),
+        tax: Yup.number()
+          .min(0, 'Tax cannot be a negative value!')
+          .max(50, 'Tax cannot be bigger than 50%!')
+          .integer('The value has to be integer!')
+          .required('Tax field is required!'),
       });
     case 'config':
       return Yup.object().shape({
@@ -127,7 +132,9 @@ export const useValidationSchema = (type) => {
     case 'newInvoice':
       return Yup.object().shape({
         order_number: Yup.string().required('Order is required!'),
-        price: Yup.number().required('Price is required!'),
+        price_net: Yup.number().required('Price net is required!'),
+        price_gross: Yup.number().required('Price gross is required!'),
+        tax: Yup.number().required('Tax is required!'),
         currency: Yup.string()
           .min(2, 'Currency shortcut should be at least 2 signs long!')
           .max(4, 'Currency shortcut should be not longer than 3 signs')

@@ -105,6 +105,7 @@ const OrderControlModal = ({ closeModal, currentOrder }) => {
     customer_name: '',
     customer_vat: '',
     customer_address: '',
+    tax: '',
   });
   const validationSchema = useValidationSchema('newOrder');
   const newOrder = useAutoNumeration('order');
@@ -133,6 +134,7 @@ const OrderControlModal = ({ closeModal, currentOrder }) => {
       customer_name: item.name,
       customer_vat: item.vat_number,
       customer_address: item.address,
+      tax: item.tax,
     }));
   };
 
@@ -177,6 +179,7 @@ const OrderControlModal = ({ closeModal, currentOrder }) => {
                 customer_name: values.customer_name,
                 customer_vat: values.customer_vat,
                 customer_address: values.customer_address,
+                tax: initValues.tax,
               };
 
               const isNewOrder = currentOrder ? false : true;

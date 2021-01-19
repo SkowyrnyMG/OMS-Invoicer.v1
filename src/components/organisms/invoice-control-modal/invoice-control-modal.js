@@ -90,7 +90,9 @@ const InvoiceControlModal = ({ closeModal, currentInvoice }) => {
   const orders = useSelector(selectOrders);
   const [initValues, setInitValues] = useState({
     order_number: '',
-    price: '',
+    tax: '',
+    price_net: '',
+    price_gross: '',
     currency: '',
     payment_status: 'unpaid',
     payment_value: 0,
@@ -110,6 +112,8 @@ const InvoiceControlModal = ({ closeModal, currentInvoice }) => {
     setInitValues((state) => ({
       ...state,
       ...item,
+      price_net: item.price,
+      price_gross: item.price + item.price * (item.tax / 100),
       left_to_pay: item.price,
     }));
   };
@@ -118,7 +122,9 @@ const InvoiceControlModal = ({ closeModal, currentInvoice }) => {
     setInitValues((state) => ({
       ...state,
       order_number: '',
-      price: '',
+      tax: '',
+      price_net: '',
+      price_gross: '',
       currency: '',
       payment_status: 'unpaid',
       payment_value: 0,
@@ -155,7 +161,9 @@ const InvoiceControlModal = ({ closeModal, currentInvoice }) => {
             enableReinitialize
             initialValues={{
               order_number: initValues.order_number,
-              price: initValues.price,
+              tax: initValues.tax,
+              price_net: initValues.price_net,
+              price_gross: initValues.price_gross,
               currency: initValues.currency,
               payment_status: initValues.payment_status,
               payment_value: initValues.payment_value,
@@ -170,7 +178,10 @@ const InvoiceControlModal = ({ closeModal, currentInvoice }) => {
               const invoiceValues = await {
                 invoice_number: invoiceNumberSetter(),
                 order_number: values.order_number,
-                price: values.price,
+                tax: values.tax,
+                price_net: values.price_net,
+                price_gross:
+                  values.price_net + values.price_net * (values.tax / 100),
                 currency: values.currency,
                 desc: values.desc,
                 payment_status: values.payment_status,
@@ -178,7 +189,7 @@ const InvoiceControlModal = ({ closeModal, currentInvoice }) => {
                 left_to_pay:
                   values.payment_status === 'paid'
                     ? 0
-                    : values.price - values.payment_value,
+                    : values.price_gross - values.payment_value,
                 customer_name: values.customer_name,
                 customer_vat: values.customer_vat,
                 customer_address: values.customer_address,
@@ -263,10 +274,27 @@ const InvoiceControlModal = ({ closeModal, currentInvoice }) => {
                   <FormikControl
                     type='number'
                     control='input'
-                    name='price'
-                    error={errors.price}
-                    touched={touched.price}
-                    placeholder='PRICE'
+                    name='price_net'
+                    error={errors.price_net}
+                    touched={touched.price_net}
+                    placeholder='PRICE NET'
+                  />
+                  <FormikControl
+                    type='number'
+                    control='input'
+                    name='tax'
+                    error={errors.tax}
+                    touched={touched.tax}
+                    placeholder='TAX %'
+                  />
+                  <FormikControl
+                    type='number'
+                    control='input'
+                    name='price_gross'
+                    error={errors.price_gross}
+                    touched={touched.price_gross}
+                    placeholder='PRICE GROSS'
+                    disabled
                   />
                   <FormikControl
                     type='number'

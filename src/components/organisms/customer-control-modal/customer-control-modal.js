@@ -115,6 +115,7 @@ const AddNewCustomerModal = ({ closeModal, currentCustomer }) => {
     contactPerson: '',
     contactEmail: '',
     contactPhone: '',
+    tax: '',
   });
   const validationSchema = useValidationSchema('customers');
   const [verifyCuntryCode, setVerifyCountryCode] = useState('PL');
@@ -191,6 +192,7 @@ const AddNewCustomerModal = ({ closeModal, currentCustomer }) => {
               contactPerson: '',
               contactEmail: '',
               contactPhone: '',
+              tax: initValues.tax,
             }}
             validationSchema={validationSchema}
             onSubmit={async (values) => {
@@ -330,6 +332,15 @@ const AddNewCustomerModal = ({ closeModal, currentCustomer }) => {
                     error={errors.contactPhone}
                     touched={touched.contactPhone}
                     placeholder='Phone'
+                  />
+                  <StyledHeading>Default invoicing details</StyledHeading>
+                  <FormikControl
+                    type='number'
+                    control='input'
+                    name='tax'
+                    error={errors.tax}
+                    touched={touched.tax}
+                    placeholder='TAX'
                   />
                   <StyledButton type='submit'>Save</StyledButton>
                   {isVatDoubledMsg !== false && (

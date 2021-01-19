@@ -21,6 +21,9 @@ const Button = styled.button`
     opacity: 0.5;
     cursor: not-allowed;
   }
+  ::first-letter {
+    text-transform: uppercase;
+  }
 `;
 
 export default Button;

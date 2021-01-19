@@ -18,9 +18,8 @@ const StyledLabel = styled.label`
   display: block;
   margin-bottom: 3rem;
   width: 100%;
-  text-transform: uppercase;
   color: ${({ theme: { color } }) => color.mainFont};
-  opacity: 0.5;
+  /* opacity: 0.5; */
   cursor: pointer;
 
   :not(:last-child) {
@@ -31,37 +30,18 @@ const StyledLabel = styled.label`
     margin-bottom: 4rem;
   }
 
-  /* input */
-  /* input::placeholder {
-    color: ${({ theme: { color }, error, touched }) => {
-    if (error && touched) {
-      return color.danger;
-    }
-    if (error === undefined && touched) {
-      return color.success;
-    }
-    return color.secondaryFont;
-  }}; */
-
-  /* border-color: currentColor; */
-  /* } */
+  select {
+    padding: 0.25rem 1rem;
+    font-size: ${({ theme: { fontSize } }) => fontSize.regular};
+  }
 `;
 
 const LabelText = styled.span`
-  margin-right: 3rem;
-`;
-
-const StyledSelect = styled(Field)`
-  padding: 0.25rem 1rem;
-  font-size: ${({ theme: { fontSize } }) => fontSize.regular};
-  border: none;
-  outline: none;
-  border-bottom: 2px solid ${({ theme: { color } }) => color.secondaryFont};
-  cursor: pointer;
+  margin-right: 2rem;
 `;
 
 const StyledOption = styled.option`
-  font-size: ${({ theme: { fontSize } }) => fontSize.ms};
+  font-size: ${({ theme: { fontSize } }) => fontSize.m};
 `;
 
 const FormikSelect = ({
@@ -71,17 +51,18 @@ const FormikSelect = ({
   value,
   displayError,
   options,
+  defaultValue,
   placeholder,
   ...rest
 }) => (
   <StyledLabel htmlFor={name} error={error} touched={touched}>
     <LabelText>{placeholder}</LabelText>
-    <StyledSelect
+    <Field
       as='select'
       name={name}
       id={name}
       value={value}
-      defaultValue='EUR'
+      defaultValue={defaultValue}
       {...rest}
     >
       {options.map((option) => (
@@ -89,7 +70,7 @@ const FormikSelect = ({
           {option}
         </StyledOption>
       ))}
-    </StyledSelect>
+    </Field>
     <ErrorMsg>
       <ErrorMessage name={name} />
     </ErrorMsg>

@@ -98,7 +98,7 @@ const OrderControlModal = ({ closeModal, currentOrder }) => {
   const customers = useSelector(selectCustomers);
   const [initValues, setInitValues] = useState({
     price: '',
-    currency: '',
+    currency: 'EUR',
     status: 'in progress',
     desc: '',
     email: '',
@@ -260,12 +260,13 @@ const OrderControlModal = ({ closeModal, currentOrder }) => {
                     disabled={isInvoiceIssued}
                   /> */}
                   <FormikControl
-                    type='select'
+                    type='input'
                     control='select'
                     name='currency'
                     error={errors.currency}
                     touched={touched.currency}
                     placeholder='CURRENCY'
+                    defaultValue={currentOrder ? currentOrder.currency : 'EUR'}
                     options={CURRENCY}
                     // disabled={isInvoiceIssued}
                   />

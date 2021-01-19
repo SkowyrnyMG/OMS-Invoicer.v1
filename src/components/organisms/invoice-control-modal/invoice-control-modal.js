@@ -10,7 +10,7 @@ import ComboboxInvoiceMenu from 'components/modules/combobox-invoice-menu/combob
 import ActionMenu from 'components/modules/action-menu/action-menu';
 import Button from 'components/atoms/button/button';
 
-import { STATUS_OPTION } from 'utils/constant-data';
+import { STATUS_OPTION, CURRENCY } from 'utils/constant-data';
 import { useValidationSchema } from 'hooks/useValidationSchema';
 import { useAutoNumeration } from 'hooks/useAutoNumeration';
 import {
@@ -277,13 +277,25 @@ const InvoiceControlModal = ({ closeModal, currentInvoice }) => {
                     placeholder='LEFT TO PAY'
                     disabled
                   />
-                  <FormikControl
+                  {/* <FormikControl
                     type='text'
                     control='input'
                     name='currency'
                     error={errors.currency}
                     touched={touched.currency}
                     placeholder='CURRENCY'
+                  /> */}
+                  <FormikControl
+                    type='select'
+                    control='select'
+                    name='currency'
+                    error={errors.currency}
+                    touched={touched.currency}
+                    placeholder='CURRENCY'
+                    defaultValue={
+                      currentInvoice ? currentInvoice.currency : 'EUR'
+                    }
+                    options={CURRENCY}
                   />
                   <FormikControl
                     type='text'

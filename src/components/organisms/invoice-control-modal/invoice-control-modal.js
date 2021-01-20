@@ -5,11 +5,14 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import AppGridContainer from 'components/atoms/app-grid-container/app-grid-container';
 import AppBodyContainer from 'components/atoms/app-body-container/app-body-container';
+import WarningPopup from 'components/modules/warning-popup/warning-popup';
 import FormikControl from 'components/modules/formik-control/formik-control';
 import ComboboxInvoiceMenu from 'components/modules/combobox-invoice-menu/combobox-invoice-menu';
+import NavLink from 'components/atoms/nav-link/nav-link';
 import ActionMenu from 'components/modules/action-menu/action-menu';
 import Button from 'components/atoms/button/button';
 
+import { routes } from 'utils/routes';
 import { STATUS_OPTION, CURRENCY } from 'utils/constant-data';
 import { useValidationSchema } from 'hooks/useValidationSchema';
 import { useAutoNumeration } from 'hooks/useAutoNumeration';
@@ -36,7 +39,9 @@ const Wrapper = styled.div`
 `;
 
 const StyledAppBodyContainer = styled(AppBodyContainer)`
-  overflow: auto;
+  position: relative;
+  overflow: ${({ isWarningOpen }) =>
+    isWarningOpen ? 'hidden' : 'auto'} !important;
 `;
 
 const StyledForm = styled(Form)`
@@ -77,17 +82,10 @@ const RadioGroup = styled.div`
 
 const StyledSpan = styled.span``;
 
-// const OrderDetailsWrapper = styled.div`
-//   opacity: ${({ initValues }) => (initValues.customer_vat !== '' ? 1 : 0.5)};
-//   pointer-events: ${({ initValues }) =>
-//     initValues.customer_vat !== '' ? 'auto' : 'none'};
-//   cursor: ${({ initValues }) =>
-//     initValues.customer_vat !== '' ? 'arrow' : 'not-allowed'};
-// `;
-
 const InvoiceControlModal = ({ closeModal, currentInvoice }) => {
   const dispatch = useDispatch();
   const orders = useSelector(selectOrders);
+  const [isWarningOpen, setIsWarningOpen] = useState(false);
   const [initValues, setInitValues] = useState({
     order_number: '',
     tax: '',
@@ -139,6 +137,9 @@ const InvoiceControlModal = ({ closeModal, currentInvoice }) => {
   const invoiceNumberSetter = () =>
     currentInvoice ? currentInvoice.invoice_number : newInvoice;
 
+  const finishedOrders = orders.filter(
+    (order) => order.status === STATUS_OPTION.order.finished
+  );
   useEffect(() => {
     // * if there is no orders in app store then get it from the database
     if (!orders.length) {
@@ -147,16 +148,31 @@ const InvoiceControlModal = ({ closeModal, currentInvoice }) => {
     if (currentInvoice) {
       setInitValues(currentInvoice);
     }
-  }, [dispatch, orders.length, currentInvoice, setInitValues, orders]);
+    setIsWarningOpen(finishedOrders.length === 0 && !currentInvoice);
+  }, [
+    dispatch,
+    orders.length,
+    currentInvoice,
+    setInitValues,
+    orders,
+    finishedOrders,
+  ]);
 
-  const finishedOrders = orders.filter(
-    (order) => order.status === STATUS_OPTION.order.finished
-  );
+  console.log(isWarningOpen);
 
   return (
     <Wrapper>
       <AppGridContainer>
-        <StyledAppBodyContainer>
+        <StyledAppBodyContainer isWarningOpen={isWarningOpen}>
+          <WarningPopup
+            title='Finished orders not found..'
+            isWarningOpen={isWarningOpen}
+          >
+            To issue new invoice you have to finish some order! Please go back
+            to
+            <NavLink path={routes.appOrders}> orders tab </NavLink>
+            and add some orders!
+          </WarningPopup>
           <Formik
             enableReinitialize
             initialValues={{

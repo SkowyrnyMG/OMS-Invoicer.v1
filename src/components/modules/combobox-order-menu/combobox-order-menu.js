@@ -29,6 +29,7 @@ const NotFoundInfo = styled.div`
 const ComboboxOrderMenu = ({ items, handleSetItemFn, handleResetItemFn }) => {
   const [inputItems, setInputItems] = useState(items);
   const [isNotFoundVisible, setIsNotFoundVisible] = useState(false);
+  const [isResultArrEmpty, setIsResultArrEmpty] = useState(true);
   const itemToString = (item) =>
     item ? `${item.vat_number} - ${item.name}` : '';
   const {
@@ -54,8 +55,10 @@ const ComboboxOrderMenu = ({ items, handleSetItemFn, handleResetItemFn }) => {
           searchResult.toLowerCase().match(inputValue.toLowerCase())
         );
       });
-
+      console.log(filteredItems);
+      setIsResultArrEmpty(filteredItems.length === 0);
       setIsNotFoundVisible(false);
+      console.log(inputValue);
       setInputItems(filteredItems);
       if (!filteredItems.length) {
         setIsNotFoundVisible(true);
@@ -72,6 +75,7 @@ const ComboboxOrderMenu = ({ items, handleSetItemFn, handleResetItemFn }) => {
     handleResetItemFn();
     selectItem(null);
   };
+  console.log(isResultArrEmpty);
 
   return (
     <Wrapper>
@@ -94,7 +98,11 @@ const ComboboxOrderMenu = ({ items, handleSetItemFn, handleResetItemFn }) => {
           </ComboButton>
         </ComboBtnWrapper>
       </div>
-      <ComboList isOpen={isOpen} {...getMenuProps()}>
+      <ComboList
+        isResultArrEmpty={isResultArrEmpty}
+        isOpen={isOpen}
+        {...getMenuProps()}
+      >
         {isOpen &&
           inputItems.map((item, index) => (
             <StyledListItem

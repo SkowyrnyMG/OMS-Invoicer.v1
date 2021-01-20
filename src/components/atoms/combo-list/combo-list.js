@@ -8,8 +8,10 @@ const ComboList = styled.ul`
   overflow-y: auto;
   background: ${({ theme: { color } }) => color.bg};
   box-shadow: ${({ theme: { shadow } }) => shadow.bottom};
-  opacity: ${({ isOpen }) => (isOpen ? 1 : 0)};
-  visibility: ${({ isOpen }) => (isOpen ? 'visible' : 'hidden')};
+  opacity: ${({ isOpen, isResultArrEmpty }) =>
+    isOpen && !isResultArrEmpty ? 1 : 0};
+  visibility: ${({ isOpen, isResultArrEmpty }) =>
+    isOpen && !isResultArrEmpty ? 'visible' : 'hidden'};
   z-index: 1000;
 `;
 

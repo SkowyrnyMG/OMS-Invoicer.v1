@@ -7,11 +7,14 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import AppGridContainer from 'components/atoms/app-grid-container/app-grid-container';
 import AppBodyContainer from 'components/atoms/app-body-container/app-body-container';
+import WarningPopup from 'components/modules/warning-popup/warning-popup';
 import FormikControl from 'components/modules/formik-control/formik-control';
 import ComboboxOrderMenu from 'components/modules/combobox-order-menu/combobox-order-menu';
 import ActionMenu from 'components/modules/action-menu/action-menu';
+import NavLink from 'components/atoms/nav-link/nav-link';
 import Button from 'components/atoms/button/button';
 
+import { routes } from 'utils/routes';
 import { CURRENCY } from 'utils/constant-data';
 import { useValidationSchema } from 'hooks/useValidationSchema';
 import { useAutoNumeration } from 'hooks/useAutoNumeration';
@@ -36,7 +39,9 @@ const Wrapper = styled.div`
 `;
 
 const StyledAppBodyContainer = styled(AppBodyContainer)`
-  overflow: auto;
+  position: relative;
+  overflow: ${({ isWarningOpen }) =>
+    isWarningOpen ? 'hidden' : 'auto'} !important;
 `;
 
 const StyledForm = styled(Form)`
@@ -96,6 +101,7 @@ const OrderDetailsWrapper = styled.div`
 const OrderControlModal = ({ closeModal, currentOrder }) => {
   const dispatch = useDispatch();
   const customers = useSelector(selectCustomers);
+  const [isWarningOpen, setIsWarningOpen] = useState(false);
   const [initValues, setInitValues] = useState({
     price: '',
     currency: 'EUR',
@@ -123,7 +129,20 @@ const OrderControlModal = ({ closeModal, currentOrder }) => {
     if (currentOrder) {
       setInitValues(currentOrder);
     }
-  }, [dispatch, customers.length, currentOrder, setInitValues]);
+    setIsWarningOpen(
+      customers.length === 0 ||
+        (customers.length === undefined && !currentOrder)
+    );
+  }, [
+    dispatch,
+    customers.length,
+    currentOrder,
+    setInitValues,
+    setIsWarningOpen,
+    customers,
+  ]);
+
+  console.log(customers.length);
 
   const handleSetItemFn = (item) => {
     if (item === null) {
@@ -153,7 +172,16 @@ const OrderControlModal = ({ closeModal, currentOrder }) => {
   return (
     <Wrapper>
       <AppGridContainer>
-        <StyledAppBodyContainer>
+        <StyledAppBodyContainer isWarningOpen={isWarningOpen}>
+          <WarningPopup
+            title='Any Customer found'
+            isWarningOpen={isWarningOpen}
+          >
+            To issue new order you have to add some Customers first!! Please go
+            back to
+            <NavLink path={routes.appCustomers}> customers tab </NavLink>
+            and add new Customer!
+          </WarningPopup>
           <Formik
             disabled
             enableReinitialize
@@ -204,7 +232,7 @@ const OrderControlModal = ({ closeModal, currentOrder }) => {
                   <StyledHeading>Customer info</StyledHeading>
                   {!isInvoiceIssued && (
                     <ComboboxOrderMenu
-                      items={customers}
+                      items={customers.length ? customers : []}
                       handleSetItemFn={handleSetItemFn}
                       handleResetItemFn={handleResetItemFn}
                       isDisabled={isInvoiceIssued}

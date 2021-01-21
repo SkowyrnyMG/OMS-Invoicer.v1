@@ -99,5 +99,6 @@ export const STATUS_OPTION = {
   order: {
     cancelled: 'Cancelled',
     finished: 'finished',
+    pending: 'in progress',
   },
 };

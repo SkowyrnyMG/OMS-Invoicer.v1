@@ -18,9 +18,10 @@ module.exports = {
     jest: true,
   },
   rules: {
+    "no-plusplus": 0,
     "no-array-index-key": 0,
     "no-nested-ternary": 0,
-    "no-param-reassign": ["error", { "props": false }],
+    "no-param-reassign": 0,
     'react/jsx-indent': 0,
     'no-confusing-arrow': 0,
     'jsx-quotes': ['error', 'prefer-single'],

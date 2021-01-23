@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import AppBodyContainer from 'components/atoms/app-body-container/app-body-container';
 import SummaryCounter from 'components/modules/summary-counter/summary-counter';
@@ -8,7 +8,7 @@ import SummaryPosition from 'components/modules/summary-position/summary-positio
 
 import { useOrdersByStatus } from 'hooks/useOrdersByStatus';
 import { STATUS_OPTION } from 'utils/constant-data';
-import { getAllOrders, selectOrders } from 'store/slices/db-slice/db-slice';
+import { getAllOrders } from 'store/slices/db-slice/db-slice';
 
 const CountersBox = styled.div`
   width: 100%;
@@ -28,16 +28,12 @@ const StyledHeading = styled.h3`
 `;
 
 const SummaryContainer = () => {
-  const allOrders = useSelector(selectOrders);
   const dispatch = useDispatch();
   const finishedOrders = useOrdersByStatus(STATUS_OPTION.order.finished);
   const pendingOrders = useOrdersByStatus(STATUS_OPTION.order.pending);
-
   useEffect(() => {
-    if (allOrders.length === 0) {
-      dispatch(getAllOrders());
-    }
-  }, [allOrders, dispatch]);
+    dispatch(getAllOrders());
+  }, [dispatch]);
 
   return (
     <AppBodyContainer>

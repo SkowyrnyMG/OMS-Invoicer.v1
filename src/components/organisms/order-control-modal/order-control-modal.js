@@ -131,7 +131,7 @@ const OrderControlModal = ({ closeModal, currentOrder }) => {
     }
     setIsWarningOpen(
       customers.length === 0 ||
-        (customers.length === undefined && !currentOrder)
+        (customers.length === undefined && !currentOrder),
     );
   }, [
     dispatch,

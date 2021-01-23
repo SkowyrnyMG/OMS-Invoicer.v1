@@ -16,7 +16,7 @@ export const getAllCustomers = createAsyncThunk(
       console.log(err);
       return err;
     }
-  }
+  },
 );
 
 export const addNewCustomer = createAsyncThunk(
@@ -32,7 +32,7 @@ export const addNewCustomer = createAsyncThunk(
     } catch (err) {
       return err;
     }
-  }
+  },
 );
 
 export const deleteCustomer = createAsyncThunk(
@@ -46,7 +46,7 @@ export const deleteCustomer = createAsyncThunk(
     } catch (error) {
       return error;
     }
-  }
+  },
 );
 
 export const getUserConfig = createAsyncThunk('db/getUserConfing', async () => {
@@ -73,7 +73,7 @@ export const addUserConfig = createAsyncThunk(
     } catch (error) {
       return error;
     }
-  }
+  },
 );
 
 // * add base registry options for invoices and orders to proceed autonumeration
@@ -100,22 +100,23 @@ export const registrySetup = createAsyncThunk(
     } catch (error) {
       return error;
     }
-  }
+  },
 );
 
 export const getAllOrders = createAsyncThunk('db/getAllOrders', async () => {
   const localUuid = getLocalValue('uuid');
   try {
     return await db.get(`data/${localUuid}/orders.json`).then(({ data }) => {
-      console.log(data.firstReg);
       return (
         // * if there is no order list created in DB, action will return empty array to the reducer
-        data !== null && [
-          data.firstReg === null || data.firstReg === undefined
-            ? []
-            : Object.values(data.firstReg),
-          data.lastOrder !== null ? data.lastOrder : undefined,
-        ]
+        data !== null
+          ? [
+              data.firstReg === null || data.firstReg === undefined
+                ? []
+                : Object.values(data.firstReg),
+              data.lastOrder !== null ? data.lastOrder : undefined,
+            ]
+          : null
       );
     });
   } catch (error) {
@@ -131,7 +132,7 @@ export const addNewOrder = createAsyncThunk(
       return await db
         .put(
           `/data/${localUuid}/orders/firstReg/${orderValues.order_number}.json`,
-          orderValues
+          orderValues,
         )
         .then(async ({ data }) => {
           if (isNewOrder) {
@@ -149,7 +150,7 @@ export const addNewOrder = createAsyncThunk(
     } catch (err) {
       return err;
     }
-  }
+  },
 );
 
 export const setOrderStatus = createAsyncThunk(
@@ -166,7 +167,7 @@ export const setOrderStatus = createAsyncThunk(
               Accept: 'application/json',
               'Content-type': 'application/json',
             },
-          }
+          },
         )
         .then(({ data }) => {
           console.log(data);
@@ -177,7 +178,7 @@ export const setOrderStatus = createAsyncThunk(
       console.error(error);
       return error;
     }
-  }
+  },
 );
 
 export const getAllInvoices = createAsyncThunk(
@@ -202,7 +203,7 @@ export const getAllInvoices = createAsyncThunk(
     } catch (error) {
       return error;
     }
-  }
+  },
 );
 
 export const getLastInvoice = createAsyncThunk(
@@ -219,7 +220,7 @@ export const getLastInvoice = createAsyncThunk(
     } catch (error) {
       return error;
     }
-  }
+  },
 );
 
 export const addNewInvoice = createAsyncThunk(
@@ -231,7 +232,7 @@ export const addNewInvoice = createAsyncThunk(
       return await db
         .put(
           `/data/${localUuid}/invoices/firstReg/${invoiceValues.invoice_number}.json`,
-          invoiceValues
+          invoiceValues,
         )
         .then(async ({ data }) => {
           if (isNewInvoice) {
@@ -249,7 +250,7 @@ export const addNewInvoice = createAsyncThunk(
     } catch (error) {
       return error;
     }
-  }
+  },
 );
 
 export const setInvoiceStatus = createAsyncThunk(
@@ -266,7 +267,7 @@ export const setInvoiceStatus = createAsyncThunk(
               Accept: 'application/json',
               'Content-type': 'application/json',
             },
-          }
+          },
         )
         .then(({ data }) => {
           console.log(data);
@@ -284,7 +285,7 @@ export const setInvoiceStatus = createAsyncThunk(
                     Accept: 'application/json',
                     'Content-type': 'application/json',
                   },
-                }
+                },
               )
               .then(({ data }) => data)
           : null;
@@ -293,7 +294,7 @@ export const setInvoiceStatus = createAsyncThunk(
     } catch (error) {
       return error;
     }
-  }
+  },
 );
 
 const dbSlice = createSlice({
@@ -356,8 +357,7 @@ const dbSlice = createSlice({
       console.log('FULLFILED');
       console.log(payload);
       const defaultOder = 'ZL-0-2020';
-
-      if (payload) {
+      if (payload.length !== null) {
         const [orderList, lastOrder] = payload;
         state.orders.lastOrder.firstReg = lastOrder
           ? lastOrder.firstReg

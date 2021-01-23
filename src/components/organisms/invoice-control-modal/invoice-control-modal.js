@@ -138,11 +138,11 @@ const InvoiceControlModal = ({ closeModal, currentInvoice }) => {
     currentInvoice ? currentInvoice.invoice_number : newInvoice;
 
   const finishedOrders = orders.filter(
-    (order) => order.status === STATUS_OPTION.order.finished
+    (order) => order.status === STATUS_OPTION.order.finished,
   );
   useEffect(() => {
     // * if there is no orders in app store then get it from the database
-    if (!orders.length) {
+    if (orders === null) {
       dispatch(getAllOrders());
     }
     if (currentInvoice) {
@@ -221,7 +221,7 @@ const InvoiceControlModal = ({ closeModal, currentInvoice }) => {
               const status = `Invoice issued: ${invoiceNumberSetter()}`;
               await dispatch(addNewInvoice(submitData));
               await dispatch(
-                setOrderStatus({ orderNumber: values.order_number, status })
+                setOrderStatus({ orderNumber: values.order_number, status }),
               );
               if (!isNewInvoice) {
                 await dispatch(getAllInvoices());

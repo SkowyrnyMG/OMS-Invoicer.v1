@@ -133,7 +133,7 @@ const AddNewCustomerModal = ({ closeModal, currentCustomer }) => {
     dispatch(setLoadingOn());
     // * get request to the local lambda funciton. Query string params are later beeing used to get response from vies
     const result = await axios.get(
-      `/api/verify?vat=${verifyInput}&countrycode=${verifyCuntryCode}`
+      `/api/verify?vat=${verifyInput}&countrycode=${verifyCuntryCode}`,
     );
     const {
       data: { data },
@@ -204,7 +204,7 @@ const AddNewCustomerModal = ({ closeModal, currentCustomer }) => {
               const isVatDoubled =
                 allCustomers !== null && allCustomers !== false && isNewCustomer
                   ? allCustomers.filter(
-                      (customer) => customer.vat_number === values.vat_number
+                      (customer) => customer.vat_number === values.vat_number,
                     )
                   : [];
 

@@ -36,7 +36,7 @@ const signInWithEmailAndPassword = createAsyncThunk(
     } catch ({ message }) {
       return { uuid: '', userInfo: '', message };
     }
-  }
+  },
 );
 
 const registerWithEmailAndPassword = createAsyncThunk(
@@ -82,7 +82,7 @@ const registerWithEmailAndPassword = createAsyncThunk(
         message,
       };
     }
-  }
+  },
 );
 
 export const AuthSlice = createSlice({

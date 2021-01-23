@@ -23,7 +23,7 @@ const OrdersModule = ({ ordersList }) => {
       ordersList
         ? ordersList
         : [{ desc: '', order_number: '', price: '', status: '', email: '' }],
-    [ordersList]
+    [ordersList],
   );
   const defaultColumnValues = useDefaultColumn(columns.length);
   const defaultColumn = useMemo(() => defaultColumnValues, [
@@ -112,7 +112,7 @@ OrdersModule.propTypes = {
       customer_name: PropTypes.string.isRequired,
       customer_vat: PropTypes.string.isRequired,
       customer_address: PropTypes.string.isRequired,
-    })
+    }),
   ),
 };
 

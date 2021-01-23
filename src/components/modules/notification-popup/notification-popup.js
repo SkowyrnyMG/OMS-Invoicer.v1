@@ -25,7 +25,7 @@ const NotificationPopup = ({ children, successRegexp }) => {
       tl.fromTo(
         messageSpan,
         { autoAlpha: 0 },
-        { autoAlpha: 1, duration: 1, delay: 1 }
+        { autoAlpha: 1, duration: 1, delay: 1 },
       );
       tl.to(messageSpan, { autoAlpha: 0, duration: 1, delay: 5 });
     };

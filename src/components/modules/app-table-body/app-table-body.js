@@ -200,7 +200,7 @@ const AppTableBody = ({
         },
       ],
     }),
-    [columns]
+    [columns],
   );
 
   const {
@@ -232,7 +232,7 @@ const AppTableBody = ({
     usePagination,
     useRowSelect,
     useBlockLayout,
-    useResizeColumns
+    useResizeColumns,
   );
 
   const { globalFilter, pageIndex, pageSize } = state;
@@ -330,7 +330,7 @@ const AppTableBody = ({
               selectedFlatRows: selectedFlatRows.map((row) => row.original),
             },
             null,
-            0
+            0,
           )}
         </span>
       </AppBodyContainer>

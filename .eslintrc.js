@@ -4,7 +4,7 @@ module.exports = {
     'airbnb/hooks',
     'eslint:recommended',
     'plugin:react/recommended',
-    'prettier'
+    'prettier',
   ],
 
   plugins: ['react', 'react-hooks', 'prettier'],
@@ -18,10 +18,10 @@ module.exports = {
     jest: true,
   },
   rules: {
-    "no-plusplus": 0,
-    "no-array-index-key": 0,
-    "no-nested-ternary": 0,
-    "no-param-reassign": 0,
+    'no-plusplus': 0,
+    'no-array-index-key': 0,
+    'no-nested-ternary': 0,
+    'no-param-reassign': 0,
     'react/jsx-indent': 0,
     'no-confusing-arrow': 0,
     'jsx-quotes': ['error', 'prefer-single'],
@@ -59,14 +59,14 @@ module.exports = {
     'prettier/prettier': [
       'error',
       {
-        trailingComma: 'es5',
+        traillingComma: 'all',
         singleQuote: true,
         printWidth: 80,
         endOfLine: 'auto',
         jsxSingleQuote: true,
       },
     ],
-    "jsx-a11y/label-has-associated-control": "off",
+    'jsx-a11y/label-has-associated-control': 'off',
   },
   settings: {
     'import/resolver': {

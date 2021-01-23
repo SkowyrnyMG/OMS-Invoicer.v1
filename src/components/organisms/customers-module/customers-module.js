@@ -22,7 +22,7 @@ const CustomersModule = ({ customersList }) => {
       customersList.length > 0
         ? customersList
         : [{ address: '', vat_number: '', name: '' }],
-    [customersList]
+    [customersList],
   );
   const defaultColumnValues = useDefaultColumn(columns.length);
   const defaultColumn = useMemo(() => defaultColumnValues, [
@@ -85,7 +85,7 @@ CustomersModule.propTypes = {
       street: PropTypes.string.isRequired,
       town: PropTypes.string.isRequired,
       vat_number: PropTypes.string.isRequired,
-    })
+    }),
   ).isRequired,
 };
 export default CustomersModule;

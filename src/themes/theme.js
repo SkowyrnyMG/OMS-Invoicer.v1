@@ -1,3 +1,17 @@
+export const breakpoints = {
+  regularDesktop: 1700,
+  // bigDesktop: 1440,
+  // mediumDesktop: 1300,
+  // desktop: 1168,
+  // bigTablet: 1028,
+  // tablet: 767,
+  // smallTablet: 680,
+  // bigPhoneBreak: 570,
+  // bigPhone: 480,
+  // phone: 374,
+  // smallPhone: 350,
+};
+
 export const theme = {
   color: {
     bg: '#F8F8FF',
@@ -35,4 +49,8 @@ export const theme = {
   defaultSizes: {
     appBody: '1268px',
   },
+  mq: Object.keys(breakpoints).reduce((acc, breakpoint) => {
+    acc[breakpoint] = `@media (max-width: ${breakpoints[breakpoint]}px)`;
+    return acc;
+  }, {}),
 };

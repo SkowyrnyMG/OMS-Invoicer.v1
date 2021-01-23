@@ -82,6 +82,8 @@ const RadioGroup = styled.div`
 
 const StyledSpan = styled.span``;
 
+// TODO add sale date, issue date, terms of payment
+
 const InvoiceControlModal = ({ closeModal, currentInvoice }) => {
   const dispatch = useDispatch();
   const orders = useSelector(selectOrders);

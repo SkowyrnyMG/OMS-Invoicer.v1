@@ -73,6 +73,7 @@ const StyledPlaceholder = styled.div`
   font-size: ${({ theme: { fontSize } }) => fontSize.s};
   transform: translateY(-50%);
   transition: all 0.25s;
+  pointer-events: none;
 `;
 
 const FormikInput = ({

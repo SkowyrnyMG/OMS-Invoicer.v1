@@ -25,7 +25,7 @@ export const useValidationSchema = (type) => {
           .max(35, 'Too long! Not logner thatn 35 signs')
           .matches(
             passwordRegex,
-            'Must contain one uppercase, one lowercase, one Number and one special case character'
+            'Must contain one uppercase, one lowercase, one Number and one special case character',
           )
           .required('Required!'),
         passwordConfirmation: Yup.string()
@@ -120,13 +120,13 @@ export const useValidationSchema = (type) => {
           .required('Description is required'),
         status: Yup.string().required('Status is required!'),
         customer_name: Yup.string().required(
-          'You have to choose client from your database'
+          'You have to choose client from your database',
         ),
         customer_vat: Yup.string().required(
-          'You have to choose client from your database'
+          'You have to choose client from your database',
         ),
         customer_address: Yup.string().required(
-          'You have to choose client from your database'
+          'You have to choose client from your database',
         ),
       });
     case 'newInvoice':
@@ -146,13 +146,13 @@ export const useValidationSchema = (type) => {
         payment_status: Yup.string().required('Status is required!'),
         payment_value: Yup.number().required('Payment value is required!'),
         customer_name: Yup.string().required(
-          'You have to choose client from your database'
+          'You have to choose client from your database',
         ),
         customer_vat: Yup.string().required(
-          'You have to choose client from your database'
+          'You have to choose client from your database',
         ),
         customer_address: Yup.string().required(
-          'You have to choose client from your database'
+          'You have to choose client from your database',
         ),
       });
     default:

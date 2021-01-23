@@ -7,8 +7,9 @@ import SummaryCounter from 'components/modules/summary-counter/summary-counter';
 import SummaryPosition from 'components/modules/summary-position/summary-position';
 
 import { useOrdersByStatus } from 'hooks/useOrdersByStatus';
+import { useInvoicesByStatus } from 'hooks/useInvoicesByStatus';
 import { STATUS_OPTION } from 'utils/constant-data';
-import { getAllOrders } from 'store/slices/db-slice/db-slice';
+import { getAllOrders, getAllInvoices } from 'store/slices/db-slice/db-slice';
 
 const CountersBox = styled.div`
   width: 100%;
@@ -31,8 +32,10 @@ const SummaryContainer = () => {
   const dispatch = useDispatch();
   const finishedOrders = useOrdersByStatus(STATUS_OPTION.order.finished);
   const pendingOrders = useOrdersByStatus(STATUS_OPTION.order.pending);
+  const unpaidInvoices = useInvoicesByStatus(STATUS_OPTION.invoice.unpaid);
   useEffect(() => {
     dispatch(getAllOrders());
+    dispatch(getAllInvoices());
   }, [dispatch]);
 
   return (
@@ -46,7 +49,10 @@ const SummaryContainer = () => {
           title='FINISHED ORDERS WITHOUT INVOICE'
           counter={finishedOrders.counter}
         />
-        <SummaryCounter title='DELAYED PAYMENTS' counter={13} />
+        <SummaryCounter
+          title='UNPAID INVOICES'
+          counter={unpaidInvoices.counter}
+        />
       </CountersBox>
       <SummaryWrapper>
         <StyledHeading>Summary</StyledHeading>

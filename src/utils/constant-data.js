@@ -95,6 +95,7 @@ export const STATUS_OPTION = {
   invoice: {
     cancelled: 'Cancelled',
     paid: 'paid',
+    unpaid: 'unpaid',
   },
   order: {
     cancelled: 'Cancelled',

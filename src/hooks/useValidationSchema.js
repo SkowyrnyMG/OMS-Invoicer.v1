@@ -139,12 +139,13 @@ export const useValidationSchema = (type) => {
           .min(2, 'Currency shortcut should be at least 2 signs long!')
           .max(4, 'Currency shortcut should be not longer than 3 signs')
           .required('Currency is required!'),
+        payment_status: Yup.string().required('Status is required!'),
+        payment_value: Yup.number().required('Payment value is required!'),
+        sale_date: Yup.date().required('Sale date is required!'),
         desc: Yup.string()
           .min(5, 'Description should be at least 5 signs long!')
           .max(120, 'Description should not be longer than 120 signs!')
           .required('Description is required'),
-        payment_status: Yup.string().required('Status is required!'),
-        payment_value: Yup.number().required('Payment value is required!'),
         customer_name: Yup.string().required(
           'You have to choose client from your database',
         ),

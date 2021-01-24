@@ -87,6 +87,10 @@ export const INVOICES_COLUMNS = [
     accessor: 'payment_status',
   },
   {
+    Header: 'SALE DATE',
+    accessor: 'sale_date',
+  },
+  {
     Header: 'CUSTOMER NAME',
     accessor: 'customer_name',
   },

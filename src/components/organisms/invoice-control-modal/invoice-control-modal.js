@@ -129,6 +129,8 @@ const InvoiceControlModal = ({ closeModal, currentInvoice }) => {
       payment_status: 'unpaid',
       payment_value: 0,
       left_to_pay: 0,
+      sale_date: '',
+      issue_date: '',
       desc: '',
       customer_name: '',
       customer_vat: '',
@@ -144,7 +146,7 @@ const InvoiceControlModal = ({ closeModal, currentInvoice }) => {
   );
   useEffect(() => {
     // * if there is no orders in app store then get it from the database
-    if (orders === null) {
+    if (orders.length === 0) {
       dispatch(getAllOrders());
     }
     if (currentInvoice) {
@@ -186,6 +188,8 @@ const InvoiceControlModal = ({ closeModal, currentInvoice }) => {
               payment_status: initValues.payment_status,
               payment_value: initValues.payment_value,
               left_to_pay: initValues.left_to_pay,
+              sale_date: initValues.sale_date,
+              issue_date: initValues.issue_date,
               desc: initValues.desc,
               customer_name: initValues.customer_name,
               customer_vat: initValues.customer_vat,
@@ -201,13 +205,15 @@ const InvoiceControlModal = ({ closeModal, currentInvoice }) => {
                 price_gross:
                   values.price_net + values.price_net * (values.tax / 100),
                 currency: values.currency,
-                desc: values.desc,
                 payment_status: values.payment_status,
                 payment_value: values.payment_value,
                 left_to_pay:
                   values.payment_status === 'paid'
                     ? 0
                     : values.price_gross - values.payment_value,
+                sale_date: values.sale_date,
+                issue_date: values.issue_date,
+                desc: values.desc,
                 customer_name: values.customer_name,
                 customer_vat: values.customer_vat,
                 customer_address: values.customer_address,
@@ -335,6 +341,14 @@ const InvoiceControlModal = ({ closeModal, currentInvoice }) => {
                     }
                     options={CURRENCY}
                   />
+                  <FormikControl
+                    control='date'
+                    name='sale_date'
+                    error={errors.sale_date}
+                    touched={touched.sale_date}
+                    placeholder='SALE DATE'
+                  />
+
                   <FormikControl
                     type='text'
                     control='input'

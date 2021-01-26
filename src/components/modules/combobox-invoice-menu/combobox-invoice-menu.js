@@ -90,7 +90,10 @@ const ComboboxInvoiceMenu = ({ items, handleSetItemFn, handleResetItemFn }) => {
     <Wrapper>
       <label {...getLabelProps()}>Choose a finished order:</label>
       <div {...getComboboxProps()}>
-        <ComboInput {...getInputProps()} />
+        <ComboInput
+          {...getInputProps()}
+          placeholder='Provide order number or company name'
+        />
         <ComboBtnWrapper>
           <ComboButton
             type='button'

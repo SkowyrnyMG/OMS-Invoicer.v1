@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import gsap from 'gsap';
 
 const Wrapper = styled.div`
   display: flex;
@@ -22,30 +23,39 @@ const ContentWrapper = styled.div`
   text-align: center;
   padding: 2rem 3rem;
   width: 80%;
-  height: 50%;
+  height: fit-content;
   background: ${({ theme: { color } }) => color.bg};
   border-radius: 5px;
 `;
 
 const StyledHeading = styled.h3`
-  margin: 5rem;
-  font-size: ${({ theme: { fontSize } }) => fontSize.headingSmall} !important;
+  margin: 2rem;
+  font-size: ${({ theme: { fontSize } }) => fontSize.cta} !important;
 `;
 
 const StyledParagraph = styled.p`
   padding: 2rem;
   text-align: left;
-  font-size: ${({ theme: { fontSize } }) => fontSize.l};
+  font-size: ${({ theme: { fontSize } }) => fontSize.regular};
 `;
 
-const WarningPopup = ({ children, isWarningOpen, title }) => (
-  <Wrapper isWarningOpen={isWarningOpen}>
-    <ContentWrapper>
-      <StyledHeading>{title}</StyledHeading>
-      <StyledParagraph>{children}</StyledParagraph>
-    </ContentWrapper>
-  </Wrapper>
-);
+const WarningPopup = ({ children, isWarningOpen, title }) => {
+  const animationWrapper = useRef(null);
+
+  useEffect(() => {
+    const animationContainer = animationWrapper.current;
+    gsap.from(animationContainer, { autoAlpha: 0, duration: 0.5, delay: 0.5 });
+  }, []);
+
+  return (
+    <Wrapper isWarningOpen={isWarningOpen} ref={animationWrapper}>
+      <ContentWrapper>
+        <StyledHeading>{title}</StyledHeading>
+        <StyledParagraph>{children}</StyledParagraph>
+      </ContentWrapper>
+    </Wrapper>
+  );
+};
 
 WarningPopup.propTypes = {
   children: PropTypes.node.isRequired,

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { useField, useFormikContext, ErrorMessage } from 'formik';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+
 import ErrorMsg from 'components/atoms/error-msg/error-msg';
 
 const Wrapper = styled.div`
@@ -109,7 +110,7 @@ const DatePickerWrapper = styled.div`
 `;
 
 const StyledPlaceholder = styled.div`
-  flex-basis: 40%;
+  flex-basis: 60%;
   align-self: flex-end;
   font-size: ${({ theme: { fontSize } }) => fontSize.regular};
   transition: all 0.25s;
@@ -126,7 +127,7 @@ const FormikDatePicker = ({ placeholder, ...props }) => {
         <DatePicker
           {...field}
           {...props}
-          dateFormat='dd.MM.yyyy'
+          dateFormat='yyyy-MM-dd'
           selected={(field.value && new Date(field.value)) || null}
           onChange={(val) => {
             setFieldValue(field.name, val);

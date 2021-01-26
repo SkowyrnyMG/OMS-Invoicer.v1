@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { Formik, Form } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
+import { format } from 'date-fns';
 
 import AppGridContainer from 'components/atoms/app-grid-container/app-grid-container';
 import AppBodyContainer from 'components/atoms/app-body-container/app-body-container';
@@ -97,6 +98,8 @@ const InvoiceControlModal = ({ closeModal, currentInvoice }) => {
     payment_status: 'unpaid',
     payment_value: 0,
     left_to_pay: 0,
+    sale_date: format(new Date(), 'yyyy-MM-dd'),
+    issue_date: '',
     desc: '',
     customer_name: '',
     customer_vat: '',
@@ -112,6 +115,8 @@ const InvoiceControlModal = ({ closeModal, currentInvoice }) => {
     setInitValues((state) => ({
       ...state,
       ...item,
+      sale_date: format(new Date(item.finish_date), 'yyyy-MM-dd'),
+      issue_date: format(new Date(), 'yyyy-MM-dd'),
       price_net: item.price,
       price_gross: item.price + item.price * (item.tax / 100),
       left_to_pay: item.price,
@@ -188,7 +193,10 @@ const InvoiceControlModal = ({ closeModal, currentInvoice }) => {
               payment_status: initValues.payment_status,
               payment_value: initValues.payment_value,
               left_to_pay: initValues.left_to_pay,
-              sale_date: initValues.sale_date,
+              sale_date:
+                initValues.sale_date !== ''
+                  ? format(new Date(initValues.sale_date), 'yyyy-MM-dd')
+                  : initValues.sale_date,
               issue_date: initValues.issue_date,
               desc: initValues.desc,
               customer_name: initValues.customer_name,
@@ -348,7 +356,13 @@ const InvoiceControlModal = ({ closeModal, currentInvoice }) => {
                     touched={touched.sale_date}
                     placeholder='SALE DATE'
                   />
-
+                  <FormikControl
+                    control='date'
+                    name='issue_date'
+                    error={errors.issue_date}
+                    touched={touched.issue_date}
+                    placeholder='ISSUE DATE'
+                  />
                   <FormikControl
                     type='text'
                     control='input'

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Formik, Form } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
+import { format } from 'date-fns';
 // import axios from 'axios';
 
 import AppGridContainer from 'components/atoms/app-grid-container/app-grid-container';
@@ -106,8 +107,9 @@ const OrderControlModal = ({ closeModal, currentOrder }) => {
     price: '',
     currency: 'EUR',
     status: 'in progress',
-    desc: '',
     email: '',
+    finish_date: '',
+    desc: '',
     customer_name: '',
     customer_vat: '',
     customer_address: '',
@@ -189,8 +191,12 @@ const OrderControlModal = ({ closeModal, currentOrder }) => {
               price: initValues.price,
               currency: initValues.currency,
               status: initValues.status,
-              desc: initValues.desc,
               email: initValues.email,
+              finish_date:
+                initValues.finish_date !== ''
+                  ? format(new Date(initValues.finish_date), 'yyyy-MM-dd')
+                  : initValues.finish_date,
+              desc: initValues.desc,
               customer_name: initValues.customer_name,
               customer_vat: initValues.customer_vat,
               customer_address: initValues.customer_address,
@@ -201,9 +207,10 @@ const OrderControlModal = ({ closeModal, currentOrder }) => {
                 order_number: orderNumberSetter(),
                 price: values.price,
                 currency: values.currency,
-                desc: values.desc,
                 email: values.email,
                 status: values.status,
+                finish_date: values.finish_date,
+                desc: values.desc,
                 customer_name: values.customer_name,
                 customer_vat: values.customer_vat,
                 customer_address: values.customer_address,
@@ -290,6 +297,14 @@ const OrderControlModal = ({ closeModal, currentOrder }) => {
                     placeholder='CURRENCY'
                     defaultValue={currentOrder ? currentOrder.currency : 'EUR'}
                     options={CURRENCY}
+                    disabled={isInvoiceIssued}
+                  />
+                  <FormikControl
+                    control='date'
+                    name='finish_date'
+                    error={errors.finish_date}
+                    touched={touched.finish_date}
+                    placeholder='Estimated Completion Date'
                     disabled={isInvoiceIssued}
                   />
                   <FormikControl

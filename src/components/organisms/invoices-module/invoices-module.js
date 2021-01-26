@@ -28,7 +28,6 @@ const InvoicesModule = ({ invoicesList }) => {
   const defaultColumn = useMemo(() => defaultColumnValues, [
     defaultColumnValues,
   ]);
-  console.log(currentInvoice);
 
   const handleEditClick = () => {
     setIsModalOpen(true);

@@ -118,6 +118,7 @@ export const useValidationSchema = (type) => {
           .min(5, 'Description should be at least 5 signs long!')
           .max(120, 'Description should not be longer than 120 signs!')
           .required('Description is required'),
+        finish_date: Yup.date().required('Finish date is required!'),
         status: Yup.string().required('Status is required!'),
         customer_name: Yup.string().required(
           'You have to choose client from your database',

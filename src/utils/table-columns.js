@@ -1,3 +1,5 @@
+import { format } from 'date-fns';
+
 export const CUSTOMERS_COLUMNS = [
   {
     Header: 'NAME',
@@ -89,6 +91,22 @@ export const INVOICES_COLUMNS = [
   {
     Header: 'SALE DATE',
     accessor: 'sale_date',
+    Cell: ({ value }) => {
+      if (value !== undefined) {
+        return format(new Date(value), 'dd.MM.yyyy');
+      }
+      return null;
+    },
+  },
+  {
+    Header: 'ISSUE DATE',
+    accessor: 'issue_date',
+    Cell: ({ value }) => {
+      if (value !== undefined) {
+        return format(new Date(value), 'dd.MM.yyyy');
+      }
+      return null;
+    },
   },
   {
     Header: 'CUSTOMER NAME',

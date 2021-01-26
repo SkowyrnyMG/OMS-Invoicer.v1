@@ -81,7 +81,7 @@ const ComboboxOrderMenu = ({ items, handleSetItemFn, handleResetItemFn }) => {
     <Wrapper>
       <label {...getLabelProps()}>Choose a Customer:</label>
       <div {...getComboboxProps()}>
-        <ComboInput {...getInputProps()} />
+        <ComboInput {...getInputProps()} placeholder='Type a Customer name..' />
         <ComboBtnWrapper>
           <ComboButton
             type='button'

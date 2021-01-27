@@ -69,6 +69,35 @@ a:visited {
   background-color: ${({ theme: { color } }) => color.transparentMain};
 }
 }
+
+input {
+      padding: 0.5rem;
+      width: 100%;
+      height: 3rem;
+      font-size: ${({ theme: { fontSize } }) => fontSize.ms};
+      color: ${({ theme: { color } }) => color.secondaryFont};
+      outline: none;
+      border: 1px solid currentColor;
+      border-radius: 5px;
+}
+
+select {
+  cursor: pointer;
+}
+
+input, select  {
+  :disabled {
+      background: ${({ theme: { color } }) => color.transparentDark};
+      color: ${({ theme: { color } }) => color.mainFont};
+      font-weight: ${({ theme: { fontWeight } }) => fontWeight.bold};
+      opacity: 0.4;
+      cursor: not-allowed;
+
+      ::placeholder {
+        color: currentCOlor;
+      }
+    }
+}
 `;
 
 export default GlobalStyles;

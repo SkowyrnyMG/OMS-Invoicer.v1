@@ -21,7 +21,6 @@ import {
   addNewInvoice,
   getAllOrders,
   getAllInvoices,
-  // getAllCustomers,
   setOrderStatus,
   selectOrders,
 } from 'store/slices/db-slice/db-slice';
@@ -149,25 +148,18 @@ const InvoiceControlModal = ({ closeModal, currentInvoice }) => {
   const finishedOrders = orders.filter(
     (order) => order.status === STATUS_OPTION.order.finished,
   );
+
   useEffect(() => {
-    // * if there is no orders in app store then get it from the database
-    if (orders.length === 0) {
-      dispatch(getAllOrders());
-    }
+    dispatch(getAllOrders());
+
     if (currentInvoice) {
       setInitValues(currentInvoice);
     }
-    setIsWarningOpen(finishedOrders.length === 0 && !currentInvoice);
-  }, [
-    dispatch,
-    orders.length,
-    currentInvoice,
-    setInitValues,
-    orders,
-    finishedOrders,
-  ]);
+  }, [dispatch, currentInvoice]);
 
-  console.log(isWarningOpen);
+  useEffect(() => {
+    setIsWarningOpen(finishedOrders.length === 0 && !currentInvoice);
+  }, [setIsWarningOpen, currentInvoice, finishedOrders.length]);
 
   return (
     <Wrapper>

@@ -85,6 +85,22 @@ const registerWithEmailAndPassword = createAsyncThunk(
   },
 );
 
+export const logoutUser = createAsyncThunk('auth/logoutUser', async () => {
+  try {
+    console.log('logged out');
+    setLocalValue('user', '');
+    setLocalValue('uuid', '');
+    const initState = {
+      uuid: '',
+      userInfo: '',
+      message: '',
+    };
+    return initState;
+  } catch (error) {
+    return error;
+  }
+});
+
 export const AuthSlice = createSlice({
   name: 'auth',
   initialState: {
@@ -99,15 +115,15 @@ export const AuthSlice = createSlice({
     },
   },
   reducers: {
-    logoutUser: (state) => {
-      setLocalValue('user', '');
-      setLocalValue('uuid', '');
-      state.login = {
-        uuid: '',
-        userInfo: '',
-        message: '',
-      };
-    },
+    // logoutUser: (state) => {
+    //   setLocalValue('user', '');
+    //   setLocalValue('uuid', '');
+    //   state.login = {
+    //     uuid: '',
+    //     userInfo: '',
+    //     message: '',
+    //   };
+    // },
     resetMessage: (state) => {
       state.login.message = '';
     },
@@ -125,6 +141,10 @@ export const AuthSlice = createSlice({
     [registerWithEmailAndPassword.rejected]: (state, { payload }) => {
       state.login = payload;
     },
+
+    [logoutUser.fulfilled]: (state, { payload }) => {
+      state.login = { ...payload };
+    },
   },
 });
 
@@ -132,7 +152,10 @@ export const getUserStatus = (state) => state.auth.login.message;
 export const getUserData = (state) => state.auth.login;
 export const getUid = (state) => state.auth.login.uuid;
 
-export const { logoutUser, resetMessage } = AuthSlice.actions;
+export const {
+  // logoutUser,
+  resetMessage,
+} = AuthSlice.actions;
 
 export { signInWithEmailAndPassword, registerWithEmailAndPassword };
 export default AuthSlice.reducer;

@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { db } from 'utils/axios-helper';
 import { getLocalValue } from 'hooks/useLocalStorage';
+import { logoutUser } from 'store/slices/auth-slice/auth-slice';
 
 export const getAllCustomers = createAsyncThunk(
   'db/getAllCustomers',
@@ -107,6 +108,7 @@ export const getAllOrders = createAsyncThunk('db/getAllOrders', async () => {
   const localUuid = getLocalValue('uuid');
   try {
     return await db.get(`data/${localUuid}/orders.json`).then(({ data }) => {
+      console.log(data);
       return (
         // * if there is no order list created in DB, action will return empty array to the reducer
         data !== null
@@ -114,12 +116,15 @@ export const getAllOrders = createAsyncThunk('db/getAllOrders', async () => {
               data.firstReg === null || data.firstReg === undefined
                 ? []
                 : Object.values(data.firstReg),
+              // data.firstReg !== null ||
+              //   (data.firstReg !== undefined && Object.values(data.firstReg)),
               data.lastOrder !== null ? data.lastOrder : undefined,
             ]
           : null
       );
     });
   } catch (error) {
+    console.log('error');
     return error;
   }
 });
@@ -420,6 +425,13 @@ const dbSlice = createSlice({
 
     [setInvoiceStatus.rejected]: (state) => {
       state.orders.firstReg = ['ERROR! REFRESH THE PAGE!'];
+    },
+
+    [logoutUser.fulfilled]: (state) => {
+      state.customers = [];
+      state.config = {};
+      state.orders = { firstReg: [], lastOrder: { firstReg: '' } };
+      state.invoices = { firstReg: [], lastInvoice: { firstReg: '' } };
     },
   },
 });

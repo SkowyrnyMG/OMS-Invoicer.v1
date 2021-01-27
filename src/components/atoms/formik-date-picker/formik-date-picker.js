@@ -21,14 +21,15 @@ const Wrapper = styled.div`
     padding: 0;
 
     input {
+      /* padding: 0.5rem;
       width: 100%;
       height: 3rem;
       font-size: ${({ theme: { fontSize } }) => fontSize.ms};
       color: ${({ theme: { color } }) => color.secondaryFont};
-      border: none;
       outline: none;
-      border-bottom: 2px solid currentColor;
-      cursor: pointer;
+      border: 2px solid currentColor;
+      border-radius: 5px;
+      cursor: pointer; */
 
       /* border-color: ${({ theme: { color }, error, touched }) => {
         if (error && touched) {
@@ -40,6 +41,8 @@ const Wrapper = styled.div`
         return color.secondaryFont;
       }}; */
 
+      cursor: pointer;
+
       transition: 0.5s transform;
 
       :focus {
@@ -47,6 +50,10 @@ const Wrapper = styled.div`
       }
 
       :disabled {
+        background: ${({ theme: { color } }) => color.transparentDark};
+        color: ${({ theme: { color } }) => color.mainFont};
+        font-weight: ${({ theme: { fontWeight } }) => fontWeight.bold};
+        opacity: 0.4;
         cursor: not-allowed;
       }
     }
@@ -127,6 +134,7 @@ const FormikDatePicker = ({ placeholder, ...props }) => {
         <DatePicker
           {...field}
           {...props}
+          autoComplete='off'
           dateFormat='yyyy-MM-dd'
           selected={(field.value && new Date(field.value)) || null}
           onChange={(val) => {

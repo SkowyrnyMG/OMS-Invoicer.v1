@@ -15,14 +15,14 @@ const StyledLabel = styled.label`
   }
 
   input {
-    padding: 0.5rem;
+    /* padding: 0.5rem;
     width: 100%;
     height: 3rem;
     font-size: ${({ theme: { fontSize } }) => fontSize.ms};
     color: ${({ theme: { color } }) => color.secondaryFont};
-    border: none;
     outline: none;
-    border-bottom: 2px solid currentColor;
+    border: 1px solid currentColor;
+    border-radius: 5px; */
 
     border-color: ${({ theme: { color }, error, touched }) => {
       if (error && touched) {
@@ -40,9 +40,13 @@ const StyledLabel = styled.label`
       transform: translateX(2px);
     }
 
-    :disabled {
+    /* :disabled {
+      background: ${({ theme: { color } }) => color.transparentDark};
+      color: ${({ theme: { color } }) => color.mainFont};
+      font-weight: ${({ theme: { fontWeight } }) => fontWeight.bold};
+      opacity: 0.4;
       cursor: not-allowed;
-    }
+    } */
 
     :placeholder-shown + div {
       opacity: 0;

@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import AppGridContainer from 'components/atoms/app-grid-container/app-grid-container';
 import AppTableBody from 'components/modules/app-table-body/app-table-body';
 import InvoiceControlModal from 'components/organisms/invoice-control-modal/invoice-control-modal';
+import PDFRenderer from 'components/organisms/pdf-renderer/pdf-renderer';
 import ActionMenu from 'components/modules/action-menu/action-menu';
 import Button from 'components/atoms/button/button';
 
@@ -22,6 +23,7 @@ const InvoicesModule = ({ invoicesList }) => {
 
   const [currentInvoice, setCurrentInvoice] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isPDFWindowOpen, setIsPDFWindowOpen] = useState(false);
   const columns = useMemo(() => INVOICES_COLUMNS, []);
   const data = useMemo(() => invoicesList, [invoicesList]);
   const defaultColumnValues = useDefaultColumn(columns.length);
@@ -44,6 +46,10 @@ const InvoicesModule = ({ invoicesList }) => {
     dispatch(getAllInvoices());
   };
 
+  const handlePrintClick = () => {
+    setIsPDFWindowOpen(true);
+  };
+
   return (
     <AppGridContainer>
       {isModalOpen && (
@@ -51,6 +57,9 @@ const InvoicesModule = ({ invoicesList }) => {
           closeModal={() => setIsModalOpen(false)}
           currentInvoice={currentInvoice}
         />
+      )}
+      {isPDFWindowOpen && (
+        <PDFRenderer closeRenderer={() => setIsPDFWindowOpen(false)} />
       )}
       <AppTableBody
         columns={columns}
@@ -82,6 +91,7 @@ const InvoicesModule = ({ invoicesList }) => {
         >
           Mark as paid
         </Button>
+        <Button onClick={handlePrintClick}>Print</Button>
       </ActionMenu>
     </AppGridContainer>
   );

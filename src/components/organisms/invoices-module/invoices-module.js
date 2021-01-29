@@ -18,7 +18,6 @@ import {
 } from 'store/slices/db-slice/db-slice';
 
 const InvoicesModule = ({ invoicesList }) => {
-  console.log(invoicesList);
   const dispatch = useDispatch();
 
   const [currentInvoice, setCurrentInvoice] = useState(null);
@@ -59,7 +58,10 @@ const InvoicesModule = ({ invoicesList }) => {
         />
       )}
       {isPDFWindowOpen && (
-        <PDFRenderer closeRenderer={() => setIsPDFWindowOpen(false)} />
+        <PDFRenderer
+          closeRenderer={() => setIsPDFWindowOpen(false)}
+          currentInvoice={currentInvoice}
+        />
       )}
       <AppTableBody
         columns={columns}
@@ -91,7 +93,9 @@ const InvoicesModule = ({ invoicesList }) => {
         >
           Mark as paid
         </Button>
-        <Button onClick={handlePrintClick}>Print</Button>
+        <Button onClick={handlePrintClick} disabled={currentInvoice === null}>
+          Print
+        </Button>
       </ActionMenu>
     </AppGridContainer>
   );

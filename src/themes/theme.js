@@ -1,3 +1,15 @@
+import robotoLight from 'themes/fonts/roboto/Roboto-Light.ttf';
+import robotoBold from 'themes/fonts/roboto/Roboto-Bold.ttf';
+import robotoRegular from 'themes/fonts/roboto/Roboto-Regular.ttf';
+
+export const customFonts = {
+  roboto: {
+    thin: robotoLight,
+    regular: robotoRegular,
+    bold: robotoBold,
+  },
+};
+
 export const breakpoints = {
   regularDesktop: 1700,
   // bigDesktop: 1440,

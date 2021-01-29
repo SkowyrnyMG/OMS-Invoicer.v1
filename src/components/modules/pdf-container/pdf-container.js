@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { PDFViewer } from '@react-pdf/renderer';
@@ -21,10 +21,12 @@ const InvoiceContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-content: center;
-  width: 70%;
-  height: 80vh;
+  width: ${({ isFullWidth }) => (isFullWidth ? '100%' : '70%')};
+  height: ${({ isFullWidth }) => (isFullWidth ? '100vh' : '80vh')};
   background: ${({ theme: { color } }) => color.bg};
   border-radius: 0.5rem;
+
+  transition: all 0.25s;
 
   iframe {
     height: 100%;
@@ -43,23 +45,37 @@ const ContainerTopBar = styled.div`
   background: ${({ theme: { color } }) => color.transparentMain};
 `;
 
-const CloseButton = styled.button`
+const TopBarButtonsWrapper = styled.div`
   position: absolute;
-  height: 100%;
-  width: 4rem;
   right: 0;
   top: 0;
-  background: ${({ theme: { color } }) => color.danger};
+  height: 100%;
+  width: fit-content;
+`;
+
+const TopBarButton = styled.button`
+  width: 4rem;
+  height: 100%;
+  background: ${({ close, theme: { color } }) =>
+    close ? color.danger : color.transparentMain};
   border: 0;
   cursor: pointer;
 `;
 
 const PDFContainer = ({ children, closeRenderer }) => {
+  const [isFullWidth, setIsFullWidth] = useState(false);
   return (
     <Wrapper>
-      <InvoiceContainer>
+      <InvoiceContainer isFullWidth={isFullWidth}>
         <ContainerTopBar>
-          <CloseButton onClick={closeRenderer}>X</CloseButton>
+          <TopBarButtonsWrapper>
+            <TopBarButton onClick={() => setIsFullWidth((state) => !state)}>
+              +
+            </TopBarButton>
+            <TopBarButton onClick={closeRenderer} close>
+              X
+            </TopBarButton>
+          </TopBarButtonsWrapper>
         </ContainerTopBar>
         <PDFViewer>{children}</PDFViewer>
       </InvoiceContainer>

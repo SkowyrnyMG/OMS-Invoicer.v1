@@ -9,13 +9,14 @@ import PDFContainer from 'components/modules/pdf-container/pdf-container';
 import PDFInvoice from 'components/modules/pdf-invoice/pdf-invoice';
 
 const PDFRenderer = ({ closeRenderer, currentInvoice }) => {
-  const { rootCompanyDetails } = useSelector(selectUserConfig);
-  console.log(rootCompanyDetails);
+  const { rootCompanyDetails, bankDetails } = useSelector(selectUserConfig);
+  console.log(bankDetails);
   return (
     <PDFContainer closeRenderer={closeRenderer}>
       <PDFInvoice
         currentInvoice={currentInvoice}
         rootCompanyDetails={rootCompanyDetails}
+        bankDetails={bankDetails}
       />
     </PDFContainer>
   );

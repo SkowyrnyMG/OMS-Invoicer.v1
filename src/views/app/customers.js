@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-// import styled from 'styled-components';
 
 import {
   selectCustomers,
@@ -21,7 +20,9 @@ const Customers = () => {
 
   return (
     <Layout>
-      <CustomersModule customersList={customersList} />
+      <CustomersModule
+        customersList={customersList.length ? customersList : []}
+      />
     </Layout>
   );
 };

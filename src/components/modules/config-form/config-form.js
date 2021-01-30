@@ -21,7 +21,7 @@ const StyledForm = styled(Form)`
 `;
 
 const StyledHeadingBlue = styled(HeadingBlue)`
-  margin-bottom: 3rem;
+  margin: 3rem 0;
 `;
 
 const ConfigWrapper = styled.div`
@@ -76,6 +76,11 @@ const ConfigForm = ({ onSubmit }) => {
           userConfig !== null ? userConfig.rootCompanyDetails.rootTown : '',
         rootCountry:
           userConfig !== null ? userConfig.rootCompanyDetails.rootCountry : '',
+        bankName: userConfig !== null ? userConfig.bankDetails.bankName : '',
+        bankAccountNumber:
+          userConfig !== null ? userConfig.bankDetails.bankAccountNumber : '',
+        iban: userConfig !== null ? userConfig.bankDetails.iban : '',
+        swift: userConfig !== null ? userConfig.bankDetails.swift : '',
       }}
       validationSchema={validationSchema}
       onSubmit={(values) => {
@@ -88,6 +93,10 @@ const ConfigForm = ({ onSubmit }) => {
           rootPostCode,
           rootTown,
           rootCountry,
+          bankName,
+          bankAccountNumber,
+          iban,
+          swift,
         } = values;
 
         const submitData = {
@@ -100,6 +109,12 @@ const ConfigForm = ({ onSubmit }) => {
             rootPostCode,
             rootTown,
             rootCountry,
+          },
+          bankDetails: {
+            bankName,
+            bankAccountNumber,
+            iban,
+            swift,
           },
         };
         onSubmit(submitData);
@@ -136,6 +151,39 @@ const ConfigForm = ({ onSubmit }) => {
                 disabled={userConfig}
               />
             </ConfigOption>
+            <StyledHeadingBlue>Bank Details</StyledHeadingBlue>
+            <FormikControl
+              type='text'
+              control='input'
+              name='bankName'
+              error={errors.bankName}
+              touched={touched.bankName}
+              placeholder='BANK NAME'
+            />
+            <FormikControl
+              type='text'
+              control='input'
+              name='bankAccountNumber'
+              error={errors.bankAccountNumber}
+              touched={touched.bankAccountNumber}
+              placeholder='BANK ACCOUNT NUMBER'
+            />
+            <FormikControl
+              type='text'
+              control='input'
+              name='iban'
+              error={errors.iban}
+              touched={touched.iban}
+              placeholder='IBAN'
+            />
+            <FormikControl
+              type='text'
+              control='input'
+              name='swift'
+              error={errors.swift}
+              touched={touched.swift}
+              placeholder='SWIFT'
+            />
           </ConfigWrapper>
           <ConfigWrapper>
             <StyledHeadingBlue>Company info</StyledHeadingBlue>
@@ -189,6 +237,9 @@ const ConfigForm = ({ onSubmit }) => {
             />
             <StyledButton type='submit'>Save</StyledButton>
           </ConfigWrapper>
+          {/* <ConfigWrapper>
+
+          </ConfigWrapper> */}
         </StyledForm>
       )}
     </Formik>

@@ -24,6 +24,7 @@ import {
   setOrderStatus,
   selectOrders,
 } from 'store/slices/db-slice/db-slice';
+import { roundTwoDecimals } from 'utils/math-helper';
 
 const Wrapper = styled.div`
   display: flex;
@@ -41,7 +42,7 @@ const Wrapper = styled.div`
 const StyledAppBodyContainer = styled(AppBodyContainer)`
   position: relative;
   overflow: ${({ isWarningOpen }) =>
-    isWarningOpen ? 'hidden' : 'auto'} !important;
+    isWarningOpen ? 'hidden' : 'hidden auto'} !important;
 `;
 
 const StyledForm = styled(Form)`
@@ -160,6 +161,7 @@ const InvoiceControlModal = ({ closeModal, currentInvoice }) => {
   useEffect(() => {
     setIsWarningOpen(finishedOrders.length === 0 && !currentInvoice);
   }, [setIsWarningOpen, currentInvoice, finishedOrders.length]);
+  console.log(WarningPopup);
 
   return (
     <Wrapper>
@@ -202,8 +204,9 @@ const InvoiceControlModal = ({ closeModal, currentInvoice }) => {
                 order_number: values.order_number,
                 tax: values.tax,
                 price_net: values.price_net,
-                price_gross:
+                price_gross: roundTwoDecimals(
                   values.price_net + values.price_net * (values.tax / 100),
+                ),
                 currency: values.currency,
                 payment_status: values.payment_status,
                 payment_value: values.payment_value,

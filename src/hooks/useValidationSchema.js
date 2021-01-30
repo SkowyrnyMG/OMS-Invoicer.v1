@@ -105,7 +105,28 @@ export const useValidationSchema = (type) => {
           .required('Town is required'),
         rootCountry: Yup.string()
           .min(3, 'Country should be at lest 3 signs long!')
-          .max(30, 'Country should not be longer than 30 signs long!'),
+          .max(30, 'Country should not be longer than 30 signs long!')
+          .required('Country is required!'),
+        bankName: Yup.string()
+          .min(4, 'Bank name shuld be at lest 4 signs long!')
+          .max(100, 'Bank name should not be longer than 100 sighns')
+          .required('Bank name is required!'),
+        bankAccountNumber: Yup.string()
+          .min(6, 'Bank account number should be longer than 6 signs')
+          .max(30, 'Bank account number should not be longer than 20 signs')
+          .required('Bank account number is required!'),
+        iban: Yup.string()
+          .min(1, 'IBAN should be longer than 1 sign')
+          .max(5, 'IBAN should not be longer than 5 signs')
+          .required('IBAN is required!'),
+        swift: Yup.string()
+          .min(8, 'SWIFT code cannot be shorter than 8 signs!')
+          .max(11, 'SWIFT code cannot be longer than 11 signs!')
+          .required('SWIFT is required!'),
+
+        //   bankAccountNumber,
+        //   iban,
+        //   swift,
       });
     case 'newOrder':
       return Yup.object().shape({

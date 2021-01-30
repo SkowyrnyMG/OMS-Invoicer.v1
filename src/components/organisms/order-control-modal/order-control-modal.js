@@ -42,7 +42,7 @@ const Wrapper = styled.div`
 const StyledAppBodyContainer = styled(AppBodyContainer)`
   position: relative;
   overflow: ${({ isWarningOpen }) =>
-    isWarningOpen ? 'hidden' : 'auto'} !important;
+    isWarningOpen ? 'hidden' : 'hidden auto'} !important;
 `;
 
 const StyledForm = styled(Form)`
@@ -179,7 +179,7 @@ const OrderControlModal = ({ closeModal, currentOrder }) => {
             title='Any Customer found'
             isWarningOpen={isWarningOpen}
           >
-            To issue new order you have to add some Customers first!! Please go
+            To create new order you have to add some Customers first!! Please go
             back to
             <NavLink path={routes.appCustomers}> customers tab </NavLink>
             and add new Customer!

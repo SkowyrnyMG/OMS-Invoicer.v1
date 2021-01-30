@@ -72,6 +72,10 @@ const CustomersModule = ({ customersList }) => {
   );
 };
 
+CustomersModule.defaultProps = {
+  customersList: [],
+};
+
 CustomersModule.propTypes = {
   customersList: PropTypes.arrayOf(
     PropTypes.shape({
@@ -86,6 +90,6 @@ CustomersModule.propTypes = {
       town: PropTypes.string.isRequired,
       vat_number: PropTypes.string.isRequired,
     }),
-  ).isRequired,
+  ),
 };
 export default CustomersModule;

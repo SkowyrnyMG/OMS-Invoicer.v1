@@ -10,6 +10,8 @@ import {
 } from '@react-pdf/renderer';
 
 import { customFonts } from 'themes/theme';
+import { roundTwoDecimals } from 'utils/math-helper';
+import { STATUS_OPTION } from 'utils/constant-data';
 
 Font.register({
   family: 'Roboto',
@@ -38,12 +40,35 @@ const styles = StyleSheet.create({
     height: '100%',
   },
   page: {
+    position: 'relative',
     display: 'flex',
     padding: '15pt 10pt',
     flexDirection: 'column',
     fontFamily: 'Roboto',
     lineHeight: 1.5,
     backgroundColor: '#fff',
+  },
+  crossInfo: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    position: 'absolute',
+    width: '100%',
+    fontSize: '100pt',
+    fontWeight: 'bold',
+    letterSpacing: '40pt',
+
+    top: '50%',
+    // left: '35%',
+    // transform: 'translate(-50%, -50%) rotate(-55deg)',
+    transform: 'translateY(-50%) rotate(-55deg)',
+    opacity: 0.5,
+  },
+  crossInfoCancelled: {
+    color: '#F25C54',
+  },
+  crossInfoPaid: {
+    color: '#C8D3FD',
   },
   smallText: {
     fontSize: '10pt',
@@ -85,10 +110,19 @@ const styles = StyleSheet.create({
   devider: {
     display: 'flex',
     flexDirection: 'row',
-    padding: '0 10pt',
+    padding: '2pt 10pt',
     margin: '0 10pt',
     fontSize: '9pt',
     backgroundColor: '#efefee',
+    borderTop: '2pt solid #efefee',
+    borderBottom: '2pt solid #bfbfbf',
+  },
+  devideEnd: {
+    display: 'flex',
+    padding: '0 10pt',
+    margin: '0 10pt',
+    backgroundColor: '#efefee',
+    borderBottom: '2pt solid #bfbfbf',
   },
   deviderPart: {
     flexBasis: '50%',
@@ -96,6 +130,7 @@ const styles = StyleSheet.create({
   flexHalfContainer: {
     display: 'flex',
     flexDirection: 'row',
+    justifyContent: 'space-between',
     padding: '0 10pt',
     margin: '0 10pt',
     fontSize: '9pt',
@@ -105,12 +140,16 @@ const styles = StyleSheet.create({
     padding: '0 30pt 0  0',
     borderLeft: '1pt solid #efefee',
   },
+  whiteSpace: {
+    margin: '50pt 0',
+  },
 });
 
-// Create Document Component
-const PDFInvoice = ({ currentInvoice, rootCompanyDetails }) => {
+const PDFInvoice = ({ currentInvoice, rootCompanyDetails, bankDetails }) => {
   console.log(currentInvoice);
   console.log(rootCompanyDetails);
+  console.log(bankDetails);
+
   return (
     <Document style={styles.document}>
       <Page size='A4' style={styles.page}>
@@ -200,9 +239,9 @@ const PDFInvoice = ({ currentInvoice, rootCompanyDetails }) => {
               <View style={styles.detailRow}>
                 <Text>Vat price:</Text>
                 <Text>
-                  {`${currentInvoice.price_gross - currentInvoice.price_net} ${
-                    currentInvoice.currency
-                  }`}
+                  {`${roundTwoDecimals(
+                    currentInvoice.price_gross - currentInvoice.price_net,
+                  )} ${currentInvoice.currency}`}
                 </Text>
               </View>
               <View style={styles.detailRow}>
@@ -213,7 +252,6 @@ const PDFInvoice = ({ currentInvoice, rootCompanyDetails }) => {
               </View>
             </View>
           </View>
-
           <View style={styles.flexHalf}>
             <View style={styles.twoColumnsFlex}>
               <View style={styles.detailRow}>
@@ -222,6 +260,46 @@ const PDFInvoice = ({ currentInvoice, rootCompanyDetails }) => {
             </View>
           </View>
         </View>
+        <View style={styles.devideEnd} />
+        <View style={styles.whiteSpace} />
+        <View style={styles.flexHalfContainer}>
+          <Text>To pay: </Text>
+          <Text>{`Payment terms: ${currentInvoice.sale_date}`}</Text>
+        </View>
+        <View style={styles.devider}>
+          <Text style={styles.deviderPart}>
+            {`Gross: ${currentInvoice.price_gross} ${currentInvoice.currency}`}
+          </Text>
+        </View>
+        <View style={styles.flexHalfContainer}>
+          <Text>&nbsp;</Text>
+          <Text>{`Bank account: ${bankDetails.bankAccountNumber}`}</Text>
+        </View>
+        <Text>&nbsp;</Text>
+        {currentInvoice.payment_status === STATUS_OPTION.invoice.paid && (
+          <View style={styles.crossInfo}>
+            <Text style={styles.crossInfoPaid}>PAID</Text>
+          </View>
+        )}
+        {currentInvoice.payment_status === STATUS_OPTION.invoice.cancelled && (
+          <View style={styles.crossInfo}>
+            <Text style={styles.crossInfoCancelled}>STORNO</Text>
+          </View>
+        )}
+        {currentInvoice.payment_value > 0 && (
+          <>
+            <View style={styles.devider}>
+              <Text style={styles.deviderPart}>
+                {`Already paid: ${currentInvoice.payment_value} ${currentInvoice.currency}`}
+              </Text>
+              <Text style={styles.deviderPart}>
+                {`Left to pay: ${
+                  currentInvoice.price_gross - currentInvoice.payment_value
+                } ${currentInvoice.currency}`}
+              </Text>
+            </View>
+          </>
+        )}
       </Page>
     </Document>
   );

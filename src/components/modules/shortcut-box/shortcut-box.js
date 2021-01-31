@@ -44,8 +44,8 @@ const StyledDescription = styled.p`
   color: ${({ theme: { color } }) => color.secondaryFont};
 `;
 
-const ShortcutBox = ({ children, title, description }) => (
-  <Wrapper>
+const ShortcutBox = ({ children, title, description, openOrderModal }) => (
+  <Wrapper onClick={openOrderModal}>
     {children}
     <StyledHeadingBlue>{title}</StyledHeadingBlue>
     <StyledDescription>{description}</StyledDescription>

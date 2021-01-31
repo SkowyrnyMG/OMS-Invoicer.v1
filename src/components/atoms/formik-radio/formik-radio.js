@@ -7,6 +7,7 @@ import ErrorMsg from 'components/atoms/error-msg/error-msg';
 const StyledRadio = styled(Field)`
   position: absolute;
   opacity: 0;
+  width: fit-content;
   appearance: none;
   :checked + label {
     font-weight: ${({ theme: { fontWeight } }) => fontWeight.bold};

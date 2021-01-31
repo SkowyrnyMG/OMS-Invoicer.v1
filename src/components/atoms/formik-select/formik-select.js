@@ -41,6 +41,7 @@ const LabelText = styled.span`
 
 const StyledOption = styled.option`
   font-size: ${({ theme: { fontSize } }) => fontSize.m};
+  width: 2rem !important;
 `;
 
 const FormikSelect = ({

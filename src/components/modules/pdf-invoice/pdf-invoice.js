@@ -10,7 +10,7 @@ import {
 } from '@react-pdf/renderer';
 
 import { customFonts } from 'themes/theme';
-import { roundTwoDecimals } from 'utils/math-helper';
+import { roundTwoDecimals, addDaysToDate } from 'utils/math-helper';
 import { STATUS_OPTION } from 'utils/constant-data';
 
 Font.register({
@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
     color: '#C8D3FD',
   },
   smallText: {
-    fontSize: '10pt',
+    fontSize: '12pt',
   },
   mediumText: {
     fontSize: '20pt',
@@ -126,6 +126,11 @@ const styles = StyleSheet.create({
   },
   deviderPart: {
     flexBasis: '50%',
+  },
+  deviderPartBig: {
+    flexBasis: '50%',
+    fontSize: '12pt',
+    fontWeight: 'bold',
   },
   flexHalfContainer: {
     display: 'flex',
@@ -263,19 +268,45 @@ const PDFInvoice = ({ currentInvoice, rootCompanyDetails, bankDetails }) => {
         <View style={styles.devideEnd} />
         <View style={styles.whiteSpace} />
         <View style={styles.flexHalfContainer}>
-          <Text>To pay: </Text>
-          <Text>{`Payment terms: ${currentInvoice.sale_date}`}</Text>
+          <Text style={styles.smallText}>To pay: </Text>
+          <Text style={styles.smallText}>
+            {`Invoice due to: ${addDaysToDate(
+              currentInvoice.issue_date,
+              currentInvoice.terms,
+            )}`}
+          </Text>
         </View>
         <View style={styles.devider}>
-          <Text style={styles.deviderPart}>
+          <Text style={styles.deviderPartBig}>
             {`Gross: ${currentInvoice.price_gross} ${currentInvoice.currency}`}
           </Text>
         </View>
         <View style={styles.flexHalfContainer}>
-          <Text>&nbsp;</Text>
-          <Text>{`Bank account: ${bankDetails.bankAccountNumber}`}</Text>
+          <Text>
+            {`Bank account: ${bankDetails.iban}${bankDetails.bankAccountNumber} - ${bankDetails.bankName}`}
+          </Text>
+          <Text>{`SWIFT: ${bankDetails.swift}`}</Text>
         </View>
         <Text>&nbsp;</Text>
+        {currentInvoice.payment_value !== currentInvoice.price_gross &&
+          currentInvoice.payment_status !== STATUS_OPTION.invoice.paid && (
+            <>
+              <View style={styles.flexHalfContainer}>
+                <Text style={styles.smallText}>
+                  {`Already paid: ${roundTwoDecimals(
+                    currentInvoice.payment_value,
+                  )} ${currentInvoice.currency}`}
+                </Text>
+                <Text style={styles.smallText}>
+                  {`Left to pay: ${roundTwoDecimals(
+                    currentInvoice.price_gross - currentInvoice.payment_value,
+                  )} ${currentInvoice.currency}`}
+                </Text>
+              </View>
+            </>
+          )}
+        {/* // * STATUS components have to be always at the end of the file,
+        // * otherwise they won't be on top */}
         {currentInvoice.payment_status === STATUS_OPTION.invoice.paid && (
           <View style={styles.crossInfo}>
             <Text style={styles.crossInfoPaid}>PAID</Text>
@@ -285,20 +316,6 @@ const PDFInvoice = ({ currentInvoice, rootCompanyDetails, bankDetails }) => {
           <View style={styles.crossInfo}>
             <Text style={styles.crossInfoCancelled}>STORNO</Text>
           </View>
-        )}
-        {currentInvoice.payment_value > 0 && (
-          <>
-            <View style={styles.devider}>
-              <Text style={styles.deviderPart}>
-                {`Already paid: ${currentInvoice.payment_value} ${currentInvoice.currency}`}
-              </Text>
-              <Text style={styles.deviderPart}>
-                {`Left to pay: ${
-                  currentInvoice.price_gross - currentInvoice.payment_value
-                } ${currentInvoice.currency}`}
-              </Text>
-            </View>
-          </>
         )}
       </Page>
     </Document>

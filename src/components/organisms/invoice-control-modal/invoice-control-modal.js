@@ -100,6 +100,7 @@ const InvoiceControlModal = ({ closeModal, currentInvoice }) => {
     left_to_pay: 0,
     sale_date: format(new Date(), 'yyyy-MM-dd'),
     issue_date: '',
+    terms: '',
     desc: '',
     customer_name: '',
     customer_vat: '',
@@ -136,6 +137,7 @@ const InvoiceControlModal = ({ closeModal, currentInvoice }) => {
       left_to_pay: 0,
       sale_date: '',
       issue_date: '',
+      terms: '',
       desc: '',
       customer_name: '',
       customer_vat: '',
@@ -192,6 +194,7 @@ const InvoiceControlModal = ({ closeModal, currentInvoice }) => {
                   ? format(new Date(initValues.sale_date), 'yyyy-MM-dd')
                   : initValues.sale_date,
               issue_date: initValues.issue_date,
+              terms: initValues.terms,
               desc: initValues.desc,
               customer_name: initValues.customer_name,
               customer_vat: initValues.customer_vat,
@@ -216,6 +219,7 @@ const InvoiceControlModal = ({ closeModal, currentInvoice }) => {
                     : values.price_gross - values.payment_value,
                 sale_date: values.sale_date,
                 issue_date: values.issue_date,
+                terms: values.terms,
                 desc: values.desc,
                 customer_name: values.customer_name,
                 customer_vat: values.customer_vat,
@@ -357,6 +361,14 @@ const InvoiceControlModal = ({ closeModal, currentInvoice }) => {
                     error={errors.issue_date}
                     touched={touched.issue_date}
                     placeholder='ISSUE DATE'
+                  />
+                  <FormikControl
+                    type='number'
+                    control='input'
+                    name='terms'
+                    error={errors.terms}
+                    touched={touched.terms}
+                    placeholder='PAYMENT TERMS'
                   />
                   <FormikControl
                     type='text'

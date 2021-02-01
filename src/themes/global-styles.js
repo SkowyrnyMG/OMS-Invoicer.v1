@@ -11,6 +11,7 @@ const GlobalStyles = createGlobalStyle`
 
 html {
   font-size: 62.5%;
+  box-sizing: border-box;
 }
 
 body {
@@ -73,7 +74,7 @@ a:visited {
 input {
       padding: 0.5rem;
       width: 100%;
-      height: 3rem;
+      height: 4rem;
       font-size: ${({ theme: { fontSize } }) => fontSize.ms};
       color: ${({ theme: { color } }) => color.secondaryFont};
       outline: none;

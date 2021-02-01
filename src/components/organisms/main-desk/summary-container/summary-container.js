@@ -4,12 +4,22 @@ import { useDispatch } from 'react-redux';
 
 import AppBodyContainer from 'components/atoms/app-body-container/app-body-container';
 import SummaryCounter from 'components/modules/summary-counter/summary-counter';
-import SummaryPosition from 'components/modules/summary-position/summary-position';
+// import SummaryPosition from 'components/modules/summary-position/summary-position';
+import TotalItemCounter from 'components/modules/total-item-counter/total-item-counter';
+import { ReactComponent as CustomersIcon } from 'assets/svg/clients-icon.svg';
+import { ReactComponent as InvoicesIcon } from 'assets/svg/invoice-icon.svg';
+import { ReactComponent as OrdersIcon } from 'assets/svg/orders-icon.svg';
 
+import { routes } from 'utils/routes';
 import { useOrdersByStatus } from 'hooks/useOrdersByStatus';
 import { useInvoicesByStatus } from 'hooks/useInvoicesByStatus';
 import { STATUS_OPTION } from 'utils/constant-data';
-import { getAllOrders, getAllInvoices } from 'store/slices/db-slice/db-slice';
+import {
+  getAllOrders,
+  getAllInvoices,
+  getAllCustomers,
+} from 'store/slices/db-slice/db-slice';
+import { useCollectionsLength } from 'hooks/useCollectionsLength';
 
 const CountersBox = styled.div`
   width: 100%;
@@ -21,14 +31,28 @@ const CountersBox = styled.div`
 `;
 
 const SummaryWrapper = styled.div`
-  padding: 3rem 4.5rem;
+  height: 70%;
+  width: 100%;
+
+  padding: 1rem 4.5rem;
+`;
+
+const TotalItemsWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
 `;
 
 const StyledHeading = styled.h3`
-  margin-bottom: 2rem;
+  margin: 2rem 0 0;
+  font-size: ${({ theme: { fontSize } }) => fontSize.headingSmall};
 `;
 
 const SummaryContainer = () => {
+  const collectionsLength = useCollectionsLength();
+  console.log(collectionsLength);
   const dispatch = useDispatch();
   const finishedOrders = useOrdersByStatus(STATUS_OPTION.order.finished);
   const pendingOrders = useOrdersByStatus(STATUS_OPTION.order.pending);
@@ -36,6 +60,7 @@ const SummaryContainer = () => {
   useEffect(() => {
     dispatch(getAllOrders());
     dispatch(getAllInvoices());
+    dispatch(getAllCustomers());
   }, [dispatch]);
 
   return (
@@ -55,10 +80,37 @@ const SummaryContainer = () => {
         />
       </CountersBox>
       <SummaryWrapper>
-        <StyledHeading>Summary</StyledHeading>
+        <StyledHeading>SUMMARY</StyledHeading>
+        <TotalItemsWrapper>
+          <TotalItemCounter
+            bgColor={({ theme: { color } }) => color.primary}
+            title='Total customers'
+            path={routes.appCustomers}
+            counter={collectionsLength.customers}
+          >
+            <CustomersIcon />
+          </TotalItemCounter>
+          <TotalItemCounter
+            bgColor={({ theme: { color } }) => color.secondary}
+            title='Total orders'
+            path={routes.appOrders}
+            counter={collectionsLength.orders}
+          >
+            <OrdersIcon />
+          </TotalItemCounter>
+          <TotalItemCounter
+            bgColor={({ theme: { color } }) => color.tertiary}
+            title='Total invoices'
+            path={routes.appInvoices}
+            counter={collectionsLength.invoices}
+          >
+            <InvoicesIcon />
+          </TotalItemCounter>
+        </TotalItemsWrapper>
+        {/* <StyledHeading>Summary</StyledHeading> */}
+        {/* <SummaryPosition posName='Orders in November:' />
         <SummaryPosition posName='Orders in November:' />
-        <SummaryPosition posName='Orders in November:' />
-        <SummaryPosition posName='Orders in November:' />
+        <SummaryPosition posName='Orders in November:' /> */}
       </SummaryWrapper>
     </AppBodyContainer>
   );

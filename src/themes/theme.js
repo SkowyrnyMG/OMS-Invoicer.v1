@@ -35,6 +35,8 @@ export const theme = {
     tertiaryFont: '#FFFFFF',
     devider: '#F0F0FD',
     primary: '#446DF6',
+    secondary: '#f6c044',
+    tertiary: '#f66744',
     success: '#00A896',
     danger: '#F25C54',
     error: '#DA2442',

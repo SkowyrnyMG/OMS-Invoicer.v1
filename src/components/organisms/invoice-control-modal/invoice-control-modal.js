@@ -12,6 +12,7 @@ import ComboboxInvoiceMenu from 'components/modules/combobox-invoice-menu/combob
 import NavLink from 'components/atoms/nav-link/nav-link';
 import ActionMenu from 'components/modules/action-menu/action-menu';
 import Button from 'components/atoms/button/button';
+import HelpToolTip from 'components/modules/help-tool-tip/help-tool-tip';
 
 import { routes } from 'utils/routes';
 import { STATUS_OPTION, CURRENCY } from 'utils/constant-data';
@@ -169,6 +170,7 @@ const InvoiceControlModal = ({ closeModal, currentInvoice }) => {
     <Wrapper>
       <AppGridContainer>
         <StyledAppBodyContainer isWarningOpen={isWarningOpen}>
+          <HelpToolTip info='Invoice info' />
           <WarningPopup
             title='Finished orders not found..'
             isWarningOpen={isWarningOpen}

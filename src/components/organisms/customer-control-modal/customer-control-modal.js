@@ -12,6 +12,7 @@ import ActionMenu from 'components/modules/action-menu/action-menu';
 import Button from 'components/atoms/button/button';
 import { ReactComponent as SearchIcon } from 'assets/svg/search-icon.svg';
 import Input from 'components/atoms/input/input';
+import HelpToolTip from 'components/modules/help-tool-tip/help-tool-tip';
 
 import { useValidationSchema } from 'hooks/useValidationSchema';
 import {
@@ -26,6 +27,7 @@ import {
 import { COUNTRY_CODES } from 'utils/constant-data';
 
 const Wrapper = styled.div`
+  position: relative;
   display: flex;
   justify-content: center;
   padding-top: 5rem;
@@ -39,6 +41,7 @@ const Wrapper = styled.div`
 `;
 
 const StyledAppBodyContainer = styled(AppBodyContainer)`
+  position: relative;
   overflow: auto;
 `;
 
@@ -180,6 +183,7 @@ const AddNewCustomerModal = ({ closeModal, currentCustomer }) => {
     <Wrapper>
       <AppGridContainer>
         <StyledAppBodyContainer>
+          <HelpToolTip info='Customer info' />
           <Formik
             enableReinitialize
             initialValues={{

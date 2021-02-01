@@ -14,6 +14,7 @@ import ComboboxOrderMenu from 'components/modules/combobox-order-menu/combobox-o
 import ActionMenu from 'components/modules/action-menu/action-menu';
 import NavLink from 'components/atoms/nav-link/nav-link';
 import Button from 'components/atoms/button/button';
+import HelpToolTip from 'components/modules/help-tool-tip/help-tool-tip';
 
 import { routes } from 'utils/routes';
 import { CURRENCY } from 'utils/constant-data';
@@ -175,6 +176,7 @@ const OrderControlModal = ({ closeModal, currentOrder }) => {
     <Wrapper>
       <AppGridContainer>
         <StyledAppBodyContainer isWarningOpen={isWarningOpen}>
+          <HelpToolTip info='Ordrs info' />
           <WarningPopup
             title='Any Customer found'
             isWarningOpen={isWarningOpen}

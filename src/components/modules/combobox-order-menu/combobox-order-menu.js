@@ -55,10 +55,8 @@ const ComboboxOrderMenu = ({ items, handleSetItemFn, handleResetItemFn }) => {
           searchResult.toLowerCase().match(inputValue.toLowerCase())
         );
       });
-      console.log(filteredItems);
       setIsResultArrEmpty(filteredItems.length === 0);
       setIsNotFoundVisible(false);
-      console.log(inputValue);
       setInputItems(filteredItems);
       if (!filteredItems.length) {
         setIsNotFoundVisible(true);
@@ -68,14 +66,12 @@ const ComboboxOrderMenu = ({ items, handleSetItemFn, handleResetItemFn }) => {
 
   const handleSearchClick = () => {
     handleSetItemFn(selectedItem);
-    console.log(selectedItem);
   };
 
   const handleResetClick = () => {
     handleResetItemFn();
     selectItem(null);
   };
-  console.log(isResultArrEmpty);
 
   return (
     <Wrapper>

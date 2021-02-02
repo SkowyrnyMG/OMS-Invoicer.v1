@@ -99,7 +99,7 @@ const StyledButton = styled.button`
 
   svg {
     padding: 0 0.5rem;
-    width: 1.5rem;
+    width: 2.5rem;
     height: 1.5rem;
     fill: ${({ theme: { color } }) => color.transparentMain};
     transition: 0.25s all;
@@ -208,7 +208,6 @@ const AppTableBody = ({
     getTableBodyProps,
     headerGroups,
     prepareRow,
-    selectedFlatRows,
     toggleRowSelected,
     toggleAllRowsSelected,
     state,
@@ -324,7 +323,8 @@ const AppTableBody = ({
             })}
           </tbody>
         </StyledTable>
-        <span>
+        {/* //* Below code is left here to track future errors faster. */}
+        {/* <span>
           {JSON.stringify(
             {
               selectedFlatRows: selectedFlatRows.map((row) => row.original),
@@ -332,7 +332,7 @@ const AppTableBody = ({
             null,
             0,
           )}
-        </span>
+        </span> */}
       </AppBodyContainer>
       {data.length > 0 && (
         <PaginatonNavWrapper>

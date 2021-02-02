@@ -84,8 +84,6 @@ const RadioGroup = styled.div`
 
 const StyledSpan = styled.span``;
 
-// TODO add sale date, issue date, terms of payment
-
 const InvoiceControlModal = ({ closeModal, currentInvoice }) => {
   const dispatch = useDispatch();
   const orders = useSelector(selectOrders);
@@ -164,13 +162,14 @@ const InvoiceControlModal = ({ closeModal, currentInvoice }) => {
   useEffect(() => {
     setIsWarningOpen(finishedOrders.length === 0 && !currentInvoice);
   }, [setIsWarningOpen, currentInvoice, finishedOrders.length]);
-  console.log(WarningPopup);
+
+  const ToolTipInfo = `In this modal you can issue new or edit existing invoice. First you have to choose finished order using "Choose a finished order" field. After that most of required data should be transfered from order to the draft of invoice. After invoice is issued you can control payment status using "Payment details" section.`;
 
   return (
     <Wrapper>
       <AppGridContainer>
         <StyledAppBodyContainer isWarningOpen={isWarningOpen}>
-          <HelpToolTip info='Invoice info' />
+          <HelpToolTip info={ToolTipInfo} />
           <WarningPopup
             title='Finished orders not found..'
             isWarningOpen={isWarningOpen}
@@ -364,6 +363,7 @@ const InvoiceControlModal = ({ closeModal, currentInvoice }) => {
                     touched={touched.issue_date}
                     placeholder='ISSUE DATE'
                   />
+                  <StyledHeading>Payment details</StyledHeading>
                   <FormikControl
                     type='number'
                     control='input'

@@ -29,9 +29,6 @@ const OrdersModule = ({ ordersList }) => {
   const defaultColumn = useMemo(() => defaultColumnValues, [
     defaultColumnValues,
   ]);
-  console.log(currentOrder);
-  console.log('lista orderdów');
-  console.log(ordersList);
 
   const handleStatusClick = async (status) => {
     const orderNumber = currentOrder.order_number;

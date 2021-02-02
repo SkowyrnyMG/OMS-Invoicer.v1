@@ -3,6 +3,9 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { PDFViewer } from '@react-pdf/renderer';
 
+import { ReactComponent as WindowResizeIcon } from 'assets/svg/window-resize-icon.svg';
+import { ReactComponent as WindowCloseIcon } from 'assets/svg/window-close-icon.svg';
+
 const Wrapper = styled.div`
   position: fixed;
   display: flex;
@@ -28,6 +31,7 @@ const InvoiceContainer = styled.div`
 
   transition: all 0.25s;
 
+  // * @react-pdf/renderer renders in iframe
   iframe {
     height: 100%;
   }
@@ -60,6 +64,12 @@ const TopBarButton = styled.button`
     close ? color.danger : color.transparentMain};
   border: 0;
   cursor: pointer;
+
+  svg {
+    /* position: absolute; */
+    width: 1.5rem;
+    fill: ${({ theme: { color } }) => color.bg};
+  }
 `;
 
 const PDFContainer = ({ children, closeRenderer }) => {
@@ -70,10 +80,10 @@ const PDFContainer = ({ children, closeRenderer }) => {
         <ContainerTopBar>
           <TopBarButtonsWrapper>
             <TopBarButton onClick={() => setIsFullWidth((state) => !state)}>
-              +
+              <WindowResizeIcon />
             </TopBarButton>
             <TopBarButton onClick={closeRenderer} close>
-              X
+              <WindowCloseIcon />
             </TopBarButton>
           </TopBarButtonsWrapper>
         </ContainerTopBar>

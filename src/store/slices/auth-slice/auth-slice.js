@@ -87,7 +87,6 @@ const registerWithEmailAndPassword = createAsyncThunk(
 
 export const logoutUser = createAsyncThunk('auth/logoutUser', async () => {
   try {
-    console.log('logged out');
     setLocalValue('user', '');
     setLocalValue('uuid', '');
     const initState = {

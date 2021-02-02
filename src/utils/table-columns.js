@@ -48,16 +48,12 @@ export const ORDERS_COLUMNS = [
     Header: 'CUSTOMER_ADDRESS',
     accessor: 'customer_address',
   },
-  {
-    Header: 'EMAIL OF CONTACT PERSON',
-    accessor: 'email',
-  },
+  // TODO make email column work with orders
+  // {
+  //   Header: 'EMAIL OF CONTACT PERSON',
+  //   accessor: 'email',
+  // },
 ];
-
-//                 desc: values.desc,
-//                 customer_name: values.customer_name,
-//                 customer_vat: values.customer_vat,
-//                 customer_address: values.customer_address,
 
 export const INVOICES_COLUMNS = [
   {

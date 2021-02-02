@@ -145,8 +145,6 @@ const OrderControlModal = ({ closeModal, currentOrder }) => {
     customers,
   ]);
 
-  console.log(customers.length);
-
   const handleSetItemFn = (item) => {
     if (item === null) {
       return;
@@ -172,11 +170,13 @@ const OrderControlModal = ({ closeModal, currentOrder }) => {
   const orderNumberSetter = () =>
     currentOrder ? currentOrder.order_number : newOrder;
 
+  const ToolTipInfo = `In this modal you can add new or edit already existing order. To create new order you have to choose customer from your database using "Choose a Customer" field. Then you can add details of new order. To edit already existing order just make your changes and click on save button. If the order is finished you need to change it's status to "finished", otherwise you will not be able to issue an invoice.`;
+
   return (
     <Wrapper>
       <AppGridContainer>
         <StyledAppBodyContainer isWarningOpen={isWarningOpen}>
-          <HelpToolTip info='Ordrs info' />
+          <HelpToolTip info={ToolTipInfo} />
           <WarningPopup
             title='Any Customer found'
             isWarningOpen={isWarningOpen}

@@ -97,6 +97,7 @@ const StyledViesButton = styled(Button)`
     width: 2rem;
     height: 2rem;
     fill: ${({ theme: { color } }) => color.bg};
+    pointer-events: none;
   }
 `;
 
@@ -105,7 +106,6 @@ const StyledInput = styled(Input)`
 `;
 
 const AddNewCustomerModal = ({ closeModal, currentCustomer }) => {
-  console.log(currentCustomer);
   const dispatch = useDispatch();
   const allCustomers = useSelector(selectCustomers);
   const [initValues, setInitValues] = useState({
@@ -151,7 +151,6 @@ const AddNewCustomerModal = ({ closeModal, currentCustomer }) => {
     if (data.valid) {
       const { address } = data;
       setIsViesValid(true);
-      console.log(data);
 
       // * sometimes data from vies response is not fully complete and it returns --- instead. Without below conditinals app would crash on try to split ---.
       const splittedAddres = address !== '---' ? address.split(',') : '---';
@@ -179,11 +178,13 @@ const AddNewCustomerModal = ({ closeModal, currentCustomer }) => {
     }
   };
 
+  const ToolTipInfo = `This modal is responsible for adding new customers to the database. If your customer has active VAT ID you can add it's base company details using "Search in Vies" field. To do that you just have to simply provide correct country prefix in option field and your customer VAT ID number. If customer will be found in Vies database most of modal fiels should be autofilled.`;
+
   return (
     <Wrapper>
       <AppGridContainer>
         <StyledAppBodyContainer>
-          <HelpToolTip info='Customer info' />
+          <HelpToolTip info={ToolTipInfo} />
           <Formik
             enableReinitialize
             initialValues={{

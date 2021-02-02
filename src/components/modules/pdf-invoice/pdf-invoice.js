@@ -151,10 +151,6 @@ const styles = StyleSheet.create({
 });
 
 const PDFInvoice = ({ currentInvoice, rootCompanyDetails, bankDetails }) => {
-  console.log(currentInvoice);
-  console.log(rootCompanyDetails);
-  console.log(bankDetails);
-
   return (
     <Document style={styles.document}>
       <Page size='A4' style={styles.page}>

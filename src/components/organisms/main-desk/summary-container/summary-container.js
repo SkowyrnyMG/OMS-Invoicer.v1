@@ -46,13 +46,14 @@ const TotalItemsWrapper = styled.div`
 `;
 
 const StyledHeading = styled.h3`
-  margin: 2rem 0 0;
+  margin: 2rem 0 -4rem;
   font-size: ${({ theme: { fontSize } }) => fontSize.headingSmall};
+  color: ${({ theme: { color } }) => color.primary};
+  /* text-align: center; */
 `;
 
 const SummaryContainer = () => {
   const collectionsLength = useCollectionsLength();
-  console.log(collectionsLength);
   const dispatch = useDispatch();
   const finishedOrders = useOrdersByStatus(STATUS_OPTION.order.finished);
   const pendingOrders = useOrdersByStatus(STATUS_OPTION.order.pending);
@@ -107,10 +108,6 @@ const SummaryContainer = () => {
             <InvoicesIcon />
           </TotalItemCounter>
         </TotalItemsWrapper>
-        {/* <StyledHeading>Summary</StyledHeading> */}
-        {/* <SummaryPosition posName='Orders in November:' />
-        <SummaryPosition posName='Orders in November:' />
-        <SummaryPosition posName='Orders in November:' /> */}
       </SummaryWrapper>
     </AppBodyContainer>
   );

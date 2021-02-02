@@ -20,26 +20,7 @@ const Wrapper = styled.div`
   }
 `;
 
-const shortcutDetails = [
-  {
-    title: 'NEW INVOICE',
-    desc: 'issue invoice from order or create custom one',
-    comp: <NewInvoiceIcon />,
-  },
-  {
-    title: 'NEW ORDER',
-    desc: 'create new order and keep an eye on it’s progress',
-    comp: <NewOrderIcon />,
-  },
-  {
-    title: 'NEW CUSTOMER',
-    desc: 'add new customer details from VIES or fill the form manualy',
-    comp: <NewCustomerIcon />,
-  },
-];
-
 const QuickNavigation = () => {
-  console.log(shortcutDetails);
   const [isOrderModalOpen, setIsOrderModalOpen] = useState(false);
   const [isInvoiceModalOpen, setIsInvoiceModalOpen] = useState(false);
   const [isCustomerModalOpen, setIsCustomerModalOpen] = useState(false);

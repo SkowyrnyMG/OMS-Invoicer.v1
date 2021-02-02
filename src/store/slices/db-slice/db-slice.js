@@ -108,7 +108,6 @@ export const getAllOrders = createAsyncThunk('db/getAllOrders', async () => {
   const localUuid = getLocalValue('uuid');
   try {
     return await db.get(`data/${localUuid}/orders.json`).then(({ data }) => {
-      console.log(data);
       return (
         // * if there is no order list created in DB, action will return empty array to the reducer
         data !== null
@@ -124,7 +123,6 @@ export const getAllOrders = createAsyncThunk('db/getAllOrders', async () => {
       );
     });
   } catch (error) {
-    console.log('error');
     return error;
   }
 });
@@ -175,7 +173,6 @@ export const setOrderStatus = createAsyncThunk(
           },
         )
         .then(({ data }) => {
-          console.log(data);
           return data;
         });
       return { status: res, orderNumber };
@@ -194,7 +191,6 @@ export const getAllInvoices = createAsyncThunk(
       return await db
         .get(`/data/${localUuid}/invoices.json`)
         .then(({ data }) => {
-          console.log(data);
           return (
             // * if there is no invoices list created in DB, action will return empty array to the reducer
             data !== null && [
@@ -219,7 +215,6 @@ export const getLastInvoice = createAsyncThunk(
       return await db
         .get(`/data/${localUuid}/invoices/lastOrder.json`)
         .then(({ data }) => {
-          console.log(data);
           return data;
         });
     } catch (error) {
@@ -232,7 +227,6 @@ export const addNewInvoice = createAsyncThunk(
   'db/addNewInvoice',
   async ({ invoiceValues, isNewInvoice }) => {
     const localUuid = getLocalValue('uuid');
-    console.log(invoiceValues);
     try {
       return await db
         .put(
@@ -275,7 +269,6 @@ export const setInvoiceStatus = createAsyncThunk(
           },
         )
         .then(({ data }) => {
-          console.log(data);
           return data;
         });
 
@@ -359,8 +352,6 @@ const dbSlice = createSlice({
     },
 
     [getAllOrders.fulfilled]: (state, { payload }) => {
-      console.log('FULLFILED');
-      console.log(payload);
       const defaultOder = 'ZL-0-2020';
       if (payload.length !== null) {
         const [orderList, lastOrder] = payload;
@@ -368,23 +359,17 @@ const dbSlice = createSlice({
           ? lastOrder.firstReg
           : defaultOder;
         state.orders.firstReg = orderList;
-        console.log(orderList);
       } else {
         state.orders.lastOrder.firstReg = defaultOder;
       }
     },
     [getAllOrders.rejected]: (state) => {
       const defaultOder = 'ZL-0-2020';
-      console.log('REJECTED');
       state.orders.firstReg = [];
       state.orders.lastOrder.firstReg = defaultOder;
     },
 
     [addNewOrder.fulfilled]: (state, { payload }) => {
-      console.log('state');
-      console.log(state.orders.firstReg);
-      console.log('payload');
-      console.log(payload);
       state.orders.firstReg = state.orders.firstReg
         ? [...state.orders.firstReg, payload]
         : [payload];

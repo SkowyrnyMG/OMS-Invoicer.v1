@@ -17,9 +17,7 @@ const PaymentsModule = () => {
   const defaultColumn = useMemo(() => defaultColumnValues, [
     defaultColumnValues,
   ]);
-
   console.log(currentPayment);
-
   return (
     <AppGridContainer>
       <AppTableBody

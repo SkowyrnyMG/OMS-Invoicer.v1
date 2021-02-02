@@ -78,7 +78,6 @@ const ComboboxInvoiceMenu = ({ items, handleSetItemFn, handleResetItemFn }) => {
 
   const handleSearchClick = () => {
     handleSetItemFn(selectedItem);
-    console.log(selectedItem);
   };
 
   const handleResetClick = () => {

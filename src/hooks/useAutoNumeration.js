@@ -10,7 +10,6 @@ export const useAutoNumeration = (option) => {
   const lastOrder = useSelector(selectLastOrder);
   const lastInvoice = useSelector(selectLastInvoice);
   const lastValue = option === 'order' ? lastOrder : lastInvoice;
-  console.log(lastValue);
   const lastValueSplitted =
     lastValue !== undefined ? lastValue.firstReg.split('-') : '';
   const newValue = `${lastValueSplitted[0]}-${

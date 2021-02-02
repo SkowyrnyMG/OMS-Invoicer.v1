@@ -10,7 +10,6 @@ import PDFInvoice from 'components/modules/pdf-invoice/pdf-invoice';
 
 const PDFRenderer = ({ closeRenderer, currentInvoice }) => {
   const { rootCompanyDetails, bankDetails } = useSelector(selectUserConfig);
-  console.log(bankDetails);
   return (
     <PDFContainer closeRenderer={closeRenderer}>
       <PDFInvoice

@@ -8,8 +8,6 @@ import { selectUserConfig } from 'store/slices/db-slice/db-slice';
 
 const MainDeskTemplate = () => {
   const config = useSelector(selectUserConfig);
-  console.log('maindesk');
-  console.log(config);
   return (
     <div>
       <QuickNavigation />

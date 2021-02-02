@@ -99,6 +99,10 @@ input, select  {
       }
     }
 }
+
+svg {
+  pointer-events: none;
+}
 `;
 
 export default GlobalStyles;

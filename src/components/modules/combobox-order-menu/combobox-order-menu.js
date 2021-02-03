@@ -30,6 +30,7 @@ const ComboboxOrderMenu = ({ items, handleSetItemFn, handleResetItemFn }) => {
   const [inputItems, setInputItems] = useState(items);
   const [isNotFoundVisible, setIsNotFoundVisible] = useState(false);
   const [isResultArrEmpty, setIsResultArrEmpty] = useState(true);
+  console.log(items);
   const itemToString = (item) =>
     item ? `${item.vat_number} - ${item.name}` : '';
   const {

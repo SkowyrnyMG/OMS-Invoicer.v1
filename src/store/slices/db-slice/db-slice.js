@@ -353,7 +353,7 @@ const dbSlice = createSlice({
 
     [getAllOrders.fulfilled]: (state, { payload }) => {
       const defaultOder = 'ZL-0-2020';
-      if (payload.length !== null) {
+      if (payload !== null) {
         const [orderList, lastOrder] = payload;
         state.orders.lastOrder.firstReg = lastOrder
           ? lastOrder.firstReg

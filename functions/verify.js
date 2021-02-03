@@ -13,7 +13,7 @@ exports.handler = function (event, context, callback) {
         }),
       });
     } catch (error) {
-      console.log(err);
+      console.log(error);
     }
   };
 

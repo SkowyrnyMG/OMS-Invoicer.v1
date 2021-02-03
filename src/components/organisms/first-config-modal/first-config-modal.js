@@ -1,7 +1,8 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
 import { usePathname } from 'hooks/usePathname';
+import gsap from 'gsap';
 
 import AppBodyContainer from 'components/atoms/app-body-container/app-body-container';
 import ConfigForm from 'components/modules/config-form/config-form';
@@ -12,6 +13,7 @@ import {
   getUserConfig,
   addUserConfig,
 } from 'store/slices/db-slice/db-slice';
+import { selectLoading } from 'store/slices/loading-slice/loading-slice';
 
 const Wrapper = styled.div`
   position: fixed;
@@ -40,12 +42,17 @@ const StyledHeadingBlue = styled(HeadingBlue)`
 
 const FirstConfigModal = () => {
   const pathname = usePathname();
-
   const dispatch = useDispatch();
   const userConfig = useSelector(selectUserConfig);
+  const isLoading = useSelector(selectLoading);
+  const animationWrapper = useRef(null);
 
   useEffect(() => {
     dispatch(getUserConfig());
+
+    const animationContainer = animationWrapper.current;
+    gsap.set(animationContainer, { autoAlpha: 0 });
+    gsap.to(animationContainer, { duration: 0.5, delay: 1, autoAlpha: 1 });
   }, [dispatch]);
 
   const handleSubmit = async (cred) => {
@@ -54,8 +61,8 @@ const FirstConfigModal = () => {
 
   return (
     <>
-      {userConfig === null && pathname.includes('/app') ? (
-        <Wrapper>
+      {userConfig === null && pathname.includes('/app') && !isLoading ? (
+        <Wrapper ref={animationWrapper}>
           <StyledAppBodyContainer>
             <StyledHeadingBlue>Welcolme into OMS Invoicer!</StyledHeadingBlue>
             <div>

@@ -7,6 +7,9 @@ import 'react-datepicker/dist/react-datepicker.css';
 import ErrorMsg from 'components/atoms/error-msg/error-msg';
 
 const Wrapper = styled.div`
+  * {
+    font-family: 'Montserrat' !important;
+  }
   margin-bottom: 4rem;
   .react-datepicker-wrapper {
     display: inline-block;
@@ -81,14 +84,37 @@ const Wrapper = styled.div`
 
   //* calendar day
   .react-datepicker__day {
-    margin: 0.5rem;
-    padding: 0.5rem;
+    /* margin: 5px;
+    padding: 5px;
+    width: 15px; */
+    padding: 5px 15px;
+    width: 40px;
+    text-align: center;
     font-size: ${({ theme: { fontSize } }) => fontSize.ms};
+    font-weight: ${({ theme: { fontWeight } }) => fontWeight.thin};
+  }
+
+  //* outside month
+  .react-datepicker__day--outside-month {
+    color: ${({ theme: { color } }) => color.transparentMain} !important;
+  }
+
+  //* weekend day
+  .react-datepicker__day--weekend {
+    color: ${({ theme: { color } }) => color.secondaryFont};
+    font-weight: ${({ theme: { fontWeight } }) => fontWeight.bold};
+  }
+
+  //* selected day
+  .react-datepicker__day--selected {
+    background-color: ${({ theme: { color } }) => color.primary};
+    color: ${({ theme: { color } }) => color.tertiaryFont};
   }
 
   //* calendar header - day names
   .react-datepicker__day-name {
-    margin: 1rem;
+    padding: 15px;
+    width: 40px;
     font-size: ${({ theme: { fontSize } }) => fontSize.s};
   }
 
@@ -134,6 +160,7 @@ const FormikDatePicker = ({ placeholder, ...props }) => {
         <DatePicker
           {...field}
           {...props}
+          formatWeekDay={(nameOfDay) => nameOfDay.substr(0, 3)}
           autoComplete='off'
           dateFormat='yyyy-MM-dd'
           selected={(field.value && new Date(field.value)) || null}

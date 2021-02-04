@@ -43,7 +43,7 @@ const Main = styled.main`
   padding: ${({ pathname }) =>
     pathname.includes('/app') ? '4.5rem 7.5rem' : 0};
   background-color: ${({ theme: { color } }) => color.bg};
-  min-height: calc(100vh - 6rem);
+  min-height: calc(100vh - 10rem);
 `;
 
 const Layout = ({ children }) => {

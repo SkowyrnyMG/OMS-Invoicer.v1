@@ -8,10 +8,9 @@ import { ReactComponent as OrdersIcon } from 'assets/svg/orders-icon.svg';
 import { ReactComponent as ClientsIcon } from 'assets/svg/clients-icon.svg';
 import { ReactComponent as SettingsIcon } from 'assets/svg/settings-icon.svg';
 import { ReactComponent as HelpIcon } from 'assets/svg/help-icon.svg';
+import Logo from 'components/modules/logo/logo';
 
 import { routes } from 'utils/routes';
-
-import NavLink from 'components/atoms/nav-link/nav-link';
 
 const Wrapper = styled.div`
   position: fixed;
@@ -68,16 +67,9 @@ const AppNavLinkText = styled.span`
   line-height: 6rem;
 `;
 
-const Logo = styled.span`
-  font-size: ${({ theme: { fontSize } }) => fontSize.cta};
-  font-weight: ${({ theme: { fontWeight } }) => fontWeight.bold};
-`;
-
 const AppNavigation = () => (
   <Wrapper>
-    <NavLink path={routes.home}>
-      <Logo>OMS Invoicer.v1</Logo>
-    </NavLink>
+    <Logo />
     <StyledNav>
       <StyledList>
         <StyledListItem>

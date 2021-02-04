@@ -49,8 +49,7 @@ const ToolTip = styled.div.attrs(() => ({
   top: 200%;
   left: 0;
   padding: 1rem 2rem;
-  min-width: 30rem;
-  max-width: 40rem;
+  min-width: 30vw;
   height: fit-content;
   color: ${({ theme: { color } }) => color.bgSecondary};
   font-size: ${({ theme: { fontSize } }) => fontSize.ms};

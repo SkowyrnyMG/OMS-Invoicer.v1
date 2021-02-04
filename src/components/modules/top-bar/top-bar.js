@@ -7,6 +7,7 @@ import { getUserData, logoutUser } from 'store/slices/auth-slice/auth-slice';
 import NavLink from 'components/atoms/nav-link/nav-link';
 import UserInfo from 'components/modules/user-info/user-info';
 import { ReactComponent as LogoutIcon } from 'assets/svg/logout-icon.svg';
+import Logo from 'components/modules/logo/logo';
 
 import { routes } from 'utils/routes';
 import { useModuleName } from 'hooks/useModuleName';
@@ -19,7 +20,8 @@ const Wrapper = styled.header`
   justify-content: center;
   align-items: center;
   margin-top: 0;
-  height: 6rem;
+  min-height: 6rem;
+  height: 10rem;
   background: ${({ theme: { color } }) => color.bg};
   border-bottom: 2px solid ${({ theme: { color } }) => color.devider};
   z-index: 50;
@@ -30,11 +32,6 @@ const CurrentModule = styled.span`
   font-weight: ${({ theme: { fontWeight } }) => fontWeight.regular};
   font-style: italic;
   color: ${({ theme: { color } }) => color.primary};
-`;
-
-const Logo = styled.span`
-  font-size: ${({ theme: { fontSize } }) => fontSize.cta};
-  font-weight: ${({ theme: { fontWeight } }) => fontWeight.bold};
 `;
 
 const StyledLoginNav = styled.nav`
@@ -92,9 +89,7 @@ const TopBar = () => {
       {currentModule !== '' ? (
         <CurrentModule>{currentModule}</CurrentModule>
       ) : (
-        <NavLink path={routes.home}>
-          <Logo>OMS Invoicer.v1</Logo>
-        </NavLink>
+        <Logo />
       )}
       <StyledLoginNav>
         {uuid === '' || uuid === null ? (

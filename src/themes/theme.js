@@ -42,6 +42,7 @@ export const theme = {
     error: '#DA2442',
   },
   fontSize: {
+    headingBig: '180px',
     heading: '64px',
     headingSmall: '34px',
     cta: '24px',

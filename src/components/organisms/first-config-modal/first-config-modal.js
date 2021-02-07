@@ -1,13 +1,13 @@
 import React, { useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
-import { usePathname } from 'hooks/usePathname';
 import gsap from 'gsap';
 
 import AppBodyContainer from 'components/atoms/app-body-container/app-body-container';
 import ConfigForm from 'components/modules/config-form/config-form';
 import HeadingBlue from 'components/atoms/heading-blue/heading-blue';
 
+import { usePathname } from 'hooks/usePathname';
 import {
   selectUserConfig,
   getUserConfig,
@@ -23,11 +23,15 @@ const Wrapper = styled.div`
   width: 100%;
   height: 100vh;
   background: ${({ theme: { color } }) => color.transparentMain};
+  box-shadow: ${({ theme: { shadow } }) => shadow.around};
   z-index: 10000;
 `;
 
 const StyledAppBodyContainer = styled(AppBodyContainer)`
   padding: 5rem;
+  height: 80%;
+  border: 1px solid ${({ theme: { color } }) => color.primary};
+  border-radius: 5px;
   overflow: auto;
 `;
 
@@ -38,22 +42,29 @@ const StyledHeadingBlue = styled(HeadingBlue)`
   text-align: center;
 `;
 
-// const InfoBox = styled.div``;
-
 const FirstConfigModal = () => {
   const pathname = usePathname();
   const dispatch = useDispatch();
   const userConfig = useSelector(selectUserConfig);
   const isLoading = useSelector(selectLoading);
   const animationWrapper = useRef(null);
+  const isVisibleCondition =
+    (userConfig === null && pathname.includes('/app') && !isLoading) ?? false;
 
   useEffect(() => {
     dispatch(getUserConfig());
 
-    const animationContainer = animationWrapper.current;
-    gsap.set(animationContainer, { autoAlpha: 0 });
-    gsap.to(animationContainer, { duration: 0.5, delay: 1, autoAlpha: 1 });
-  }, [dispatch]);
+    if (isVisibleCondition) {
+      const animationContainer = animationWrapper.current;
+      gsap.set(animationContainer, { autoAlpha: 0 });
+      gsap.to(animationContainer, {
+        duration: 0.5,
+        delay: 1,
+        autoAlpha: 1,
+        backdropFilter: 'blur(2px)',
+      });
+    }
+  }, [dispatch, isVisibleCondition]);
 
   const handleSubmit = async (cred) => {
     await dispatch(addUserConfig(cred));
@@ -61,7 +72,7 @@ const FirstConfigModal = () => {
 
   return (
     <>
-      {userConfig === null && pathname.includes('/app') && !isLoading ? (
+      {isVisibleCondition ? (
         <Wrapper ref={animationWrapper}>
           <StyledAppBodyContainer>
             <StyledHeadingBlue>Welcolme into OMS Invoicer!</StyledHeadingBlue>
@@ -75,7 +86,6 @@ const FirstConfigModal = () => {
               </p>
             </div>
             <ConfigForm onSubmit={handleSubmit} />
-            {/* {userConfig.mainOrderPrefix} */}
           </StyledAppBodyContainer>
         </Wrapper>
       ) : null}

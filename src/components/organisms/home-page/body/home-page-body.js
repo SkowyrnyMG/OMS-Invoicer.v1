@@ -1,16 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import Feature from 'components/modules/feature/feature';
-import HomePageDetailsSection from 'components/organisms/home-page/home-page-details-section/home-page-details-section';
 import NavLink from 'components/atoms/nav-link/nav-link';
 import Logo from 'components/modules/logo/logo';
-import { ReactComponent as ClientsIcon } from 'assets/svg/clients-icon.svg';
-import { ReactComponent as OrdersIcon } from 'assets/svg/orders-icon.svg';
-import { ReactComponent as InvoiceIcon } from 'assets/svg/invoice-icon.svg';
-import { ReactComponent as OkIcon } from 'assets/svg/ok-icon.svg';
-import { ReactComponent as CashIcon } from 'assets/svg/cash-icon.svg';
-import { ReactComponent as DashboardIcon } from 'assets/svg/dashboard-icon.svg';
+import PatternSection from 'components/atoms/pattern-section/pattern-section';
+import HomePageDetailsSection from 'components/organisms/home-page/home-page-details-section/home-page-details-section';
+import HomePageFeaturesSection from 'components/organisms/home-page/home-page-features-section/home-page-features-section';
+
 import pattern from 'assets/images/bg-pattern.png';
 
 import { routes } from 'utils/routes';
@@ -30,21 +26,21 @@ const BodyWrapper = styled.div`
   }
 `;
 
-const PatternSection = styled.section`
-  grid-column: -1 / 1;
-  display: grid;
-  grid-template-columns: 5rem [start] 1fr [end] 5rem;
-  grid-column-gap: 3%;
-  padding: 20rem 0;
-  position: relative;
-  background-image: url(${pattern});
-  background-size: cover;
-  background-position: center;
+// const PatternSection = styled.section`
+//   grid-column: -1 / 1;
+//   display: grid;
+//   grid-template-columns: 5rem [start] 1fr [end] 5rem;
+//   grid-column-gap: 3%;
+//   padding: 20rem 0;
+//   position: relative;
+//   background-image: url(${pattern});
+//   background-size: cover;
+//   background-position: center;
 
-  > * {
-    grid-column: start / end;
-  }
-`;
+//   > * {
+//     grid-column: start / end;
+//   }
+// `;
 
 const RevertPatternSection = styled(PatternSection)`
   background-position: center;
@@ -67,20 +63,6 @@ const InfoBox = styled.div`
   box-shadow: ${({ theme: { shadow } }) => shadow.around};
 `;
 
-const FeatureWrapper = styled.div`
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 5%;
-`;
-
-const FeatureInfo = styled.div`
-  width: 65vw;
-
-  > * {
-    margin-bottom: 5rem;
-  }
-`;
-
 const Banner = styled.div`
   display: flex;
   justify-content: space-evenly;
@@ -99,47 +81,14 @@ const Banner = styled.div`
 
 const HomePageBody = () => (
   <BodyWrapper>
-    <PatternSection>
-      <FeatureInfo>
-        <h2>6 reasons to choose OMS invoicer</h2>
-        <p>
-          OMS is here for you! Adding customer, orders and invoices never been
-          easier! Typos and simple mistakes on your invoices will never trouble
-          you again! All customer data can be fetched from VIES database!
-        </p>
-      </FeatureInfo>
-      <FeatureWrapper>
-        <Feature title='Customers details in one place' counter='1'>
-          <ClientsIcon />
-        </Feature>
-        <Feature
-          title='Take control over your
-            orders'
-          counter='2'
-        >
-          <OrdersIcon />
-        </Feature>
-        <Feature title='Easy invoicing' counter='3'>
-          <InvoiceIcon />
-        </Feature>
-        <Feature title='Instant VIES verification' counter='4'>
-          <OkIcon />
-        </Feature>
-        <Feature title='Keep your payments under control' counter='5'>
-          <CashIcon />
-        </Feature>
-        <Feature title='Useful dashboard notifications' counter='6'>
-          <DashboardIcon />
-        </Feature>
-      </FeatureWrapper>
-    </PatternSection>
+    <HomePageFeaturesSection />
     <HomePageDetailsSection />
     <Banner>
       <Logo />
       <h3>Are you ready to get started?</h3>
       <NavLink path={routes.register}>Register now!</NavLink>
     </Banner>
-    <RevertPatternSection>
+    <RevertPatternSection patternUrl={pattern}>
       <StyledBodyHeading>IMPORTANT!</StyledBodyHeading>
       <InfoBox>
         This app was created for learning purpuses. Please do not use it to

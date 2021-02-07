@@ -12,7 +12,7 @@ const StyledFooter = styled.footer`
 
 const Footer = () => (
   <StyledFooter>
-    <a href='https://mateuszgruzla.pl/' rel='norefferer'>
+    <a href='https://mateuszgruzla.pl/' rel='noreferrer' target='_blank'>
       App created by Mateusz Gruźla
     </a>
   </StyledFooter>

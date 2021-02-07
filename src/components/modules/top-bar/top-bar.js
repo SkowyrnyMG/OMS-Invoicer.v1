@@ -25,6 +25,11 @@ const Wrapper = styled.header`
   background: ${({ theme: { color } }) => color.bg};
   border-bottom: 2px solid ${({ theme: { color } }) => color.devider};
   z-index: 50;
+
+  ${({ theme: { mq } }) => mq.smallTablet} {
+    grid-template-columns: 1fr;
+    height: fit-content;
+  }
 `;
 
 const CurrentModule = styled.span`
@@ -43,6 +48,10 @@ const StyledLoginNav = styled.nav`
   > * {
     padding: 1rem 2rem;
     border-left: 1px solid ${({ theme: { color } }) => color.devider};
+  }
+
+  ${({ theme: { mq } }) => mq.smallTablet} {
+    grid-column: 1 / -1;
   }
 `;
 

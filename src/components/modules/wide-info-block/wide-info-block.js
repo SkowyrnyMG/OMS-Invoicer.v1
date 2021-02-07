@@ -17,6 +17,11 @@ const Wrapper = styled.div`
   > * {
     grid-column: start / end;
   }
+
+  ${({ theme: { mq } }) => mq.smallTablet} {
+    grid-template-columns: [start] 1fr [end];
+    padding: 2rem;
+  }
 `;
 
 const ContentWrapper = styled.div`
@@ -25,6 +30,16 @@ const ContentWrapper = styled.div`
   grid-column-gap: 10rem;
   text-align: center;
   align-items: center;
+
+  ${({ theme: { mq } }) => mq.bigTablet} {
+    grid-template-columns: 1fr;
+    grid-column-gap: 0;
+  }
+
+  ${({ theme: { mq } }) => mq.smallTablet} {
+    position: relative;
+    padding-top: 15rem;
+  }
 `;
 
 const StyledHeading = styled.h3`
@@ -32,6 +47,10 @@ const StyledHeading = styled.h3`
   margin: ${({ image }) => (image ? '10rem 0' : '0')};
   width: fit-content;
   font-size: ${({ theme: { fontSize } }) => fontSize.headingSmall};
+
+  ${({ theme: { mq } }) => mq.smallTablet} {
+    position: static;
+  }
 `;
 
 const Counter = styled.div`
@@ -52,6 +71,16 @@ const Counter = styled.div`
     left: 0;
     top: 50%;
     transform: translate(-50%, -30%);
+
+    /* ${({ theme: { mq } }) => mq.smallTablet} {
+      width: 35px;
+    } */
+  }
+
+  ${({ theme: { mq } }) => mq.smallTablet} {
+    font-size: ${({ theme: { fontSize } }) => fontSize.headingBig};
+    left: 50%;
+    transform: translate(-50%, 0);
   }
 `;
 
@@ -69,6 +98,11 @@ const LeftSide = styled.div`
   align-items: flex-start;
   justify-content: flex-start;
   padding-left: calc(15rem + 3%);
+
+  ${({ theme: { mq } }) => mq.smallTablet} {
+    padding-left: 0;
+    align-items: center;
+  }
 `;
 
 const WideInfoBlock = ({ image, Icon, counter, title, children }) => {

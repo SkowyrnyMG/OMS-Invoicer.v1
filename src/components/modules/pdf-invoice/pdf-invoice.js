@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import {
   Page,
   Text,
+  Image,
   View,
   Document,
   StyleSheet,
@@ -12,6 +13,7 @@ import {
 import { customFonts } from 'themes/theme';
 import { roundTwoDecimals, addDaysToDate } from 'utils/math-helper';
 import { STATUS_OPTION } from 'utils/constant-data';
+import logoImg from 'assets/images/logo512.png';
 
 Font.register({
   family: 'Roboto',
@@ -85,6 +87,11 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: '10pt',
   },
+  logo: {
+    position: 'absolute',
+    width: '50pt',
+    height: '50pt',
+  },
   headerWrapper: {
     display: 'block',
     textAlign: 'center',
@@ -155,7 +162,7 @@ const PDFInvoice = ({ currentInvoice, rootCompanyDetails, bankDetails }) => {
     <Document style={styles.document}>
       <Page size='A4' style={styles.page}>
         <View style={styles.topBar}>
-          <Text>OMS Invoicer.v1</Text>
+          <Image src={logoImg} style={styles.logo} />
         </View>
         <View style={styles.headerWrapper}>
           <Text style={styles.title}>Invoice</Text>
@@ -189,10 +196,6 @@ const PDFInvoice = ({ currentInvoice, rootCompanyDetails, bankDetails }) => {
                 <Text>Invoice number: </Text>
                 <Text>{currentInvoice.invoice_number}</Text>
               </View>
-              {/* <View style={styles.detailRow}>
-                <Text>Order number:</Text>
-                <Text>{`${currentInvoice.order_number}`}</Text>
-              </View> */}
               <View style={styles.detailRow}>
                 <Text>Issue date:</Text>
                 <Text>{currentInvoice.issue_date}</Text>

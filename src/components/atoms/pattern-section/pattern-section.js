@@ -16,6 +16,10 @@ const StyledSection = styled.section`
   > * {
     grid-column: start / end;
   }
+
+  ${({ theme: { mq } }) => mq.smallTalbet} {
+    padding: 10rem 0;
+  }
 `;
 
 const PatternSection = ({ children, patternUrl }) => (

@@ -26,22 +26,6 @@ const BodyWrapper = styled.div`
   }
 `;
 
-// const PatternSection = styled.section`
-//   grid-column: -1 / 1;
-//   display: grid;
-//   grid-template-columns: 5rem [start] 1fr [end] 5rem;
-//   grid-column-gap: 3%;
-//   padding: 20rem 0;
-//   position: relative;
-//   background-image: url(${pattern});
-//   background-size: cover;
-//   background-position: center;
-
-//   > * {
-//     grid-column: start / end;
-//   }
-// `;
-
 const RevertPatternSection = styled(PatternSection)`
   background-position: center;
 `;
@@ -51,6 +35,10 @@ const StyledBodyHeading = styled.h2`
   color: ${({ theme: { color } }) => color.danger};
   text-align: center;
   grid-column: start / end;
+
+  ${({ theme: { mq } }) => mq.smallTablet} {
+    font-size: ${({ theme: { fontSize } }) => fontSize.headingSmall};
+  }
 `;
 
 const InfoBox = styled.div`
@@ -61,6 +49,10 @@ const InfoBox = styled.div`
   font-weight: ${({ theme: { fontWeight } }) => fontWeight.bold};
   border-radius: 5px;
   box-shadow: ${({ theme: { shadow } }) => shadow.around};
+
+  ${({ theme: { mq } }) => mq.smallTablet} {
+    padding: 3rem 2rem;
+  }
 `;
 
 const Banner = styled.div`
@@ -76,6 +68,15 @@ const Banner = styled.div`
 
   > * {
     color: ${({ theme: { color } }) => color.tertiaryFont} !important;
+  }
+
+  ${({ theme: { mq } }) => mq.smallTablet} {
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: space-evenly;
+    padding: 0 2rem;
+    text-align: center;
+    height: 30rem;
   }
 `;
 

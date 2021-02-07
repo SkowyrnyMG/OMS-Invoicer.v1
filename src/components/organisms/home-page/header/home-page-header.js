@@ -19,8 +19,13 @@ const HeadingContent = styled.div`
       rgba(0, 0, 0, 1) 90%
     ),
     url(${HeadingBg});
-  background-position: right;
+  background-position: center;
   min-height: 72.5rem;
+
+  ${({ theme: { mq } }) => mq.smallTablet} {
+    padding: 0 2rem;
+    min-height: 40rem;
+  }
 `;
 
 const StyledHeading = styled.h1`

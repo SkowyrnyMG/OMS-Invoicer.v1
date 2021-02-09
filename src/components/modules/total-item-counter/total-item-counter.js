@@ -26,6 +26,17 @@ const Wrapper = styled.div`
     opacity: 0.5;
     transform: translateY(-50%);
   }
+
+  ${({ theme: { mq } }) => mq.mediumTablet} {
+    width: 100%;
+    max-width: 90%;
+    min-width: 25rem;
+    min-height: 20rem;
+    margin-bottom: 2rem;
+    :first-child {
+      margin-top: 8rem;
+    }
+  }
 `;
 
 const ContentWrapper = styled.div`

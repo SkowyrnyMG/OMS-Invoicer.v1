@@ -12,6 +12,14 @@ const Wrapper = styled.div`
   width: 100%;
   height: 12rem;
   text-align: center;
+
+  :not(:first-of-type) {
+    border-left: 1px solid ${({ theme: { color } }) => color.devider};
+  }
+
+  ${({ theme: { mq } }) => mq.mediumTablet} {
+    border-bottom: 1px solid ${({ theme: { color } }) => color.devider};
+  }
 `;
 
 const SummaryCounter = ({ title, counter }) => (

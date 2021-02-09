@@ -25,8 +25,12 @@ const CountersBox = styled.div`
   width: 100%;
   display: flex;
   border-bottom: 1px solid ${({ theme: { color } }) => color.devider};
-  > *:not(:first-of-type) {
+  /* > *:not(:first-of-type) {
     border-left: 1px solid ${({ theme: { color } }) => color.devider};
+  } */
+
+  ${({ theme: { mq } }) => mq.mediumTablet} {
+    flex-wrap: wrap;
   }
 `;
 
@@ -43,13 +47,24 @@ const TotalItemsWrapper = styled.div`
   justify-content: space-between;
   width: 100%;
   height: 100%;
+
+  ${({ theme: { mq } }) => mq.mediumTablet} {
+    /* flex-wrap: wrap; */
+    flex-direction: column;
+    align-items: space-between;
+    justify-content: center;
+    height: fit-content;
+  }
 `;
 
 const StyledHeading = styled.h3`
   margin: 2rem 0 -4rem;
   font-size: ${({ theme: { fontSize } }) => fontSize.headingSmall};
   color: ${({ theme: { color } }) => color.primary};
-  /* text-align: center; */
+
+  ${({ theme: { mq } }) => mq.mediumTablet} {
+    text-align: center;
+  }
 `;
 
 const SummaryContainer = () => {

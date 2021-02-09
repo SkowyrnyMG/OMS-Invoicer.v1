@@ -32,6 +32,11 @@ const Wrapper = styled.button`
     width: 4rem;
     fill: ${({ theme: { color } }) => color.primary};
   }
+
+  ${({ theme: { mq } }) => mq.bigPhoneBreak} {
+    width: 100%;
+    margin: 0 0 2rem !important;
+  }
 `;
 
 const StyledHeadingBlue = styled(HeadingBlue)`

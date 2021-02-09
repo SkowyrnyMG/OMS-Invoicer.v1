@@ -18,6 +18,15 @@ const Wrapper = styled.div`
   > *:not(:last-child) {
     margin-right: 7.5rem;
   }
+
+  ${({ theme: { mq } }) => mq.desktop} {
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+
+    > *:not(:last-child) {
+      margin: 0 1rem 1rem 0;
+    }
+  }
 `;
 
 const QuickNavigation = () => {

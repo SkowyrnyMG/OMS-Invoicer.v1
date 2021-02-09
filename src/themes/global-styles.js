@@ -20,6 +20,10 @@ body {
   line-height: 1.6;
   min-height: 100vh;
   overflow-x: hidden;
+
+  ${({ theme: { mq } }) => mq.mediumDesktop} {
+    font-size: ${({ theme: { fontSize } }) => fontSize.ms}
+  }
 }
 
 h1,
@@ -38,10 +42,6 @@ h2 {
 
 h3 {
   font-size: ${({ theme: { fontSize } }) => fontSize.l};
-}
-
-p {
-  font-size: ${({ theme: { fontSize } }) => fontSize.regular}
 }
 
 a,

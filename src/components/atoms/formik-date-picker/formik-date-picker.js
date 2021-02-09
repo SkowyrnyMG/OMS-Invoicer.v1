@@ -145,7 +145,6 @@ const DatePickerWrapper = styled.div`
 const StyledPlaceholder = styled.div`
   flex-basis: 60%;
   align-self: flex-end;
-  font-size: ${({ theme: { fontSize } }) => fontSize.regular};
   transition: all 0.25s;
   pointer-events: none;
 `;

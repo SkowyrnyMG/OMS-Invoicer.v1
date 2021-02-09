@@ -26,10 +26,6 @@ const StyledHeading = styled.h5`
   }
 `;
 
-const StyledParagraph = styled.p`
-  font-size: ${({ theme: { fontSize } }) => fontSize.regular};
-`;
-
 const FAQPosition = ({ title, children }) => {
   const [isFaqPosOpen, setIsFaqPosOpen] = useState(false);
   return (
@@ -38,7 +34,7 @@ const FAQPosition = ({ title, children }) => {
         <span>{isFaqPosOpen ? '-' : '+'}</span>
         <span>{title}</span>
       </StyledHeading>
-      {isFaqPosOpen && <StyledParagraph>{children}</StyledParagraph>}
+      {isFaqPosOpen && <p>{children}</p>}
     </Wrapper>
   );
 };

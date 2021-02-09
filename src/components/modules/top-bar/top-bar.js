@@ -15,7 +15,7 @@ import { useModuleName } from 'hooks/useModuleName';
 const Wrapper = styled.header`
   grid-column: top-bar-start / top-bar-end !important;
   display: grid;
-  grid-template-columns: [logo-start] 24rem [logo-end middle-bar-start] 1fr [middle-bar-end nav-start] 27rem [nav-end];
+  grid-template-columns: [logo-start] 24rem [logo-end middle-bar-start] 1fr [middle-bar-end nav-start] 0.25fr [nav-end];
   justify-items: center;
   justify-content: center;
   align-items: center;
@@ -26,8 +26,8 @@ const Wrapper = styled.header`
   border-bottom: 2px solid ${({ theme: { color } }) => color.devider};
   z-index: 50;
 
-  ${({ theme: { mq } }) => mq.smallTablet} {
-    grid-template-columns: 1fr;
+  ${({ theme: { mq } }) => mq.desktop} {
+    grid-template-columns: repeat(2, 1fr);
     height: fit-content;
   }
 `;
@@ -51,7 +51,12 @@ const StyledLoginNav = styled.nav`
   }
 
   ${({ theme: { mq } }) => mq.smallTablet} {
-    grid-column: 1 / -1;
+    /* grid-column: 1 / -1; */
+    flex-direction: column;
+
+    > * {
+      border: none;
+    }
   }
 `;
 
@@ -60,7 +65,7 @@ const LogoutBtn = styled.button`
   align-items: center;
   justify-content: center;
   margin-right: 10rem;
-  font-size: ${({ theme: { fontSize } }) => fontSize.regular};
+  font-size: inherit;
   font-weight: ${({ theme: { fontWeight } }) => fontWeight.bold};
   color: ${({ theme: { color } }) => color.danger};
   background: none;

@@ -8,7 +8,8 @@ import { theme } from 'themes/theme';
 
 import Loader from 'components/modules/loader/loader';
 import TopBar from 'components/modules/top-bar/top-bar';
-import AppNavigation from 'components/modules/app-navigation/app-navigation';
+import MenuDesktop from 'components/organisms/menu-desktop/menu-desktop';
+import MenuMobile from 'components/organisms/menu-mobile/menu-mobile';
 import FirstConfigModal from 'components/organisms/first-config-modal/first-config-modal';
 
 import { useIsLoading } from 'hooks/useIsLoading';
@@ -27,6 +28,12 @@ const Wrapper = styled.div`
 
           > * {
             grid-column: content-start / content-end;
+          }
+
+          ${({ theme: { mq } }) => mq.desktop} {
+            grid-template-columns:
+              [app-nav-start app-nav-end top-bar-start content-start]
+              repeat(10, 1fr) [content-end top-bar-end];
           }
         `
       : css`
@@ -61,7 +68,8 @@ const Layout = ({ children }) => {
         <FirstConfigModal />
         {isLoading && <Loader />}
         <TopBar />
-        {pathname.includes('/app') && <AppNavigation />}
+        {pathname.includes('/app') && <MenuDesktop />}
+        {pathname.includes('/app') && <MenuMobile />}
         <Main pathname={pathname}>{children}</Main>
       </Wrapper>
     </ThemeProvider>

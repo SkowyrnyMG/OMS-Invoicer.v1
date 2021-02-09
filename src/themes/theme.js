@@ -13,8 +13,8 @@ export const customFonts = {
 export const breakpoints = {
   regularDesktop: 1700,
   // bigDesktop: 1440,
-  // mediumDesktop: 1300,
-  // desktop: 1168,
+  mediumDesktop: 1300,
+  desktop: 1168,
   bigTablet: 1028,
   // tablet: 767,
   smallTablet: 680,

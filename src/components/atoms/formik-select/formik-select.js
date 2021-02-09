@@ -30,7 +30,6 @@ const StyledLabel = styled.label`
 
   select {
     padding: 0.25rem 1rem;
-    font-size: ${({ theme: { fontSize } }) => fontSize.regular};
     cursor: pointer;
   }
 `;

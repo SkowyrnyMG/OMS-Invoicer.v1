@@ -13,15 +13,14 @@ import Logo from 'components/modules/logo/logo';
 import { routes } from 'utils/routes';
 
 const Wrapper = styled.div`
-  position: fixed;
-  width: 15%;
-  height: 100vh;
+  width: 100%;
+  min-height: 100vh;
   grid-row: 1 / -1;
   display: grid;
   grid-template-rows: 6rem 1fr;
   background: ${({ theme: { color } }) => color.bgSecondary};
-  box-shadow: ${({ theme: { shadow } }) => shadow.right};
   z-index: 1000;
+  overflow-y: auto;
 `;
 
 const StyledNav = styled.nav`
@@ -56,7 +55,6 @@ const StyledListItem = styled.li`
 const AppNavLink = styled(Link)`
   display: inline-block;
   width: 100%;
-  font-size: ${({ theme: { fontSize } }) => fontSize.regular};
 `;
 
 const AppNavLinkText = styled.span`

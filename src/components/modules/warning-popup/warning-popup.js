@@ -36,7 +36,6 @@ const StyledHeading = styled.h3`
 const StyledParagraph = styled.p`
   padding: 2rem;
   text-align: left;
-  font-size: ${({ theme: { fontSize } }) => fontSize.regular};
 `;
 
 const WarningPopup = ({ children, isWarningOpen, title }) => {

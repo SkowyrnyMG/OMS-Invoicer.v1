@@ -25,6 +25,10 @@ const Button = styled.button`
   ::first-letter {
     text-transform: uppercase;
   }
+
+  ${({ theme: { mq } }) => mq.tablet} {
+    width: 100%;
+  }
 `;
 
 export default Button;

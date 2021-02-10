@@ -18,6 +18,19 @@ const StyledForm = styled(Form)`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-auto-rows: 1fr;
+
+  ${({ theme: { mq } }) => mq.desktop} {
+    grid-template-columns: 1fr;
+  }
+
+  ${({ theme: { mq } }) => mq.smallTablet} {
+    padding: 5rem 0;
+
+    > * {
+      padding: 0 1rem !important;
+      flex-basis: 100%;
+    }
+  }
 `;
 
 const StyledHeadingBlue = styled(HeadingBlue)`

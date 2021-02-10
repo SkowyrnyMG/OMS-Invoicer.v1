@@ -46,8 +46,8 @@ const StyledAppBodyContainer = styled(AppBodyContainer)`
 `;
 
 const StyledForm = styled(Form)`
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   padding: 5rem;
 
   > div {
@@ -62,6 +62,19 @@ const StyledForm = styled(Form)`
   > div:nth-child(2) {
     display: flex;
     flex-direction: column;
+  }
+
+  ${({ theme: { mq } }) => mq.desktop} {
+    grid-template-columns: 1fr;
+  }
+
+  ${({ theme: { mq } }) => mq.smallTablet} {
+    padding: 5rem 0;
+
+    > * {
+      padding: 0 1rem !important;
+      flex-basis: 100%;
+    }
   }
 `;
 

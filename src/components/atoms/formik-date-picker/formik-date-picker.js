@@ -24,26 +24,6 @@ const Wrapper = styled.div`
     padding: 0;
 
     input {
-      /* padding: 0.5rem;
-      width: 100%;
-      height: 3rem;
-      font-size: ${({ theme: { fontSize } }) => fontSize.ms};
-      color: ${({ theme: { color } }) => color.secondaryFont};
-      outline: none;
-      border: 2px solid currentColor;
-      border-radius: 5px;
-      cursor: pointer; */
-
-      /* border-color: ${({ theme: { color }, error, touched }) => {
-        if (error && touched) {
-          return color.danger;
-        }
-        if (error === undefined && touched) {
-          return color.success;
-        }
-        return color.secondaryFont;
-      }}; */
-
       cursor: pointer;
 
       transition: 0.5s transform;
@@ -60,38 +40,45 @@ const Wrapper = styled.div`
         cursor: not-allowed;
       }
     }
+  }
 
-    /* input,
-    input::placeholder {
-      color: ${({ theme: { color }, error, touched }) => {
-      if (error && touched) {
-        return color.danger;
-      }
-      if (error === undefined && touched) {
-        return color.success;
-      }
-      return color.secondaryFont;
-    }};
-
-      border-color: currentColor;
-    } */
+  // * bottom popup arorw
+  .react-datepicker__triangle {
+    display: none;
   }
 
   //* calendar popup window
   .react-datepicker {
     width: 100%;
+    z-index: 999999999999999;
+    ${({ theme: { mq } }) => mq.bigDesktop} {
+      left: 0 !important;
+    }
+  }
+
+  .react-datepicker-popper {
+    ${({ theme: { mq } }) => mq.bigDesktop} {
+      /* right: 0 !important; */
+    }
   }
 
   //* calendar day
   .react-datepicker__day {
-    /* margin: 5px;
-    padding: 5px;
-    width: 15px; */
     padding: 5px 15px;
     width: 40px;
     text-align: center;
     font-size: ${({ theme: { fontSize } }) => fontSize.ms};
     font-weight: ${({ theme: { fontWeight } }) => fontWeight.thin};
+
+    ${({ theme: { mq } }) => mq.smallTablet} {
+      padding: 2px 5px;
+    }
+    ${({ theme: { mq } }) => mq.bigPhone} {
+      width: 35px;
+    }
+    ${({ theme: { mq } }) => mq.phone} {
+      width: 32px;
+    }
   }
 
   //* outside month
@@ -116,6 +103,16 @@ const Wrapper = styled.div`
     padding: 15px;
     width: 40px;
     font-size: ${({ theme: { fontSize } }) => fontSize.s};
+
+    ${({ theme: { mq } }) => mq.bigPhone} {
+      width: 35px;
+      font-size: ${({ theme: { fontSize } }) => fontSize.s};
+      padding: 5px;
+    }
+
+    ${({ theme: { mq } }) => mq.phone} {
+      width: 32px;
+    }
   }
 
   //* calendar header - month navigation arrows
@@ -137,14 +134,18 @@ const Wrapper = styled.div`
 `;
 
 const DatePickerWrapper = styled.div`
+  position: relative;
   display: flex;
   align-items: center;
   margin-bottom: 1rem;
 `;
 
 const StyledPlaceholder = styled.div`
-  flex-basis: 60%;
+  /* flex-basis: 60%; */
+  position: absolute;
+  top: -60%;
   align-self: flex-end;
+  font-size: ${({ theme: { fontSize } }) => fontSize.s};
   transition: all 0.25s;
   pointer-events: none;
 `;

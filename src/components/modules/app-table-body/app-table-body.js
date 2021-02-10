@@ -180,6 +180,7 @@ const AppTableBody = ({
   data,
   defaultColumn,
   setCurrentPosValues,
+  isModalOpen,
 }) => {
   const initialState = React.useMemo(
     () => ({
@@ -253,7 +254,7 @@ const AppTableBody = ({
           onChange={(e) => setGlobalFilter(e.target.value)}
         />
       </SearchBox>
-      <AppBodyContainer>
+      <AppBodyContainer isModalOpen={isModalOpen}>
         <StyledTable {...getTableProps()}>
           <thead>
             {headerGroups.map((headerGroup) => (

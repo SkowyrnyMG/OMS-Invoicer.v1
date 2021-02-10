@@ -68,6 +68,7 @@ const InvoicesModule = ({ invoicesList }) => {
         data={data}
         defaultColumn={defaultColumn}
         setCurrentPosValues={setCurrentInvoice}
+        isModalOpen={isModalOpen}
       />
       <ActionMenu>
         <Button onClick={handleAddNewClick}>Add new</Button>

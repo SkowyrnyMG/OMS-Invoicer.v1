@@ -20,6 +20,7 @@ body {
   line-height: 1.6;
   min-height: 100vh;
   overflow-x: hidden;
+  background-color: ${({ theme: { color } }) => color.bg};
 
   ${({ theme: { mq } }) => mq.mediumDesktop} {
     font-size: ${({ theme: { fontSize } }) => fontSize.ms}

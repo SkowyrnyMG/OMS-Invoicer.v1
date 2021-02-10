@@ -9,7 +9,7 @@ const AppBodyContainer = styled.div`
   overflow: scroll;
 
   ${({ theme: { mq } }) => mq.tablet} {
-    height: ${({ isModalOpen }) => (isModalOpen ? '30vh' : '60vh')};
+    height: ${({ isModalOpen }) => (isModalOpen ? '0' : '60vh')};
   }
 `;
 

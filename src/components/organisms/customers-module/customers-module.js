@@ -55,6 +55,7 @@ const CustomersModule = ({ customersList }) => {
         columns={columns}
         data={data}
         defaultColumn={defaultColumn}
+        isModalOpen={isModalOpen}
       />
       <ActionMenu>
         <Button onClick={handleAddNewClick}>Add new</Button>

@@ -58,6 +58,7 @@ const OrdersModule = ({ ordersList }) => {
         data={data}
         defaultColumn={defaultColumn}
         setCurrentPosValues={setCurrentOrder}
+        isModalOpen={isModalOpen}
       />
       <ActionMenu>
         <Button onClick={handleAddNewClick}>Add new</Button>

@@ -15,11 +15,19 @@ const Wrapper = styled.div`
 `;
 
 const FormBox = styled.div`
+  display: grid;
+  place-items: center;
   margin-bottom: 5rem;
   padding: 4rem 5rem 3rem;
   background-color: ${({ theme: { color } }) => color.bgSecondary};
   border-radius: 5px;
   box-shadow: ${({ theme: { shadow } }) => shadow.around};
+
+  ${({ theme: { mq } }) => mq.smallTablet} {
+    padding: 3rem 1rem;
+    margin: 2rem;
+    width: 95%;
+  }
 `;
 
 const StyledHeading = styled.h2`

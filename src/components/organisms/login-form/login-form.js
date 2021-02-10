@@ -19,6 +19,11 @@ const StyledForm = styled(Form)`
   align-items: center;
   flex-direction: column;
   width: 45rem;
+
+  ${({ theme: { mq } }) => mq.smallTablet} {
+    width: 100%;
+    margin: 0 2rem;
+  }
 `;
 
 const LoginForm = () => {

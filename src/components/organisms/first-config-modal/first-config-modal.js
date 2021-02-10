@@ -33,6 +33,10 @@ const StyledAppBodyContainer = styled(AppBodyContainer)`
   border: 1px solid ${({ theme: { color } }) => color.primary};
   border-radius: 5px;
   overflow: auto;
+
+  ${({ theme: { mq } }) => mq.bigPhone} {
+    padding: 5rem 1rem;
+  }
 `;
 
 const StyledHeadingBlue = styled(HeadingBlue)`

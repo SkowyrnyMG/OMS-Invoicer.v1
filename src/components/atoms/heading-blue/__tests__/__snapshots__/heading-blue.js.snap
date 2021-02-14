@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HeadingBlue should display in the document with correct styles 1`] = `
+.c0 {
+  margin-bottom: 0.5rem;
+  font-size: 20px;
+  font-weight: 400;
+  text-transform: uppercase;
+  color: #446DF6;
+}
+
+<h5
+  class="c0"
+/>
+`;

@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PatternSection should display in the document with correct styles 1`] = `
+.c0 {
+  grid-column: -1 / 1;
+  display: grid;
+  grid-template-columns: 5rem [start] 1fr [end] 5rem;
+  grid-column-gap: 3%;
+  padding: 20rem 0;
+  position: relative;
+  background-image: url(https://somelinkwithpattern.com);
+  background-size: cover;
+  background-position: center;
+}
+
+.c0 > * {
+  grid-column: start / end;
+}
+
+.c0 {
+  padding: 10rem 0;
+}
+
+<section
+  class="c0"
+>
+  <div />
+</section>
+`;

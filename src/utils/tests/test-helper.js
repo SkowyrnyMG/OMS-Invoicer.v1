@@ -5,19 +5,21 @@ import { ThemeProvider } from 'styled-components';
 import { createMemoryHistory } from 'history';
 import { theme } from 'themes/theme';
 
-import { configureStore } from '@reduxjs/toolkit';
+import { configureStore, Store } from '@reduxjs/toolkit';
 import { Provider } from 'react-redux';
 import { reducer } from 'store/store';
 
+const leftClick = { button: 0 };
+
 const renderWithRedux = (
   ui,
-  { store = configureStore({ reducer }), ...renderOptions } = {}
+  { store = configureStore({ reducer }), ...renderOptions } = {},
 ) => {
   const utils = render(
     <Provider store={store}>
       <ThemeProvider theme={theme}>{ui}</ThemeProvider>
     </Provider>,
-    renderOptions
+    renderOptions,
   );
   return {
     ...utils,
@@ -30,7 +32,7 @@ const renderWithRouter = (ui, { route = '/', ...renderOptions } = {}) => {
     <Router history={history}>
       <ThemeProvider theme={theme}>{ui}</ThemeProvider>
     </Router>,
-    renderOptions
+    renderOptions,
   );
   return {
     ...utils,
@@ -38,31 +40,49 @@ const renderWithRouter = (ui, { route = '/', ...renderOptions } = {}) => {
   };
 };
 
+const makeStore = () => {
+  return configureStore({ reducer });
+};
+
 const renderWithReduxRouter = (
   ui,
-  { store = configureStore({ reducer }), ...reduxRenderOptions } = {},
-  { route = '/', ...routerRenderOptions } = {}
+  { store = Store, ...reduxRenderOptions } = {},
+  { route = '/', ...routerRenderOptions } = {},
 ) => {
   const renderOptions = {
     ...(reduxRenderOptions || {}),
     ...(routerRenderOptions || {}),
   };
   const history = createMemoryHistory({ initialEntries: [route] });
+
   const utils = render(
-    <Provider store={store}>
+    <Provider store={store || makeStore()}>
       <Router history={history}>
         <ThemeProvider theme={theme}>{ui}</ThemeProvider>
       </Router>
     </Provider>,
-    renderOptions
+    renderOptions,
   );
+
   return {
     ...utils,
     history,
   };
 };
 
-const leftClick = { button: 0 };
+const snapShotTest = (componentToRender) => {
+  const { container } = renderWithReduxRouter(componentToRender);
+  const component = container.firstChild;
+
+  expect(component).toBeInTheDocument();
+  expect(component).toMatchSnapshot();
+};
 
 export * from '@testing-library/react';
-export { leftClick, renderWithRouter, renderWithRedux, renderWithReduxRouter };
+export {
+  leftClick,
+  renderWithRouter,
+  renderWithRedux,
+  renderWithReduxRouter,
+  snapShotTest,
+};

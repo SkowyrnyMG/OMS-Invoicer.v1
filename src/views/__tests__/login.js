@@ -1,16 +1,11 @@
 import React from 'react';
 import {
   renderWithReduxRouter,
-  // fireEvent,
-  // leftClick,
-  // screen,
-  // act,
-} from 'utils/test-helper';
+  //  fireEvent, leftClick
+} from 'utils/tests/test-helper';
 // import { routes } from 'utils/routes';
 // import { auth } from 'firebase.config';
 import Login from '../login';
-
-jest.mock('../../firebase.config.js');
 
 describe('Login page', () => {
   test('should render into document', () => {
@@ -23,32 +18,52 @@ describe('Login page', () => {
   // test('should redirect to app page after successful login form submit', async () => {
   //   const {
   //     getByText,
-  //     getByTestId,
+  //     // getByTestId,
   //     getByPlaceholderText,
   //     history,
   //   } = renderWithReduxRouter(<Login />, {}, { route: '/login' });
+
   //   const initialPath = history.location.pathname;
   //   const emailInput = getByPlaceholderText(/email/i);
   //   const passwordInput = getByPlaceholderText(/password/i);
   //   const submitButton = getByText(/submit/i);
+  //   console.log(initialPath);
 
-  //   auth.signInWithEmailAndPassword.mockImplementationOnce(() =>
-  //     Promise.resolve({
-  //       user: {
-  //         uid: 'userID',
-  //       },
-  //     })
-  //   );
+  //   fireEvent.change(emailInput, { target: { value: 'mat.gruzla@gmail.com' } });
+  //   fireEvent.change(passwordInput, { target: { value: 'mat.admin.!@312#' } });
+  //   fireEvent.click(submitButton, leftClick);
+
+  //   const currentPath = history.location.pathname;
+  //   console.log('itsme');
+  //   console.log(currentPath);
+
+  //   // const pathAfterSucces = history.location.pathname;
+  //   // expect(await getByText(/success/i)).toBeInTheDocument();
+  // });
+  // test('should redirect to app page after successful login form submit', async () => {
+  //   const {
+  //     getByText,
+  //     // getByTestId,
+  //     getByPlaceholderText,
+  //     history,
+  //   } = renderWithReduxRouter(<Login />, {}, { route: '/login' });
+
+  //   const initialPath = history.location.pathname;
+  //   const emailInput = getByPlaceholderText(/email/i);
+  //   const passwordInput = getByPlaceholderText(/password/i);
+  //   const submitButton = getByText(/submit/i);
+  //   console.log(initialPath);
 
   //   fireEvent.change(emailInput, 'mat.gruzla@gmail.com');
   //   fireEvent.change(passwordInput, 'mat.admin.!@312#');
   //   fireEvent.click(submitButton, leftClick);
 
-  //   const pathAfterSucces = history.location.pathname;
-  //   console.log(pathAfterSucces);
-  //   const response = await auth.signInWithEmailAndPassword;
-  //   console.log(response);
-  //   expect(auth.signInWithEmailAndPassword).toBeCalledTimes(1);
+  //   await jest.advanceTimersByTime(10000);
+  //   const currentPath = history.location.pathname;
+  //   console.log('itsme');
+  //   console.log(currentPath);
+
+  //   // const pathAfterSucces = history.location.pathname;
   //   // expect(await getByText(/success/i)).toBeInTheDocument();
   // });
 });

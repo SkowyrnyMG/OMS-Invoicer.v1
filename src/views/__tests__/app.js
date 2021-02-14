@@ -1,5 +1,5 @@
 import React from 'react';
-import { renderWithReduxRouter } from 'utils/test-helper';
+import { renderWithReduxRouter } from 'utils/tests/test-helper';
 import App from '../app/app';
 
 describe('App', () => {

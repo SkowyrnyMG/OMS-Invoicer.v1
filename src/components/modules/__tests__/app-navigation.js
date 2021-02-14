@@ -1,15 +1,15 @@
 import React from 'react';
 import {
-  renderWithRouter,
+  renderWithReduxRouter,
   screen,
   fireEvent,
   leftClick,
-} from 'utils/test-helper';
+} from 'utils/tests/test-helper';
 import { routes } from 'utils/routes';
 import AppNavigation from '../app-navigation/app-navigation';
 
 const linkRedirectChecker = (testid, route, initialPath = '/app') => {
-  const { history } = renderWithRouter(<AppNavigation />, {
+  const { history } = renderWithReduxRouter(<AppNavigation />, {
     route: initialPath,
   });
 
@@ -23,7 +23,7 @@ const linkRedirectChecker = (testid, route, initialPath = '/app') => {
 
 describe('App Navigation', () => {
   test('should render into document', () => {
-    const { container } = renderWithRouter(<AppNavigation />);
+    const { container } = renderWithReduxRouter(<AppNavigation />);
     const AppNavigationContainer = container.firstChild;
 
     expect(AppNavigationContainer).toBeInTheDocument();
@@ -35,10 +35,6 @@ describe('App Navigation', () => {
 
   test('should change pathname to /app/orders when clicked on Orders navlink', () => {
     linkRedirectChecker('orders-link', routes.appOrders);
-  });
-
-  test('should change pathname to /app/payments when clicked on Payments navlink', () => {
-    linkRedirectChecker('payments-link', routes.appPayments);
   });
 
   test('should change pathname to /app/customers when clicked on Customers navlink', () => {

@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AppBodyContainer Should display in document with correct styles 1`] = `
+.c0 {
+  height: 60vh;
+  width: 100%;
+  background-color: #FFFFFF;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 10px -4px rgba(0,0,0,0.25);
+  overflow: scroll;
+}
+
+@media (max-width:767px) {
+  .c0 {
+    height: 60vh;
+  }
+}
+
+<div
+  class="c0"
+/>
+`;

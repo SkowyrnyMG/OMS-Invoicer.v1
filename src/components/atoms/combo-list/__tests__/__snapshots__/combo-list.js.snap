@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ComboList should display in the document with correct styels 1`] = `
+.c0 {
+  position: absolute;
+  max-height: 25rem;
+  padding: 2rem;
+  list-style: none;
+  overflow-y: auto;
+  background: #F8F8FF;
+  box-shadow: 0 4px 5px rgba(0,0,0,0.1);
+  opacity: 0;
+  visibility: hidden;
+  z-index: 1000;
+}
+
+<ul
+  class="c0"
+/>
+`;

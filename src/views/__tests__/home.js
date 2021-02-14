@@ -1,5 +1,9 @@
 import React from 'react';
-import { renderWithReduxRouter, fireEvent, leftClick } from 'utils/test-helper';
+import {
+  renderWithReduxRouter,
+  fireEvent,
+  leftClick,
+} from 'utils/tests/test-helper';
 import Home from '../home';
 
 describe('Home', () => {

@@ -1,5 +1,9 @@
 import React from 'react';
-import { fireEvent, leftClick, renderWithReduxRouter } from 'utils/test-helper';
+import {
+  fireEvent,
+  leftClick,
+  renderWithReduxRouter,
+} from 'utils/tests/test-helper';
 import TopBar from '../top-bar';
 
 const linkChecker = (history, getByText, directPath, regex) => {

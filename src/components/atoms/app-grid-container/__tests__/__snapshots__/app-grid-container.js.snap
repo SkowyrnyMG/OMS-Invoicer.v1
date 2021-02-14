@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AppGridContainer should display in the document with correct styles 1`] = `
+.c0 {
+  display: grid;
+  grid-template-columns: 65vw min-content;
+  grid-template-rows: min-content;
+  grid-column-gap: 2rem;
+}
+
+@media (max-width:1300px) {
+  .c0 {
+    grid-template-columns: 63vw min-content;
+  }
+}
+
+@media (max-width:1168px) {
+  .c0 {
+    grid-template-columns: 73vw min-content;
+  }
+}
+
+@media (max-width:767px) {
+  .c0 {
+    grid-template-columns: 90vw;
+  }
+}
+
+<div
+  class="c0"
+/>
+`;

@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Input should display in the document with correct styles 1`] = `
+.c0 {
+  margin: 1rem 0;
+  padding: 0.5rem;
+  width: 100%;
+  height: 3rem;
+  font-size: 16px;
+  color: #8F8F8F;
+  border: none;
+  outline: none;
+  border-bottom: 2px solid currentColor;
+  -webkit-transition: 0.5s -webkit-transform;
+  -webkit-transition: 0.5s transform;
+  transition: 0.5s transform;
+}
+
+.c0:focus {
+  -webkit-transform: translateX(2px);
+  -ms-transform: translateX(2px);
+  transform: translateX(2px);
+}
+
+.c0 input,
+.c0 input::-webkit-input-placeholder {
+  color: currentColor;
+}
+
+.c0 input,
+.c0 input::-moz-placeholder {
+  color: currentColor;
+}
+
+.c0 input,
+.c0 input:-ms-input-placeholder {
+  color: currentColor;
+}
+
+.c0 input,
+.c0 input::placeholder {
+  color: currentColor;
+}
+
+<input
+  class="c0"
+/>
+`;

@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ComboButton should display in the document with correct styles 1`] = `
+.c0 {
+  padding: 0.5rem 1rem;
+  border: 2px solid #446DF6;
+  border-radius: 0.5rem;
+  background: none;
+  cursor: pointer;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+}
+
+.c0:not(:first-child) {
+  margin-left: 2rem;
+}
+
+.c0:hover {
+  background: #446DF6;
+  color: #FFFFFF;
+}
+
+<button
+  class="c0"
+/>
+`;

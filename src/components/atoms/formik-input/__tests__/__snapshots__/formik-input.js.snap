@@ -1,0 +1,98 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FormikInput should display in the document with correct styles 1`] = `
+.c2 {
+  margin-bottom: 1rem;
+  width: 100%;
+  font-size: 14px;
+  color: #F25C54;
+}
+
+.c0 {
+  position: relative;
+  display: block;
+  width: 100%;
+  margin-bottom: 3rem;
+}
+
+.c0:last-of-type {
+  margin-bottom: 4rem;
+}
+
+.c0 input {
+  border-color: #8F8F8F;
+  -webkit-transition: 0.5s -webkit-transform;
+  -webkit-transition: 0.5s transform;
+  transition: 0.5s transform;
+}
+
+.c0 input:focus {
+  -webkit-transform: translateX(2px);
+  -ms-transform: translateX(2px);
+  transform: translateX(2px);
+}
+
+.c0 input:placeholder-shown + div {
+  opacity: 0;
+  top: 50%;
+}
+
+.c0 input,
+.c0 input::-webkit-input-placeholder {
+  color: #8F8F8F;
+  border-color: currentColor;
+}
+
+.c0 input,
+.c0 input::-moz-placeholder {
+  color: #8F8F8F;
+  border-color: currentColor;
+}
+
+.c0 input,
+.c0 input:-ms-input-placeholder {
+  color: #8F8F8F;
+  border-color: currentColor;
+}
+
+.c0 input,
+.c0 input::placeholder {
+  color: #8F8F8F;
+  border-color: currentColor;
+}
+
+.c1 {
+  position: absolute;
+  top: -1rem;
+  left: 0.3rem;
+  font-size: 14px;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  -webkit-transition: all 0.25s;
+  transition: all 0.25s;
+  pointer-events: none;
+}
+
+<label
+  class="c0"
+  data-testid="formik-input"
+  for="test_input"
+>
+  <input
+    id="test_input"
+    name="test_input"
+    placeholder="test formik input"
+    type="text"
+    value=""
+  />
+  <div
+    class="c1"
+  >
+    test formik input
+  </div>
+  <span
+    class="c2"
+  />
+</label>
+`;

@@ -1,0 +1,199 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FormikDatePicker should display in the document with correct styles 1`] = `
+.c3 {
+  margin-bottom: 1rem;
+  width: 100%;
+  font-size: 14px;
+  color: #F25C54;
+}
+
+.c0 {
+  margin-bottom: 4rem;
+}
+
+.c0 * {
+  font-family: 'Montserrat' !important;
+}
+
+.c0 .react-datepicker-wrapper {
+  display: inline-block;
+  padding: 1rem;
+  border: 0;
+}
+
+.c0 .react-datepicker-wrapper {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.c0 .react-datepicker-wrapper input {
+  cursor: pointer;
+  -webkit-transition: 0.5s -webkit-transform;
+  -webkit-transition: 0.5s transform;
+  transition: 0.5s transform;
+}
+
+.c0 .react-datepicker-wrapper input:focus {
+  -webkit-transform: translateX(2px);
+  -ms-transform: translateX(2px);
+  transform: translateX(2px);
+}
+
+.c0 .react-datepicker-wrapper input:disabled {
+  background: #00000055;
+  color: #000;
+  font-weight: 700;
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.c0 .react-datepicker__triangle {
+  display: none;
+}
+
+.c0 .react-datepicker {
+  width: 100%;
+  z-index: 999999999999999;
+}
+
+.c0 .react-datepicker__day {
+  padding: 5px 15px;
+  width: 40px;
+  text-align: center;
+  font-size: 16px;
+}
+
+.c0 .react-datepicker__day--outside-month {
+  color: #446DF644 !important;
+}
+
+.c0 .react-datepicker__day--weekend {
+  color: #8F8F8F;
+  font-weight: 700;
+}
+
+.c0 .react-datepicker__day--selected {
+  background-color: #446DF6;
+  color: #FFFFFF;
+}
+
+.c0 .react-datepicker__day-name {
+  padding: 15px;
+  width: 40px;
+  font-size: 14px;
+}
+
+.c0 .react-datepicker__navigation {
+  width: 0;
+  height: 0;
+  border-width: 0.9rem;
+}
+
+.c0 .react-datepicker__current-month {
+  font-size: 14px;
+}
+
+.c0 .react-datepicker__month-container {
+  width: 100%;
+}
+
+.c1 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.c2 {
+  position: absolute;
+  top: -60%;
+  -webkit-align-self: flex-end;
+  -ms-flex-item-align: end;
+  align-self: flex-end;
+  font-size: 14px;
+  -webkit-transition: all 0.25s;
+  transition: all 0.25s;
+  pointer-events: none;
+}
+
+@media (max-width:1540px) {
+  .c0 .react-datepicker {
+    left: 0 !important;
+  }
+}
+
+@media (max-width:1540px) {
+
+}
+
+@media (max-width:680px) {
+  .c0 .react-datepicker__day {
+    padding: 2px 5px;
+  }
+}
+
+@media (max-width:480px) {
+  .c0 .react-datepicker__day {
+    width: 35px;
+  }
+}
+
+@media (max-width:374px) {
+  .c0 .react-datepicker__day {
+    width: 32px;
+  }
+}
+
+@media (max-width:480px) {
+  .c0 .react-datepicker__day-name {
+    width: 35px;
+    font-size: 14px;
+    padding: 5px;
+  }
+}
+
+@media (max-width:374px) {
+  .c0 .react-datepicker__day-name {
+    width: 32px;
+  }
+}
+
+<div
+  class="c0"
+  data-testid="datepicker"
+>
+  <div
+    class="c1"
+  >
+    <div
+      class="c2"
+    />
+    <div
+      class="react-datepicker-wrapper"
+    >
+      <div
+        class="react-datepicker__input-container"
+      >
+        <input
+          autocomplete="off"
+          class=""
+          name="test_date"
+          type="text"
+          value=""
+        />
+      </div>
+    </div>
+  </div>
+  <span
+    class="c3"
+  />
+</div>
+`;

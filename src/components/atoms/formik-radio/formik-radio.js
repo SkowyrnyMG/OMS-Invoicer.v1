@@ -30,21 +30,6 @@ const StyledLabel = styled.label`
   &:last-of-type {
     margin-bottom: 4rem;
   }
-
-  /* input */
-  /* input::placeholder {
-    color: ${({ theme: { color }, error, touched }) => {
-    if (error && touched) {
-      return color.danger;
-    }
-    if (error === undefined && touched) {
-      return color.success;
-    }
-    return color.secondaryFont;
-  }}; */
-
-  /* border-color: currentColor; */
-  /* } */
 `;
 
 const FormikRadio = ({

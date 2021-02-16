@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FormikRadio should display in the document with correct styles 1`] = `
+.c0 {
+  position: absolute;
+  opacity: 0;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.c0:checked + label {
+  font-weight: 700;
+  opacity: 1;
+}
+
+<input
+  class="c0"
+  id="test_radio-test_value"
+  name="test_radio"
+  value="test_value"
+/>
+`;

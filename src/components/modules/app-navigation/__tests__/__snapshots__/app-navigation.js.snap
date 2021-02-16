@@ -1,0 +1,317 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App Navigation should render into document 1`] = `
+.c1 {
+  display: inline-block;
+  padding: 1rem 2rem;
+  margin-top: 0;
+  font-weight: 700;
+  color: #000 !important;
+  border-left: 1px solid #F0F0FD;
+  background: none;
+  -webkit-transition: -webkit-transform 0.25s;
+  -webkit-transition: transform 0.25s;
+  transition: transform 0.25s;
+  border: none;
+}
+
+.c1:hover {
+  -webkit-transform: translateY(-2px);
+  -ms-transform: translateY(-2px);
+  transform: translateY(-2px);
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.c3 {
+  width: 6rem;
+}
+
+.c0 {
+  width: 100%;
+  min-height: 100vh;
+  grid-row: 1 / -1;
+  display: grid;
+  grid-template-rows: 6rem 1fr;
+  background: #FFFFFF;
+  z-index: 1000;
+  overflow-y: auto;
+}
+
+.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: flex-end;
+  -webkit-box-align: flex-end;
+  -ms-flex-align: flex-end;
+  align-items: flex-end;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  margin-top: 5rem;
+}
+
+.c5 .active-app-link {
+  color: #446DF6 !important;
+  fill: currentColor !important;
+  font-weight: bold;
+}
+
+.c6 {
+  width: 85%;
+  list-style: none;
+}
+
+.c7 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c7 svg {
+  margin-right: 1.3rem;
+  width: 2.4rem !important;
+}
+
+.c8 {
+  display: inline-block;
+  width: 100%;
+}
+
+.c9 {
+  display: inline-block;
+  width: calc(100% - 5rem);
+  height: 6rem;
+  border-bottom: 1px solid #F0F0FD;
+  line-height: 6rem;
+}
+
+.c10 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  font-size: inherit;
+  margin: 2rem 0;
+  font-weight: 700;
+  color: #F25C54;
+  background: none;
+  border: none;
+  border-left: 1px solid #F0F0FD;
+  cursor: pointer;
+  -webkit-transition: 0.25s -webkit-transform;
+  -webkit-transition: 0.25s transform;
+  transition: 0.25s transform;
+}
+
+.c10 *:not(:last-child) {
+  margin-right: 1rem;
+}
+
+.c10:hover {
+  -webkit-transform: translateX(5px);
+  -ms-transform: translateX(5px);
+  transform: translateX(5px);
+}
+
+.c11 {
+  fill: #F25C54;
+}
+
+@media (max-width:1300px) {
+  .c4 {
+    display: none;
+  }
+}
+
+<div
+  class="c0"
+>
+  <a
+    class="c1"
+    href="/"
+    linktype=""
+  >
+    <span
+      class="c2"
+    >
+      <svg
+        class="c3"
+      >
+        logo.svg
+      </svg>
+      <span
+        class="c4"
+      >
+        Invoicer.v1
+      </span>
+    </span>
+  </a>
+  <nav
+    class="c5"
+  >
+    <ul
+      class="c6"
+    >
+      <li
+        class="c7"
+      >
+        <a
+          class="c8"
+          data-testid="maindesk-link"
+          href="/app"
+        >
+          <svg>
+            home-icon.svg
+          </svg>
+          <span
+            class="c9"
+          >
+            Main desk
+          </span>
+        </a>
+      </li>
+      <li
+        class="c7"
+      >
+        <a
+          class="c8"
+          data-testid="invoices-link"
+          href="/app/invoices"
+        >
+          <svg>
+            invoice-icon.svg
+          </svg>
+          <span
+            class="c9"
+          >
+            Invoices
+          </span>
+        </a>
+      </li>
+      <li
+        class="c7"
+      >
+        <a
+          class="c8"
+          data-testid="orders-link"
+          href="/app/orders"
+        >
+          <svg>
+            orders-icon.svg
+          </svg>
+          <span
+            class="c9"
+          >
+            Orders
+          </span>
+        </a>
+      </li>
+      <li
+        class="c7"
+      >
+        <a
+          class="c8"
+          data-testid="customers-link"
+          href="/app/customers"
+        >
+          <svg>
+            clients-icon.svg
+          </svg>
+          <span
+            class="c9"
+          >
+            Customers
+          </span>
+        </a>
+      </li>
+    </ul>
+    <ul
+      class="c6"
+    >
+      <li
+        class="c7"
+      >
+        <a
+          class="c8"
+          data-testid="settings-link"
+          href="/app/settings"
+        >
+          <svg>
+            settings-icon.svg
+          </svg>
+          <span
+            class="c9"
+          >
+            Settings
+          </span>
+        </a>
+      </li>
+      <li
+        class="c7"
+      >
+        <a
+          class="c8"
+          data-testid="help-link"
+          href="/app/help"
+        >
+          <svg>
+            help-icon.svg
+          </svg>
+          <span
+            class="c9"
+          >
+            Help
+          </span>
+        </a>
+      </li>
+      <button
+        class="c10"
+      >
+        <svg
+          class="c11"
+        >
+          logout-icon.svg
+        </svg>
+        <span>
+          Logout
+        </span>
+      </button>
+    </ul>
+  </nav>
+</div>
+`;

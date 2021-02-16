@@ -56,7 +56,7 @@ const StyledLabel = styled.label`
 const StyledPlaceholder = styled.div`
   position: absolute;
   top: -1rem;
-  left: 0.5rem;
+  left: 0.3rem;
   font-size: ${({ theme: { fontSize } }) => fontSize.s};
   transform: translateY(-50%);
   transition: all 0.25s;
@@ -71,7 +71,12 @@ const FormikInput = ({
   placeholder,
   ...rest
 }) => (
-  <StyledLabel htmlFor={name} error={error} touched={touched}>
+  <StyledLabel
+    htmlFor={name}
+    error={error}
+    touched={touched}
+    data-testid='formik-input'
+  >
     <Field
       as={tagType}
       name={name}
@@ -88,14 +93,14 @@ const FormikInput = ({
 
 FormikInput.defaultProps = {
   tagType: 'input',
-  placeholder: '',
+  // placeholder: '',
   error: undefined,
   touched: undefined,
 };
 
 FormikInput.propTypes = {
   name: PropTypes.string.isRequired,
-  placeholder: PropTypes.string,
+  placeholder: PropTypes.string.isRequired,
   tagType: PropTypes.string,
   error: PropTypes.string,
   touched: PropTypes.bool,

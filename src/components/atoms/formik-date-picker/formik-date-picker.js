@@ -154,7 +154,7 @@ const FormikDatePicker = ({ placeholder, ...props }) => {
   const { setFieldValue } = useFormikContext();
   const [field] = useField(props);
   return (
-    <Wrapper>
+    <Wrapper data-testid='datepicker'>
       <DatePickerWrapper>
         <StyledPlaceholder>{placeholder}</StyledPlaceholder>
         <DatePicker

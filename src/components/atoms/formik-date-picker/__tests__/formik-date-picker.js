@@ -1,12 +1,23 @@
-// import React from 'react';
+import React from 'react';
 
-// import { snapShotTest } from 'utils/tests/test-helper';
-// import FormikDatePicker from '../formik-date-picker';
+import {
+  renderWithReduxRouter,
+  screen,
+  FormikTestWrapper,
+} from 'utils/tests/test-helper';
+import FormikDatePicker from '../formik-date-picker';
 
-// describe('FormikDatePicker', () => {
-//   test('should display in the document with correct styles', () => {
-//     snapShotTest(<FormikDatePicker />);
-//   });
-// });
+describe('FormikDatePicker', () => {
+  test('should display in the document with correct styles', () => {
+    renderWithReduxRouter(
+      <FormikTestWrapper>
+        <FormikDatePicker name='test_date' />
+      </FormikTestWrapper>,
+    );
 
-// TODO move it to modules, add wrap for formikContext
+    const component = screen.getByTestId('datepicker');
+
+    expect(component).toBeInTheDocument();
+    expect(component).toMatchSnapshot();
+  });
+});

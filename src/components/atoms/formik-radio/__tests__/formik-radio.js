@@ -5,21 +5,17 @@ import {
   FormikTestWrapper,
   screen,
 } from 'utils/tests/test-helper';
-import FormikInput from '../formik-input';
+import FormikRadio from '../formik-radio';
 
-describe('FormikInput', () => {
+describe('FormikRadio', () => {
   test('should display in the document with correct styles', () => {
     renderWithReduxRouter(
       <FormikTestWrapper>
-        <FormikInput
-          type='text'
-          name='test_input'
-          placeholder='test formik input'
-        />
+        <FormikRadio name='test_radio' value='test_value' />
       </FormikTestWrapper>,
     );
 
-    const component = screen.getByTestId('formik-input');
+    const component = screen.getByRole('textbox', { name: 'test_value' });
 
     expect(component).toBeInTheDocument();
     expect(component).toMatchSnapshot();

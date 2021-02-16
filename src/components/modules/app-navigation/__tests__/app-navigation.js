@@ -6,7 +6,7 @@ import {
   leftClick,
 } from 'utils/tests/test-helper';
 import { routes } from 'utils/routes';
-import AppNavigation from '../app-navigation/app-navigation';
+import AppNavigation from '../app-navigation';
 
 const linkRedirectChecker = (testid, route, initialPath = '/app') => {
   const { history } = renderWithReduxRouter(<AppNavigation />, {
@@ -27,6 +27,7 @@ describe('App Navigation', () => {
     const AppNavigationContainer = container.firstChild;
 
     expect(AppNavigationContainer).toBeInTheDocument();
+    expect(AppNavigationContainer).toMatchSnapshot();
   });
 
   test('should change pathname to /app/invoices when clicked on Invoice navlink', () => {

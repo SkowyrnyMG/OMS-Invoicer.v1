@@ -4,16 +4,6 @@ import styled from 'styled-components';
 import { ErrorMessage, Field } from 'formik';
 import ErrorMsg from 'components/atoms/error-msg/error-msg';
 
-// const StyledRadio = styled(Field)`
-//   position: absolute;
-//   opacity: 0;
-//   appearance: none;
-//   :checked + label {
-//     font-weight: ${({ theme: { fontWeight } }) => fontWeight.bold};
-//     opacity: 1;
-//   }
-// `;
-
 const StyledLabel = styled.label`
   display: block;
   margin-bottom: 3rem;
@@ -54,7 +44,12 @@ const FormikSelect = ({
   placeholder,
   ...rest
 }) => (
-  <StyledLabel htmlFor={name} error={error} touched={touched}>
+  <StyledLabel
+    htmlFor={name}
+    error={error}
+    touched={touched}
+    data-testid='formik-select'
+  >
     <LabelText>{placeholder}</LabelText>
     <Field
       as='select'

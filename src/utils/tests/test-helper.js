@@ -3,13 +3,18 @@ import { Router } from 'react-router-dom';
 import { render } from '@testing-library/react';
 import { ThemeProvider } from 'styled-components';
 import { createMemoryHistory } from 'history';
-import { theme } from 'themes/theme';
-
-import { configureStore, Store } from '@reduxjs/toolkit';
+import { Formik, Form } from 'formik';
 import { Provider } from 'react-redux';
+import { configureStore, Store } from '@reduxjs/toolkit';
+
+import { theme } from 'themes/theme';
 import { reducer } from 'store/store';
 
 const leftClick = { button: 0 };
+
+const FormikTestWrapper = ({ children }) => (
+  <Formik>{() => <Form>{children}</Form>}</Formik>
+);
 
 const renderWithRedux = (
   ui,
@@ -85,4 +90,5 @@ export {
   renderWithRedux,
   renderWithReduxRouter,
   snapShotTest,
+  FormikTestWrapper,
 };

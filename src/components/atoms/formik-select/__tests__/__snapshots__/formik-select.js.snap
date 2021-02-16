@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FormikSelect should render into document with correct styles 1`] = `
+.c3 {
+  margin-bottom: 1rem;
+  width: 100%;
+  font-size: 14px;
+  color: #F25C54;
+}
+
+.c0 {
+  display: block;
+  margin-bottom: 3rem;
+  width: 100%;
+  color: #000;
+}
+
+.c0:not(:last-child) {
+  border-right: 1px solid #F0F0FD;
+}
+
+.c0:last-of-type {
+  margin-bottom: 4rem;
+}
+
+.c0 select {
+  padding: 0.25rem 1rem;
+  cursor: pointer;
+}
+
+.c1 {
+  margin-right: 2rem;
+}
+
+.c2 {
+  width: 2rem !important;
+}
+
+<label
+  class="c0"
+  data-testid="formik-select"
+  for="test-select"
+>
+  <span
+    class="c1"
+  />
+  <select
+    id="test-select"
+    name="test-select"
+  >
+    <option
+      class="c2"
+      value="test-option-1"
+    >
+      test-option-1
+    </option>
+    <option
+      class="c2"
+      value="test-option-2"
+    >
+      test-option-2
+    </option>
+  </select>
+  <span
+    class="c3"
+  />
+</label>
+`;

@@ -15,6 +15,8 @@ import AppBodyContainer from 'components/atoms/app-body-container/app-body-conta
 import { ReactComponent as SearchIcon } from 'assets/svg/search-icon.svg';
 import { ReactComponent as LeftArrow } from 'assets/svg/larr-icon.svg';
 import { ReactComponent as RightArrow } from 'assets/svg/rarr-icon.svg';
+import { ReactComponent as UpArrow } from 'assets/svg/up-arrow-icon.svg';
+import { ReactComponent as DownArrow } from 'assets/svg/down-arrow-icon.svg';
 
 const Wrapper = styled.div`
   display: flex;
@@ -66,6 +68,17 @@ const StyledTable = styled.table`
   th {
     position: relative;
     cursor: pointer;
+  }
+  th {
+    positon: relative;
+
+    // * arrow sort svg styles
+    span {
+      position: absolute;
+      right: 2%;
+      top: 50%;
+      transform: translateY(-35%);
+    }
   }
 
   td {
@@ -244,7 +257,7 @@ const AppTableBody = ({
     setCurrentPosValues(row);
   };
   return (
-    <Wrapper>
+    <Wrapper data-testid='app-table-body'>
       <SearchBox>
         <StyledSearchIcon />
         <StyledSearchInput
@@ -273,11 +286,17 @@ const AppTableBody = ({
                     />
                     {column.render('Header')}
                     <span>
-                      {column.isSorted
-                        ? column.isSortedDesc
-                          ? ' ⬇️'
-                          : ' ⬆️'
-                        : ''}
+                      {column.isSorted ? (
+                        column.isSortedDesc ? (
+                          <DownArrow />
+                        ) : (
+                          <UpArrow />
+                        )
+                      ) : (
+                        // ? ' ⬇️'
+                        // : ' ⬆️'
+                        ''
+                      )}
                     </span>
                   </th>
                 ))}

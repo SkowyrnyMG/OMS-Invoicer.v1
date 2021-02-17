@@ -22,3 +22,7 @@ afterEach(() => {
 afterAll(() => {
   server.close();
 });
+
+// * this two lines of code fixes strange and unreasonable console.error on psueudo elements during tests
+const { getComputedStyle } = window;
+window.getComputedStyle = (elt) => getComputedStyle(elt);

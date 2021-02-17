@@ -1,0 +1,76 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AuthFormWrapper should render in the document with correct styles 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+  height: calc(100vh - 6rem);
+}
+
+.c1 {
+  display: grid;
+  place-items: center;
+  margin-bottom: 5rem;
+  padding: 4rem 5rem 3rem;
+  background-color: #FFFFFF;
+  border-radius: 5px;
+  box-shadow: 0 0 10px -4px rgba(0,0,0,0.25);
+}
+
+.c2 {
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.c3 {
+  font-weight: 700;
+  color: #000;
+}
+
+@media (max-width:680px) {
+  .c1 {
+    padding: 3rem 1rem;
+    margin: 2rem;
+    width: 95%;
+  }
+}
+
+<form
+  action="#"
+>
+  <div
+    class="c0"
+  >
+    <div
+      class="c1"
+    >
+      <h2
+        class="c2"
+      >
+        test_title
+      </h2>
+      <div />
+    </div>
+    <a
+      class="c3"
+      href="/"
+    >
+      Take me from here!
+    </a>
+  </div>
+</form>
+`;

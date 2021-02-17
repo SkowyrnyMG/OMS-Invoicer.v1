@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ActionMenu should display in the document with correct styles 1`] = `
+.c0 > * {
+  margin-bottom: 0.5rem;
+}
+
+@media (max-width:767px) {
+  .c0 {
+    grid-row: 1 / 2;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-column-gap: 2%;
+    justify-items: center;
+    margin-bottom: 2rem;
+  }
+
+  .c0 > * {
+    margin-bottom: 0.5rem;
+    margin-right: 0.5rem;
+  }
+}
+
+@media (max-width:570px) {
+  .c0 {
+    grid-template-columns: repeat(2,1fr);
+  }
+}
+
+@media (max-width:374px) {
+  .c0 {
+    grid-template-columns: 1fr;
+  }
+}
+
+<aside
+  class="c0"
+>
+  <button>
+    Test button
+  </button>
+</aside>
+`;

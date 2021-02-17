@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
@@ -6,8 +7,6 @@ const Wrapper = styled.div`
   width: 100%;
   min-height: 5rem;
   border-top: 1px solid ${({ theme: { color } }) => color.transparentMain};
-  /* border-bottom: 1px solid ${({ theme: { color } }) =>
-    color.transparentMain}; */
   img {
     display: block;
     margin: 0 auto;
@@ -37,6 +36,11 @@ const FAQPosition = ({ title, children }) => {
       {isFaqPosOpen && <p>{children}</p>}
     </Wrapper>
   );
+};
+
+FAQPosition.propTypes = {
+  title: PropTypes.string.isRequired,
+  children: PropTypes.string.isRequired,
 };
 
 export default FAQPosition;

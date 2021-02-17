@@ -1,0 +1,72 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Feature should display in the document with correct styles 1`] = `
+.c0 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding: 5rem;
+  background-color: #FFFFFF;
+  border-radius: 5px;
+  box-shadow: 0 0 10px -4px rgba(0,0,0,0.25);
+  overflow: hidden;
+}
+
+.c1 {
+  max-height: 10rem;
+  margin-bottom: 3rem;
+}
+
+.c1 svg {
+  width: 8rem !important;
+  fill: #446DF6;
+}
+
+.c2 {
+  font-size: 18px;
+}
+
+.c3 {
+  position: absolute;
+  bottom: -4%;
+  line-height: 0.8;
+  left: -2%;
+  font-family: 'Montserrat';
+  color: #446DF644;
+  font-weight: 700;
+  font-size: 180px;
+}
+
+<div
+  class="c0"
+>
+  <div
+    class="c1"
+  >
+    <div />
+  </div>
+  <h3
+    class="c2"
+  >
+    Test feature
+  </h3>
+  <div
+    class="c3"
+  >
+    1
+  </div>
+</div>
+`;

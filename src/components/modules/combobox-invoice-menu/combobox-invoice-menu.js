@@ -86,7 +86,7 @@ const ComboboxInvoiceMenu = ({ items, handleSetItemFn, handleResetItemFn }) => {
   };
 
   return (
-    <Wrapper>
+    <Wrapper data-testid='combobox-invoice-menu'>
       <label {...getLabelProps()}>Choose a finished order:</label>
       <div {...getComboboxProps()}>
         <ComboInput

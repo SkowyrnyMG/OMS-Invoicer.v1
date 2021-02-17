@@ -1,0 +1,140 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ComboboxInvoiceMenu should display in the document with correct styles 1`] = `
+.c3 {
+  padding: 0.5rem 1rem;
+  border: 2px solid #446DF6;
+  border-radius: 0.5rem;
+  background: none;
+  cursor: pointer;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+}
+
+.c3:not(:first-child) {
+  margin-left: 2rem;
+}
+
+.c3:hover {
+  background: #446DF6;
+  color: #FFFFFF;
+}
+
+.c4 {
+  position: absolute;
+  max-height: 25rem;
+  padding: 2rem;
+  list-style: none;
+  overflow-y: auto;
+  background: #F8F8FF;
+  box-shadow: 0 4px 5px rgba(0,0,0,0.1);
+  opacity: 0;
+  visibility: hidden;
+  z-index: 1000;
+}
+
+.c1 {
+  padding-left: 0.5rem;
+  margin-bottom: 1rem;
+  width: 100%;
+  height: 3rem;
+  font-size: 16px;
+}
+
+.c0 {
+  grid-column: 1 / -1 !important;
+  position: relative;
+  margin-bottom: 3rem;
+}
+
+.c5 {
+  cursor: pointer;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+}
+
+.c6 {
+  opacity: 0;
+  display: none;
+}
+
+<div
+  class="c0"
+  data-testid="combobox-invoice-menu"
+>
+  <label
+    for="downshift-0-input"
+    id="downshift-0-label"
+  >
+    Choose a finished order:
+  </label>
+  <div
+    aria-expanded="false"
+    aria-haspopup="listbox"
+    aria-owns="downshift-0-menu"
+    role="combobox"
+  >
+    <input
+      aria-autocomplete="list"
+      aria-controls="downshift-0-menu"
+      aria-labelledby="downshift-0-label"
+      autocomplete="off"
+      class="c1"
+      id="downshift-0-input"
+      placeholder="Provide order number or company name"
+      value=""
+    />
+    <div
+      class="c2"
+    >
+      <button
+        aria-label="toggle menu"
+        class="c3"
+        id="downshift-0-toggle-button"
+        tabindex="-1"
+        type="button"
+      >
+        Show
+      </button>
+      <button
+        class="c3"
+        type="button"
+      >
+        Accept
+      </button>
+      <button
+        class="c3"
+        type="button"
+      >
+        Reset
+      </button>
+    </div>
+  </div>
+  <ul
+    aria-labelledby="downshift-0-label"
+    class="c4"
+    id="downshift-0-menu"
+    role="listbox"
+  >
+    <li
+      aria-selected="false"
+      class="c5"
+      id="downshift-0-item-0"
+      role="option"
+    >
+      test_order_number - 500 EUR - customer-test-name
+    </li>
+    <div
+      class="c6"
+    >
+      Nothing found...
+    </div>
+  </ul>
+</div>
+`;

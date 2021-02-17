@@ -52,6 +52,7 @@ const Feature = ({ children, title, counter }) => {
 Feature.propTypes = {
   children: PropTypes.element.isRequired,
   title: PropTypes.string.isRequired,
+  counter: PropTypes.number.isRequired,
 };
 
 export default Feature;

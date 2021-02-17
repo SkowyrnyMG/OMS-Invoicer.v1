@@ -30,7 +30,6 @@ const ComboboxOrderMenu = ({ items, handleSetItemFn, handleResetItemFn }) => {
   const [inputItems, setInputItems] = useState(items);
   const [isNotFoundVisible, setIsNotFoundVisible] = useState(false);
   const [isResultArrEmpty, setIsResultArrEmpty] = useState(true);
-  console.log(items);
   const itemToString = (item) =>
     item ? `${item.vat_number} - ${item.name}` : '';
   const {
@@ -75,7 +74,7 @@ const ComboboxOrderMenu = ({ items, handleSetItemFn, handleResetItemFn }) => {
   };
 
   return (
-    <Wrapper>
+    <Wrapper data-testid='combobox-order-menu'>
       <label {...getLabelProps()}>Choose a Customer:</label>
       <div {...getComboboxProps()}>
         <ComboInput {...getInputProps()} placeholder='Type a Customer name..' />

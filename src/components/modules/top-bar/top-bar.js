@@ -6,7 +6,6 @@ import { getUserData } from 'store/slices/auth-slice/auth-slice';
 
 import NavLink from 'components/atoms/nav-link/nav-link';
 import UserInfo from 'components/modules/user-info/user-info';
-// import { ReactComponent as LogoutIcon } from 'assets/svg/logout-icon.svg';
 import Logo from 'components/modules/logo/logo';
 
 import { routes } from 'utils/routes';
@@ -56,7 +55,6 @@ const StyledLoginNav = styled.nav`
   }
 
   ${({ theme: { mq } }) => mq.smallTablet} {
-    /* grid-column: 1 / -1; */
     flex-direction: column;
 
     > * {
@@ -64,32 +62,6 @@ const StyledLoginNav = styled.nav`
     }
   }
 `;
-
-// const LogoutBtn = styled.button`
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   margin-right: 10rem;
-//   font-size: inherit;
-//   font-weight: ${({ theme: { fontWeight } }) => fontWeight.bold};
-//   color: ${({ theme: { color } }) => color.danger};
-//   background: none;
-//   border: none;
-//   border-left: 1px solid ${({ theme: { color } }) => color.devider};
-//   cursor: pointer;
-//   transition: 0.25s transform;
-
-//   *:not(:last-child) {
-//     margin-right: 1rem;
-//   }
-//   :hover {
-//     transform: translateX(5px);
-//   }
-// `;
-
-// const StyledLogoutIcon = styled(LogoutIcon)`
-//   fill: ${({ theme: { color } }) => color.danger};
-// `;
 
 const StyledUserInfo = styled(UserInfo)`
   opacity: 0 !important;
@@ -107,12 +79,7 @@ const TopBar = () => {
   } = useSelector(getUserData);
   const [isNotAuthenticated] = useState(uuid === '' || uuid === null);
   const [isTabletWidth, setIsTabletWidth] = useState(true);
-  // const dispatch = useDispatch();
   const currentModule = useModuleName();
-
-  // const handleClick = () => {
-  //   dispatch(logoutUser());
-  // };
 
   useEffect(() => {
     const handleWindowResize = () => {
@@ -140,15 +107,7 @@ const TopBar = () => {
             </NavLink>
           </>
         ) : (
-          !isTabletWidth && (
-            <>
-              <StyledUserInfo>{email}</StyledUserInfo>
-              {/* <LogoutBtn onClick={handleClick}>
-                <span>Logout</span>
-                <StyledLogoutIcon />
-              </LogoutBtn> */}
-            </>
-          )
+          !isTabletWidth && <StyledUserInfo>{email}</StyledUserInfo>
         )}
       </StyledLoginNav>
     </Wrapper>

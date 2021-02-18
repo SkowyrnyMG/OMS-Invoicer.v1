@@ -4,7 +4,6 @@ import { useDispatch } from 'react-redux';
 
 import AppBodyContainer from 'components/atoms/app-body-container/app-body-container';
 import SummaryCounter from 'components/modules/summary-counter/summary-counter';
-// import SummaryPosition from 'components/modules/summary-position/summary-position';
 import TotalItemCounter from 'components/modules/total-item-counter/total-item-counter';
 import { ReactComponent as CustomersIcon } from 'assets/svg/clients-icon.svg';
 import { ReactComponent as InvoicesIcon } from 'assets/svg/invoice-icon.svg';

@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Hamburger should render into document with correct styles 1`] = `
+.c0 {
+  position: absolute;
+  padding: 1rem;
+  width: 6rem;
+  height: 6rem;
+  background: #446DF6;
+  border: none;
+  outline: none;
+  border-bottom-right-radius: 20%;
+  box-shadow: 0 4px 5px rgba(0,0,0,0.1);
+  z-index: 10000;
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+.c1 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 60%;
+  height: 0.3rem;
+  background: #FFFFFF;
+  -webkit-transition: all 0.25s;
+  transition: all 0.25s;
+}
+
+.c1:first-child {
+  -webkit-transform: translate(-50%,-350%);
+  -ms-transform: translate(-50%,-350%);
+  transform: translate(-50%,-350%);
+}
+
+.c1:nth-child(2) {
+  opacity: 1;
+  -webkit-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+}
+
+.c1:last-child {
+  -webkit-transform: translate(-50%,250%);
+  -ms-transform: translate(-50%,250%);
+  transform: translate(-50%,250%);
+}
+
+<button
+  class="c0"
+>
+  <div
+    class="c1"
+  />
+  <div
+    class="c1"
+  />
+  <div
+    class="c1"
+  />
+</button>
+`;

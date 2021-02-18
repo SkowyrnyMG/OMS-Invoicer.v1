@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const Wrapper = styled.button`
@@ -51,6 +52,11 @@ const Hamburger = ({ isMenuOpen, toggleMenu }) => {
       <Bar isMenuOpen={isMenuOpen} />
     </Wrapper>
   );
+};
+
+Hamburger.propTypes = {
+  isMenuOpen: PropTypes.bool.isRequired,
+  toggleMenu: PropTypes.func.isRequired,
 };
 
 export default Hamburger;

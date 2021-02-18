@@ -1,0 +1,110 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HelpTooltip should display in the document with correct styles 1`] = `
+.c0 {
+  position: absolute;
+  top: 3%;
+  left: 1%;
+  pointer-events: none;
+}
+
+.c0 * {
+  pointer-events: auto;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  line-height: 4rem;
+  color: #446DF6;
+  background: transparent;
+  font-weight: 700;
+  font-size: 20px;
+  border-radius: 50%;
+  border: 2px solid currentColor;
+  outline: none;
+  outline: none;
+  cursor: help;
+  -webkit-transition: all 0.25s;
+  transition: all 0.25s;
+}
+
+.c1:hover,
+.c1:focus {
+  -webkit-transform: translateY(-2px);
+  -ms-transform: translateY(-2px);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 5px rgba(0,0,0,0.1);
+}
+
+.c1:active {
+  -webkit-transform: translateY(0px);
+  -ms-transform: translateY(0px);
+  transform: translateY(0px);
+  box-shadow: none;
+}
+
+.c2 {
+  position: absolute;
+  top: 200%;
+  left: 0;
+  padding: 1rem 2rem;
+  min-width: 30vw;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  color: #FFFFFF;
+  font-size: 16px;
+  line-height: 1.6;
+  text-align: left;
+  background: #446DF6;
+  border-radius: 0.5rem;
+  opacity: 0;
+  -webkit-transform: translateY(-3rem) scale(0);
+  -ms-transform: translateY(-3rem) scale(0);
+  transform: translateY(-3rem) scale(0);
+  -webkit-transition: all 0.25s;
+  transition: all 0.25s;
+  z-index: 1000;
+}
+
+.c2::before {
+  content: '';
+  position: absolute;
+  top: -1.8rem;
+  left: 0.5rem;
+  width: 2rem;
+  height: 2rem;
+  background-color: #446DF6;
+  -webkit-clip-path: polygon(50% 0,100% 100%,0 100%);
+  clip-path: polygon(50% 0,100% 100%,0 100%);
+  z-index: 10000;
+}
+
+<div
+  class="c0"
+>
+  <button
+    class="c1"
+  >
+    ?
+  </button>
+  <div
+    class="c2 tooltip"
+  >
+    test-info-text
+  </div>
+</div>
+`;

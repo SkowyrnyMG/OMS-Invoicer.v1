@@ -35,7 +35,7 @@ const NotificationPopup = ({ children, successRegexp }) => {
     return () => submitButton.removeEventListener('click', showHideMsg);
   });
   return (
-    <Wrapper ref={animationWrapper}>
+    <Wrapper ref={animationWrapper} data-testid='notification-popup'>
       {children.match(new RegExp(successRegexp, 'i')) ? (
         <SuccessMsg>{children}</SuccessMsg>
       ) : (

@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NotificaionPopup should display error notification in the doucment with correct styles 1`] = `
+.c1 {
+  margin-bottom: 1rem;
+  width: 100%;
+  font-size: 14px;
+  color: #F25C54;
+}
+
+.c0 {
+  margin: -2rem 0 2rem;
+}
+
+<div
+  class="c0"
+  data-testid="notification-popup"
+>
+  <span
+    class="c1"
+    style="opacity: 0; visibility: hidden;"
+  >
+    Error! The popup informs you that something went wrong!
+  </span>
+</div>
+`;
+
+exports[`NotificaionPopup should display succes notification in the doucment with correct styles 1`] = `
+.c1 {
+  margin-bottom: 1rem;
+  width: 100%;
+  font-size: 14px;
+  color: #00A896;
+}
+
+.c0 {
+  margin: -2rem 0 2rem;
+}
+
+<div
+  class="c0"
+  data-testid="notification-popup"
+>
+  <span
+    class="c1"
+    style="opacity: 0; visibility: hidden;"
+  >
+    Success! The popup informs you that something was done correcty!
+  </span>
+</div>
+`;

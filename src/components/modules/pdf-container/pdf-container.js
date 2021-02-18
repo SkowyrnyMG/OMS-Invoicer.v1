@@ -95,6 +95,7 @@ const PDFContainer = ({ children, closeRenderer }) => {
 
 PDFContainer.propTypes = {
   children: PropTypes.node.isRequired,
+  closeRenderer: PropTypes.func.isRequired,
 };
 
 export default PDFContainer;

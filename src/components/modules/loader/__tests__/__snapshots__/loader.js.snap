@@ -1,0 +1,108 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Loader should display in the document with correct styels 1`] = `
+.c0 {
+  position: fixed;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  height: 100vh;
+  width: 100%;
+  z-index: 50000;
+  -webkit-transition: 0.25 all;
+  transition: 0.25 all;
+}
+
+.c1 {
+  position: relative;
+  width: 8rem;
+  height: 8rem;
+  border-radius: 50%;
+}
+
+.c2 {
+  position: absolute;
+  width: 1.2rem;
+  height: 1.2rem;
+  background: #446DF6;
+  border-radius: 50%;
+  -webkit-transform-origin: center;
+  -ms-transform-origin: center;
+  transform-origin: center;
+}
+
+.c2:first-of-type {
+  top: 0%;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+
+.c2:nth-of-type(2) {
+  top: 50%;
+  right: 0%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.c2:nth-of-type(3) {
+  bottom: 0%;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+
+.c2:nth-of-type(4) {
+  top: 50%;
+  left: 0%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.c3 {
+  margin-top: 2rem;
+  font-weight: 700;
+}
+
+<div
+  class="c0"
+>
+  <div
+    class="c1"
+  >
+    <div
+      class="c2"
+    />
+    <div
+      class="c2"
+    />
+    <div
+      class="c2"
+    />
+    <div
+      class="c2"
+    />
+  </div>
+  <span
+    class="c3"
+  >
+    Loading...
+  </span>
+</div>
+`;

@@ -74,6 +74,19 @@ exports[`AppTableBody should display in the document with correct styles and cor
   cursor: pointer;
 }
 
+.c5 th {
+  positon: relative;
+}
+
+.c5 th span {
+  position: absolute;
+  right: 2%;
+  top: 50%;
+  -webkit-transform: translateY(-35%);
+  -ms-transform: translateY(-35%);
+  transform: translateY(-35%);
+}
+
 .c5 td {
   padding: 0.3rem 1rem !important;
   overflow-x: hidden;

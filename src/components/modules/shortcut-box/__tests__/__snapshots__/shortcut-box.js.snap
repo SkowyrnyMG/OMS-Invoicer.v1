@@ -1,0 +1,79 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ShortcutBox should display in the document with correc styles 1`] = `
+.c1 {
+  margin-bottom: 0.5rem;
+  font-size: 20px;
+  font-weight: 400;
+  text-transform: uppercase;
+  color: #446DF6;
+}
+
+.c0 {
+  display: grid;
+  grid-template-columns: 2fr 4fr;
+  grid-template-rows: repeat(2,1fr);
+  padding-right: 3rem;
+  height: 12rem;
+  min-width: 24rem;
+  width: 30%;
+  text-align: left;
+  background-color: #FFFFFF;
+  border: 2px solid transparent;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 10px -4px rgba(0,0,0,0.25);
+  -webkit-transition: all 0.25s;
+  transition: all 0.25s;
+  cursor: pointer;
+}
+
+.c0:hover {
+  border: 2px solid #446DF6;
+}
+
+.c0 svg {
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+  justify-self: center;
+  grid-row: 1 / -1;
+  grid-column: 1 / 2;
+  width: 4rem;
+  fill: #446DF6;
+}
+
+.c2 {
+  -webkit-align-self: end;
+  -ms-flex-item-align: end;
+  align-self: end;
+}
+
+.c3 {
+  font-size: 14px;
+  font-style: italic;
+  color: #8F8F8F;
+}
+
+@media (max-width:570px) {
+  .c0 {
+    width: 100%;
+    margin: 0 0 2rem !important;
+  }
+}
+
+<button
+  class="c0"
+>
+  <div />
+  <h5
+    class="c1 c2"
+  >
+    test title
+  </h5>
+  <p
+    class="c3"
+  >
+    test-description
+  </p>
+</button>
+`;

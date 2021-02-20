@@ -1,0 +1,113 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TotalItemCounter should render in the document with correct styles 1`] = `
+.c0 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding: 2rem;
+  -webkit-flex-basis: 30%;
+  -ms-flex-preferred-size: 30%;
+  flex-basis: 30%;
+  max-width: 30%;
+  height: 20rem;
+  color: #FFFFFF;
+  background: #446DF6;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.c0 svg {
+  position: absolute;
+  top: 50%;
+  right: 5%;
+  width: 10rem;
+  fill: currentColor;
+  opacity: 0.5;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.c2 {
+  font-size: 34px;
+  font-weight: 700;
+}
+
+.c3 {
+  padding: 0.5rem;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 100%;
+  color: inherit !important;
+  font-size: 14px;
+  text-align: center;
+  background: #00000055;
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+
+@media (max-width:850px) {
+  .c0 {
+    width: 100%;
+    max-width: 90%;
+    min-width: 25rem;
+    min-height: 20rem;
+    margin-bottom: 2rem;
+  }
+
+  .c0:first-child {
+    margin-top: 8rem;
+  }
+}
+
+<div
+  class="c0"
+>
+  <div
+    class="c1"
+  >
+    <span
+      class="c2"
+    >
+      3
+    </span>
+    <h3>
+      test-counter
+    </h3>
+    
+  </div>
+  <a
+    class="c3"
+    href="/app/customers"
+  >
+    View more..
+  </a>
+</div>
+`;

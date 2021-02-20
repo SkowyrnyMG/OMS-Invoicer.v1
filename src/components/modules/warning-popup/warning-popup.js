@@ -47,7 +47,11 @@ const WarningPopup = ({ children, isWarningOpen, title }) => {
   }, []);
 
   return (
-    <Wrapper isWarningOpen={isWarningOpen} ref={animationWrapper}>
+    <Wrapper
+      isWarningOpen={isWarningOpen}
+      ref={animationWrapper}
+      data-testid='warning-popup'
+    >
       <ContentWrapper>
         <StyledHeading>{title}</StyledHeading>
         <StyledParagraph>{children}</StyledParagraph>
@@ -56,8 +60,14 @@ const WarningPopup = ({ children, isWarningOpen, title }) => {
   );
 };
 
+WarningPopup.defaultProps = {
+  isWarningOpen: false,
+};
+
 WarningPopup.propTypes = {
   children: PropTypes.node.isRequired,
+  title: PropTypes.string.isRequired,
+  isWarningOpen: PropTypes.bool,
 };
 
 export default WarningPopup;

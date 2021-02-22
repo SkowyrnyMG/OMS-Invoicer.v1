@@ -47,7 +47,7 @@ const ConfigOption = styled.div`
   align-items: end;
   align-content: top;
   justify-items: left;
-  padding: 2rem;
+  padding: 2rem 0;
   border-bottom: 1px solid ${({ theme: { color } }) => color.devider};
   label {
     margin-bottom: 0 !important;
@@ -55,7 +55,7 @@ const ConfigOption = styled.div`
 `;
 
 const StyledFormikControl = styled(FormikControl)`
-  width: 7rem !important;
+  /* width: 7rem !important; */
   margin: 0 !important;
 `;
 
@@ -143,7 +143,7 @@ const ConfigForm = ({ onSubmit }) => {
           <ConfigWrapper>
             <HeadingBlue>Registry options</HeadingBlue>
             <ConfigOption htmlFor='mainInvoicePrefix'>
-              <p>Invoice prefix</p>
+              {/* <p>Invoice prefix</p> */}
               <StyledFormikControl
                 type='text'
                 control='input'
@@ -151,10 +151,11 @@ const ConfigForm = ({ onSubmit }) => {
                 error={errors.mainInvoicePrefix}
                 touched={touched.mainInvoicePrefix}
                 disabled={userConfig}
+                placeholder='INVOICE PREFIX'
               />
             </ConfigOption>
             <ConfigOption htmlFor='mainOrderPrefix'>
-              <p>Order prefix</p>
+              {/* <p>Order prefix</p> */}
               <StyledFormikControl
                 type='text'
                 control='input'
@@ -162,6 +163,7 @@ const ConfigForm = ({ onSubmit }) => {
                 error={errors.mainOrderPrefix}
                 touched={touched.mainOrderPrefix}
                 disabled={userConfig}
+                placeholder='ORDER PREFIX'
               />
             </ConfigOption>
             <StyledHeadingBlue>Bank Details</StyledHeadingBlue>

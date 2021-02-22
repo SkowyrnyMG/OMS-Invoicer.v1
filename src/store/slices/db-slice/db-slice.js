@@ -299,7 +299,7 @@ const dbSlice = createSlice({
   name: 'database',
   initialState: {
     customers: [],
-    config: {},
+    config: null,
     orders: { firstReg: [], lastOrder: { firstReg: '' } },
     invoices: { firstReg: [], lastInvoice: { firstReg: '' } },
   },

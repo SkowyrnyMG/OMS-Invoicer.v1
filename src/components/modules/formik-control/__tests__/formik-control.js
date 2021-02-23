@@ -64,7 +64,7 @@ describe('FormikControl', () => {
     );
 
     const selectNode = screen.getByRole('combobox', {
-      name: '',
+      name: 'test-placeholder',
     });
 
     expect(selectNode).toBeInTheDocument();

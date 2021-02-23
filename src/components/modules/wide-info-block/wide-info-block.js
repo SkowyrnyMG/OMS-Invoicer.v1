@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
@@ -118,12 +119,25 @@ const WideInfoBlock = ({ image, Icon, counter, title, children }) => {
             </Counter>
             {title}
           </StyledHeading>
-          {image && <StyledImg src={image} alt='VIES VERIFICATION' />}
+          {image && <StyledImg src={image} alt='position image' />}
         </LeftSide>
         <RightSide>{children}</RightSide>
       </ContentWrapper>
     </Wrapper>
   );
+};
+
+WideInfoBlock.defaultProps = {
+  image: '',
+};
+
+WideInfoBlock.propTypes = {
+  image: PropTypes.string,
+  Icon: PropTypes.shape({}).isRequired,
+  counter: PropTypes.number.isRequired,
+  title: PropTypes.string.isRequired,
+  children: PropTypes.oneOfType([PropTypes.string, PropTypes.object])
+    .isRequired,
 };
 
 export default WideInfoBlock;

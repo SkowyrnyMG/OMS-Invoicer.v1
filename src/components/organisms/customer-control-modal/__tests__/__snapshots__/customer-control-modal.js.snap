@@ -1,0 +1,997 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CustomerControlModal should dislay in the document with correct styles 1`] = `
+.c1 {
+  display: grid;
+  grid-template-columns: 65vw min-content;
+  grid-template-rows: min-content;
+  grid-column-gap: 2rem;
+}
+
+.c2 {
+  height: 60vh;
+  width: 100%;
+  background-color: #FFFFFF;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 10px -4px rgba(0,0,0,0.25);
+  overflow: scroll;
+}
+
+.c17 {
+  margin-bottom: 1rem;
+  width: 100%;
+  font-size: 14px;
+  color: #F25C54;
+}
+
+.c15 {
+  position: relative;
+  display: block;
+  width: 100%;
+  margin-bottom: 3rem;
+}
+
+.c15:last-of-type {
+  margin-bottom: 4rem;
+}
+
+.c15 input {
+  border-color: #8F8F8F;
+  -webkit-transition: 0.5s -webkit-transform;
+  -webkit-transition: 0.5s transform;
+  transition: 0.5s transform;
+}
+
+.c15 input:focus {
+  -webkit-transform: translateX(2px);
+  -ms-transform: translateX(2px);
+  transform: translateX(2px);
+}
+
+.c15 input:placeholder-shown + div {
+  opacity: 0;
+  top: 50%;
+}
+
+.c15 input,
+.c15 input::-webkit-input-placeholder {
+  color: #8F8F8F;
+  border-color: currentColor;
+}
+
+.c15 input,
+.c15 input::-moz-placeholder {
+  color: #8F8F8F;
+  border-color: currentColor;
+}
+
+.c15 input,
+.c15 input:-ms-input-placeholder {
+  color: #8F8F8F;
+  border-color: currentColor;
+}
+
+.c15 input,
+.c15 input::placeholder {
+  color: #8F8F8F;
+  border-color: currentColor;
+}
+
+.c16 {
+  position: absolute;
+  top: -1rem;
+  left: 0.3rem;
+  font-size: 14px;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  -webkit-transition: all 0.25s;
+  transition: all 0.25s;
+  pointer-events: none;
+}
+
+.c19 > * {
+  margin-bottom: 0.5rem;
+}
+
+.c12 {
+  padding: 0.8rem 1rem;
+  width: 16rem;
+  font-size: inherit;
+  text-align: left;
+  color: #FFFFFF;
+  background-color: #446DF6;
+  border: none;
+  outline: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  -webkit-transition: 0.25s -webkit-transform;
+  -webkit-transition: 0.25s transform;
+  transition: 0.25s transform;
+}
+
+.c12:hover,
+.c12:active {
+  -webkit-transform: translateX(2px);
+  -ms-transform: translateX(2px);
+  transform: translateX(2px);
+}
+
+.c12:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.c12::first-letter {
+  text-transform: uppercase;
+}
+
+.c10 {
+  margin: 1rem 0;
+  padding: 0.5rem;
+  width: 100%;
+  height: 3rem;
+  font-size: 16px;
+  color: #8F8F8F;
+  border: none;
+  outline: none;
+  border-bottom: 2px solid currentColor;
+  -webkit-transition: 0.5s -webkit-transform;
+  -webkit-transition: 0.5s transform;
+  transition: 0.5s transform;
+}
+
+.c10:focus {
+  -webkit-transform: translateX(2px);
+  -ms-transform: translateX(2px);
+  transform: translateX(2px);
+}
+
+.c10 input,
+.c10 input::-webkit-input-placeholder {
+  color: currentColor;
+}
+
+.c10 input,
+.c10 input::-moz-placeholder {
+  color: currentColor;
+}
+
+.c10 input,
+.c10 input:-ms-input-placeholder {
+  color: currentColor;
+}
+
+.c10 input,
+.c10 input::placeholder {
+  color: currentColor;
+}
+
+.c4 {
+  position: absolute;
+  top: 3%;
+  left: 1%;
+  pointer-events: none;
+}
+
+.c4 * {
+  pointer-events: auto;
+}
+
+.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  line-height: 4rem;
+  color: #446DF6;
+  background: transparent;
+  font-weight: 700;
+  font-size: 20px;
+  border-radius: 50%;
+  border: 2px solid currentColor;
+  outline: none;
+  outline: none;
+  cursor: help;
+  -webkit-transition: all 0.25s;
+  transition: all 0.25s;
+}
+
+.c5:hover,
+.c5:focus {
+  -webkit-transform: translateY(-2px);
+  -ms-transform: translateY(-2px);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 5px rgba(0,0,0,0.1);
+}
+
+.c5:active {
+  -webkit-transform: translateY(0px);
+  -ms-transform: translateY(0px);
+  transform: translateY(0px);
+  box-shadow: none;
+}
+
+.c6 {
+  position: absolute;
+  top: 200%;
+  left: 0;
+  padding: 1rem 2rem;
+  min-width: 30vw;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  color: #FFFFFF;
+  font-size: 16px;
+  line-height: 1.6;
+  text-align: left;
+  background: #446DF6;
+  border-radius: 0.5rem;
+  opacity: 0;
+  -webkit-transform: translateY(-3rem) scale(0);
+  -ms-transform: translateY(-3rem) scale(0);
+  transform: translateY(-3rem) scale(0);
+  -webkit-transition: all 0.25s;
+  transition: all 0.25s;
+  z-index: 1000;
+}
+
+.c6::before {
+  content: '';
+  position: absolute;
+  top: -1.8rem;
+  left: 0.5rem;
+  width: 2rem;
+  height: 2rem;
+  background-color: #446DF6;
+  -webkit-clip-path: polygon(50% 0,100% 100%,0 100%);
+  clip-path: polygon(50% 0,100% 100%,0 100%);
+  z-index: 10000;
+}
+
+.c0 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding-top: 5rem;
+  top: 0;
+  left: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #F8F8FF;
+  z-index: 400;
+}
+
+.c3 {
+  position: relative;
+  overflow: auto;
+}
+
+.c7 {
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  padding: 5rem;
+}
+
+.c7 > div {
+  padding: 0 4rem;
+  -webkit-flex-basis: 50%;
+  -ms-flex-preferred-size: 50%;
+  flex-basis: 50%;
+}
+
+.c7 > div:first-child {
+  border-right: 1px solid #F0F0FD;
+}
+
+.c7 > div:nth-child(2) {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c18 {
+  -webkit-align-self: flex-end;
+  -ms-flex-item-align: end;
+  align-self: flex-end;
+  justify-self: flex-end;
+  margin-bottom: 3rem;
+}
+
+.c14 {
+  margin-bottom: 2rem;
+}
+
+.c8 {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  grid-column-gap: 2rem;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-bottom: 5rem;
+}
+
+.c9 {
+  grid-column: -1 / 1;
+  font-size: 14px;
+}
+
+.c13 {
+  grid-column: 3 / 4;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
+.c13 svg {
+  width: 2rem;
+  height: 2rem;
+  fill: #F8F8FF;
+  pointer-events: none;
+}
+
+.c11 {
+  grid-column: 1 / 3;
+}
+
+@media (max-width:1300px) {
+  .c1 {
+    grid-template-columns: 63vw min-content;
+  }
+}
+
+@media (max-width:1168px) {
+  .c1 {
+    grid-template-columns: 73vw min-content;
+  }
+}
+
+@media (max-width:767px) {
+  .c1 {
+    grid-template-columns: 90vw;
+  }
+}
+
+@media (max-width:767px) {
+  .c2 {
+    height: 60vh;
+  }
+}
+
+@media (max-width:767px) {
+  .c19 {
+    grid-row: 1 / 2;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-column-gap: 2%;
+    justify-items: center;
+    margin-bottom: 2rem;
+  }
+
+  .c19 > * {
+    margin-bottom: 0.5rem;
+    margin-right: 0.5rem;
+  }
+}
+
+@media (max-width:570px) {
+  .c19 {
+    grid-template-columns: repeat(2,1fr);
+  }
+}
+
+@media (max-width:374px) {
+  .c19 {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width:767px) {
+  .c12 {
+    width: 100%;
+  }
+}
+
+@media (max-width:1168px) {
+  .c7 {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width:680px) {
+  .c7 {
+    padding: 5rem 0;
+  }
+
+  .c7 > * {
+    padding: 0 1rem !important;
+    -webkit-flex-basis: 100%;
+    -ms-flex-preferred-size: 100%;
+    flex-basis: 100%;
+  }
+}
+
+<div
+  class="c0"
+>
+  <div
+    class="c1"
+  >
+    <div
+      class="c2 c3"
+    >
+      <div
+        class="c4"
+      >
+        <button
+          class="c5"
+        >
+          ?
+        </button>
+        <div
+          class="c6 tooltip"
+        >
+          This modal is responsible for adding new customers to the database. If your customer has active VAT ID you can add it's base company details using "Search in Vies" field. To do that you just have to simply provide correct country prefix in option field and your customer VAT ID number. If customer will be found in Vies database most of modal fiels should be autofilled.
+        </div>
+      </div>
+      <form
+        action="#"
+        class="c7"
+      >
+        <div>
+          <div
+            class="c8"
+          >
+            <p
+              class="c9"
+            >
+              Put VAT Number below and search customer details in VIES database
+            </p>
+            <select
+              name="countryCode"
+            >
+              <option
+                value="AL"
+              >
+                AL
+              </option>
+              <option
+                value="AT"
+              >
+                AT
+              </option>
+              <option
+                value="BE"
+              >
+                BE
+              </option>
+              <option
+                value="BY"
+              >
+                BY
+              </option>
+              <option
+                value="BiH"
+              >
+                BiH
+              </option>
+              <option
+                value="BR"
+              >
+                BR
+              </option>
+              <option
+                value="BG"
+              >
+                BG
+              </option>
+              <option
+                value="HR"
+              >
+                HR
+              </option>
+              <option
+                value="MNE"
+              >
+                MNE
+              </option>
+              <option
+                value="CS"
+              >
+                CS
+              </option>
+              <option
+                value="CZ"
+              >
+                CZ
+              </option>
+              <option
+                value="DK"
+              >
+                DK
+              </option>
+              <option
+                value="EST"
+              >
+                EST
+              </option>
+              <option
+                value="FI"
+              >
+                FI
+              </option>
+              <option
+                value="FR"
+              >
+                FR
+              </option>
+              <option
+                value="GIB"
+              >
+                GIB
+              </option>
+              <option
+                value="GR"
+              >
+                GR
+              </option>
+              <option
+                value="ES"
+              >
+                ES
+              </option>
+              <option
+                value="NL"
+              >
+                NL
+              </option>
+              <option
+                value="IRL"
+              >
+                IRL
+              </option>
+              <option
+                value="IS"
+              >
+                IS
+              </option>
+              <option
+                value="IL"
+              >
+                IL
+              </option>
+              <option
+                value="YU"
+              >
+                YU
+              </option>
+              <option
+                value="CA"
+              >
+                CA
+              </option>
+              <option
+                value="LI"
+              >
+                LI
+              </option>
+              <option
+                value="LT"
+              >
+                LT
+              </option>
+              <option
+                value="LU"
+              >
+                LU
+              </option>
+              <option
+                value="LV"
+              >
+                LV
+              </option>
+              <option
+                value="MK"
+              >
+                MK
+              </option>
+              <option
+                value="MY"
+              >
+                MY
+              </option>
+              <option
+                value="MT"
+              >
+                MT
+              </option>
+              <option
+                value="MD"
+              >
+                MD
+              </option>
+              <option
+                value="MC"
+              >
+                MC
+              </option>
+              <option
+                value="DE"
+              >
+                DE
+              </option>
+              <option
+                value="NO"
+              >
+                NO
+              </option>
+              <option
+                selected=""
+                value="PL"
+              >
+                PL
+              </option>
+              <option
+                value="PT"
+              >
+                PT
+              </option>
+              <option
+                value="RU"
+              >
+                RU
+              </option>
+              <option
+                value="RO"
+              >
+                RO
+              </option>
+              <option
+                value="SM"
+              >
+                SM
+              </option>
+              <option
+                value="SRB"
+              >
+                SRB
+              </option>
+              <option
+                value="SK"
+              >
+                SK
+              </option>
+              <option
+                value="SLO"
+              >
+                SLO
+              </option>
+              <option
+                value="CH"
+              >
+                CH
+              </option>
+              <option
+                value="SE"
+              >
+                SE
+              </option>
+              <option
+                value="UA"
+              >
+                UA
+              </option>
+              <option
+                value="USA"
+              >
+                USA
+              </option>
+              <option
+                value="TR"
+              >
+                TR
+              </option>
+              <option
+                value="HU"
+              >
+                HU
+              </option>
+              <option
+                value="GB"
+              >
+                GB
+              </option>
+              <option
+                value="IT"
+              >
+                IT
+              </option>
+            </select>
+            <input
+              class="c10 c11"
+              placeholder="Search in VIES"
+              value=""
+            />
+            <button
+              class="c12 c13"
+              type="button"
+            >
+              <svg>
+                search-icon.svg
+              </svg>
+            </button>
+          </div>
+          <h4
+            class="c14"
+          >
+            Base company details
+          </h4>
+          <label
+            class="c15"
+            data-testid="formik-input"
+            for="name"
+          >
+            <input
+              id="name"
+              name="name"
+              placeholder="Name of Company"
+              type="text"
+              value=""
+            />
+            <div
+              class="c16"
+            >
+              Name of Company
+            </div>
+            <span
+              class="c17"
+            />
+          </label>
+          <label
+            class="c15"
+            data-testid="formik-input"
+            for="vat_number"
+          >
+            <input
+              id="vat_number"
+              name="vat_number"
+              placeholder="VAT"
+              type="text"
+              value=""
+            />
+            <div
+              class="c16"
+            >
+              VAT
+            </div>
+            <span
+              class="c17"
+            />
+          </label>
+          <label
+            class="c15"
+            data-testid="formik-input"
+            for="country"
+          >
+            <input
+              id="country"
+              name="country"
+              placeholder="Country"
+              type="text"
+              value=""
+            />
+            <div
+              class="c16"
+            >
+              Country
+            </div>
+            <span
+              class="c17"
+            />
+          </label>
+          <label
+            class="c15"
+            data-testid="formik-input"
+            for="street"
+          >
+            <input
+              id="street"
+              name="street"
+              placeholder="Street"
+              type="text"
+              value=""
+            />
+            <div
+              class="c16"
+            >
+              Street
+            </div>
+            <span
+              class="c17"
+            />
+          </label>
+          <label
+            class="c15"
+            data-testid="formik-input"
+            for="town"
+          >
+            <input
+              id="town"
+              name="town"
+              placeholder="Town"
+              type="text"
+              value=""
+            />
+            <div
+              class="c16"
+            >
+              Town
+            </div>
+            <span
+              class="c17"
+            />
+          </label>
+          <label
+            class="c15"
+            data-testid="formik-input"
+            for="postCode"
+          >
+            <input
+              id="postCode"
+              name="postCode"
+              placeholder="Post-code"
+              type="text"
+              value=""
+            />
+            <div
+              class="c16"
+            >
+              Post-code
+            </div>
+            <span
+              class="c17"
+            />
+          </label>
+        </div>
+        <div>
+          <h4
+            class="c14"
+          >
+            Contact person
+          </h4>
+          <label
+            class="c15"
+            data-testid="formik-input"
+            for="contactPerson"
+          >
+            <input
+              id="contactPerson"
+              name="contactPerson"
+              placeholder="Contact person name"
+              type="text"
+              value=""
+            />
+            <div
+              class="c16"
+            >
+              Contact person name
+            </div>
+            <span
+              class="c17"
+            />
+          </label>
+          <label
+            class="c15"
+            data-testid="formik-input"
+            for="contactEmail"
+          >
+            <input
+              id="contactEmail"
+              name="contactEmail"
+              placeholder="email"
+              type="text"
+              value=""
+            />
+            <div
+              class="c16"
+            >
+              email
+            </div>
+            <span
+              class="c17"
+            />
+          </label>
+          <label
+            class="c15"
+            data-testid="formik-input"
+            for="contactPhone"
+          >
+            <input
+              id="contactPhone"
+              name="contactPhone"
+              placeholder="Phone"
+              type="phone"
+              value=""
+            />
+            <div
+              class="c16"
+            >
+              Phone
+            </div>
+            <span
+              class="c17"
+            />
+          </label>
+          <h4
+            class="c14"
+          >
+            Default invoicing details
+          </h4>
+          <label
+            class="c15"
+            data-testid="formik-input"
+            for="tax"
+          >
+            <input
+              id="tax"
+              name="tax"
+              placeholder="TAX"
+              type="number"
+              value=""
+            />
+            <div
+              class="c16"
+            >
+              TAX
+            </div>
+            <span
+              class="c17"
+            />
+          </label>
+          <button
+            class="c12 c18"
+            type="submit"
+          >
+            Save
+          </button>
+        </div>
+      </form>
+    </div>
+    <aside
+      class="c19"
+    >
+      <button
+        class="c12"
+      >
+        Exit without save
+      </button>
+    </aside>
+  </div>
+</div>
+`;

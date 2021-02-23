@@ -1,6 +1,10 @@
 import React from 'react';
 
-import { renderWithReduxRouter, screen } from 'utils/tests/test-helper';
+import {
+  renderWithReduxRouter,
+  screen,
+  cleanup,
+} from 'utils/tests/test-helper';
 import WarningPopup from '../warning-popup';
 
 describe('WarningPopup', () => {
@@ -12,8 +16,11 @@ describe('WarningPopup', () => {
     );
 
     const WarningPopupNode = screen.getByTestId('warning-popup');
+
     expect(WarningPopupNode).toMatchSnapshot();
     expect(WarningPopupNode).toBeInTheDocument();
+
+    cleanup();
   });
 });
 

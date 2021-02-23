@@ -1,0 +1,166 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`WideInfoBlock should display in the document with correct styles 1`] = `
+.c0 {
+  padding: 5rem 0;
+  display: grid;
+  grid-template-columns: 5rem [start] repeat(2,1fr) [end] 5rem;
+  grid-column: 1 / -1 !important;
+  grid-gap: 3%;
+  grid-row-gap: 5%;
+  min-height: 60rem;
+  background-color: #F8F8FF;
+  margin: 0;
+  padding-top: 10rem;
+}
+
+.c0 > * {
+  grid-column: start / end;
+}
+
+.c1 {
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  grid-column-gap: 10rem;
+  text-align: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c3 {
+  position: relative;
+  margin: 0;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  font-size: 34px;
+}
+
+.c4 {
+  position: absolute;
+  line-height: 1;
+  top: 0;
+  left: 0;
+  font-size: 180px;
+  color: #446DF644;
+  -webkit-transform: translate(-100%,-50%);
+  -ms-transform: translate(-100%,-50%);
+  transform: translate(-100%,-50%);
+  z-index: 0;
+}
+
+.c4 svg {
+  position: absolute;
+  width: 70px;
+  fill: #446DF6;
+  left: 0;
+  top: 50%;
+  -webkit-transform: translate(-50%,-30%);
+  -ms-transform: translate(-50%,-30%);
+  transform: translate(-50%,-30%);
+}
+
+.c5 {
+  text-align: left;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: flex-start;
+  -webkit-box-align: flex-start;
+  -ms-flex-align: flex-start;
+  align-items: flex-start;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  padding-left: calc(15rem + 3%);
+}
+
+@media (max-width:680px) {
+  .c0 {
+    grid-template-columns: [start] 1fr [end];
+    padding: 2rem;
+  }
+}
+
+@media (max-width:1028px) {
+  .c1 {
+    grid-template-columns: 1fr;
+    grid-column-gap: 0;
+  }
+}
+
+@media (max-width:680px) {
+  .c1 {
+    position: relative;
+    padding-top: 15rem;
+  }
+}
+
+@media (max-width:680px) {
+  .c3 {
+    position: static;
+  }
+}
+
+@media (max-width:680px) {
+  .c4 {
+    font-size: 180px;
+    left: 50%;
+    -webkit-transform: translate(-50%,0);
+    -ms-transform: translate(-50%,0);
+    transform: translate(-50%,0);
+  }
+}
+
+@media (max-width:680px) {
+  .c2 {
+    padding-left: 0;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+  }
+}
+
+<div
+  class="c0"
+>
+  <div
+    class="c1"
+  >
+    <div
+      class="c2"
+    >
+      <h3
+        class="c3"
+      >
+        <div
+          class="c4"
+        >
+          <svg>
+            help-icon.svg
+          </svg>
+          2
+        </div>
+        test-title
+      </h3>
+      
+    </div>
+    <div
+      class="c5"
+    >
+      test-body-text
+    </div>
+  </div>
+</div>
+`;

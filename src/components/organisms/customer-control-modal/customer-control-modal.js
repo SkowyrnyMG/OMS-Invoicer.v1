@@ -259,7 +259,7 @@ const AddNewCustomerModal = ({ closeModal, currentCustomer }) => {
                       ))}
                     </select>
                     <StyledInput
-                      placeholder='Search  in VIES'
+                      placeholder='Search in VIES'
                       value={verifyInput}
                       onChange={(e) => setVerifyInput(e.target.value)}
                     />

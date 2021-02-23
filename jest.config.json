@@ -1,5 +1,5 @@
 {
   "testPath": ["**/__tests__/*.js", "**/*.test.js"],
-  "collectCoverageFrom": ["*.js"],
-  "testEnvironment": "jest-environment-node"
+  "collectCoverageFrom": ["*.js"]
+  // "testEnvironment": "jest-environment-node"
 }

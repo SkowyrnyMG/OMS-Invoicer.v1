@@ -1,6 +1,7 @@
 import React from 'react';
 import { Router } from 'react-router-dom';
 import { render } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { ThemeProvider } from 'styled-components';
 import { createMemoryHistory } from 'history';
 import { Formik, Form } from 'formik';
@@ -85,6 +86,7 @@ const snapShotTest = (componentToRender) => {
 
 export * from '@testing-library/react';
 export {
+  userEvent,
   leftClick,
   renderWithRouter,
   renderWithRedux,

@@ -1,0 +1,403 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ViesSearch should display in the document with correct styles 1`] = `
+.c4 {
+  padding: 0.8rem 1rem;
+  width: 16rem;
+  font-size: inherit;
+  text-align: left;
+  color: #FFFFFF;
+  background-color: #446DF6;
+  border: none;
+  outline: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  -webkit-transition: 0.25s -webkit-transform;
+  -webkit-transition: 0.25s transform;
+  transition: 0.25s transform;
+}
+
+.c4:hover,
+.c4:active {
+  -webkit-transform: translateX(2px);
+  -ms-transform: translateX(2px);
+  transform: translateX(2px);
+}
+
+.c4:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.c4::first-letter {
+  text-transform: uppercase;
+}
+
+.c2 {
+  margin: 1rem 0;
+  padding: 0.5rem;
+  width: 100%;
+  height: 3rem;
+  font-size: 16px;
+  color: #8F8F8F;
+  border: none;
+  outline: none;
+  border-bottom: 2px solid currentColor;
+  -webkit-transition: 0.5s -webkit-transform;
+  -webkit-transition: 0.5s transform;
+  transition: 0.5s transform;
+}
+
+.c2:focus {
+  -webkit-transform: translateX(2px);
+  -ms-transform: translateX(2px);
+  transform: translateX(2px);
+}
+
+.c2 input,
+.c2 input::-webkit-input-placeholder {
+  color: currentColor;
+}
+
+.c2 input,
+.c2 input::-moz-placeholder {
+  color: currentColor;
+}
+
+.c2 input,
+.c2 input:-ms-input-placeholder {
+  color: currentColor;
+}
+
+.c2 input,
+.c2 input::placeholder {
+  color: currentColor;
+}
+
+.c0 {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  grid-column-gap: 2rem;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-bottom: 5rem;
+}
+
+.c1 {
+  grid-column: -1 / 1;
+  font-size: 14px;
+}
+
+.c5 {
+  grid-column: 3 / 4;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
+.c5 svg {
+  width: 2rem;
+  height: 2rem;
+  fill: #F8F8FF;
+  pointer-events: none;
+}
+
+.c3 {
+  grid-column: 1 / 3;
+}
+
+@media (max-width:767px) {
+  .c4 {
+    width: 100%;
+  }
+}
+
+<div
+  class="c0"
+  data-testid="vies-search"
+>
+  <p
+    class="c1"
+  >
+    Put VAT Number below and search customer details in VIES database
+  </p>
+  <select
+    name="countryCode"
+  >
+    <option
+      value="AL"
+    >
+      AL
+    </option>
+    <option
+      value="AT"
+    >
+      AT
+    </option>
+    <option
+      value="BE"
+    >
+      BE
+    </option>
+    <option
+      value="BY"
+    >
+      BY
+    </option>
+    <option
+      value="BiH"
+    >
+      BiH
+    </option>
+    <option
+      value="BR"
+    >
+      BR
+    </option>
+    <option
+      value="BG"
+    >
+      BG
+    </option>
+    <option
+      value="HR"
+    >
+      HR
+    </option>
+    <option
+      value="MNE"
+    >
+      MNE
+    </option>
+    <option
+      value="CS"
+    >
+      CS
+    </option>
+    <option
+      value="CZ"
+    >
+      CZ
+    </option>
+    <option
+      value="DK"
+    >
+      DK
+    </option>
+    <option
+      value="EST"
+    >
+      EST
+    </option>
+    <option
+      value="FI"
+    >
+      FI
+    </option>
+    <option
+      value="FR"
+    >
+      FR
+    </option>
+    <option
+      value="GIB"
+    >
+      GIB
+    </option>
+    <option
+      value="GR"
+    >
+      GR
+    </option>
+    <option
+      value="ES"
+    >
+      ES
+    </option>
+    <option
+      value="NL"
+    >
+      NL
+    </option>
+    <option
+      value="IRL"
+    >
+      IRL
+    </option>
+    <option
+      value="IS"
+    >
+      IS
+    </option>
+    <option
+      value="IL"
+    >
+      IL
+    </option>
+    <option
+      value="YU"
+    >
+      YU
+    </option>
+    <option
+      value="CA"
+    >
+      CA
+    </option>
+    <option
+      value="LI"
+    >
+      LI
+    </option>
+    <option
+      value="LT"
+    >
+      LT
+    </option>
+    <option
+      value="LU"
+    >
+      LU
+    </option>
+    <option
+      value="LV"
+    >
+      LV
+    </option>
+    <option
+      value="MK"
+    >
+      MK
+    </option>
+    <option
+      value="MY"
+    >
+      MY
+    </option>
+    <option
+      value="MT"
+    >
+      MT
+    </option>
+    <option
+      value="MD"
+    >
+      MD
+    </option>
+    <option
+      value="MC"
+    >
+      MC
+    </option>
+    <option
+      value="DE"
+    >
+      DE
+    </option>
+    <option
+      value="NO"
+    >
+      NO
+    </option>
+    <option
+      selected=""
+      value="PL"
+    >
+      PL
+    </option>
+    <option
+      value="PT"
+    >
+      PT
+    </option>
+    <option
+      value="RU"
+    >
+      RU
+    </option>
+    <option
+      value="RO"
+    >
+      RO
+    </option>
+    <option
+      value="SM"
+    >
+      SM
+    </option>
+    <option
+      value="SRB"
+    >
+      SRB
+    </option>
+    <option
+      value="SK"
+    >
+      SK
+    </option>
+    <option
+      value="SLO"
+    >
+      SLO
+    </option>
+    <option
+      value="CH"
+    >
+      CH
+    </option>
+    <option
+      value="SE"
+    >
+      SE
+    </option>
+    <option
+      value="UA"
+    >
+      UA
+    </option>
+    <option
+      value="USA"
+    >
+      USA
+    </option>
+    <option
+      value="TR"
+    >
+      TR
+    </option>
+    <option
+      value="HU"
+    >
+      HU
+    </option>
+    <option
+      value="GB"
+    >
+      GB
+    </option>
+    <option
+      value="IT"
+    >
+      IT
+    </option>
+  </select>
+  <input
+    class="c2 c3"
+    placeholder="Search in VIES"
+    value="8822119889"
+  />
+  <button
+    class="c4 c5"
+    type="button"
+  >
+    <svg>
+      search-icon.svg
+    </svg>
+  </button>
+</div>
+`;

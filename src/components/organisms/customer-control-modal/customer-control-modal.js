@@ -3,16 +3,14 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Formik, Form } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
-import axios from 'axios';
 
 import AppGridContainer from 'components/atoms/app-grid-container/app-grid-container';
 import AppBodyContainer from 'components/atoms/app-body-container/app-body-container';
 import FormikControl from 'components/modules/formik-control/formik-control';
 import ActionMenu from 'components/modules/action-menu/action-menu';
 import Button from 'components/atoms/button/button';
-import { ReactComponent as SearchIcon } from 'assets/svg/search-icon.svg';
-import Input from 'components/atoms/input/input';
 import HelpToolTip from 'components/modules/help-tool-tip/help-tool-tip';
+import ViesSearch from 'components/modules/vies-search/vies-search';
 
 import { useValidationSchema } from 'hooks/useValidationSchema';
 import {
@@ -20,11 +18,6 @@ import {
   addNewCustomer,
   selectCustomers,
 } from 'store/slices/db-slice/db-slice';
-import {
-  setLoadingOn,
-  setLoadingOff,
-} from 'store/slices/loading-slice/loading-slice';
-import { COUNTRY_CODES } from 'utils/constant-data';
 
 const Wrapper = styled.div`
   position: relative;
@@ -88,34 +81,10 @@ const StyledHeading = styled.h4`
   margin-bottom: 2rem;
 `;
 
-const ViesWrapper = styled.div`
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-column-gap: 2rem;
-  align-items: center;
-  margin-bottom: 5rem;
-`;
 const StyledParagraph = styled.p`
   grid-column: -1 / 1;
   font-size: ${({ theme: { fontSize } }) => fontSize.s};
   color: ${({ theme: { color }, isNoError }) => !isNoError && color.error};
-`;
-
-const StyledViesButton = styled(Button)`
-  grid-column: 3 / 4;
-  width: fit-content;
-  height: fit-content;
-
-  svg {
-    width: 2rem;
-    height: 2rem;
-    fill: ${({ theme: { color } }) => color.bg};
-    pointer-events: none;
-  }
-`;
-
-const StyledInput = styled(Input)`
-  grid-column: 1 / 3;
 `;
 
 const AddNewCustomerModal = ({ closeModal, currentCustomer }) => {
@@ -140,56 +109,14 @@ const AddNewCustomerModal = ({ closeModal, currentCustomer }) => {
   const [isVatDoubledMsg, setIsVatDoubledMsg] = useState(false);
 
   useEffect(() => {
+    // * creating AbortController variable is work around Eslind undef bug
+    const { AbortController } = window;
+    const ac = new AbortController();
     if (currentCustomer) {
       setInitValues(currentCustomer);
     }
+    return () => ac.abort();
   }, [currentCustomer]);
-
-  const handleViesClick = async () => {
-    dispatch(setLoadingOn());
-    // * get request to the local lambda funciton. Query string params are later beeing used to get response from vies
-    const result = await axios.get(
-      `/api/verify?vat=${verifyInput}&countrycode=${verifyCuntryCode}`,
-    );
-    const {
-      data: { data },
-    } = result;
-
-    dispatch(setLoadingOff());
-    if (!data) {
-      setIsViesValid(false);
-      return;
-    }
-
-    if (data.valid) {
-      const { address } = data;
-      setIsViesValid(true);
-
-      // * sometimes data from vies response is not fully complete and it returns --- instead. Without below conditinals app would crash on try to split ---.
-      const splittedAddres = address !== '---' ? address.split(',') : '---';
-      const streetVies = address !== '---' ? splittedAddres[0] : '---';
-      const postCodeVies =
-        address !== '---'
-          ? splittedAddres[1].split(' ')[1].replace('-', '')
-          : '---';
-      const townVies =
-        address !== '---' ? splittedAddres[1].split(' ')[2] : '---';
-
-      setInitValues((state) => ({
-        ...state,
-        name: data.name,
-        vat_number: data.countryCode + data.vatNumber,
-        country: data.countryCode,
-        town: townVies,
-        street: streetVies,
-        postCode: data.countryCode + postCodeVies,
-      }));
-    }
-
-    if (!data.valid) {
-      setIsViesValid(false);
-    }
-  };
 
   const ToolTipInfo = `This modal is responsible for adding new customers to the database. If your customer has active VAT ID you can add it's base company details using "Search in Vies" field. To do that you just have to simply provide correct country prefix in option field and your customer VAT ID number. If customer will be found in Vies database most of modal fiels should be autofilled.`;
 
@@ -242,39 +169,15 @@ const AddNewCustomerModal = ({ closeModal, currentCustomer }) => {
             {({ errors, touched }) => (
               <StyledForm>
                 <div>
-                  <ViesWrapper>
-                    <StyledParagraph isNoError>
-                      Put VAT Number below and search customer details in VIES
-                      database
-                    </StyledParagraph>
-                    <select
-                      name='countryCode'
-                      onChange={(e) => setVerifyCountryCode(e.target.value)}
-                      defaultValue='PL'
-                    >
-                      {COUNTRY_CODES.map((code) => (
-                        <option key={code} value={code}>
-                          {code}
-                        </option>
-                      ))}
-                    </select>
-                    <StyledInput
-                      placeholder='Search in VIES'
-                      value={verifyInput}
-                      onChange={(e) => setVerifyInput(e.target.value)}
-                    />
-                    <StyledViesButton
-                      type='button'
-                      onClick={() => handleViesClick('verify')}
-                    >
-                      <SearchIcon />
-                    </StyledViesButton>
-                    {!isViesValid && (
-                      <StyledParagraph isNoError={isViesValid}>
-                        Your customer&apos;s VAT number is not valid/active!
-                      </StyledParagraph>
-                    )}
-                  </ViesWrapper>
+                  <ViesSearch
+                    setValidation={setIsViesValid}
+                    isValid={isViesValid}
+                    setInitialsFn={setInitValues}
+                    setQueryVat={setVerifyInput}
+                    queryVat={verifyInput}
+                    setQueryCountryCode={setVerifyCountryCode}
+                    queryCountryCode={verifyCuntryCode}
+                  />
                   <StyledHeading>Base company details</StyledHeading>
                   <FormikControl
                     type='text'

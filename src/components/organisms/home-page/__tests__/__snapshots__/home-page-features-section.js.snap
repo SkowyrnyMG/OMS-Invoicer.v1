@@ -1,0 +1,252 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[` should display in the document with correct syles 1`] = `
+.c0 {
+  grid-column: -1 / 1;
+  display: grid;
+  grid-template-columns: 5rem [start] 1fr [end] 5rem;
+  grid-column-gap: 3%;
+  padding: 20rem 0;
+  position: relative;
+  background-image: url(bg-pattern.png);
+  background-size: cover;
+  background-position: center;
+}
+
+.c0 > * {
+  grid-column: start / end;
+}
+
+.c0 {
+  padding: 10rem 0;
+}
+
+.c3 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding: 5rem;
+  background-color: #FFFFFF;
+  border-radius: 5px;
+  box-shadow: 0 0 10px -4px rgba(0,0,0,0.25);
+  overflow: hidden;
+}
+
+.c4 {
+  max-height: 10rem;
+  margin-bottom: 3rem;
+}
+
+.c4 svg {
+  width: 8rem !important;
+  fill: #446DF6;
+}
+
+.c5 {
+  font-size: 18px;
+}
+
+.c6 {
+  position: absolute;
+  bottom: -4%;
+  line-height: 0.8;
+  left: -2%;
+  font-family: 'Montserrat';
+  color: #446DF644;
+  font-weight: 700;
+  font-size: 180px;
+}
+
+.c2 {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  grid-gap: 5%;
+}
+
+.c1 {
+  width: 65vw;
+}
+
+.c1 > * {
+  margin-bottom: 5rem;
+}
+
+@media (max-width:1028px) {
+  .c2 {
+    grid-template-columns: repeat(2,1fr);
+  }
+}
+
+@media (max-width:570px) {
+  .c2 {
+    grid-template-columns: 1fr;
+    margin-bottom: 40rem;
+  }
+}
+
+@media (max-width:680px) {
+  .c1 {
+    width: 100%;
+    grid-column: 1 / -1;
+    padding: 0 2rem;
+  }
+}
+
+<section
+  class="c0"
+>
+  <div
+    class="c1"
+  >
+    <h2>
+      6 reasons to choose OMS invoicer
+    </h2>
+    <p>
+      OMS is here for you! Adding customer, orders and invoices never been easier! Typos and simple mistakes on your invoices will never trouble you again! All customer data can be fetched from VIES database!
+    </p>
+  </div>
+  <div
+    class="c2"
+  >
+    <div
+      class="c3"
+    >
+      <div
+        class="c4"
+      >
+        <svg>
+          clients-icon.svg
+        </svg>
+      </div>
+      <h3
+        class="c5"
+      >
+        Customers details in one place
+      </h3>
+      <div
+        class="c6"
+      >
+        1
+      </div>
+    </div>
+    <div
+      class="c3"
+    >
+      <div
+        class="c4"
+      >
+        <svg>
+          orders-icon.svg
+        </svg>
+      </div>
+      <h3
+        class="c5"
+      >
+        Take control over your orders
+      </h3>
+      <div
+        class="c6"
+      >
+        2
+      </div>
+    </div>
+    <div
+      class="c3"
+    >
+      <div
+        class="c4"
+      >
+        <svg>
+          invoice-icon.svg
+        </svg>
+      </div>
+      <h3
+        class="c5"
+      >
+        Easy invoicing
+      </h3>
+      <div
+        class="c6"
+      >
+        3
+      </div>
+    </div>
+    <div
+      class="c3"
+    >
+      <div
+        class="c4"
+      >
+        <svg>
+          ok-icon.svg
+        </svg>
+      </div>
+      <h3
+        class="c5"
+      >
+        Instant VIES verification
+      </h3>
+      <div
+        class="c6"
+      >
+        4
+      </div>
+    </div>
+    <div
+      class="c3"
+    >
+      <div
+        class="c4"
+      >
+        <svg>
+          cash-icon.svg
+        </svg>
+      </div>
+      <h3
+        class="c5"
+      >
+        Keep your payments under control
+      </h3>
+      <div
+        class="c6"
+      >
+        5
+      </div>
+    </div>
+    <div
+      class="c3"
+    >
+      <div
+        class="c4"
+      >
+        <svg>
+          dashboard-icon.svg
+        </svg>
+      </div>
+      <h3
+        class="c5"
+      >
+        Useful dashboard notifications
+      </h3>
+      <div
+        class="c6"
+      >
+        6
+      </div>
+    </div>
+  </div>
+</section>
+`;

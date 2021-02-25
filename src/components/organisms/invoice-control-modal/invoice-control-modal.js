@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Formik, Form } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
@@ -163,6 +164,8 @@ const InvoiceControlModal = ({ closeModal, currentInvoice }) => {
   const finishedOrders = orders.filter(
     (order) => order.status === STATUS_OPTION.order.finished,
   );
+
+  console.log(finishedOrders);
 
   useEffect(() => {
     dispatch(getAllOrders());
@@ -437,6 +440,47 @@ const InvoiceControlModal = ({ closeModal, currentInvoice }) => {
       </AppGridContainer>
     </Wrapper>
   );
+};
+
+InvoiceControlModal.defaultProps = {
+  currentInvoice: {
+    order_number: '',
+    tax: 0,
+    price_net: 0,
+    price_gross: 0,
+    currency: '',
+    payment_status: '',
+    payment_value: 0,
+    left_to_pay: 0,
+    sale_date: '',
+    issue_date: '',
+    terms: 0,
+    desc: '',
+    customer_name: '',
+    customer_vat: '',
+    customer_address: '',
+  },
+};
+
+InvoiceControlModal.propTypes = {
+  closeModal: PropTypes.func.isRequired,
+  currentInvoice: PropTypes.shape({
+    order_number: PropTypes.string.isRequired,
+    tax: PropTypes.number.isRequired,
+    price_net: PropTypes.number.isRequired,
+    price_gross: PropTypes.number.isRequired,
+    currency: PropTypes.string.isRequired,
+    payment_status: PropTypes.string.isRequired,
+    payment_value: PropTypes.number.isRequired,
+    left_to_pay: PropTypes.number.isRequired,
+    sale_date: PropTypes.string.isRequired,
+    issue_date: PropTypes.string.isRequired,
+    terms: PropTypes.number.isRequired,
+    desc: PropTypes.string.isRequired,
+    customer_name: PropTypes.string.isRequired,
+    customer_vat: PropTypes.string.isRequired,
+    customer_address: PropTypes.string.isRequired,
+  }),
 };
 
 export default InvoiceControlModal;

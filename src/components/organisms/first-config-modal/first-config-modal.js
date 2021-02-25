@@ -77,7 +77,7 @@ const FirstConfigModal = () => {
   return (
     <>
       {isVisibleCondition ? (
-        <Wrapper ref={animationWrapper}>
+        <Wrapper ref={animationWrapper} data-testid='first-config-modal'>
           <StyledAppBodyContainer>
             <StyledHeadingBlue>Welcolme into OMS Invoicer!</StyledHeadingBlue>
             <div>

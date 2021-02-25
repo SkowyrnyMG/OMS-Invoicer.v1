@@ -1,0 +1,1333 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Name of the group should display in the document with correct styles 1`] = `
+.c1 {
+  display: grid;
+  grid-template-columns: 65vw min-content;
+  grid-template-rows: min-content;
+  grid-column-gap: 2rem;
+}
+
+.c2 {
+  height: 60vh;
+  width: 100%;
+  background-color: #FFFFFF;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 10px -4px rgba(0,0,0,0.25);
+  overflow: scroll;
+}
+
+.c7 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: #00000055;
+  z-index: 50000;
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+  display: none;
+}
+
+.c8 {
+  position: absolute;
+  text-align: center;
+  padding: 2rem 3rem;
+  width: 80%;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  background: #F8F8FF;
+  border-radius: 5px;
+}
+
+.c9 {
+  margin: 2rem;
+  font-size: 24px !important;
+}
+
+.c10 {
+  padding: 2rem;
+  text-align: left;
+}
+
+.c16 {
+  margin-bottom: 1rem;
+  width: 100%;
+  font-size: 14px;
+  color: #F25C54;
+}
+
+.c14 {
+  position: relative;
+  display: block;
+  width: 100%;
+  margin-bottom: 3rem;
+}
+
+.c14:last-of-type {
+  margin-bottom: 4rem;
+}
+
+.c14 input {
+  border-color: #8F8F8F;
+  -webkit-transition: 0.5s -webkit-transform;
+  -webkit-transition: 0.5s transform;
+  transition: 0.5s transform;
+}
+
+.c14 input:focus {
+  -webkit-transform: translateX(2px);
+  -ms-transform: translateX(2px);
+  transform: translateX(2px);
+}
+
+.c14 input:placeholder-shown + div {
+  opacity: 0;
+  top: 50%;
+}
+
+.c14 input,
+.c14 input::-webkit-input-placeholder {
+  color: #8F8F8F;
+  border-color: currentColor;
+}
+
+.c14 input,
+.c14 input::-moz-placeholder {
+  color: #8F8F8F;
+  border-color: currentColor;
+}
+
+.c14 input,
+.c14 input:-ms-input-placeholder {
+  color: #8F8F8F;
+  border-color: currentColor;
+}
+
+.c14 input,
+.c14 input::placeholder {
+  color: #8F8F8F;
+  border-color: currentColor;
+}
+
+.c15 {
+  position: absolute;
+  top: -1rem;
+  left: 0.3rem;
+  font-size: 14px;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  -webkit-transition: all 0.25s;
+  transition: all 0.25s;
+  pointer-events: none;
+}
+
+.c24 {
+  position: absolute;
+  opacity: 0;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.c24:checked + label {
+  font-weight: 700;
+  opacity: 1;
+}
+
+.c25 {
+  display: block;
+  width: 100%;
+  margin-bottom: 3rem;
+  text-align: center;
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.c25:not(:last-child) {
+  border-right: 1px solid #F0F0FD;
+}
+
+.c25:last-of-type {
+  margin-bottom: 4rem;
+}
+
+.c17 {
+  display: block;
+  margin-bottom: 3rem;
+  width: 100%;
+  color: #000;
+}
+
+.c17:not(:last-child) {
+  border-right: 1px solid #F0F0FD;
+}
+
+.c17:last-of-type {
+  margin-bottom: 4rem;
+}
+
+.c17 select {
+  padding: 0.25rem 1rem;
+  cursor: pointer;
+}
+
+.c18 {
+  margin-right: 2rem;
+}
+
+.c19 {
+  width: 2rem !important;
+}
+
+.c20 {
+  margin-bottom: 4rem;
+}
+
+.c20 * {
+  font-family: 'Montserrat' !important;
+}
+
+.c20 .react-datepicker-wrapper {
+  display: inline-block;
+  padding: 1rem;
+  border: 0;
+}
+
+.c20 .react-datepicker-wrapper {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.c20 .react-datepicker-wrapper input {
+  cursor: pointer;
+  -webkit-transition: 0.5s -webkit-transform;
+  -webkit-transition: 0.5s transform;
+  transition: 0.5s transform;
+}
+
+.c20 .react-datepicker-wrapper input:focus {
+  -webkit-transform: translateX(2px);
+  -ms-transform: translateX(2px);
+  transform: translateX(2px);
+}
+
+.c20 .react-datepicker-wrapper input:disabled {
+  background: #00000055;
+  color: #000;
+  font-weight: 700;
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.c20 .react-datepicker__triangle {
+  display: none;
+}
+
+.c20 .react-datepicker {
+  width: 100%;
+  z-index: 999999999999999;
+}
+
+.c20 .react-datepicker__day {
+  padding: 5px 15px;
+  width: 40px;
+  text-align: center;
+  font-size: 16px;
+}
+
+.c20 .react-datepicker__day--outside-month {
+  color: #446DF644 !important;
+}
+
+.c20 .react-datepicker__day--weekend {
+  color: #8F8F8F;
+  font-weight: 700;
+}
+
+.c20 .react-datepicker__day--selected {
+  background-color: #446DF6;
+  color: #FFFFFF;
+}
+
+.c20 .react-datepicker__day-name {
+  padding: 15px;
+  width: 40px;
+  font-size: 14px;
+}
+
+.c20 .react-datepicker__navigation {
+  width: 0;
+  height: 0;
+  border-width: 0.9rem;
+}
+
+.c20 .react-datepicker__current-month {
+  font-size: 14px;
+}
+
+.c20 .react-datepicker__month-container {
+  width: 100%;
+}
+
+.c21 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.c22 {
+  position: absolute;
+  top: -60%;
+  -webkit-align-self: flex-end;
+  -ms-flex-item-align: end;
+  align-self: flex-end;
+  font-size: 14px;
+  -webkit-transition: all 0.25s;
+  transition: all 0.25s;
+  pointer-events: none;
+}
+
+.c11 {
+  display: inline-block;
+  padding: 1rem 2rem;
+  margin-top: 0;
+  font-weight: 700;
+  color: #000 !important;
+  border-left: 1px solid #F0F0FD;
+  background: none;
+  -webkit-transition: -webkit-transform 0.25s;
+  -webkit-transition: transform 0.25s;
+  transition: transform 0.25s;
+  border: none;
+}
+
+.c11:hover {
+  -webkit-transform: translateY(-2px);
+  -ms-transform: translateY(-2px);
+  transform: translateY(-2px);
+}
+
+.c28 > * {
+  margin-bottom: 0.5rem;
+}
+
+.c26 {
+  padding: 0.8rem 1rem;
+  width: 16rem;
+  font-size: inherit;
+  text-align: left;
+  color: #FFFFFF;
+  background-color: #446DF6;
+  border: none;
+  outline: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  -webkit-transition: 0.25s -webkit-transform;
+  -webkit-transition: 0.25s transform;
+  transition: 0.25s transform;
+}
+
+.c26:hover,
+.c26:active {
+  -webkit-transform: translateX(2px);
+  -ms-transform: translateX(2px);
+  transform: translateX(2px);
+}
+
+.c26:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.c26::first-letter {
+  text-transform: uppercase;
+}
+
+.c4 {
+  position: absolute;
+  top: 3%;
+  left: 1%;
+  pointer-events: none;
+}
+
+.c4 * {
+  pointer-events: auto;
+}
+
+.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  line-height: 4rem;
+  color: #446DF6;
+  background: transparent;
+  font-weight: 700;
+  font-size: 20px;
+  border-radius: 50%;
+  border: 2px solid currentColor;
+  outline: none;
+  outline: none;
+  cursor: help;
+  -webkit-transition: all 0.25s;
+  transition: all 0.25s;
+}
+
+.c5:hover,
+.c5:focus {
+  -webkit-transform: translateY(-2px);
+  -ms-transform: translateY(-2px);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 5px rgba(0,0,0,0.1);
+}
+
+.c5:active {
+  -webkit-transform: translateY(0px);
+  -ms-transform: translateY(0px);
+  transform: translateY(0px);
+  box-shadow: none;
+}
+
+.c6 {
+  position: absolute;
+  top: 200%;
+  left: 0;
+  padding: 1rem 2rem;
+  min-width: 30vw;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  color: #FFFFFF;
+  font-size: 16px;
+  line-height: 1.6;
+  text-align: left;
+  background: #446DF6;
+  border-radius: 0.5rem;
+  opacity: 0;
+  -webkit-transform: translateY(-3rem) scale(0);
+  -ms-transform: translateY(-3rem) scale(0);
+  transform: translateY(-3rem) scale(0);
+  -webkit-transition: all 0.25s;
+  transition: all 0.25s;
+  z-index: 1000;
+}
+
+.c6::before {
+  content: '';
+  position: absolute;
+  top: -1.8rem;
+  left: 0.5rem;
+  width: 2rem;
+  height: 2rem;
+  background-color: #446DF6;
+  -webkit-clip-path: polygon(50% 0,100% 100%,0 100%);
+  clip-path: polygon(50% 0,100% 100%,0 100%);
+  z-index: 10000;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding-top: 5rem;
+  top: 0;
+  left: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #F8F8FF;
+  z-index: 400;
+}
+
+.c3 {
+  position: relative;
+  overflow: auto !important;
+}
+
+.c12 {
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  padding: 5rem;
+}
+
+.c12 > div {
+  padding: 0 4rem;
+  -webkit-flex-basis: 50%;
+  -ms-flex-preferred-size: 50%;
+  flex-basis: 50%;
+}
+
+.c12 > div:first-child {
+  border-right: 1px solid #F0F0FD;
+}
+
+.c12 > div:nth-child(2) {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c27 {
+  -webkit-align-self: flex-end;
+  -ms-flex-item-align: end;
+  align-self: flex-end;
+  justify-self: flex-end;
+  margin-bottom: 3rem;
+}
+
+.c13 {
+  margin-bottom: 2rem;
+}
+
+.c23 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+  -webkit-justify-content: space-evenly;
+  -ms-flex-pack: space-evenly;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+@media (max-width:1300px) {
+  .c1 {
+    grid-template-columns: 63vw min-content;
+  }
+}
+
+@media (max-width:1168px) {
+  .c1 {
+    grid-template-columns: 73vw min-content;
+  }
+}
+
+@media (max-width:767px) {
+  .c1 {
+    grid-template-columns: 90vw;
+  }
+}
+
+@media (max-width:767px) {
+  .c2 {
+    height: 60vh;
+  }
+}
+
+@media (max-width:1540px) {
+  .c20 .react-datepicker {
+    left: 0 !important;
+  }
+}
+
+@media (max-width:1540px) {
+
+}
+
+@media (max-width:680px) {
+  .c20 .react-datepicker__day {
+    padding: 2px 5px;
+  }
+}
+
+@media (max-width:480px) {
+  .c20 .react-datepicker__day {
+    width: 35px;
+  }
+}
+
+@media (max-width:374px) {
+  .c20 .react-datepicker__day {
+    width: 32px;
+  }
+}
+
+@media (max-width:480px) {
+  .c20 .react-datepicker__day-name {
+    width: 35px;
+    font-size: 14px;
+    padding: 5px;
+  }
+}
+
+@media (max-width:374px) {
+  .c20 .react-datepicker__day-name {
+    width: 32px;
+  }
+}
+
+@media (max-width:767px) {
+  .c28 {
+    grid-row: 1 / 2;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-column-gap: 2%;
+    justify-items: center;
+    margin-bottom: 2rem;
+  }
+
+  .c28 > * {
+    margin-bottom: 0.5rem;
+    margin-right: 0.5rem;
+  }
+}
+
+@media (max-width:570px) {
+  .c28 {
+    grid-template-columns: repeat(2,1fr);
+  }
+}
+
+@media (max-width:374px) {
+  .c28 {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width:767px) {
+  .c26 {
+    width: 100%;
+  }
+}
+
+@media (max-width:1168px) {
+  .c12 {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width:680px) {
+  .c12 {
+    padding: 5rem 0;
+  }
+
+  .c12 > * {
+    padding: 0 1rem !important;
+    -webkit-flex-basis: 100%;
+    -ms-flex-preferred-size: 100%;
+    flex-basis: 100%;
+  }
+}
+
+<div
+  class="c0"
+>
+  <div
+    class="c1"
+  >
+    <div
+      class="c2 c3"
+    >
+      <div
+        class="c4"
+      >
+        <button
+          class="c5"
+        >
+          ?
+        </button>
+        <div
+          class="c6 tooltip"
+        >
+          In this modal you can issue new or edit existing invoice. First you have to choose finished order using "Choose a finished order" field. After that most of required data should be transfered from order to the draft of invoice. After invoice is issued you can control payment status using "Payment details" section.
+        </div>
+      </div>
+      <div
+        class="c7"
+        data-testid="warning-popup"
+        style="opacity: 0; visibility: hidden;"
+      >
+        <div
+          class="c8"
+        >
+          <h3
+            class="c9"
+          >
+            Finished orders not found..
+          </h3>
+          <p
+            class="c10"
+          >
+            To issue new invoice you have to finish some order! Please go back to
+            <a
+              class="c11"
+              href="/app/orders"
+              linktype=""
+            >
+               orders tab 
+            </a>
+            and add some orders!
+          </p>
+        </div>
+      </div>
+      <form
+        action="#"
+        class="c12"
+      >
+        <div>
+          <h4
+            class="c13"
+          >
+            Customer info
+          </h4>
+          <label
+            class="c14"
+            data-testid="formik-input"
+            for="customer_name"
+          >
+            <input
+              disabled=""
+              id="customer_name"
+              name="customer_name"
+              placeholder="CUSTOMER NAME"
+              type="text"
+              value=""
+            />
+            <div
+              class="c15"
+            >
+              CUSTOMER NAME
+            </div>
+            <span
+              class="c16"
+            />
+          </label>
+          <label
+            class="c14"
+            data-testid="formik-input"
+            for="customer_vat"
+          >
+            <input
+              disabled=""
+              id="customer_vat"
+              name="customer_vat"
+              placeholder="CUSTOMER VAT"
+              type="text"
+              value=""
+            />
+            <div
+              class="c15"
+            >
+              CUSTOMER VAT
+            </div>
+            <span
+              class="c16"
+            />
+          </label>
+          <label
+            class="c14"
+            data-testid="formik-input"
+            for="customer_address"
+          >
+            <input
+              disabled=""
+              id="customer_address"
+              name="customer_address"
+              placeholder="CUSTOMER ADDRESS"
+              type="text"
+              value=""
+            />
+            <div
+              class="c15"
+            >
+              CUSTOMER ADDRESS
+            </div>
+            <span
+              class="c16"
+            />
+          </label>
+        </div>
+        <div>
+          <h4
+            class="c13"
+          >
+            Invoice details
+          </h4>
+          <h4
+            class="c13"
+          >
+            <span>
+              Invoice Number: 
+            </span>
+          </h4>
+          <label
+            class="c14"
+            data-testid="formik-input"
+            for="order_number"
+          >
+            <input
+              disabled=""
+              id="order_number"
+              name="order_number"
+              placeholder="ORDER NUMBER"
+              type="text"
+              value=""
+            />
+            <div
+              class="c15"
+            >
+              ORDER NUMBER
+            </div>
+            <span
+              class="c16"
+            />
+          </label>
+          <label
+            class="c14"
+            data-testid="formik-input"
+            for="price_net"
+          >
+            <input
+              id="price_net"
+              name="price_net"
+              placeholder="PRICE NET"
+              type="number"
+              value="0"
+            />
+            <div
+              class="c15"
+            >
+              PRICE NET
+            </div>
+            <span
+              class="c16"
+            />
+          </label>
+          <label
+            class="c14"
+            data-testid="formik-input"
+            for="tax"
+          >
+            <input
+              id="tax"
+              name="tax"
+              placeholder="TAX %"
+              type="number"
+              value="0"
+            />
+            <div
+              class="c15"
+            >
+              TAX %
+            </div>
+            <span
+              class="c16"
+            />
+          </label>
+          <label
+            class="c14"
+            data-testid="formik-input"
+            for="price_gross"
+          >
+            <input
+              disabled=""
+              id="price_gross"
+              name="price_gross"
+              placeholder="PRICE GROSS"
+              type="number"
+              value="0"
+            />
+            <div
+              class="c15"
+            >
+              PRICE GROSS
+            </div>
+            <span
+              class="c16"
+            />
+          </label>
+          <label
+            class="c14"
+            data-testid="formik-input"
+            for="left_to_pay"
+          >
+            <input
+              disabled=""
+              id="left_to_pay"
+              name="left_to_pay"
+              placeholder="LEFT TO PAY"
+              type="number"
+              value="0"
+            />
+            <div
+              class="c15"
+            >
+              LEFT TO PAY
+            </div>
+            <span
+              class="c16"
+            />
+          </label>
+          <label
+            class="c17"
+            data-testid="formik-select"
+            for="currency"
+          >
+            <span
+              class="c18"
+            >
+              CURRENCY
+            </span>
+            <select
+              id="currency"
+              name="currency"
+              type="input"
+            >
+              <option
+                class="c19"
+                value="THB"
+              >
+                THB
+              </option>
+              <option
+                class="c19"
+                value="USD"
+              >
+                USD
+              </option>
+              <option
+                class="c19"
+                value="AUD"
+              >
+                AUD
+              </option>
+              <option
+                class="c19"
+                value="HKD"
+              >
+                HKD
+              </option>
+              <option
+                class="c19"
+                value="CAD"
+              >
+                CAD
+              </option>
+              <option
+                class="c19"
+                value="NZD"
+              >
+                NZD
+              </option>
+              <option
+                class="c19"
+                value="SGD"
+              >
+                SGD
+              </option>
+              <option
+                class="c19"
+                value="EUR"
+              >
+                EUR
+              </option>
+              <option
+                class="c19"
+                value="HUF"
+              >
+                HUF
+              </option>
+              <option
+                class="c19"
+                value="CHF"
+              >
+                CHF
+              </option>
+              <option
+                class="c19"
+                value="GBP"
+              >
+                GBP
+              </option>
+              <option
+                class="c19"
+                value="UAH"
+              >
+                UAH
+              </option>
+              <option
+                class="c19"
+                value="JPY"
+              >
+                JPY
+              </option>
+              <option
+                class="c19"
+                value="CZK"
+              >
+                CZK
+              </option>
+              <option
+                class="c19"
+                value="DKK"
+              >
+                DKK
+              </option>
+              <option
+                class="c19"
+                value="ISK"
+              >
+                ISK
+              </option>
+              <option
+                class="c19"
+                value="NOK"
+              >
+                NOK
+              </option>
+              <option
+                class="c19"
+                value="SEK"
+              >
+                SEK
+              </option>
+              <option
+                class="c19"
+                value="HRK"
+              >
+                HRK
+              </option>
+              <option
+                class="c19"
+                value="RON"
+              >
+                RON
+              </option>
+              <option
+                class="c19"
+                value="BGN"
+              >
+                BGN
+              </option>
+              <option
+                class="c19"
+                value="TRY"
+              >
+                TRY
+              </option>
+              <option
+                class="c19"
+                value="ILS"
+              >
+                ILS
+              </option>
+              <option
+                class="c19"
+                value="CLP"
+              >
+                CLP
+              </option>
+              <option
+                class="c19"
+                value="PHP"
+              >
+                PHP
+              </option>
+              <option
+                class="c19"
+                value="PLN"
+              >
+                PLN
+              </option>
+              <option
+                class="c19"
+                value="MXN"
+              >
+                MXN
+              </option>
+              <option
+                class="c19"
+                value="ZAR"
+              >
+                ZAR
+              </option>
+              <option
+                class="c19"
+                value="BRL"
+              >
+                BRL
+              </option>
+              <option
+                class="c19"
+                value="MYR"
+              >
+                MYR
+              </option>
+              <option
+                class="c19"
+                value="RUB"
+              >
+                RUB
+              </option>
+              <option
+                class="c19"
+                value="IDR"
+              >
+                IDR
+              </option>
+              <option
+                class="c19"
+                value="INR"
+              >
+                INR
+              </option>
+              <option
+                class="c19"
+                value="KRW"
+              >
+                KRW
+              </option>
+              <option
+                class="c19"
+                value="CNY"
+              >
+                CNY
+              </option>
+              <option
+                class="c19"
+                value="XDR"
+              >
+                XDR
+              </option>
+            </select>
+            <span
+              class="c16"
+            />
+          </label>
+          <div
+            class="c20"
+            data-testid="datepicker"
+          >
+            <div
+              class="c21"
+            >
+              <div
+                class="c22"
+              >
+                SALE DATE
+              </div>
+              <div
+                class="react-datepicker-wrapper"
+              >
+                <div
+                  class="react-datepicker__input-container"
+                >
+                  <input
+                    autocomplete="off"
+                    class=""
+                    name="sale_date"
+                    type="text"
+                    value=""
+                  />
+                </div>
+              </div>
+            </div>
+            <span
+              class="c16"
+            />
+          </div>
+          <div
+            class="c20"
+            data-testid="datepicker"
+          >
+            <div
+              class="c21"
+            >
+              <div
+                class="c22"
+              >
+                ISSUE DATE
+              </div>
+              <div
+                class="react-datepicker-wrapper"
+              >
+                <div
+                  class="react-datepicker__input-container"
+                >
+                  <input
+                    autocomplete="off"
+                    class=""
+                    name="issue_date"
+                    type="text"
+                    value=""
+                  />
+                </div>
+              </div>
+            </div>
+            <span
+              class="c16"
+            />
+          </div>
+          <h4
+            class="c13"
+          >
+            Payment details
+          </h4>
+          <label
+            class="c14"
+            data-testid="formik-input"
+            for="terms"
+          >
+            <input
+              id="terms"
+              name="terms"
+              placeholder="PAYMENT TERMS"
+              type="number"
+              value="0"
+            />
+            <div
+              class="c15"
+            >
+              PAYMENT TERMS
+            </div>
+            <span
+              class="c16"
+            />
+          </label>
+          <label
+            class="c14"
+            data-testid="formik-input"
+            for="desc"
+          >
+            <input
+              id="desc"
+              name="desc"
+              placeholder="DESCRIPTION"
+              type="text"
+              value=""
+            />
+            <div
+              class="c15"
+            >
+              DESCRIPTION
+            </div>
+            <span
+              class="c16"
+            />
+          </label>
+          <div
+            class="c23"
+          >
+            <span
+              class=""
+            >
+              STATUS:
+            </span>
+            <input
+              checked=""
+              class="c24"
+              id="payment_status-unpaid"
+              name="payment_status"
+              type="radio"
+              value="unpaid"
+            />
+            <label
+              class="c25"
+              for="payment_status-unpaid"
+            >
+              unpaid
+              <span
+                class="c16"
+              />
+            </label>
+            <input
+              class="c24"
+              id="payment_status-paid"
+              name="payment_status"
+              type="radio"
+              value="paid"
+            />
+            <label
+              class="c25"
+              for="payment_status-paid"
+            >
+              paid
+              <span
+                class="c16"
+              />
+            </label>
+            <input
+              class="c24"
+              id="payment_status-partialy paid"
+              name="payment_status"
+              type="radio"
+              value="partialy paid"
+            />
+            <label
+              class="c25"
+              for="payment_status-partialy paid"
+            >
+              partialy paid
+              <span
+                class="c16"
+              />
+            </label>
+          </div>
+          <button
+            class="c26 c27"
+            type="submit"
+          >
+            Save
+          </button>
+        </div>
+      </form>
+    </div>
+    <aside
+      class="c28"
+    >
+      <button
+        class="c26"
+      >
+        Exit without save
+      </button>
+    </aside>
+  </div>
+</div>
+`;

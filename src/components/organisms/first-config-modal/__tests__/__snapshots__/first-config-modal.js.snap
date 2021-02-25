@@ -1,0 +1,561 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FirstConfigModal should display in the document with correct styles 1`] = `
+.c1 {
+  height: 60vh;
+  width: 100%;
+  background-color: #FFFFFF;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 10px -4px rgba(0,0,0,0.25);
+  overflow: scroll;
+}
+
+.c11 {
+  margin-bottom: 1rem;
+  width: 100%;
+  font-size: 14px;
+  color: #F25C54;
+}
+
+.c8 {
+  position: relative;
+  display: block;
+  width: 100%;
+  margin-bottom: 3rem;
+}
+
+.c8:last-of-type {
+  margin-bottom: 4rem;
+}
+
+.c8 input {
+  border-color: #8F8F8F;
+  -webkit-transition: 0.5s -webkit-transform;
+  -webkit-transition: 0.5s transform;
+  transition: 0.5s transform;
+}
+
+.c8 input:focus {
+  -webkit-transform: translateX(2px);
+  -ms-transform: translateX(2px);
+  transform: translateX(2px);
+}
+
+.c8 input:placeholder-shown + div {
+  opacity: 0;
+  top: 50%;
+}
+
+.c8 input,
+.c8 input::-webkit-input-placeholder {
+  color: #8F8F8F;
+  border-color: currentColor;
+}
+
+.c8 input,
+.c8 input::-moz-placeholder {
+  color: #8F8F8F;
+  border-color: currentColor;
+}
+
+.c8 input,
+.c8 input:-ms-input-placeholder {
+  color: #8F8F8F;
+  border-color: currentColor;
+}
+
+.c8 input,
+.c8 input::placeholder {
+  color: #8F8F8F;
+  border-color: currentColor;
+}
+
+.c10 {
+  position: absolute;
+  top: -1rem;
+  left: 0.3rem;
+  font-size: 14px;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  -webkit-transition: all 0.25s;
+  transition: all 0.25s;
+  pointer-events: none;
+}
+
+.c3 {
+  margin-bottom: 0.5rem;
+  font-size: 20px;
+  font-weight: 400;
+  text-transform: uppercase;
+  color: #446DF6;
+}
+
+.c13 {
+  padding: 0.8rem 1rem;
+  width: 16rem;
+  font-size: inherit;
+  text-align: left;
+  color: #FFFFFF;
+  background-color: #446DF6;
+  border: none;
+  outline: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  -webkit-transition: 0.25s -webkit-transform;
+  -webkit-transition: 0.25s transform;
+  transition: 0.25s transform;
+}
+
+.c13:hover,
+.c13:active {
+  -webkit-transform: translateX(2px);
+  -ms-transform: translateX(2px);
+  transform: translateX(2px);
+}
+
+.c13:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.c13::first-letter {
+  text-transform: uppercase;
+}
+
+.c5 {
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  grid-auto-rows: 1fr;
+}
+
+.c12 {
+  margin: 3rem 0;
+}
+
+.c6 {
+  padding: 5rem;
+}
+
+.c7 {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  -webkit-align-items: end;
+  -webkit-box-align: end;
+  -ms-flex-align: end;
+  align-items: end;
+  -webkit-align-content: top;
+  -ms-flex-line-pack: top;
+  align-content: top;
+  justify-items: left;
+  padding: 2rem 0;
+  border-bottom: 1px solid #F0F0FD;
+}
+
+.c7 label {
+  margin-bottom: 0 !important;
+}
+
+.c9 {
+  margin: 0 !important;
+}
+
+.c14 {
+  margin-top: 3rem;
+}
+
+.c0 {
+  position: fixed;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+  background: #446DF644;
+  box-shadow: 0 0 10px -4px rgba(0,0,0,0.25);
+  z-index: 10000;
+}
+
+.c2 {
+  padding: 5rem;
+  height: 80%;
+  border: 1px solid #446DF6;
+  border-radius: 5px;
+  overflow: auto;
+}
+
+.c4 {
+  margin: 3rem 0;
+  font-size: 24px;
+  font-weight: 700;
+  text-align: center;
+}
+
+@media (max-width:767px) {
+  .c1 {
+    height: 60vh;
+  }
+}
+
+@media (max-width:767px) {
+  .c13 {
+    width: 100%;
+  }
+}
+
+@media (max-width:1168px) {
+  .c5 {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width:680px) {
+  .c5 {
+    padding: 5rem 0;
+  }
+
+  .c5 > * {
+    padding: 0 1rem !important;
+    -webkit-flex-basis: 100%;
+    -ms-flex-preferred-size: 100%;
+    flex-basis: 100%;
+  }
+}
+
+@media (max-width:480px) {
+  .c2 {
+    padding: 5rem 1rem;
+  }
+}
+
+<div
+  class="c0"
+  data-testid="first-config-modal"
+  style="opacity: 0; visibility: hidden;"
+>
+  <div
+    class="c1 c2"
+  >
+    <h5
+      class="c3 c4"
+    >
+      Welcolme into OMS Invoicer!
+    </h5>
+    <div>
+      <p>
+        Thank you for registration!
+      </p>
+      <p>
+        There is only one thing left to do to start use the aplication. Please provide basic order and invoice registry config. The app will use those to provide automatic numeration for all of your positions.
+      </p>
+    </div>
+    <form
+      action="#"
+      class="c5"
+    >
+      <div
+        class="c6"
+      >
+        <h5
+          class="c3"
+        >
+          Registry options
+        </h5>
+        <div
+          class="c7"
+          for="mainInvoicePrefix"
+        >
+          <label
+            class="c8"
+            data-testid="formik-input"
+            for="mainInvoicePrefix"
+          >
+            <input
+              class="c9"
+              id="mainInvoicePrefix"
+              name="mainInvoicePrefix"
+              placeholder="INVOICE PREFIX"
+              type="text"
+              value=""
+            />
+            <div
+              class="c10"
+            >
+              INVOICE PREFIX
+            </div>
+            <span
+              class="c11"
+            />
+          </label>
+        </div>
+        <div
+          class="c7"
+          for="mainOrderPrefix"
+        >
+          <label
+            class="c8"
+            data-testid="formik-input"
+            for="mainOrderPrefix"
+          >
+            <input
+              class="c9"
+              id="mainOrderPrefix"
+              name="mainOrderPrefix"
+              placeholder="ORDER PREFIX"
+              type="text"
+              value=""
+            />
+            <div
+              class="c10"
+            >
+              ORDER PREFIX
+            </div>
+            <span
+              class="c11"
+            />
+          </label>
+        </div>
+        <h5
+          class="c3 c12"
+        >
+          Bank Details
+        </h5>
+        <label
+          class="c8"
+          data-testid="formik-input"
+          for="bankName"
+        >
+          <input
+            id="bankName"
+            name="bankName"
+            placeholder="BANK NAME"
+            type="text"
+            value=""
+          />
+          <div
+            class="c10"
+          >
+            BANK NAME
+          </div>
+          <span
+            class="c11"
+          />
+        </label>
+        <label
+          class="c8"
+          data-testid="formik-input"
+          for="bankAccountNumber"
+        >
+          <input
+            id="bankAccountNumber"
+            name="bankAccountNumber"
+            placeholder="BANK ACCOUNT NUMBER"
+            type="text"
+            value=""
+          />
+          <div
+            class="c10"
+          >
+            BANK ACCOUNT NUMBER
+          </div>
+          <span
+            class="c11"
+          />
+        </label>
+        <label
+          class="c8"
+          data-testid="formik-input"
+          for="iban"
+        >
+          <input
+            id="iban"
+            name="iban"
+            placeholder="IBAN"
+            type="text"
+            value=""
+          />
+          <div
+            class="c10"
+          >
+            IBAN
+          </div>
+          <span
+            class="c11"
+          />
+        </label>
+        <label
+          class="c8"
+          data-testid="formik-input"
+          for="swift"
+        >
+          <input
+            id="swift"
+            name="swift"
+            placeholder="SWIFT"
+            type="text"
+            value=""
+          />
+          <div
+            class="c10"
+          >
+            SWIFT
+          </div>
+          <span
+            class="c11"
+          />
+        </label>
+      </div>
+      <div
+        class="c6"
+      >
+        <h5
+          class="c3 c12"
+        >
+          Company info
+        </h5>
+        <label
+          class="c8"
+          data-testid="formik-input"
+          for="rootCompanyName"
+        >
+          <input
+            id="rootCompanyName"
+            name="rootCompanyName"
+            placeholder="COMPANY NAME"
+            type="text"
+            value=""
+          />
+          <div
+            class="c10"
+          >
+            COMPANY NAME
+          </div>
+          <span
+            class="c11"
+          />
+        </label>
+        <label
+          class="c8"
+          data-testid="formik-input"
+          for="rootVat"
+        >
+          <input
+            id="rootVat"
+            name="rootVat"
+            placeholder="VAT NUMBER"
+            type="text"
+            value=""
+          />
+          <div
+            class="c10"
+          >
+            VAT NUMBER
+          </div>
+          <span
+            class="c11"
+          />
+        </label>
+        <label
+          class="c8"
+          data-testid="formik-input"
+          for="rootStreet"
+        >
+          <input
+            id="rootStreet"
+            name="rootStreet"
+            placeholder="STREET"
+            type="text"
+            value=""
+          />
+          <div
+            class="c10"
+          >
+            STREET
+          </div>
+          <span
+            class="c11"
+          />
+        </label>
+        <label
+          class="c8"
+          data-testid="formik-input"
+          for="rootPostCode"
+        >
+          <input
+            id="rootPostCode"
+            name="rootPostCode"
+            placeholder="POST CODE"
+            type="text"
+            value=""
+          />
+          <div
+            class="c10"
+          >
+            POST CODE
+          </div>
+          <span
+            class="c11"
+          />
+        </label>
+        <label
+          class="c8"
+          data-testid="formik-input"
+          for="rootTown"
+        >
+          <input
+            id="rootTown"
+            name="rootTown"
+            placeholder="TOWN"
+            type="text"
+            value=""
+          />
+          <div
+            class="c10"
+          >
+            TOWN
+          </div>
+          <span
+            class="c11"
+          />
+        </label>
+        <label
+          class="c8"
+          data-testid="formik-input"
+          for="rootCountry"
+        >
+          <input
+            id="rootCountry"
+            name="rootCountry"
+            placeholder="COUNTRY"
+            type="text"
+            value=""
+          />
+          <div
+            class="c10"
+          >
+            COUNTRY
+          </div>
+          <span
+            class="c11"
+          />
+        </label>
+        <button
+          class="c13 c14"
+          type="submit"
+        >
+          Save
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+`;

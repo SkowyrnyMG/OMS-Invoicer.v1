@@ -1,0 +1,76 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HomePageHeader should display in the document with correct styles 1`] = `
+.c0 {
+  grid-column: 1 / -1 !important;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-image: radial-gradient( circle at 100%, transparent 0%, rgba(0,0,0,1) 90% ), url(main-bg.webp);
+  background-position: center;
+  min-height: 72.5rem;
+}
+
+.c1 {
+  color: #000;
+  margin: 2rem 0;
+  font-size: 34px;
+  text-align: center;
+}
+
+.c3 {
+  padding: 2rem 3rem;
+  background-color: #F25C54;
+  color: #FFFFFF;
+  border-radius: 5px;
+  -webkit-transition: all 0.25s;
+  transition: all 0.25s;
+}
+
+.c3:hover {
+  color: #000;
+  background-color: #DA2442;
+}
+
+@media (max-width:680px) {
+  .c2 {
+    padding: 0 2rem;
+    min-height: 40rem;
+  }
+}
+
+<header
+  class="c0"
+>
+  <h1
+    class="c1"
+  >
+    Better way to organize your orders and invoices!
+  </h1>
+  <div
+    class="c2"
+  >
+    <a
+      class="c3"
+      href="/register"
+    >
+      TRY FOR FREE AND SEND ME SOME FEEDBACK
+    </a>
+  </div>
+</header>
+`;

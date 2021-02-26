@@ -44,11 +44,12 @@ export const handlers = [
       }),
     );
   }),
-  rest.get('data/test-uuid/orders.json', (req, res, ctx) => {
-    return res(
-      ctx.status(200),
-      ctx.json({
-        data: {
+  rest.get(
+    'https://oms-invoicer-v1.firebaseio.com/data/test-uuid/orders.json',
+    (req, res, ctx) => {
+      return res(
+        ctx.status(200),
+        ctx.json({
           firstReg: {
             TESTORD: {
               currency: 'EUR',
@@ -64,10 +65,10 @@ export const handlers = [
               tax: 23,
             },
           },
-        },
-      }),
-    );
-  }),
+        }),
+      );
+    },
+  ),
 ];
 
 // currency: 'EUR',

@@ -39,7 +39,10 @@ exports[`Name of the group should display in the document with correct styles 1`
   z-index: 50000;
   -webkit-backdrop-filter: blur(2px);
   backdrop-filter: blur(2px);
-  display: none;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .c8 {
@@ -64,67 +67,67 @@ exports[`Name of the group should display in the document with correct styles 1`
   text-align: left;
 }
 
-.c16 {
+.c22 {
   margin-bottom: 1rem;
   width: 100%;
   font-size: 14px;
   color: #F25C54;
 }
 
-.c14 {
+.c20 {
   position: relative;
   display: block;
   width: 100%;
   margin-bottom: 3rem;
 }
 
-.c14:last-of-type {
+.c20:last-of-type {
   margin-bottom: 4rem;
 }
 
-.c14 input {
+.c20 input {
   border-color: #8F8F8F;
   -webkit-transition: 0.5s -webkit-transform;
   -webkit-transition: 0.5s transform;
   transition: 0.5s transform;
 }
 
-.c14 input:focus {
+.c20 input:focus {
   -webkit-transform: translateX(2px);
   -ms-transform: translateX(2px);
   transform: translateX(2px);
 }
 
-.c14 input:placeholder-shown + div {
+.c20 input:placeholder-shown + div {
   opacity: 0;
   top: 50%;
 }
 
-.c14 input,
-.c14 input::-webkit-input-placeholder {
+.c20 input,
+.c20 input::-webkit-input-placeholder {
   color: #8F8F8F;
   border-color: currentColor;
 }
 
-.c14 input,
-.c14 input::-moz-placeholder {
+.c20 input,
+.c20 input::-moz-placeholder {
   color: #8F8F8F;
   border-color: currentColor;
 }
 
-.c14 input,
-.c14 input:-ms-input-placeholder {
+.c20 input,
+.c20 input:-ms-input-placeholder {
   color: #8F8F8F;
   border-color: currentColor;
 }
 
-.c14 input,
-.c14 input::placeholder {
+.c20 input,
+.c20 input::placeholder {
   color: #8F8F8F;
   border-color: currentColor;
 }
 
-.c15 {
+.c21 {
   position: absolute;
   top: -1rem;
   left: 0.3rem;
@@ -137,7 +140,7 @@ exports[`Name of the group should display in the document with correct styles 1`
   pointer-events: none;
 }
 
-.c24 {
+.c30 {
   position: absolute;
   opacity: 0;
   width: -webkit-fit-content;
@@ -148,12 +151,12 @@ exports[`Name of the group should display in the document with correct styles 1`
   appearance: none;
 }
 
-.c24:checked + label {
+.c30:checked + label {
   font-weight: 700;
   opacity: 1;
 }
 
-.c25 {
+.c31 {
   display: block;
   width: 100%;
   margin-bottom: 3rem;
@@ -162,76 +165,76 @@ exports[`Name of the group should display in the document with correct styles 1`
   cursor: pointer;
 }
 
-.c25:not(:last-child) {
+.c31:not(:last-child) {
   border-right: 1px solid #F0F0FD;
 }
 
-.c25:last-of-type {
+.c31:last-of-type {
   margin-bottom: 4rem;
 }
 
-.c17 {
+.c23 {
   display: block;
   margin-bottom: 3rem;
   width: 100%;
   color: #000;
 }
 
-.c17:not(:last-child) {
+.c23:not(:last-child) {
   border-right: 1px solid #F0F0FD;
 }
 
-.c17:last-of-type {
+.c23:last-of-type {
   margin-bottom: 4rem;
 }
 
-.c17 select {
+.c23 select {
   padding: 0.25rem 1rem;
   cursor: pointer;
 }
 
-.c18 {
+.c24 {
   margin-right: 2rem;
 }
 
-.c19 {
+.c25 {
   width: 2rem !important;
 }
 
-.c20 {
+.c26 {
   margin-bottom: 4rem;
 }
 
-.c20 * {
+.c26 * {
   font-family: 'Montserrat' !important;
 }
 
-.c20 .react-datepicker-wrapper {
+.c26 .react-datepicker-wrapper {
   display: inline-block;
   padding: 1rem;
   border: 0;
 }
 
-.c20 .react-datepicker-wrapper {
+.c26 .react-datepicker-wrapper {
   width: 100%;
   margin: 0;
   padding: 0;
 }
 
-.c20 .react-datepicker-wrapper input {
+.c26 .react-datepicker-wrapper input {
   cursor: pointer;
   -webkit-transition: 0.5s -webkit-transform;
   -webkit-transition: 0.5s transform;
   transition: 0.5s transform;
 }
 
-.c20 .react-datepicker-wrapper input:focus {
+.c26 .react-datepicker-wrapper input:focus {
   -webkit-transform: translateX(2px);
   -ms-transform: translateX(2px);
   transform: translateX(2px);
 }
 
-.c20 .react-datepicker-wrapper input:disabled {
+.c26 .react-datepicker-wrapper input:disabled {
   background: #00000055;
   color: #000;
   font-weight: 700;
@@ -239,57 +242,57 @@ exports[`Name of the group should display in the document with correct styles 1`
   cursor: not-allowed;
 }
 
-.c20 .react-datepicker__triangle {
+.c26 .react-datepicker__triangle {
   display: none;
 }
 
-.c20 .react-datepicker {
+.c26 .react-datepicker {
   width: 100%;
   z-index: 999999999999999;
 }
 
-.c20 .react-datepicker__day {
+.c26 .react-datepicker__day {
   padding: 5px 15px;
   width: 40px;
   text-align: center;
   font-size: 16px;
 }
 
-.c20 .react-datepicker__day--outside-month {
+.c26 .react-datepicker__day--outside-month {
   color: #446DF644 !important;
 }
 
-.c20 .react-datepicker__day--weekend {
+.c26 .react-datepicker__day--weekend {
   color: #8F8F8F;
   font-weight: 700;
 }
 
-.c20 .react-datepicker__day--selected {
+.c26 .react-datepicker__day--selected {
   background-color: #446DF6;
   color: #FFFFFF;
 }
 
-.c20 .react-datepicker__day-name {
+.c26 .react-datepicker__day-name {
   padding: 15px;
   width: 40px;
   font-size: 14px;
 }
 
-.c20 .react-datepicker__navigation {
+.c26 .react-datepicker__navigation {
   width: 0;
   height: 0;
   border-width: 0.9rem;
 }
 
-.c20 .react-datepicker__current-month {
+.c26 .react-datepicker__current-month {
   font-size: 14px;
 }
 
-.c20 .react-datepicker__month-container {
+.c26 .react-datepicker__month-container {
   width: 100%;
 }
 
-.c21 {
+.c27 {
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
@@ -302,7 +305,7 @@ exports[`Name of the group should display in the document with correct styles 1`
   margin-bottom: 1rem;
 }
 
-.c22 {
+.c28 {
   position: absolute;
   top: -60%;
   -webkit-align-self: flex-end;
@@ -312,6 +315,65 @@ exports[`Name of the group should display in the document with correct styles 1`
   -webkit-transition: all 0.25s;
   transition: all 0.25s;
   pointer-events: none;
+}
+
+.c16 {
+  padding: 0.5rem 1rem;
+  border: 2px solid #446DF6;
+  border-radius: 0.5rem;
+  background: none;
+  cursor: pointer;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+}
+
+.c16:not(:first-child) {
+  margin-left: 2rem;
+}
+
+.c16:hover {
+  background: #446DF6;
+  color: #FFFFFF;
+}
+
+.c17 {
+  position: absolute;
+  max-height: 25rem;
+  padding: 2rem;
+  list-style: none;
+  overflow-y: auto;
+  background: #F8F8FF;
+  box-shadow: 0 4px 5px rgba(0,0,0,0.1);
+  opacity: 0;
+  visibility: hidden;
+  z-index: 1000;
+}
+
+.c14 {
+  padding-left: 0.5rem;
+  margin-bottom: 1rem;
+  width: 100%;
+  height: 3rem;
+  font-size: 16px;
+}
+
+.c13 {
+  grid-column: 1 / -1 !important;
+  position: relative;
+  margin-bottom: 3rem;
+}
+
+.c15 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+}
+
+.c18 {
+  opacity: 0;
+  display: none;
 }
 
 .c11 {
@@ -334,11 +396,11 @@ exports[`Name of the group should display in the document with correct styles 1`
   transform: translateY(-2px);
 }
 
-.c28 > * {
+.c34 > * {
   margin-bottom: 0.5rem;
 }
 
-.c26 {
+.c32 {
   padding: 0.8rem 1rem;
   width: 16rem;
   font-size: inherit;
@@ -354,19 +416,19 @@ exports[`Name of the group should display in the document with correct styles 1`
   transition: 0.25s transform;
 }
 
-.c26:hover,
-.c26:active {
+.c32:hover,
+.c32:active {
   -webkit-transform: translateX(2px);
   -ms-transform: translateX(2px);
   transform: translateX(2px);
 }
 
-.c26:disabled {
+.c32:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
 
-.c26::first-letter {
+.c32::first-letter {
   text-transform: uppercase;
 }
 
@@ -483,7 +545,7 @@ exports[`Name of the group should display in the document with correct styles 1`
 
 .c3 {
   position: relative;
-  overflow: auto !important;
+  overflow: hidden !important;
 }
 
 .c12 {
@@ -513,7 +575,7 @@ exports[`Name of the group should display in the document with correct styles 1`
   flex-direction: column;
 }
 
-.c27 {
+.c33 {
   -webkit-align-self: flex-end;
   -ms-flex-item-align: end;
   align-self: flex-end;
@@ -521,11 +583,11 @@ exports[`Name of the group should display in the document with correct styles 1`
   margin-bottom: 3rem;
 }
 
-.c13 {
+.c19 {
   margin-bottom: 2rem;
 }
 
-.c23 {
+.c29 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -562,7 +624,7 @@ exports[`Name of the group should display in the document with correct styles 1`
 }
 
 @media (max-width:1540px) {
-  .c20 .react-datepicker {
+  .c26 .react-datepicker {
     left: 0 !important;
   }
 }
@@ -572,25 +634,25 @@ exports[`Name of the group should display in the document with correct styles 1`
 }
 
 @media (max-width:680px) {
-  .c20 .react-datepicker__day {
+  .c26 .react-datepicker__day {
     padding: 2px 5px;
   }
 }
 
 @media (max-width:480px) {
-  .c20 .react-datepicker__day {
+  .c26 .react-datepicker__day {
     width: 35px;
   }
 }
 
 @media (max-width:374px) {
-  .c20 .react-datepicker__day {
+  .c26 .react-datepicker__day {
     width: 32px;
   }
 }
 
 @media (max-width:480px) {
-  .c20 .react-datepicker__day-name {
+  .c26 .react-datepicker__day-name {
     width: 35px;
     font-size: 14px;
     padding: 5px;
@@ -598,13 +660,13 @@ exports[`Name of the group should display in the document with correct styles 1`
 }
 
 @media (max-width:374px) {
-  .c20 .react-datepicker__day-name {
+  .c26 .react-datepicker__day-name {
     width: 32px;
   }
 }
 
 @media (max-width:767px) {
-  .c28 {
+  .c34 {
     grid-row: 1 / 2;
     display: grid;
     grid-template-columns: repeat(3,1fr);
@@ -613,26 +675,26 @@ exports[`Name of the group should display in the document with correct styles 1`
     margin-bottom: 2rem;
   }
 
-  .c28 > * {
+  .c34 > * {
     margin-bottom: 0.5rem;
     margin-right: 0.5rem;
   }
 }
 
 @media (max-width:570px) {
-  .c28 {
+  .c34 {
     grid-template-columns: repeat(2,1fr);
   }
 }
 
 @media (max-width:374px) {
-  .c28 {
+  .c34 {
     grid-template-columns: 1fr;
   }
 }
 
 @media (max-width:767px) {
-  .c26 {
+  .c32 {
     width: 100%;
   }
 }
@@ -711,14 +773,79 @@ exports[`Name of the group should display in the document with correct styles 1`
         action="#"
         class="c12"
       >
+        <div
+          class="c13"
+          data-testid="combobox-invoice-menu"
+        >
+          <label
+            for="downshift-0-input"
+            id="downshift-0-label"
+          >
+            Choose a finished order:
+          </label>
+          <div
+            aria-expanded="false"
+            aria-haspopup="listbox"
+            aria-owns="downshift-0-menu"
+            role="combobox"
+          >
+            <input
+              aria-autocomplete="list"
+              aria-controls="downshift-0-menu"
+              aria-labelledby="downshift-0-label"
+              autocomplete="off"
+              class="c14"
+              id="downshift-0-input"
+              placeholder="Provide order number or company name"
+              value=""
+            />
+            <div
+              class="c15"
+            >
+              <button
+                aria-label="toggle menu"
+                class="c16"
+                id="downshift-0-toggle-button"
+                tabindex="-1"
+                type="button"
+              >
+                Show
+              </button>
+              <button
+                class="c16"
+                type="button"
+              >
+                Accept
+              </button>
+              <button
+                class="c16"
+                type="button"
+              >
+                Reset
+              </button>
+            </div>
+          </div>
+          <ul
+            aria-labelledby="downshift-0-label"
+            class="c17"
+            id="downshift-0-menu"
+            role="listbox"
+          >
+            <div
+              class="c18"
+            >
+              Nothing found...
+            </div>
+          </ul>
+        </div>
         <div>
           <h4
-            class="c13"
+            class="c19"
           >
             Customer info
           </h4>
           <label
-            class="c14"
+            class="c20"
             data-testid="formik-input"
             for="customer_name"
           >
@@ -731,16 +858,16 @@ exports[`Name of the group should display in the document with correct styles 1`
               value=""
             />
             <div
-              class="c15"
+              class="c21"
             >
               CUSTOMER NAME
             </div>
             <span
-              class="c16"
+              class="c22"
             />
           </label>
           <label
-            class="c14"
+            class="c20"
             data-testid="formik-input"
             for="customer_vat"
           >
@@ -753,16 +880,16 @@ exports[`Name of the group should display in the document with correct styles 1`
               value=""
             />
             <div
-              class="c15"
+              class="c21"
             >
               CUSTOMER VAT
             </div>
             <span
-              class="c16"
+              class="c22"
             />
           </label>
           <label
-            class="c14"
+            class="c20"
             data-testid="formik-input"
             for="customer_address"
           >
@@ -775,30 +902,31 @@ exports[`Name of the group should display in the document with correct styles 1`
               value=""
             />
             <div
-              class="c15"
+              class="c21"
             >
               CUSTOMER ADDRESS
             </div>
             <span
-              class="c16"
+              class="c22"
             />
           </label>
         </div>
         <div>
           <h4
-            class="c13"
+            class="c19"
           >
             Invoice details
           </h4>
           <h4
-            class="c13"
+            class="c19"
           >
             <span>
               Invoice Number: 
             </span>
+            -NaN-undefined
           </h4>
           <label
-            class="c14"
+            class="c20"
             data-testid="formik-input"
             for="order_number"
           >
@@ -811,16 +939,16 @@ exports[`Name of the group should display in the document with correct styles 1`
               value=""
             />
             <div
-              class="c15"
+              class="c21"
             >
               ORDER NUMBER
             </div>
             <span
-              class="c16"
+              class="c22"
             />
           </label>
           <label
-            class="c14"
+            class="c20"
             data-testid="formik-input"
             for="price_net"
           >
@@ -829,19 +957,19 @@ exports[`Name of the group should display in the document with correct styles 1`
               name="price_net"
               placeholder="PRICE NET"
               type="number"
-              value="0"
+              value=""
             />
             <div
-              class="c15"
+              class="c21"
             >
               PRICE NET
             </div>
             <span
-              class="c16"
+              class="c22"
             />
           </label>
           <label
-            class="c14"
+            class="c20"
             data-testid="formik-input"
             for="tax"
           >
@@ -850,19 +978,19 @@ exports[`Name of the group should display in the document with correct styles 1`
               name="tax"
               placeholder="TAX %"
               type="number"
-              value="0"
+              value=""
             />
             <div
-              class="c15"
+              class="c21"
             >
               TAX %
             </div>
             <span
-              class="c16"
+              class="c22"
             />
           </label>
           <label
-            class="c14"
+            class="c20"
             data-testid="formik-input"
             for="price_gross"
           >
@@ -872,19 +1000,19 @@ exports[`Name of the group should display in the document with correct styles 1`
               name="price_gross"
               placeholder="PRICE GROSS"
               type="number"
-              value="0"
+              value=""
             />
             <div
-              class="c15"
+              class="c21"
             >
               PRICE GROSS
             </div>
             <span
-              class="c16"
+              class="c22"
             />
           </label>
           <label
-            class="c14"
+            class="c20"
             data-testid="formik-input"
             for="left_to_pay"
           >
@@ -897,21 +1025,21 @@ exports[`Name of the group should display in the document with correct styles 1`
               value="0"
             />
             <div
-              class="c15"
+              class="c21"
             >
               LEFT TO PAY
             </div>
             <span
-              class="c16"
+              class="c22"
             />
           </label>
           <label
-            class="c17"
+            class="c23"
             data-testid="formik-select"
             for="currency"
           >
             <span
-              class="c18"
+              class="c24"
             >
               CURRENCY
             </span>
@@ -921,235 +1049,235 @@ exports[`Name of the group should display in the document with correct styles 1`
               type="input"
             >
               <option
-                class="c19"
+                class="c25"
                 value="THB"
               >
                 THB
               </option>
               <option
-                class="c19"
+                class="c25"
                 value="USD"
               >
                 USD
               </option>
               <option
-                class="c19"
+                class="c25"
                 value="AUD"
               >
                 AUD
               </option>
               <option
-                class="c19"
+                class="c25"
                 value="HKD"
               >
                 HKD
               </option>
               <option
-                class="c19"
+                class="c25"
                 value="CAD"
               >
                 CAD
               </option>
               <option
-                class="c19"
+                class="c25"
                 value="NZD"
               >
                 NZD
               </option>
               <option
-                class="c19"
+                class="c25"
                 value="SGD"
               >
                 SGD
               </option>
               <option
-                class="c19"
+                class="c25"
                 value="EUR"
               >
                 EUR
               </option>
               <option
-                class="c19"
+                class="c25"
                 value="HUF"
               >
                 HUF
               </option>
               <option
-                class="c19"
+                class="c25"
                 value="CHF"
               >
                 CHF
               </option>
               <option
-                class="c19"
+                class="c25"
                 value="GBP"
               >
                 GBP
               </option>
               <option
-                class="c19"
+                class="c25"
                 value="UAH"
               >
                 UAH
               </option>
               <option
-                class="c19"
+                class="c25"
                 value="JPY"
               >
                 JPY
               </option>
               <option
-                class="c19"
+                class="c25"
                 value="CZK"
               >
                 CZK
               </option>
               <option
-                class="c19"
+                class="c25"
                 value="DKK"
               >
                 DKK
               </option>
               <option
-                class="c19"
+                class="c25"
                 value="ISK"
               >
                 ISK
               </option>
               <option
-                class="c19"
+                class="c25"
                 value="NOK"
               >
                 NOK
               </option>
               <option
-                class="c19"
+                class="c25"
                 value="SEK"
               >
                 SEK
               </option>
               <option
-                class="c19"
+                class="c25"
                 value="HRK"
               >
                 HRK
               </option>
               <option
-                class="c19"
+                class="c25"
                 value="RON"
               >
                 RON
               </option>
               <option
-                class="c19"
+                class="c25"
                 value="BGN"
               >
                 BGN
               </option>
               <option
-                class="c19"
+                class="c25"
                 value="TRY"
               >
                 TRY
               </option>
               <option
-                class="c19"
+                class="c25"
                 value="ILS"
               >
                 ILS
               </option>
               <option
-                class="c19"
+                class="c25"
                 value="CLP"
               >
                 CLP
               </option>
               <option
-                class="c19"
+                class="c25"
                 value="PHP"
               >
                 PHP
               </option>
               <option
-                class="c19"
+                class="c25"
                 value="PLN"
               >
                 PLN
               </option>
               <option
-                class="c19"
+                class="c25"
                 value="MXN"
               >
                 MXN
               </option>
               <option
-                class="c19"
+                class="c25"
                 value="ZAR"
               >
                 ZAR
               </option>
               <option
-                class="c19"
+                class="c25"
                 value="BRL"
               >
                 BRL
               </option>
               <option
-                class="c19"
+                class="c25"
                 value="MYR"
               >
                 MYR
               </option>
               <option
-                class="c19"
+                class="c25"
                 value="RUB"
               >
                 RUB
               </option>
               <option
-                class="c19"
+                class="c25"
                 value="IDR"
               >
                 IDR
               </option>
               <option
-                class="c19"
+                class="c25"
                 value="INR"
               >
                 INR
               </option>
               <option
-                class="c19"
+                class="c25"
                 value="KRW"
               >
                 KRW
               </option>
               <option
-                class="c19"
+                class="c25"
                 value="CNY"
               >
                 CNY
               </option>
               <option
-                class="c19"
+                class="c25"
                 value="XDR"
               >
                 XDR
               </option>
             </select>
             <span
-              class="c16"
+              class="c22"
             />
           </label>
           <div
-            class="c20"
+            class="c26"
             data-testid="datepicker"
           >
             <div
-              class="c21"
+              class="c27"
             >
               <div
-                class="c22"
+                class="c28"
               >
                 SALE DATE
               </div>
@@ -1164,24 +1292,24 @@ exports[`Name of the group should display in the document with correct styles 1`
                     class=""
                     name="sale_date"
                     type="text"
-                    value=""
+                    value="2021-02-26"
                   />
                 </div>
               </div>
             </div>
             <span
-              class="c16"
+              class="c22"
             />
           </div>
           <div
-            class="c20"
+            class="c26"
             data-testid="datepicker"
           >
             <div
-              class="c21"
+              class="c27"
             >
               <div
-                class="c22"
+                class="c28"
               >
                 ISSUE DATE
               </div>
@@ -1202,16 +1330,16 @@ exports[`Name of the group should display in the document with correct styles 1`
               </div>
             </div>
             <span
-              class="c16"
+              class="c22"
             />
           </div>
           <h4
-            class="c13"
+            class="c19"
           >
             Payment details
           </h4>
           <label
-            class="c14"
+            class="c20"
             data-testid="formik-input"
             for="terms"
           >
@@ -1220,19 +1348,19 @@ exports[`Name of the group should display in the document with correct styles 1`
               name="terms"
               placeholder="PAYMENT TERMS"
               type="number"
-              value="0"
+              value=""
             />
             <div
-              class="c15"
+              class="c21"
             >
               PAYMENT TERMS
             </div>
             <span
-              class="c16"
+              class="c22"
             />
           </label>
           <label
-            class="c14"
+            class="c20"
             data-testid="formik-input"
             for="desc"
           >
@@ -1244,16 +1372,16 @@ exports[`Name of the group should display in the document with correct styles 1`
               value=""
             />
             <div
-              class="c15"
+              class="c21"
             >
               DESCRIPTION
             </div>
             <span
-              class="c16"
+              class="c22"
             />
           </label>
           <div
-            class="c23"
+            class="c29"
           >
             <span
               class=""
@@ -1262,56 +1390,56 @@ exports[`Name of the group should display in the document with correct styles 1`
             </span>
             <input
               checked=""
-              class="c24"
+              class="c30"
               id="payment_status-unpaid"
               name="payment_status"
               type="radio"
               value="unpaid"
             />
             <label
-              class="c25"
+              class="c31"
               for="payment_status-unpaid"
             >
               unpaid
               <span
-                class="c16"
+                class="c22"
               />
             </label>
             <input
-              class="c24"
+              class="c30"
               id="payment_status-paid"
               name="payment_status"
               type="radio"
               value="paid"
             />
             <label
-              class="c25"
+              class="c31"
               for="payment_status-paid"
             >
               paid
               <span
-                class="c16"
+                class="c22"
               />
             </label>
             <input
-              class="c24"
+              class="c30"
               id="payment_status-partialy paid"
               name="payment_status"
               type="radio"
               value="partialy paid"
             />
             <label
-              class="c25"
+              class="c31"
               for="payment_status-partialy paid"
             >
               partialy paid
               <span
-                class="c16"
+                class="c22"
               />
             </label>
           </div>
           <button
-            class="c26 c27"
+            class="c32 c33"
             type="submit"
           >
             Save
@@ -1320,10 +1448,10 @@ exports[`Name of the group should display in the document with correct styles 1`
       </form>
     </div>
     <aside
-      class="c28"
+      class="c34"
     >
       <button
-        class="c26"
+        class="c32"
       >
         Exit without save
       </button>

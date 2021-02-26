@@ -108,6 +108,7 @@ export const getAllOrders = createAsyncThunk('db/getAllOrders', async () => {
   const localUuid = getLocalValue('uuid');
   try {
     return await db.get(`data/${localUuid}/orders.json`).then(({ data }) => {
+      // console.log(Object.values(data.firstReg));
       return (
         // * if there is no order list created in DB, action will return empty array to the reducer
         data !== null

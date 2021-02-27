@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`FirstConfigModal should display in the document with correct styles 1`] = `
+exports[`FirstConfigModal should display in the document if there is no userConfig in db with correct styles 1`] = `
 .c1 {
   height: 60vh;
   width: 100%;

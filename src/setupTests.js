@@ -13,10 +13,12 @@ beforeAll(() => {
 
 beforeEach(() => {
   cleanup();
+  localStorage.setItem('uuid', 'test-uuid');
 });
 
 afterEach(() => {
   server.resetHandlers();
+  localStorage.clear();
 });
 
 afterAll(() => {

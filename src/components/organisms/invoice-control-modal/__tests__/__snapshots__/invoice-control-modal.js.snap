@@ -1292,7 +1292,7 @@ exports[`Name of the group should display in the document with correct styles 1`
                     class=""
                     name="sale_date"
                     type="text"
-                    value="2021-02-26"
+                    value="2021-02-27"
                   />
                 </div>
               </div>

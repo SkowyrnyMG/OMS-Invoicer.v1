@@ -165,6 +165,7 @@ const InvoiceControlModal = ({ closeModal, currentInvoice }) => {
     (order) => order.status === STATUS_OPTION.order.finished,
   );
 
+  console.log(finishedOrders);
   useEffect(() => {
     dispatch(getAllOrders());
 

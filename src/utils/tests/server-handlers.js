@@ -19,11 +19,12 @@ export const handlers = [
   rest.delete(`data/test-uuid/customers/2222222222.json`, (req, res, ctx) => {
     return res(ctx.status(200), ctx.json({ vat_number: '2222222222' }));
   }),
-  rest.get('data/test-uuid/config', (req, res, ctx) => {
-    return res(
-      ctx.status(200),
-      ctx.json({
-        data: {
+  rest.get(
+    'https://oms-invoicer-v1.firebaseio.com/data/test-uuid/config.json',
+    (req, res, ctx) => {
+      return res(
+        ctx.status(200),
+        ctx.json({
           bankDetails: {
             bankAccountNumber: '1256161635168362',
             bankName: 'SANTANDER',
@@ -40,10 +41,11 @@ export const handlers = [
             rootTown: 'DZIERŻONIÓW',
             rootVat: 'PL8822119889',
           },
-        },
-      }),
-    );
-  }),
+        }),
+      );
+    },
+  ),
+
   rest.get(
     'https://oms-invoicer-v1.firebaseio.com/data/test-uuid/orders.json',
     (req, res, ctx) => {
@@ -65,6 +67,7 @@ export const handlers = [
               tax: 23,
             },
           },
+          lastOrder: '',
         }),
       );
     },

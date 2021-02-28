@@ -49,7 +49,6 @@ const ComboboxInvoiceMenu = ({ items, handleSetItemFn, handleResetItemFn }) => {
     items: inputItems,
     itemToString,
     onInputValueChange: ({ inputValue }) => {
-      console.log(items);
       if (items) {
         const filteredItems = items.filter((item) => {
           const searchResult = `${item.order_number} - ${item.price} ${item.currency} - ${item.customer_name}`;

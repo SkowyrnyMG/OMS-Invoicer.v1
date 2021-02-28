@@ -59,6 +59,52 @@ describe('InvoiceModule', () => {
     expect(printButtonNode).not.toBeDisabled();
     expect(addNewButtonNode).not.toBeDisabled();
   });
+
+  test('should open empty invoice-control-modal if clicked on add new button and close it when clicked on Exit without save button', async () => {
+    renderWithReduxRouter(<InvoiceModule invoicesList={testInvoiceList} />);
+
+    const addNewButtonNode = screen.getByRole('button', { name: /add new/i });
+
+    userEvent.click(addNewButtonNode);
+
+    const modalCompanyNameInput = await screen.findByPlaceholderText(
+      /customer name/i,
+    );
+    const closeModalButtonNode = await screen.findByRole('button', {
+      name: /exit without save/i,
+    });
+
+    expect(modalCompanyNameInput).toBeInTheDocument();
+    expect(modalCompanyNameInput).not.toHaveValue();
+
+    userEvent.click(closeModalButtonNode);
+
+    expect(modalCompanyNameInput).not.toBeInTheDocument();
+  });
+
+  test('should open choosen position in invoice-control-modal if clicked on edit button and close on Exit without save button', async () => {
+    renderWithReduxRouter(<InvoiceModule invoicesList={testInvoiceList} />);
+
+    const editButtonNode = screen.getByRole('button', { name: /edit/i });
+    const positionName = screen.getByText('TESTINV-1');
+
+    userEvent.click(positionName);
+    userEvent.click(editButtonNode);
+
+    const modalCompanyNameInput = await screen.findByPlaceholderText(
+      /customer name/i,
+    );
+    const closeModalButtonNode = await screen.findByRole('button', {
+      name: /exit without save/i,
+    });
+
+    expect(modalCompanyNameInput).toBeInTheDocument();
+    expect(modalCompanyNameInput).toHaveValue('TEST COMPANYNAME');
+
+    userEvent.click(closeModalButtonNode);
+
+    expect(modalCompanyNameInput).not.toBeInTheDocument();
+  });
 });
 
 // TODO MODAL open close tests need too be added. Other integration tests will be created in invoice view tests.

@@ -78,6 +78,8 @@ const SummaryContainer = () => {
     dispatch(getAllCustomers());
   }, [dispatch]);
 
+  console.log(collectionsLength.customers);
+
   return (
     <AppBodyContainer>
       <CountersBox>

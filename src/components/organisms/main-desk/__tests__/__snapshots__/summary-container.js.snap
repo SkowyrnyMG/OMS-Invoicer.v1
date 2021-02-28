@@ -1,0 +1,451 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SummaryContainer should render in the document with correct styles 1`] = `
+.c0 {
+  height: 60vh;
+  width: 100%;
+  background-color: #FFFFFF;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 10px -4px rgba(0,0,0,0.25);
+  overflow: scroll;
+}
+
+.c3 {
+  margin-bottom: 0.5rem;
+  font-size: 20px;
+  font-weight: 400;
+  text-transform: uppercase;
+  color: #446DF6;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center !important;
+  -webkit-box-align: center !important;
+  -ms-flex-align: center !important;
+  align-items: center !important;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: 100%;
+  height: 12rem;
+  text-align: center;
+}
+
+.c2:not(:first-of-type) {
+  border-left: 1px solid #F0F0FD;
+}
+
+.c7 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding: 2rem;
+  -webkit-flex-basis: 30%;
+  -ms-flex-preferred-size: 30%;
+  flex-basis: 30%;
+  max-width: 30%;
+  height: 20rem;
+  color: #FFFFFF;
+  background: #446DF6;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.c7 svg {
+  position: absolute;
+  top: 50%;
+  right: 5%;
+  width: 10rem;
+  fill: currentColor;
+  opacity: 0.5;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.c11 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding: 2rem;
+  -webkit-flex-basis: 30%;
+  -ms-flex-preferred-size: 30%;
+  flex-basis: 30%;
+  max-width: 30%;
+  height: 20rem;
+  color: #FFFFFF;
+  background: #f6c044;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.c11 svg {
+  position: absolute;
+  top: 50%;
+  right: 5%;
+  width: 10rem;
+  fill: currentColor;
+  opacity: 0.5;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.c12 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding: 2rem;
+  -webkit-flex-basis: 30%;
+  -ms-flex-preferred-size: 30%;
+  flex-basis: 30%;
+  max-width: 30%;
+  height: 20rem;
+  color: #FFFFFF;
+  background: #f66744;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.c12 svg {
+  position: absolute;
+  top: 50%;
+  right: 5%;
+  width: 10rem;
+  fill: currentColor;
+  opacity: 0.5;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.c8 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.c9 {
+  font-size: 34px;
+  font-weight: 700;
+}
+
+.c10 {
+  padding: 0.5rem;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 100%;
+  color: inherit !important;
+  font-size: 14px;
+  text-align: center;
+  background: #00000055;
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+
+.c1 {
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  border-bottom: 1px solid #F0F0FD;
+}
+
+.c4 {
+  height: 70%;
+  width: 100%;
+  padding: 1rem 4.5rem;
+}
+
+.c6 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+}
+
+.c5 {
+  margin: 2rem 0 -4rem;
+  font-size: 34px;
+  color: #446DF6;
+}
+
+@media (max-width:767px) {
+  .c0 {
+    height: 60vh;
+  }
+}
+
+@media (max-width:850px) {
+  .c2 {
+    border-bottom: 1px solid #F0F0FD;
+  }
+}
+
+@media (max-width:850px) {
+  .c7 {
+    width: 100%;
+    max-width: 90%;
+    min-width: 25rem;
+    min-height: 20rem;
+    margin-bottom: 2rem;
+  }
+
+  .c7:first-child {
+    margin-top: 8rem;
+  }
+}
+
+@media (max-width:850px) {
+  .c11 {
+    width: 100%;
+    max-width: 90%;
+    min-width: 25rem;
+    min-height: 20rem;
+    margin-bottom: 2rem;
+  }
+
+  .c11:first-child {
+    margin-top: 8rem;
+  }
+}
+
+@media (max-width:850px) {
+  .c12 {
+    width: 100%;
+    max-width: 90%;
+    min-width: 25rem;
+    min-height: 20rem;
+    margin-bottom: 2rem;
+  }
+
+  .c12:first-child {
+    margin-top: 8rem;
+  }
+}
+
+@media (max-width:850px) {
+  .c1 {
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width:850px) {
+  .c6 {
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-align-items: space-between;
+    -webkit-box-align: space-between;
+    -ms-flex-align: space-between;
+    align-items: space-between;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+  }
+}
+
+@media (max-width:850px) {
+  .c5 {
+    text-align: center;
+  }
+}
+
+<div
+  class="c0"
+>
+  <div
+    class="c1"
+  >
+    <div
+      class="c2"
+    >
+      <h5
+        class="c3"
+      >
+        ORDERS IN PROGRESS
+      </h5>
+      <p>
+        0
+      </p>
+    </div>
+    <div
+      class="c2"
+    >
+      <h5
+        class="c3"
+      >
+        FINISHED ORDERS WITHOUT INVOICE
+      </h5>
+      <p>
+        0
+      </p>
+    </div>
+    <div
+      class="c2"
+    >
+      <h5
+        class="c3"
+      >
+        UNPAID INVOICES
+      </h5>
+      <p>
+        0
+      </p>
+    </div>
+  </div>
+  <div
+    class="c4"
+  >
+    <h3
+      class="c5"
+    >
+      SUMMARY
+    </h3>
+    <div
+      class="c6"
+    >
+      <div
+        class="c7"
+      >
+        <div
+          class="c8"
+        >
+          <span
+            class="c9"
+          >
+            0
+          </span>
+          <h3>
+            Total customers
+          </h3>
+          <svg>
+            clients-icon.svg
+          </svg>
+        </div>
+        <a
+          class="c10"
+          href="/app/customers"
+        >
+          View more..
+        </a>
+      </div>
+      <div
+        class="c11"
+      >
+        <div
+          class="c8"
+        >
+          <span
+            class="c9"
+          >
+            0
+          </span>
+          <h3>
+            Total orders
+          </h3>
+          <svg>
+            orders-icon.svg
+          </svg>
+        </div>
+        <a
+          class="c10"
+          href="/app/orders"
+        >
+          View more..
+        </a>
+      </div>
+      <div
+        class="c12"
+      >
+        <div
+          class="c8"
+        >
+          <span
+            class="c9"
+          >
+            0
+          </span>
+          <h3>
+            Total invoices
+          </h3>
+          <svg>
+            invoice-icon.svg
+          </svg>
+        </div>
+        <a
+          class="c10"
+          href="/app/invoices"
+        >
+          View more..
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+`;

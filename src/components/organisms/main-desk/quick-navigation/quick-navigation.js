@@ -74,11 +74,6 @@ const QuickNavigation = () => {
       >
         <NewInvoiceIcon />
       </ShortcutBox>
-      {/* {shortcutDetails.map(({ title, desc, comp }) => (
-        <ShortcutBox title={title} description={desc} key={title}>
-          {comp}
-        </ShortcutBox>
-      ))} */}
     </Wrapper>
   );
 };

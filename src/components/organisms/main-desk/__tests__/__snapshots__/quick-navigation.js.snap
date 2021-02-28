@@ -1,0 +1,151 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`QuickNavigation should display in the document with correct styles 1`] = `
+.c2 {
+  margin-bottom: 0.5rem;
+  font-size: 20px;
+  font-weight: 400;
+  text-transform: uppercase;
+  color: #446DF6;
+}
+
+.c1 {
+  display: grid;
+  grid-template-columns: 2fr 4fr;
+  grid-template-rows: repeat(2,1fr);
+  padding-right: 3rem;
+  height: 12rem;
+  min-width: 24rem;
+  width: 30%;
+  text-align: left;
+  background-color: #FFFFFF;
+  border: 2px solid transparent;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 10px -4px rgba(0,0,0,0.25);
+  -webkit-transition: all 0.25s;
+  transition: all 0.25s;
+  cursor: pointer;
+}
+
+.c1:hover {
+  border: 2px solid #446DF6;
+}
+
+.c1 svg {
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+  justify-self: center;
+  grid-row: 1 / -1;
+  grid-column: 1 / 2;
+  width: 4rem;
+  fill: #446DF6;
+}
+
+.c3 {
+  -webkit-align-self: end;
+  -ms-flex-item-align: end;
+  align-self: end;
+}
+
+.c4 {
+  font-size: 14px;
+  font-style: italic;
+  color: #8F8F8F;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin-bottom: 5rem;
+}
+
+.c0 > *:not(:last-child) {
+  margin-right: 7.5rem;
+}
+
+@media (max-width:570px) {
+  .c1 {
+    width: 100%;
+    margin: 0 0 2rem !important;
+  }
+}
+
+@media (max-width:1168px) {
+  .c0 {
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-pack: space-evenly;
+    -webkit-justify-content: space-evenly;
+    -ms-flex-pack: space-evenly;
+    justify-content: space-evenly;
+  }
+
+  .c0 > *:not(:last-child) {
+    margin: 0 1rem 1rem 0;
+  }
+}
+
+<div
+  class="c0"
+>
+  <button
+    class="c1"
+  >
+    <svg>
+      new-client-icon.svg
+    </svg>
+    <h5
+      class="c2 c3"
+    >
+      NEW CUSTOMER
+    </h5>
+    <p
+      class="c4"
+    >
+      add new customer details from VIES or fill the form manualy
+    </p>
+  </button>
+  <button
+    class="c1"
+  >
+    <svg>
+      new-order-icon.svg
+    </svg>
+    <h5
+      class="c2 c3"
+    >
+      NEW ORDER
+    </h5>
+    <p
+      class="c4"
+    >
+      create new order and keep an eye on it’s progress
+    </p>
+  </button>
+  <button
+    class="c1"
+  >
+    <svg>
+      new-invoice-icon.svg
+    </svg>
+    <h5
+      class="c2 c3"
+    >
+      NEW INVOICE
+    </h5>
+    <p
+      class="c4"
+    >
+      issue invoice from order or create custom one
+    </p>
+  </button>
+</div>
+`;

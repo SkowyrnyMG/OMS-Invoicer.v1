@@ -19,7 +19,6 @@ import {
 
 const InvoicesModule = ({ invoicesList }) => {
   const dispatch = useDispatch();
-  console.log(invoicesList);
   const [currentInvoice, setCurrentInvoice] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isPDFWindowOpen, setIsPDFWindowOpen] = useState(false);

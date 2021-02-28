@@ -72,16 +72,72 @@ export const handlers = [
       );
     },
   ),
-];
 
-// currency: 'EUR',
-// customer_address: 'SZCZECIŃSKA 11, PL54517, WROCŁAW, PL,',
-// customer_name: 'BERGER BAU POLSKA SPÓŁKA Z OGRANICZONĄ ODPOWIEDZIALNOŚCIĄ',
-// customer_vat: 'PL8981011638',
-// desc: 'fsdafsad',
-// email: '',
-// finish_date: '2021-02-24T23:00:00.000Z',
-// order_number: 'ORD-8-2021',
-// price: 555,
-// status: 'finished',
-// tax: 23,
+  rest.get(
+    'https://oms-invoicer-v1.firebaseio.com/data/test-uuid/invoices.json',
+    (req, res, ctx) => {
+      return res(
+        ctx.status(200),
+        ctx.json({
+          firstReg: {
+            TESTINV: {
+              currency: 'EUR',
+              customer_address: 'TEST STREET, 00-000, TOWN, PL,',
+              customer_name: 'TEST COMPANYNAME',
+              customer_vat: 'PL2222222222',
+              desc: 'This is test description',
+              invoice_number: 'TESTINV',
+              issue_date: '2021-02-03',
+              left_to_pay: 0,
+              order_number: 'TESTORD',
+              payment_status: 'unpaid',
+              payment_value: 0,
+              price_gross: 615,
+              price_net: 500,
+              sale_date: '2021-02-04',
+              tax: 23,
+              terms: 7,
+            },
+          },
+        }),
+      );
+    },
+  ),
+
+  rest.get(
+    'https://oms-invoicer-v1.firebaseio.com/data/test-uuid/customers.json',
+    (req, res, ctx) => {
+      return res(
+        ctx.status(200),
+        ctx.json({
+          1111111111: {
+            address: 'TEST ADDRES 1',
+            vat_number: '1111111111',
+            name: 'TEST NAME 1',
+            country: 'PL',
+            postCode: '00-000',
+            street: 'Test street 1',
+            town: 'town1',
+            contactEmail: 'test@mail1.pl',
+            contactPerson: 'Test Contact 1',
+            contactPhone: 'Test phone 1',
+            tax: 23,
+          },
+          2222222222: {
+            address: 'TEST ADDRES 2',
+            name: 'TEST NAME 2',
+            vat_number: '2222222222',
+            country: 'PL',
+            town: 'town2',
+            street: 'Test street 2',
+            postCode: '00-000',
+            contactEmail: 'test@mail2.pl',
+            contactPerson: 'Test Contact 2',
+            contactPhone: 'Test phone 2',
+            tax: 23,
+          },
+        }),
+      );
+    },
+  ),
+];

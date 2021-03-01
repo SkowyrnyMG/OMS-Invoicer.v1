@@ -1,0 +1,1321 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OrderControlModal should display in the document with correct styles 1`] = `
+.c1 {
+  display: grid;
+  grid-template-columns: 65vw min-content;
+  grid-template-rows: min-content;
+  grid-column-gap: 2rem;
+}
+
+.c2 {
+  height: 60vh;
+  width: 100%;
+  background-color: #FFFFFF;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 10px -4px rgba(0,0,0,0.25);
+  overflow: scroll;
+}
+
+.c7 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: #00000055;
+  z-index: 50000;
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c8 {
+  position: absolute;
+  text-align: center;
+  padding: 2rem 3rem;
+  width: 80%;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  background: #F8F8FF;
+  border-radius: 5px;
+}
+
+.c9 {
+  margin: 2rem;
+  font-size: 24px !important;
+}
+
+.c10 {
+  padding: 2rem;
+  text-align: left;
+}
+
+.c22 {
+  margin-bottom: 1rem;
+  width: 100%;
+  font-size: 14px;
+  color: #F25C54;
+}
+
+.c20 {
+  position: relative;
+  display: block;
+  width: 100%;
+  margin-bottom: 3rem;
+}
+
+.c20:last-of-type {
+  margin-bottom: 4rem;
+}
+
+.c20 input {
+  border-color: #8F8F8F;
+  -webkit-transition: 0.5s -webkit-transform;
+  -webkit-transition: 0.5s transform;
+  transition: 0.5s transform;
+}
+
+.c20 input:focus {
+  -webkit-transform: translateX(2px);
+  -ms-transform: translateX(2px);
+  transform: translateX(2px);
+}
+
+.c20 input:placeholder-shown + div {
+  opacity: 0;
+  top: 50%;
+}
+
+.c20 input,
+.c20 input::-webkit-input-placeholder {
+  color: #8F8F8F;
+  border-color: currentColor;
+}
+
+.c20 input,
+.c20 input::-moz-placeholder {
+  color: #8F8F8F;
+  border-color: currentColor;
+}
+
+.c20 input,
+.c20 input:-ms-input-placeholder {
+  color: #8F8F8F;
+  border-color: currentColor;
+}
+
+.c20 input,
+.c20 input::placeholder {
+  color: #8F8F8F;
+  border-color: currentColor;
+}
+
+.c21 {
+  position: absolute;
+  top: -1rem;
+  left: 0.3rem;
+  font-size: 14px;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  -webkit-transition: all 0.25s;
+  transition: all 0.25s;
+  pointer-events: none;
+}
+
+.c33 {
+  position: absolute;
+  opacity: 0;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.c33:checked + label {
+  font-weight: 700;
+  opacity: 1;
+}
+
+.c34 {
+  display: block;
+  width: 100%;
+  margin-bottom: 3rem;
+  text-align: center;
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.c34:not(:last-child) {
+  border-right: 1px solid #F0F0FD;
+}
+
+.c34:last-of-type {
+  margin-bottom: 4rem;
+}
+
+.c24 {
+  display: block;
+  margin-bottom: 3rem;
+  width: 100%;
+  color: #000;
+}
+
+.c24:not(:last-child) {
+  border-right: 1px solid #F0F0FD;
+}
+
+.c24:last-of-type {
+  margin-bottom: 4rem;
+}
+
+.c24 select {
+  padding: 0.25rem 1rem;
+  cursor: pointer;
+}
+
+.c25 {
+  margin-right: 2rem;
+}
+
+.c26 {
+  width: 2rem !important;
+}
+
+.c27 {
+  margin-bottom: 4rem;
+}
+
+.c27 * {
+  font-family: 'Montserrat' !important;
+}
+
+.c27 .react-datepicker-wrapper {
+  display: inline-block;
+  padding: 1rem;
+  border: 0;
+}
+
+.c27 .react-datepicker-wrapper {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.c27 .react-datepicker-wrapper input {
+  cursor: pointer;
+  -webkit-transition: 0.5s -webkit-transform;
+  -webkit-transition: 0.5s transform;
+  transition: 0.5s transform;
+}
+
+.c27 .react-datepicker-wrapper input:focus {
+  -webkit-transform: translateX(2px);
+  -ms-transform: translateX(2px);
+  transform: translateX(2px);
+}
+
+.c27 .react-datepicker-wrapper input:disabled {
+  background: #00000055;
+  color: #000;
+  font-weight: 700;
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.c27 .react-datepicker__triangle {
+  display: none;
+}
+
+.c27 .react-datepicker {
+  width: 100%;
+  z-index: 999999999999999;
+}
+
+.c27 .react-datepicker__day {
+  padding: 5px 15px;
+  width: 40px;
+  text-align: center;
+  font-size: 16px;
+}
+
+.c27 .react-datepicker__day--outside-month {
+  color: #446DF644 !important;
+}
+
+.c27 .react-datepicker__day--weekend {
+  color: #8F8F8F;
+  font-weight: 700;
+}
+
+.c27 .react-datepicker__day--selected {
+  background-color: #446DF6;
+  color: #FFFFFF;
+}
+
+.c27 .react-datepicker__day-name {
+  padding: 15px;
+  width: 40px;
+  font-size: 14px;
+}
+
+.c27 .react-datepicker__navigation {
+  width: 0;
+  height: 0;
+  border-width: 0.9rem;
+}
+
+.c27 .react-datepicker__current-month {
+  font-size: 14px;
+}
+
+.c27 .react-datepicker__month-container {
+  width: 100%;
+}
+
+.c28 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.c29 {
+  position: absolute;
+  top: -60%;
+  -webkit-align-self: flex-end;
+  -ms-flex-item-align: end;
+  align-self: flex-end;
+  font-size: 14px;
+  -webkit-transition: all 0.25s;
+  transition: all 0.25s;
+  pointer-events: none;
+}
+
+.c17 {
+  padding: 0.5rem 1rem;
+  border: 2px solid #446DF6;
+  border-radius: 0.5rem;
+  background: none;
+  cursor: pointer;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+}
+
+.c17:not(:first-child) {
+  margin-left: 2rem;
+}
+
+.c17:hover {
+  background: #446DF6;
+  color: #FFFFFF;
+}
+
+.c18 {
+  position: absolute;
+  max-height: 25rem;
+  padding: 2rem;
+  list-style: none;
+  overflow-y: auto;
+  background: #F8F8FF;
+  box-shadow: 0 4px 5px rgba(0,0,0,0.1);
+  opacity: 0;
+  visibility: hidden;
+  z-index: 1000;
+}
+
+.c15 {
+  padding-left: 0.5rem;
+  margin-bottom: 1rem;
+  width: 100%;
+  height: 3rem;
+  font-size: 16px;
+}
+
+.c14 {
+  position: relative;
+  margin-bottom: 3rem;
+}
+
+.c16 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+}
+
+.c19 {
+  opacity: 0;
+  display: none;
+}
+
+.c37 > * {
+  margin-bottom: 0.5rem;
+}
+
+.c11 {
+  display: inline-block;
+  padding: 1rem 2rem;
+  margin-top: 0;
+  font-weight: 700;
+  color: #000 !important;
+  border-left: 1px solid #F0F0FD;
+  background: none;
+  -webkit-transition: -webkit-transform 0.25s;
+  -webkit-transition: transform 0.25s;
+  transition: transform 0.25s;
+  border: none;
+}
+
+.c11:hover {
+  -webkit-transform: translateY(-2px);
+  -ms-transform: translateY(-2px);
+  transform: translateY(-2px);
+}
+
+.c35 {
+  padding: 0.8rem 1rem;
+  width: 16rem;
+  font-size: inherit;
+  text-align: left;
+  color: #FFFFFF;
+  background-color: #446DF6;
+  border: none;
+  outline: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  -webkit-transition: 0.25s -webkit-transform;
+  -webkit-transition: 0.25s transform;
+  transition: 0.25s transform;
+}
+
+.c35:hover,
+.c35:active {
+  -webkit-transform: translateX(2px);
+  -ms-transform: translateX(2px);
+  transform: translateX(2px);
+}
+
+.c35:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.c35::first-letter {
+  text-transform: uppercase;
+}
+
+.c4 {
+  position: absolute;
+  top: 3%;
+  left: 1%;
+  pointer-events: none;
+}
+
+.c4 * {
+  pointer-events: auto;
+}
+
+.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  line-height: 4rem;
+  color: #446DF6;
+  background: transparent;
+  font-weight: 700;
+  font-size: 20px;
+  border-radius: 50%;
+  border: 2px solid currentColor;
+  outline: none;
+  outline: none;
+  cursor: help;
+  -webkit-transition: all 0.25s;
+  transition: all 0.25s;
+}
+
+.c5:hover,
+.c5:focus {
+  -webkit-transform: translateY(-2px);
+  -ms-transform: translateY(-2px);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 5px rgba(0,0,0,0.1);
+}
+
+.c5:active {
+  -webkit-transform: translateY(0px);
+  -ms-transform: translateY(0px);
+  transform: translateY(0px);
+  box-shadow: none;
+}
+
+.c6 {
+  position: absolute;
+  top: 200%;
+  left: 0;
+  padding: 1rem 2rem;
+  min-width: 30vw;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  color: #FFFFFF;
+  font-size: 16px;
+  line-height: 1.6;
+  text-align: left;
+  background: #446DF6;
+  border-radius: 0.5rem;
+  opacity: 0;
+  -webkit-transform: translateY(-3rem) scale(0);
+  -ms-transform: translateY(-3rem) scale(0);
+  transform: translateY(-3rem) scale(0);
+  -webkit-transition: all 0.25s;
+  transition: all 0.25s;
+  z-index: 1000;
+}
+
+.c6::before {
+  content: '';
+  position: absolute;
+  top: -1.8rem;
+  left: 0.5rem;
+  width: 2rem;
+  height: 2rem;
+  background-color: #446DF6;
+  -webkit-clip-path: polygon(50% 0,100% 100%,0 100%);
+  clip-path: polygon(50% 0,100% 100%,0 100%);
+  z-index: 10000;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding-top: 5rem;
+  top: 0;
+  left: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #F8F8FF;
+  z-index: 400;
+}
+
+.c3 {
+  position: relative;
+  overflow: hidden !important;
+}
+
+.c12 {
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  padding: 5rem;
+}
+
+.c12 > div {
+  padding: 0 4rem;
+  -webkit-flex-basis: 50%;
+  -ms-flex-preferred-size: 50%;
+  flex-basis: 50%;
+}
+
+.c12 > div:first-child {
+  border-right: 1px solid #F0F0FD;
+}
+
+.c12 > div:nth-child(2) {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c36 {
+  -webkit-align-self: flex-end;
+  -ms-flex-item-align: end;
+  align-self: flex-end;
+  justify-self: flex-end;
+  margin-bottom: 3rem;
+}
+
+.c13 {
+  margin-bottom: 4rem;
+}
+
+.c30 {
+  display: grid;
+  grid-template-columns: min-content 1fr;
+}
+
+.c32 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+  -webkit-justify-content: space-evenly;
+  -ms-flex-pack: space-evenly;
+  justify-content: space-evenly;
+  margin-bottom: 2rem;
+  width: 100%;
+}
+
+.c31 {
+  font-weight: 700;
+}
+
+.c23 {
+  opacity: 0.5;
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
+@media (max-width:1300px) {
+  .c1 {
+    grid-template-columns: 63vw min-content;
+  }
+}
+
+@media (max-width:1168px) {
+  .c1 {
+    grid-template-columns: 73vw min-content;
+  }
+}
+
+@media (max-width:767px) {
+  .c1 {
+    grid-template-columns: 90vw;
+  }
+}
+
+@media (max-width:767px) {
+  .c2 {
+    height: 60vh;
+  }
+}
+
+@media (max-width:1540px) {
+  .c27 .react-datepicker {
+    left: 0 !important;
+  }
+}
+
+@media (max-width:1540px) {
+
+}
+
+@media (max-width:680px) {
+  .c27 .react-datepicker__day {
+    padding: 2px 5px;
+  }
+}
+
+@media (max-width:480px) {
+  .c27 .react-datepicker__day {
+    width: 35px;
+  }
+}
+
+@media (max-width:374px) {
+  .c27 .react-datepicker__day {
+    width: 32px;
+  }
+}
+
+@media (max-width:480px) {
+  .c27 .react-datepicker__day-name {
+    width: 35px;
+    font-size: 14px;
+    padding: 5px;
+  }
+}
+
+@media (max-width:374px) {
+  .c27 .react-datepicker__day-name {
+    width: 32px;
+  }
+}
+
+@media (max-width:767px) {
+  .c37 {
+    grid-row: 1 / 2;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-column-gap: 2%;
+    justify-items: center;
+    margin-bottom: 2rem;
+  }
+
+  .c37 > * {
+    margin-bottom: 0.5rem;
+    margin-right: 0.5rem;
+  }
+}
+
+@media (max-width:570px) {
+  .c37 {
+    grid-template-columns: repeat(2,1fr);
+  }
+}
+
+@media (max-width:374px) {
+  .c37 {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width:767px) {
+  .c35 {
+    width: 100%;
+  }
+}
+
+@media (max-width:1168px) {
+  .c12 {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width:680px) {
+  .c12 {
+    padding: 5rem 0;
+  }
+
+  .c12 > * {
+    padding: 0 1rem !important;
+    -webkit-flex-basis: 100%;
+    -ms-flex-preferred-size: 100%;
+    flex-basis: 100%;
+  }
+}
+
+<div
+  class="c0"
+>
+  <div
+    class="c1"
+  >
+    <div
+      class="c2 c3"
+    >
+      <div
+        class="c4"
+      >
+        <button
+          class="c5"
+        >
+          ?
+        </button>
+        <div
+          class="c6 tooltip"
+        >
+          In this modal you can add new or edit already existing order. To create new order you have to choose customer from your database using "Choose a Customer" field. Then you can add details of new order. To edit already existing order just make your changes and click on save button. If the order is finished you need to change it's status to "finished", otherwise you will not be able to issue an invoice.
+        </div>
+      </div>
+      <div
+        class="c7"
+        data-testid="warning-popup"
+      >
+        <div
+          class="c8"
+        >
+          <h3
+            class="c9"
+          >
+            Any Customer found
+          </h3>
+          <p
+            class="c10"
+          >
+            To create new order you have to add some Customers first!! Please go back to
+            <a
+              class="c11"
+              href="/app/customers"
+              linktype=""
+            >
+               customers tab 
+            </a>
+            and add new Customer!
+          </p>
+        </div>
+      </div>
+      <form
+        action="#"
+        class="c12"
+      >
+        <div>
+          <h4
+            class="c13"
+          >
+            Customer info
+          </h4>
+          <div
+            class="c14"
+            data-testid="combobox-order-menu"
+          >
+            <label
+              for="downshift-0-input"
+              id="downshift-0-label"
+            >
+              Choose a Customer:
+            </label>
+            <div
+              aria-expanded="false"
+              aria-haspopup="listbox"
+              aria-owns="downshift-0-menu"
+              role="combobox"
+            >
+              <input
+                aria-autocomplete="list"
+                aria-controls="downshift-0-menu"
+                aria-labelledby="downshift-0-label"
+                autocomplete="off"
+                class="c15"
+                id="downshift-0-input"
+                placeholder="Type a Customer name.."
+                value=""
+              />
+              <div
+                class="c16"
+              >
+                <button
+                  aria-label="toggle menu"
+                  class="c17"
+                  id="downshift-0-toggle-button"
+                  tabindex="-1"
+                  type="button"
+                >
+                  Show
+                </button>
+                <button
+                  class="c17"
+                  type="button"
+                >
+                  Accept
+                </button>
+                <button
+                  class="c17"
+                  type="button"
+                >
+                  Reset
+                </button>
+              </div>
+            </div>
+            <ul
+              aria-labelledby="downshift-0-label"
+              class="c18"
+              id="downshift-0-menu"
+              role="listbox"
+            >
+              <div
+                class="c19"
+              >
+                Nothing found...
+              </div>
+            </ul>
+          </div>
+          <label
+            class="c20"
+            data-testid="formik-input"
+            for="customer_name"
+          >
+            <input
+              disabled=""
+              id="customer_name"
+              name="customer_name"
+              placeholder="CUSTOMER NAME"
+              type="text"
+              value=""
+            />
+            <div
+              class="c21"
+            >
+              CUSTOMER NAME
+            </div>
+            <span
+              class="c22"
+            />
+          </label>
+          <label
+            class="c20"
+            data-testid="formik-input"
+            for="customer_vat"
+          >
+            <input
+              disabled=""
+              id="customer_vat"
+              name="customer_vat"
+              placeholder="CUSTOMER VAT"
+              type="text"
+              value=""
+            />
+            <div
+              class="c21"
+            >
+              CUSTOMER VAT
+            </div>
+            <span
+              class="c22"
+            />
+          </label>
+          <label
+            class="c20"
+            data-testid="formik-input"
+            for="customer_address"
+          >
+            <input
+              disabled=""
+              id="customer_address"
+              name="customer_address"
+              placeholder="CUSTOMER ADDRESS"
+              type="text"
+              value=""
+            />
+            <div
+              class="c21"
+            >
+              CUSTOMER ADDRESS
+            </div>
+            <span
+              class="c22"
+            />
+          </label>
+        </div>
+        <div
+          class="c23"
+        >
+          <h4
+            class="c13"
+          >
+            Order details
+          </h4>
+          <h4
+            class="c13"
+          >
+            <span>
+              Order Number: 
+            </span>
+            -NaN-undefined
+          </h4>
+          <label
+            class="c20"
+            data-testid="formik-input"
+            for="price"
+          >
+            <input
+              id="price"
+              name="price"
+              placeholder="PRICE"
+              type="number"
+              value=""
+            />
+            <div
+              class="c21"
+            >
+              PRICE
+            </div>
+            <span
+              class="c22"
+            />
+          </label>
+          <label
+            class="c24"
+            data-testid="formik-select"
+            for="currency"
+          >
+            <span
+              class="c25"
+            >
+              CURRENCY
+            </span>
+            <select
+              id="currency"
+              name="currency"
+              type="input"
+            >
+              <option
+                class="c26"
+                value="THB"
+              >
+                THB
+              </option>
+              <option
+                class="c26"
+                value="USD"
+              >
+                USD
+              </option>
+              <option
+                class="c26"
+                value="AUD"
+              >
+                AUD
+              </option>
+              <option
+                class="c26"
+                value="HKD"
+              >
+                HKD
+              </option>
+              <option
+                class="c26"
+                value="CAD"
+              >
+                CAD
+              </option>
+              <option
+                class="c26"
+                value="NZD"
+              >
+                NZD
+              </option>
+              <option
+                class="c26"
+                value="SGD"
+              >
+                SGD
+              </option>
+              <option
+                class="c26"
+                selected=""
+                value="EUR"
+              >
+                EUR
+              </option>
+              <option
+                class="c26"
+                value="HUF"
+              >
+                HUF
+              </option>
+              <option
+                class="c26"
+                value="CHF"
+              >
+                CHF
+              </option>
+              <option
+                class="c26"
+                value="GBP"
+              >
+                GBP
+              </option>
+              <option
+                class="c26"
+                value="UAH"
+              >
+                UAH
+              </option>
+              <option
+                class="c26"
+                value="JPY"
+              >
+                JPY
+              </option>
+              <option
+                class="c26"
+                value="CZK"
+              >
+                CZK
+              </option>
+              <option
+                class="c26"
+                value="DKK"
+              >
+                DKK
+              </option>
+              <option
+                class="c26"
+                value="ISK"
+              >
+                ISK
+              </option>
+              <option
+                class="c26"
+                value="NOK"
+              >
+                NOK
+              </option>
+              <option
+                class="c26"
+                value="SEK"
+              >
+                SEK
+              </option>
+              <option
+                class="c26"
+                value="HRK"
+              >
+                HRK
+              </option>
+              <option
+                class="c26"
+                value="RON"
+              >
+                RON
+              </option>
+              <option
+                class="c26"
+                value="BGN"
+              >
+                BGN
+              </option>
+              <option
+                class="c26"
+                value="TRY"
+              >
+                TRY
+              </option>
+              <option
+                class="c26"
+                value="ILS"
+              >
+                ILS
+              </option>
+              <option
+                class="c26"
+                value="CLP"
+              >
+                CLP
+              </option>
+              <option
+                class="c26"
+                value="PHP"
+              >
+                PHP
+              </option>
+              <option
+                class="c26"
+                value="PLN"
+              >
+                PLN
+              </option>
+              <option
+                class="c26"
+                value="MXN"
+              >
+                MXN
+              </option>
+              <option
+                class="c26"
+                value="ZAR"
+              >
+                ZAR
+              </option>
+              <option
+                class="c26"
+                value="BRL"
+              >
+                BRL
+              </option>
+              <option
+                class="c26"
+                value="MYR"
+              >
+                MYR
+              </option>
+              <option
+                class="c26"
+                value="RUB"
+              >
+                RUB
+              </option>
+              <option
+                class="c26"
+                value="IDR"
+              >
+                IDR
+              </option>
+              <option
+                class="c26"
+                value="INR"
+              >
+                INR
+              </option>
+              <option
+                class="c26"
+                value="KRW"
+              >
+                KRW
+              </option>
+              <option
+                class="c26"
+                value="CNY"
+              >
+                CNY
+              </option>
+              <option
+                class="c26"
+                value="XDR"
+              >
+                XDR
+              </option>
+            </select>
+            <span
+              class="c22"
+            />
+          </label>
+          <div
+            class="c27"
+            data-testid="datepicker"
+          >
+            <div
+              class="c28"
+            >
+              <div
+                class="c29"
+              >
+                Estimated Completion Date
+              </div>
+              <div
+                class="react-datepicker-wrapper"
+              >
+                <div
+                  class="react-datepicker__input-container"
+                >
+                  <input
+                    autocomplete="off"
+                    class=""
+                    name="finish_date"
+                    type="text"
+                    value=""
+                  />
+                </div>
+              </div>
+            </div>
+            <span
+              class="c22"
+            />
+          </div>
+          <label
+            class="c20"
+            data-testid="formik-input"
+            for="desc"
+          >
+            <input
+              id="desc"
+              name="desc"
+              placeholder="DESCRIPTION"
+              type="text"
+              value=""
+            />
+            <div
+              class="c21"
+            >
+              DESCRIPTION
+            </div>
+            <span
+              class="c22"
+            />
+          </label>
+          <div
+            class="c30"
+          >
+            <span
+              class="c31"
+            >
+              STATUS:
+            </span>
+            <div
+              class="c32"
+            >
+              <input
+                checked=""
+                class="c33"
+                id="status-in progress"
+                name="status"
+                type="radio"
+                value="in progress"
+              />
+              <label
+                class="c34"
+                for="status-in progress"
+              >
+                in progress
+                <span
+                  class="c22"
+                />
+              </label>
+              <input
+                class="c33"
+                id="status-finished"
+                name="status"
+                type="radio"
+                value="finished"
+              />
+              <label
+                class="c34"
+                for="status-finished"
+              >
+                finished
+                <span
+                  class="c22"
+                />
+              </label>
+            </div>
+          </div>
+          <button
+            class="c35 c36"
+            type="submit"
+          >
+            Save
+          </button>
+        </div>
+      </form>
+    </div>
+    <aside
+      class="c37"
+    >
+      <button
+        class="c35"
+      >
+        Exit without save
+      </button>
+    </aside>
+  </div>
+</div>
+`;

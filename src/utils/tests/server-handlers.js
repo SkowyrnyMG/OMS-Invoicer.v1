@@ -60,7 +60,7 @@ export const handlers = [
               customer_vat: '2222222222',
               desc: 'fsdafsad',
               email: '',
-              finish_date: '2021-02-24T23:00:00.000Z',
+              finish_date: new Date(2021, 1, 30),
               order_number: 'TESTORD',
               price: 555,
               status: 'finished',

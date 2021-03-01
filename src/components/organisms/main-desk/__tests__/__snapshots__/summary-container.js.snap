@@ -378,6 +378,7 @@ exports[`SummaryContainer should render in the document with correct styles 1`] 
         >
           <span
             class="c9"
+            data-testid="summaryCounter"
           >
             0
           </span>
@@ -392,7 +393,7 @@ exports[`SummaryContainer should render in the document with correct styles 1`] 
           class="c10"
           href="/app/customers"
         >
-          View more..
+          View more customers..
         </a>
       </div>
       <div
@@ -403,6 +404,7 @@ exports[`SummaryContainer should render in the document with correct styles 1`] 
         >
           <span
             class="c9"
+            data-testid="summaryCounter"
           >
             0
           </span>
@@ -417,7 +419,7 @@ exports[`SummaryContainer should render in the document with correct styles 1`] 
           class="c10"
           href="/app/orders"
         >
-          View more..
+          View more orders..
         </a>
       </div>
       <div
@@ -428,6 +430,7 @@ exports[`SummaryContainer should render in the document with correct styles 1`] 
         >
           <span
             class="c9"
+            data-testid="summaryCounter"
           >
             0
           </span>
@@ -442,7 +445,7 @@ exports[`SummaryContainer should render in the document with correct styles 1`] 
           class="c10"
           href="/app/invoices"
         >
-          View more..
+          View more invoices..
         </a>
       </div>
     </div>

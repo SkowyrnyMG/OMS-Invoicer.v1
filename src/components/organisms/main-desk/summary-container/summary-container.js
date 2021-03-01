@@ -78,8 +78,6 @@ const SummaryContainer = () => {
     dispatch(getAllCustomers());
   }, [dispatch]);
 
-  console.log(collectionsLength.customers);
-
   return (
     <AppBodyContainer>
       <CountersBox>
@@ -104,6 +102,7 @@ const SummaryContainer = () => {
             title='Total customers'
             path={routes.appCustomers}
             counter={collectionsLength.customers}
+            linkInfo='View more customers..'
           >
             <CustomersIcon />
           </TotalItemCounter>
@@ -112,6 +111,7 @@ const SummaryContainer = () => {
             title='Total orders'
             path={routes.appOrders}
             counter={collectionsLength.orders}
+            linkInfo='View more orders..'
           >
             <OrdersIcon />
           </TotalItemCounter>
@@ -120,6 +120,7 @@ const SummaryContainer = () => {
             title='Total invoices'
             path={routes.appInvoices}
             counter={collectionsLength.invoices}
+            linkInfo='View more invoices..'
           >
             <InvoicesIcon />
           </TotalItemCounter>

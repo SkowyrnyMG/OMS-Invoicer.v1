@@ -1,0 +1,623 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OrdersModule should display in the document with correct styles 1`] = `
+.c0 {
+  display: grid;
+  grid-template-columns: 65vw min-content;
+  grid-template-rows: min-content;
+  grid-column-gap: 2rem;
+}
+
+.c5 {
+  height: 60vh;
+  width: 100%;
+  background-color: #FFFFFF;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 10px -4px rgba(0,0,0,0.25);
+  overflow: scroll;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-bottom: 2.5rem;
+  height: 5rem;
+  background: #FFFFFF;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 10px -4px rgba(0,0,0,0.25);
+}
+
+.c3 {
+  margin-left: 2.5rem;
+  height: 2rem;
+  fill: #8F8F8F;
+}
+
+.c4 {
+  margin-left: 1rem;
+  width: 50%;
+  font-size: 20px;
+  outline: none;
+  border: none;
+  border-bottom: 2px solid #F0F0FD;
+}
+
+.c6 {
+  border-spacing: 0;
+  border-collapse: separate;
+}
+
+.c6 thead {
+  background: #446DF6;
+  color: #FFFFFF;
+  border: none;
+}
+
+.c6 td:not(:last-child),
+.c6 thead tr th:not(:last-child) {
+  padding: 0.2rem;
+  border-right: 1px solid #F0F0FD;
+}
+
+.c6 td,
+.c6 th {
+  position: relative;
+  cursor: pointer;
+}
+
+.c6 th {
+  positon: relative;
+}
+
+.c6 th span {
+  position: absolute;
+  right: 2%;
+  top: 50%;
+  -webkit-transform: translateY(-35%);
+  -ms-transform: translateY(-35%);
+  transform: translateY(-35%);
+}
+
+.c6 td {
+  padding: 0.3rem 1rem !important;
+  overflow-x: hidden;
+}
+
+.c6 tbody * {
+  border-bottom: 1px solid #F0F0FD !important;
+}
+
+.c6 tr .cancel {
+  color: red !important;
+}
+
+.c8 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  margin-top: 2rem;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+}
+
+.c9 {
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.c9:disabled {
+  pointer-events: none;
+}
+
+.c9 svg {
+  padding: 0 0.5rem;
+  width: 2.5rem;
+  height: 1.5rem;
+  fill: #446DF644;
+  -webkit-transition: 0.25s all;
+  transition: 0.25s all;
+}
+
+.c9:hover svg {
+  fill: #446DF6;
+}
+
+.c9:active svg {
+  -webkit-transform: translateY(2px);
+  -ms-transform: translateY(2px);
+  transform: translateY(2px);
+}
+
+.c10 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  margin-top: 1rem;
+  padding: 0.25rem;
+  border: 1px solid #446DF644;
+  border-radius: 0.5rem;
+  -webkit-transition: 0.25s all;
+  transition: 0.25s all;
+}
+
+.c10::after {
+  content: '';
+  position: absolute;
+  display: block;
+  right: 5%;
+  top: 50%;
+  width: 1rem;
+  height: 1rem;
+  background: #446DF644;
+  -webkit-clip-path: polygon(0 0,100% 0,50% 100%);
+  clip-path: polygon(0 0,100% 0,50% 100%);
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  z-index: 300;
+  -webkit-transition: 0.25s all;
+  transition: 0.25s all;
+}
+
+.c10:hover {
+  border-color: #446DF6;
+}
+
+.c10:hover::after {
+  background: #446DF6;
+}
+
+.c10:active ::after {
+  background: #000;
+}
+
+.c11 {
+  padding: 0.1rem;
+  width: 100%;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: none;
+  border: none;
+  outline: none;
+}
+
+.c11 option * {
+  width: 100%;
+}
+
+.c7 {
+  position: absolute;
+  display: block;
+  width: 30px;
+  height: 100%;
+  top: 0;
+  right: 0;
+  -webkit-transform: translateX(50%);
+  -ms-transform: translateX(50%);
+  transform: translateX(50%);
+  z-index: 5000 !important;
+}
+
+.c12 > * {
+  margin-bottom: 0.5rem;
+}
+
+.c13 {
+  padding: 0.8rem 1rem;
+  width: 16rem;
+  font-size: inherit;
+  text-align: left;
+  color: #FFFFFF;
+  background-color: #446DF6;
+  border: none;
+  outline: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  -webkit-transition: 0.25s -webkit-transform;
+  -webkit-transition: 0.25s transform;
+  transition: 0.25s transform;
+}
+
+.c13:hover,
+.c13:active {
+  -webkit-transform: translateX(2px);
+  -ms-transform: translateX(2px);
+  transform: translateX(2px);
+}
+
+.c13:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.c13::first-letter {
+  text-transform: uppercase;
+}
+
+@media (max-width:1300px) {
+  .c0 {
+    grid-template-columns: 63vw min-content;
+  }
+}
+
+@media (max-width:1168px) {
+  .c0 {
+    grid-template-columns: 73vw min-content;
+  }
+}
+
+@media (max-width:767px) {
+  .c0 {
+    grid-template-columns: 90vw;
+  }
+}
+
+@media (max-width:767px) {
+  .c5 {
+    height: 60vh;
+  }
+}
+
+@media (max-width:767px) {
+  .c12 {
+    grid-row: 1 / 2;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-column-gap: 2%;
+    justify-items: center;
+    margin-bottom: 2rem;
+  }
+
+  .c12 > * {
+    margin-bottom: 0.5rem;
+    margin-right: 0.5rem;
+  }
+}
+
+@media (max-width:570px) {
+  .c12 {
+    grid-template-columns: repeat(2,1fr);
+  }
+}
+
+@media (max-width:374px) {
+  .c12 {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width:767px) {
+  .c13 {
+    width: 100%;
+  }
+}
+
+<div
+  class="c0"
+>
+  <div
+    class="c1"
+    data-testid="app-table-body"
+  >
+    <div
+      class="c2"
+    >
+      <svg
+        class="c3"
+      >
+        search-icon.svg
+      </svg>
+      <input
+        class="c4"
+        placeholder="Search"
+        type="text"
+        value=""
+      />
+    </div>
+    <div
+      class="c5"
+    >
+      <table
+        class="c6"
+        role="table"
+      >
+        <thead>
+          <tr
+            role="row"
+            style="display: flex; width: 2400px;"
+          >
+            <th
+              colspan="1"
+              role="columnheader"
+              style="display: inline-block; box-sizing: border-box; width: 300px; position: relative; cursor: pointer;"
+              title="Toggle SortBy"
+            >
+              <div
+                class="c7"
+                draggable="false"
+                role="separator"
+                style="cursor: col-resize;"
+              />
+              ORDER NR
+              <span>
+                <svg>
+                  down-arrow-icon.svg
+                </svg>
+              </span>
+            </th>
+            <th
+              colspan="1"
+              role="columnheader"
+              style="display: inline-block; box-sizing: border-box; width: 300px; position: relative; cursor: pointer;"
+              title="Toggle SortBy"
+            >
+              <div
+                class="c7"
+                draggable="false"
+                role="separator"
+                style="cursor: col-resize;"
+              />
+              PRICE
+              <span />
+            </th>
+            <th
+              colspan="1"
+              role="columnheader"
+              style="display: inline-block; box-sizing: border-box; width: 300px; position: relative; cursor: pointer;"
+              title="Toggle SortBy"
+            >
+              <div
+                class="c7"
+                draggable="false"
+                role="separator"
+                style="cursor: col-resize;"
+              />
+              CURRENCY
+              <span />
+            </th>
+            <th
+              colspan="1"
+              role="columnheader"
+              style="display: inline-block; box-sizing: border-box; width: 300px; position: relative; cursor: pointer;"
+              title="Toggle SortBy"
+            >
+              <div
+                class="c7"
+                draggable="false"
+                role="separator"
+                style="cursor: col-resize;"
+              />
+              STATUS
+              <span />
+            </th>
+            <th
+              colspan="1"
+              role="columnheader"
+              style="display: inline-block; box-sizing: border-box; width: 300px; position: relative; cursor: pointer;"
+              title="Toggle SortBy"
+            >
+              <div
+                class="c7"
+                draggable="false"
+                role="separator"
+                style="cursor: col-resize;"
+              />
+              DESCRIPTION
+              <span />
+            </th>
+            <th
+              colspan="1"
+              role="columnheader"
+              style="display: inline-block; box-sizing: border-box; width: 300px; position: relative; cursor: pointer;"
+              title="Toggle SortBy"
+            >
+              <div
+                class="c7"
+                draggable="false"
+                role="separator"
+                style="cursor: col-resize;"
+              />
+              CUSTOMER NAME
+              <span />
+            </th>
+            <th
+              colspan="1"
+              role="columnheader"
+              style="display: inline-block; box-sizing: border-box; width: 300px; position: relative; cursor: pointer;"
+              title="Toggle SortBy"
+            >
+              <div
+                class="c7"
+                draggable="false"
+                role="separator"
+                style="cursor: col-resize;"
+              />
+              CUSTOMER VAT
+              <span />
+            </th>
+            <th
+              colspan="1"
+              role="columnheader"
+              style="display: inline-block; box-sizing: border-box; width: 300px; position: relative; cursor: pointer;"
+              title="Toggle SortBy"
+            >
+              <div
+                class="c7"
+                draggable="false"
+                role="separator"
+                style="cursor: col-resize;"
+              />
+              CUSTOMER_ADDRESS
+              <span />
+            </th>
+          </tr>
+        </thead>
+        <tbody
+          role="rowgroup"
+        >
+          <tr
+            role="row"
+            style="display: flex; width: 2400px; opacity: 1;"
+          >
+            <td
+              role="cell"
+              style="display: inline-block; box-sizing: border-box; width: 300px;"
+            >
+              TESTORD
+            </td>
+            <td
+              role="cell"
+              style="display: inline-block; box-sizing: border-box; width: 300px;"
+            >
+              555
+            </td>
+            <td
+              role="cell"
+              style="display: inline-block; box-sizing: border-box; width: 300px;"
+            >
+              EUR
+            </td>
+            <td
+              role="cell"
+              style="display: inline-block; box-sizing: border-box; width: 300px;"
+            >
+              in progress
+            </td>
+            <td
+              role="cell"
+              style="display: inline-block; box-sizing: border-box; width: 300px;"
+            >
+              fsdafsad
+            </td>
+            <td
+              role="cell"
+              style="display: inline-block; box-sizing: border-box; width: 300px;"
+            >
+              TEST COMPANY NAME
+            </td>
+            <td
+              role="cell"
+              style="display: inline-block; box-sizing: border-box; width: 300px;"
+            >
+              2222222222
+            </td>
+            <td
+              role="cell"
+              style="display: inline-block; box-sizing: border-box; width: 300px;"
+            >
+              STREET 11, 00-000, TWON, PL,
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div
+      class="c8"
+    >
+      <div>
+        <button
+          class="c9"
+          disabled=""
+        >
+          <svg>
+            larr-icon.svg
+          </svg>
+        </button>
+        <span>
+          <strong>
+             1 / 25  of 25
+          </strong>
+        </span>
+        <button
+          class="c9"
+          disabled=""
+        >
+          <svg>
+            rarr-icon.svg
+          </svg>
+        </button>
+      </div>
+      <div
+        class="c10"
+      >
+        <select
+          class="c11"
+        >
+          <option
+            value="25"
+          >
+            25
+          </option>
+          <option
+            value="50"
+          >
+            50
+          </option>
+          <option
+            value="100"
+          >
+            100
+          </option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <aside
+    class="c12"
+  >
+    <button
+      class="c13"
+    >
+      Add new
+    </button>
+    <button
+      class="c13"
+      disabled=""
+    >
+      Edit
+    </button>
+    <button
+      class="c13"
+      disabled=""
+    >
+      Finish order
+    </button>
+    <button
+      class="c13"
+      disabled=""
+    >
+      Cancel
+    </button>
+  </aside>
+</div>
+`;

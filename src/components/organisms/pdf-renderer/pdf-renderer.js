@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 
-// import styled from 'styled-components';
 import { selectUserConfig } from 'store/slices/db-slice/db-slice';
 
 import PDFContainer from 'components/modules/pdf-container/pdf-container';

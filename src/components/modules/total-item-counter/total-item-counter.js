@@ -63,15 +63,22 @@ const ViewMoreButton = styled(Link)`
   transform: translateX(-50%);
 `;
 
-const TotalItemCounter = ({ bgColor, title, children, path, counter }) => {
+const TotalItemCounter = ({
+  bgColor,
+  title,
+  children,
+  path,
+  counter,
+  linkInfo,
+}) => {
   return (
     <Wrapper bgColor={bgColor}>
       <ContentWrapper>
-        <StyledCounter>{counter}</StyledCounter>
+        <StyledCounter data-testid='summaryCounter'>{counter}</StyledCounter>
         <h3>{title}</h3>
         {children}
       </ContentWrapper>
-      <ViewMoreButton to={path}>View more..</ViewMoreButton>
+      <ViewMoreButton to={path}>{linkInfo}</ViewMoreButton>
     </Wrapper>
   );
 };
@@ -86,6 +93,7 @@ TotalItemCounter.propTypes = {
   children: PropTypes.node,
   path: PropTypes.string.isRequired,
   counter: PropTypes.number.isRequired,
+  linkInfo: PropTypes.string.isRequired,
 };
 
 export default TotalItemCounter;

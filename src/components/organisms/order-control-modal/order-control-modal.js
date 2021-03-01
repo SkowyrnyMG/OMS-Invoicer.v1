@@ -373,31 +373,8 @@ const OrderControlModal = ({ closeModal, currentOrder }) => {
   );
 };
 
-OrderControlModal.defaultProps = {
-  currentOrder: {
-    price: '',
-    currency: '',
-    status: 'in progress',
-    desc: '',
-    email: '',
-    customer_name: '',
-    customer_vat: '',
-    customer_address: '',
-  },
-};
-
 OrderControlModal.propTypes = {
   closeModal: PropTypes.func.isRequired,
-  currentOrder: PropTypes.shape({
-    price: PropTypes.number.isRequired,
-    currency: PropTypes.string.isRequired,
-    status: PropTypes.string.isRequired,
-    desc: PropTypes.string.isRequired,
-    email: PropTypes.string.isRequired,
-    customer_name: PropTypes.string.isRequired,
-    customer_vat: PropTypes.string.isRequired,
-    customer_address: PropTypes.string.isRequired,
-  }),
 };
 
 export default OrderControlModal;

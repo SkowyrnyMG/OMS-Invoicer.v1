@@ -14,7 +14,6 @@ import Login from 'views/login';
 import Register from 'views/register';
 import Invoices from 'views/app/invoices';
 import Orders from 'views/app/orders';
-import Payments from 'views/app/payments';
 import Customers from 'views/app/customers';
 import Helpdesk from 'views/app/helpdesk';
 import Settings from 'views/app/settings';
@@ -25,7 +24,6 @@ export const routes = {
   register: '/register',
   app: '/app',
   appInvoices: '/app/invoices',
-  appPayments: '/app/payments',
   appOrders: '/app/orders',
   appCustomers: '/app/customers',
   appHelp: '/app/help',
@@ -49,13 +47,6 @@ export const AppRouter = () => {
             <Redirect to={routes.home} />
           ) : (
             <Invoices />
-          )}
-        </Route>
-        <Route exact path={routes.appPayments}>
-          {userInfo.uuid.length === 0 ? (
-            <Redirect to={routes.home} />
-          ) : (
-            <Payments />
           )}
         </Route>
         <Route exact path={routes.appOrders}>
@@ -95,6 +86,9 @@ export const AppRouter = () => {
           ) : (
             <Register />
           )}
+        </Route>
+        <Route path='*'>
+          <Redirect to={routes.home} />
         </Route>
       </Switch>
     </Router>

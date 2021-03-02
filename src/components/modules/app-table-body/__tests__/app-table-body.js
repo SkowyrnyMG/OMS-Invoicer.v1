@@ -3,8 +3,7 @@ import React from 'react';
 import {
   renderWithReduxRouter,
   screen,
-  fireEvent,
-  leftClick,
+  userEvent,
   cleanup,
 } from 'utils/tests/test-helper';
 import AppTableBody from '../app-table-body';
@@ -51,19 +50,19 @@ const sortArrowCheck = (
   expect(upArrowNodeClone).toBeNull();
   expect(downArrowNodeClone).toBeNull();
 
-  fireEvent.click(tableHeader, leftClick);
+  userEvent.click(tableHeader);
   upArrowNodeClone = screen.queryByText(upArrowSvg);
   downArrowNodeClone = screen.queryByText(downArrowSvg);
   expect(upArrowNodeClone).toBeInTheDocument();
   expect(downArrowNodeClone).toBeNull();
 
-  fireEvent.click(tableHeader, leftClick);
+  userEvent.click(tableHeader);
   upArrowNodeClone = screen.queryByText(upArrowSvg);
   downArrowNodeClone = screen.queryByText(downArrowSvg);
   expect(downArrowNodeClone).toBeInTheDocument();
   expect(upArrowNodeClone).toBeNull();
 
-  fireEvent.click(tableHeader, leftClick);
+  userEvent.click(tableHeader);
   upArrowNodeClone = screen.queryByText(upArrowSvg);
   downArrowNodeClone = screen.queryByText(downArrowSvg);
   expect(downArrowNodeClone).toBeNull();

@@ -5,8 +5,7 @@ import {
   FormikTestWrapper,
   screen,
   snapShotTest,
-  fireEvent,
-  leftClick,
+  userEvent,
 } from 'utils/tests/test-helper';
 import AuthFormWrapper from '../auth-form-wrapper';
 
@@ -37,7 +36,7 @@ describe('AuthFormWrapper', () => {
       name: 'Take me from here!',
     });
 
-    fireEvent.click(backButton, leftClick);
+    userEvent.click(backButton);
     const finalPath = history.location.pathname;
 
     expect(backButton).toBeInTheDocument();

@@ -3,8 +3,7 @@ import React from 'react';
 import {
   renderWithReduxRouter,
   screen,
-  fireEvent,
-  leftClick,
+  userEvent,
 } from 'utils/tests/test-helper';
 import Hamburger from '../hamburger';
 
@@ -29,7 +28,7 @@ describe('Hamburger', () => {
 
     const HamburgerComponent = screen.getByRole('button', { name: '' });
 
-    fireEvent.click(HamburgerComponent, leftClick);
+    userEvent.click(HamburgerComponent);
 
     expect(handleTestClick).toHaveBeenCalledTimes(1);
   });

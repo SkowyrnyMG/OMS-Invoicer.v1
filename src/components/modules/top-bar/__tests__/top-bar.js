@@ -1,16 +1,15 @@
 import React from 'react';
 import {
-  fireEvent,
-  leftClick,
   renderWithReduxRouter,
   screen,
+  userEvent,
 } from 'utils/tests/test-helper';
 import TopBar from '../top-bar';
 
 const linkChecker = (history, getByText, directPath, regex) => {
   const initialPath = history.location.pathname;
   const registerLink = getByText(regex);
-  fireEvent.click(registerLink, leftClick);
+  userEvent.click(registerLink);
   const currentPath = history.location.pathname;
 
   expect(currentPath).not.toBe(initialPath);
@@ -55,7 +54,7 @@ describe('TopBar', () => {
     });
     const initialPath = history.location.pathname;
 
-    fireEvent.click(logoLinkNode, leftClick);
+    userEvent.click(logoLinkNode);
 
     const finalPath = history.location.pathname;
 

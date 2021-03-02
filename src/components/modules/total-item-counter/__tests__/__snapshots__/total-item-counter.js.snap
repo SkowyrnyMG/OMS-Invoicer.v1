@@ -95,6 +95,7 @@ exports[`TotalItemCounter should render in the document with correct styles 1`] 
   >
     <span
       class="c2"
+      data-testid="summaryCounter"
     >
       3
     </span>

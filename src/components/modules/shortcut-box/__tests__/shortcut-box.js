@@ -3,8 +3,7 @@ import React from 'react';
 import {
   renderWithReduxRouter,
   screen,
-  fireEvent,
-  leftClick,
+  userEvent,
 } from 'utils/tests/test-helper';
 import ShortcutBox from '../shortcut-box';
 
@@ -45,7 +44,7 @@ describe('ShortcutBox', () => {
       name: 'test title test-description',
     });
 
-    fireEvent.click(ShortcutBoxNode, leftClick);
+    userEvent.click(ShortcutBoxNode);
 
     expect(handleTestClick).toHaveBeenCalledTimes(1);
   });

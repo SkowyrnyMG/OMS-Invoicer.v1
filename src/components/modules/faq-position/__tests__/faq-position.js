@@ -4,8 +4,7 @@ import {
   snapShotTest,
   renderWithReduxRouter,
   screen,
-  fireEvent,
-  leftClick,
+  userEvent,
 } from 'utils/tests/test-helper';
 import FAQPosition from '../faq-position';
 
@@ -25,7 +24,7 @@ describe('FAQPosition', () => {
 
     expect(description).toBeNull();
 
-    fireEvent.click(heading, leftClick);
+    userEvent.click(heading);
 
     description = screen.queryByText('TestFAQ description.');
 

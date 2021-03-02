@@ -54,7 +54,7 @@ exports[`WarningPopup should render in the document with correct styles  1`] = `
 <div
   class="c0"
   data-testid="warning-popup"
-  style="opacity: 0; visibility: hidden;"
+  style="opacity: 1; visibility: inherit;"
 >
   <div
     class="c1"

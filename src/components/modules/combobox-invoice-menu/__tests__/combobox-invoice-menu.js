@@ -3,8 +3,7 @@ import React from 'react';
 import {
   renderWithReduxRouter,
   screen,
-  fireEvent,
-  leftClick,
+  userEvent,
 } from 'utils/tests/test-helper';
 import ComboboxInvoiceMenu from '../combobox-invoice-menu';
 
@@ -75,7 +74,7 @@ describe('ComboboxInvoiceMenu', () => {
       /provide order number or company name/i,
     );
 
-    fireEvent.change(comboInput, { target: { value: 'customer-test' } });
+    userEvent.type(comboInput, 'customer-test');
 
     let comboList = screen.queryByRole('listbox', {
       name: 'Choose a finished order:',
@@ -88,7 +87,7 @@ describe('ComboboxInvoiceMenu', () => {
       name: testSearchResult,
     });
 
-    fireEvent.click(comboListItem, leftClick);
+    userEvent.click(comboListItem);
 
     // * after successful option click combolist should dissapear and combo input should receive option value
     comboList = screen.queryByRole('listbox', {
@@ -116,10 +115,10 @@ describe('ComboboxInvoiceMenu', () => {
     );
     const resetButton = screen.getByRole('button', { name: /reset/i });
 
-    fireEvent.change(comboInput, { target: { value: testSearchResult } });
+    userEvent.type(comboInput, testSearchResult);
     expect(comboInput.value).toEqual(testSearchResult);
 
-    fireEvent.click(resetButton, leftClick);
+    userEvent.click(resetButton);
     expect(comboInput.value).toBeFalsy();
     expect(testHandleResetItemFn).toHaveBeenCalledTimes(1);
   });
@@ -134,7 +133,7 @@ describe('ComboboxInvoiceMenu', () => {
     );
     const acceptButton = screen.getByRole('button', { name: /accept/i });
 
-    fireEvent.click(acceptButton, leftClick);
+    userEvent.click(acceptButton);
 
     expect(testHandleSetItemFn).toHaveBeenCalledTimes(1);
   });
@@ -155,14 +154,14 @@ describe('ComboboxInvoiceMenu', () => {
 
     expect(comboList).toBeNull();
 
-    fireEvent.click(toggleButton, leftClick);
+    userEvent.click(toggleButton);
 
     comboList = screen.queryByRole('listbox', {
       name: 'Choose a finished order:',
     });
     expect(comboList).toBeInTheDocument();
 
-    fireEvent.click(toggleButton, leftClick);
+    userEvent.click(toggleButton);
     comboList = screen.queryByRole('listbox', {
       name: 'Choose a finished order:',
     });

@@ -3,8 +3,7 @@ import React from 'react';
 import {
   renderWithReduxRouter,
   screen,
-  fireEvent,
-  leftClick,
+  userEvent,
 } from 'utils/tests/test-helper';
 import TotalItemCounter from '../total-item-counter';
 
@@ -16,6 +15,7 @@ describe('TotalItemCounter', () => {
         path='/app/customers'
         title='test-counter'
         counter={3}
+        linkInfo='View more..'
       />,
     );
 
@@ -33,6 +33,7 @@ describe('TotalItemCounter', () => {
         path={testPath}
         title='test-counter'
         counter={3}
+        linkInfo='View more..'
       />,
       {},
       { route: '/app' },
@@ -41,7 +42,7 @@ describe('TotalItemCounter', () => {
     const RedirectLinkNode = screen.getByRole('link', { name: 'View more..' });
     const initialPath = history.location.pathname;
 
-    fireEvent.click(RedirectLinkNode, leftClick);
+    userEvent.click(RedirectLinkNode);
 
     const finalPath = history.location.pathname;
 

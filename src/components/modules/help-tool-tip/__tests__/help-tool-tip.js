@@ -3,8 +3,7 @@ import React from 'react';
 import {
   renderWithReduxRouter,
   screen,
-  fireEvent,
-  leftClick,
+  userEvent,
 } from 'utils/tests/test-helper';
 import HelpTooltip from '../help-tool-tip';
 
@@ -28,10 +27,10 @@ describe('HelpTooltip', () => {
 
     expect(TooltipNode).toHaveStyle('opacity: 0');
 
-    fireEvent.click(TooltipButton, leftClick);
+    userEvent.click(TooltipButton);
     expect(TooltipNode).toHaveStyle('opacity: 1');
 
-    fireEvent.click(TooltipButton, leftClick);
+    userEvent.click(TooltipButton);
     expect(TooltipNode).toHaveStyle('opacity: 0');
   });
 });

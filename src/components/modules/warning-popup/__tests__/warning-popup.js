@@ -4,6 +4,7 @@ import {
   renderWithReduxRouter,
   screen,
   cleanup,
+  waitFor,
 } from 'utils/tests/test-helper';
 import WarningPopup from '../warning-popup';
 
@@ -17,6 +18,9 @@ describe('WarningPopup', () => {
 
     const WarningPopupNode = screen.getByTestId('warning-popup');
 
+    await waitFor(() => {
+      expect(WarningPopupNode).toHaveStyle('opacity: 1');
+    });
     expect(WarningPopupNode).toMatchSnapshot();
     expect(WarningPopupNode).toBeInTheDocument();
 

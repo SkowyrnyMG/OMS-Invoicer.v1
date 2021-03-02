@@ -2,8 +2,7 @@ import React from 'react';
 import {
   renderWithReduxRouter,
   screen,
-  fireEvent,
-  leftClick,
+  userEvent,
 } from 'utils/tests/test-helper';
 import { routes } from 'utils/routes';
 import AppNavigation from '../app-navigation';
@@ -15,7 +14,7 @@ const linkRedirectChecker = (testid, route, initialPath = '/app') => {
 
   const navLink = screen.getByTestId(testid);
 
-  fireEvent.click(navLink, leftClick);
+  userEvent.click(navLink);
 
   expect(initialPath).not.toBe(history.location.pathname);
   expect(history.location.pathname).toBe(route);

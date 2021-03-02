@@ -3,8 +3,7 @@ import React from 'react';
 import {
   renderWithReduxRouter,
   screen,
-  fireEvent,
-  leftClick,
+  userEvent,
 } from 'utils/tests/test-helper';
 import ComboboxOrderMenu from '../combobox-order-menu';
 
@@ -68,7 +67,7 @@ describe('ComboboxOrderMenu', () => {
     // * type search string into search input, after succesful match comboList should be displayed
     let comboInput = screen.getByPlaceholderText(/type a Customer name/i);
 
-    fireEvent.change(comboInput, { target: { value: 'customer-test' } });
+    userEvent.type(comboInput, 'customer-test');
 
     let comboList = screen.queryByRole('listbox', {
       name: 'Choose a Customer:',
@@ -81,7 +80,7 @@ describe('ComboboxOrderMenu', () => {
       name: testSearchResult,
     });
 
-    fireEvent.click(comboListItem, leftClick);
+    userEvent.click(comboListItem);
 
     // * after successful option click combolist should dissapear and combo input should receive option value
     comboList = screen.queryByRole('listbox', {
@@ -105,10 +104,10 @@ describe('ComboboxOrderMenu', () => {
     const comboInput = screen.getByPlaceholderText(/type a Customer name../i);
     const resetButton = screen.getByRole('button', { name: /reset/i });
 
-    fireEvent.change(comboInput, { target: { value: testSearchResult } });
+    userEvent.type(comboInput, testSearchResult);
     expect(comboInput.value).toEqual(testSearchResult);
 
-    fireEvent.click(resetButton, leftClick);
+    userEvent.click(resetButton);
     expect(comboInput.value).toBeFalsy();
     expect(testHandleResetItemFn).toHaveBeenCalledTimes(1);
   });
@@ -123,7 +122,7 @@ describe('ComboboxOrderMenu', () => {
     );
     const acceptButton = screen.getByRole('button', { name: /accept/i });
 
-    fireEvent.click(acceptButton, leftClick);
+    userEvent.click(acceptButton);
 
     expect(testHandleSetItemFn).toHaveBeenCalledTimes(1);
   });

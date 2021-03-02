@@ -1,9 +1,5 @@
 import React from 'react';
-import {
-  renderWithReduxRouter,
-  fireEvent,
-  leftClick,
-} from 'utils/tests/test-helper';
+import { renderWithReduxRouter, userEvent } from 'utils/tests/test-helper';
 import Home from '../home';
 
 describe('Home', () => {
@@ -20,7 +16,7 @@ describe('Home', () => {
 
     const initialPath = history.location.pathname;
     const CtaLink = getByText(/TRY FOR FREE AND SEND ME SOME FEEDBACK/i);
-    fireEvent.click(CtaLink, leftClick);
+    userEvent.click(CtaLink);
     const redirectPath = history.location.pathname;
 
     expect(initialPath).toBe('/');

@@ -4,8 +4,7 @@ import {
   renderWithReduxRouter,
   snapShotTest,
   screen,
-  fireEvent,
-  leftClick,
+  userEvent,
 } from 'utils/tests/test-helper';
 import Logo from '../logo';
 
@@ -24,7 +23,7 @@ describe('Logo', () => {
     const LogoNode = screen.getByRole('link', { name: 'logo.svg Invoicer.v1' });
     const initialPath = history.location.pathname;
 
-    fireEvent.click(LogoNode, leftClick);
+    userEvent.click(LogoNode);
 
     const finalPath = history.location.pathname;
 

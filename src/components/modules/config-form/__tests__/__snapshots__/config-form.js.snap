@@ -1,0 +1,481 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ConfigForm should display in the document with correct styles 1`] = `
+.c7 {
+  margin-bottom: 1rem;
+  width: 100%;
+  font-size: 14px;
+  color: #F25C54;
+}
+
+.c4 {
+  position: relative;
+  display: block;
+  width: 100%;
+  margin-bottom: 3rem;
+}
+
+.c4:last-of-type {
+  margin-bottom: 4rem;
+}
+
+.c4 input {
+  border-color: #8F8F8F;
+  -webkit-transition: 0.5s -webkit-transform;
+  -webkit-transition: 0.5s transform;
+  transition: 0.5s transform;
+}
+
+.c4 input:focus {
+  -webkit-transform: translateX(2px);
+  -ms-transform: translateX(2px);
+  transform: translateX(2px);
+}
+
+.c4 input:placeholder-shown + div {
+  opacity: 0;
+  top: 50%;
+}
+
+.c4 input,
+.c4 input::-webkit-input-placeholder {
+  color: #8F8F8F;
+  border-color: currentColor;
+}
+
+.c4 input,
+.c4 input::-moz-placeholder {
+  color: #8F8F8F;
+  border-color: currentColor;
+}
+
+.c4 input,
+.c4 input:-ms-input-placeholder {
+  color: #8F8F8F;
+  border-color: currentColor;
+}
+
+.c4 input,
+.c4 input::placeholder {
+  color: #8F8F8F;
+  border-color: currentColor;
+}
+
+.c6 {
+  position: absolute;
+  top: -1rem;
+  left: 0.3rem;
+  font-size: 14px;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  -webkit-transition: all 0.25s;
+  transition: all 0.25s;
+  pointer-events: none;
+}
+
+.c2 {
+  margin-bottom: 0.5rem;
+  font-size: 20px;
+  font-weight: 400;
+  text-transform: uppercase;
+  color: #446DF6;
+}
+
+.c9 {
+  padding: 0.8rem 1rem;
+  width: 16rem;
+  font-size: inherit;
+  text-align: left;
+  color: #FFFFFF;
+  background-color: #446DF6;
+  border: none;
+  outline: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  -webkit-transition: 0.25s -webkit-transform;
+  -webkit-transition: 0.25s transform;
+  transition: 0.25s transform;
+}
+
+.c9:hover,
+.c9:active {
+  -webkit-transform: translateX(2px);
+  -ms-transform: translateX(2px);
+  transform: translateX(2px);
+}
+
+.c9:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.c9::first-letter {
+  text-transform: uppercase;
+}
+
+.c0 {
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  grid-auto-rows: 1fr;
+}
+
+.c8 {
+  margin: 3rem 0;
+}
+
+.c1 {
+  padding: 5rem;
+}
+
+.c3 {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  -webkit-align-items: end;
+  -webkit-box-align: end;
+  -ms-flex-align: end;
+  align-items: end;
+  -webkit-align-content: top;
+  -ms-flex-line-pack: top;
+  align-content: top;
+  justify-items: left;
+  padding: 2rem 0;
+  border-bottom: 1px solid #F0F0FD;
+}
+
+.c3 label {
+  margin-bottom: 0 !important;
+}
+
+.c5 {
+  margin: 0 !important;
+}
+
+.c10 {
+  margin-top: 3rem;
+}
+
+@media (max-width:767px) {
+  .c9 {
+    width: 100%;
+  }
+}
+
+@media (max-width:1168px) {
+  .c0 {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width:680px) {
+  .c0 {
+    padding: 5rem 0;
+  }
+
+  .c0 > * {
+    padding: 0 1rem !important;
+    -webkit-flex-basis: 100%;
+    -ms-flex-preferred-size: 100%;
+    flex-basis: 100%;
+  }
+}
+
+<form
+  action="#"
+  class="c0"
+>
+  <div
+    class="c1"
+  >
+    <h5
+      class="c2"
+    >
+      Registry options
+    </h5>
+    <div
+      class="c3"
+      for="mainInvoicePrefix"
+    >
+      <label
+        class="c4"
+        data-testid="formik-input"
+        for="mainInvoicePrefix"
+      >
+        <input
+          class="c5"
+          id="mainInvoicePrefix"
+          name="mainInvoicePrefix"
+          placeholder="INVOICE PREFIX"
+          type="text"
+          value=""
+        />
+        <div
+          class="c6"
+        >
+          INVOICE PREFIX
+        </div>
+        <span
+          class="c7"
+        />
+      </label>
+    </div>
+    <div
+      class="c3"
+      for="mainOrderPrefix"
+    >
+      <label
+        class="c4"
+        data-testid="formik-input"
+        for="mainOrderPrefix"
+      >
+        <input
+          class="c5"
+          id="mainOrderPrefix"
+          name="mainOrderPrefix"
+          placeholder="ORDER PREFIX"
+          type="text"
+          value=""
+        />
+        <div
+          class="c6"
+        >
+          ORDER PREFIX
+        </div>
+        <span
+          class="c7"
+        />
+      </label>
+    </div>
+    <h5
+      class="c2 c8"
+    >
+      Bank Details
+    </h5>
+    <label
+      class="c4"
+      data-testid="formik-input"
+      for="bankName"
+    >
+      <input
+        id="bankName"
+        name="bankName"
+        placeholder="BANK NAME"
+        type="text"
+        value=""
+      />
+      <div
+        class="c6"
+      >
+        BANK NAME
+      </div>
+      <span
+        class="c7"
+      />
+    </label>
+    <label
+      class="c4"
+      data-testid="formik-input"
+      for="bankAccountNumber"
+    >
+      <input
+        id="bankAccountNumber"
+        name="bankAccountNumber"
+        placeholder="BANK ACCOUNT NUMBER"
+        type="text"
+        value=""
+      />
+      <div
+        class="c6"
+      >
+        BANK ACCOUNT NUMBER
+      </div>
+      <span
+        class="c7"
+      />
+    </label>
+    <label
+      class="c4"
+      data-testid="formik-input"
+      for="iban"
+    >
+      <input
+        id="iban"
+        name="iban"
+        placeholder="IBAN"
+        type="text"
+        value=""
+      />
+      <div
+        class="c6"
+      >
+        IBAN
+      </div>
+      <span
+        class="c7"
+      />
+    </label>
+    <label
+      class="c4"
+      data-testid="formik-input"
+      for="swift"
+    >
+      <input
+        id="swift"
+        name="swift"
+        placeholder="SWIFT"
+        type="text"
+        value=""
+      />
+      <div
+        class="c6"
+      >
+        SWIFT
+      </div>
+      <span
+        class="c7"
+      />
+    </label>
+  </div>
+  <div
+    class="c1"
+  >
+    <h5
+      class="c2 c8"
+    >
+      Company info
+    </h5>
+    <label
+      class="c4"
+      data-testid="formik-input"
+      for="rootCompanyName"
+    >
+      <input
+        id="rootCompanyName"
+        name="rootCompanyName"
+        placeholder="COMPANY NAME"
+        type="text"
+        value=""
+      />
+      <div
+        class="c6"
+      >
+        COMPANY NAME
+      </div>
+      <span
+        class="c7"
+      />
+    </label>
+    <label
+      class="c4"
+      data-testid="formik-input"
+      for="rootVat"
+    >
+      <input
+        id="rootVat"
+        name="rootVat"
+        placeholder="VAT NUMBER"
+        type="text"
+        value=""
+      />
+      <div
+        class="c6"
+      >
+        VAT NUMBER
+      </div>
+      <span
+        class="c7"
+      />
+    </label>
+    <label
+      class="c4"
+      data-testid="formik-input"
+      for="rootStreet"
+    >
+      <input
+        id="rootStreet"
+        name="rootStreet"
+        placeholder="STREET"
+        type="text"
+        value=""
+      />
+      <div
+        class="c6"
+      >
+        STREET
+      </div>
+      <span
+        class="c7"
+      />
+    </label>
+    <label
+      class="c4"
+      data-testid="formik-input"
+      for="rootPostCode"
+    >
+      <input
+        id="rootPostCode"
+        name="rootPostCode"
+        placeholder="POST CODE"
+        type="text"
+        value=""
+      />
+      <div
+        class="c6"
+      >
+        POST CODE
+      </div>
+      <span
+        class="c7"
+      />
+    </label>
+    <label
+      class="c4"
+      data-testid="formik-input"
+      for="rootTown"
+    >
+      <input
+        id="rootTown"
+        name="rootTown"
+        placeholder="TOWN"
+        type="text"
+        value=""
+      />
+      <div
+        class="c6"
+      >
+        TOWN
+      </div>
+      <span
+        class="c7"
+      />
+    </label>
+    <label
+      class="c4"
+      data-testid="formik-input"
+      for="rootCountry"
+    >
+      <input
+        id="rootCountry"
+        name="rootCountry"
+        placeholder="COUNTRY"
+        type="text"
+        value=""
+      />
+      <div
+        class="c6"
+      >
+        COUNTRY
+      </div>
+      <span
+        class="c7"
+      />
+    </label>
+    <button
+      class="c9 c10"
+      type="submit"
+    >
+      Save
+    </button>
+  </div>
+</form>
+`;

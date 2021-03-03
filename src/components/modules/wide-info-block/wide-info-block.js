@@ -72,10 +72,6 @@ const Counter = styled.div`
     left: 0;
     top: 50%;
     transform: translate(-50%, -30%);
-
-    /* ${({ theme: { mq } }) => mq.smallTablet} {
-      width: 35px;
-    } */
   }
 
   ${({ theme: { mq } }) => mq.smallTablet} {

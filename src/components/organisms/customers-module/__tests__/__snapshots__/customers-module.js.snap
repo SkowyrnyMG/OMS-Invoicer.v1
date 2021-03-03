@@ -82,7 +82,7 @@ exports[`CustomerModule should display in the doucment with correct styles 1`] =
 }
 
 .c6 th {
-  positon: relative;
+  position: relative;
 }
 
 .c6 th span {

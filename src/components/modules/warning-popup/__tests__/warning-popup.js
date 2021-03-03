@@ -27,5 +27,3 @@ describe('WarningPopup', () => {
     cleanup();
   });
 });
-
-// TODO write more edgecases!

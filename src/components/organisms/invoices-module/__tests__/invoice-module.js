@@ -106,5 +106,3 @@ describe('InvoiceModule', () => {
     expect(modalCompanyNameInput).not.toBeInTheDocument();
   });
 });
-
-// TODO Other integration tests will be created in invoice view tests.

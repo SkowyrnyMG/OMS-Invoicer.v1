@@ -75,7 +75,7 @@ exports[`AppTableBody should display in the document with correct styles and cor
 }
 
 .c5 th {
-  positon: relative;
+  position: relative;
 }
 
 .c5 th span {

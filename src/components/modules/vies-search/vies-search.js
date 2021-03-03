@@ -64,7 +64,6 @@ const ViesSearch = ({
     const {
       data: { data },
     } = result;
-    // console.log(result);
     dispatch(setLoadingOff());
     if (!data) {
       setValidation(false);

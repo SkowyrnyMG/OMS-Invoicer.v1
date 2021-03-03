@@ -2,8 +2,6 @@ import styled from 'styled-components';
 
 const ComboButton = styled.button`
   padding: 0.5rem 1rem;
-  /* width: 5rem; */
-  /* height: 2rem; */
   border: 2px solid ${({ theme: { color } }) => color.primary};
   border-radius: 0.5rem;
   background: none;

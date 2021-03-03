@@ -24,9 +24,6 @@ const CountersBox = styled.div`
   width: 100%;
   display: flex;
   border-bottom: 1px solid ${({ theme: { color } }) => color.devider};
-  /* > *:not(:first-of-type) {
-    border-left: 1px solid ${({ theme: { color } }) => color.devider};
-  } */
 
   ${({ theme: { mq } }) => mq.mediumTablet} {
     flex-wrap: wrap;
@@ -48,7 +45,6 @@ const TotalItemsWrapper = styled.div`
   height: 100%;
 
   ${({ theme: { mq } }) => mq.mediumTablet} {
-    /* flex-wrap: wrap; */
     flex-direction: column;
     align-items: space-between;
     justify-content: center;

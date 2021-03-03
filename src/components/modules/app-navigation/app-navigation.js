@@ -5,7 +5,6 @@ import { useDispatch } from 'react-redux';
 import { NavLink as Link } from 'react-router-dom';
 import { ReactComponent as HomeIcon } from 'assets/svg/home-icon.svg';
 import { ReactComponent as InvoiceIcon } from 'assets/svg/invoice-icon.svg';
-// import { ReactComponent as PaymentIcon } from 'assets/svg/payment-icon.svg';
 import { ReactComponent as OrdersIcon } from 'assets/svg/orders-icon.svg';
 import { ReactComponent as ClientsIcon } from 'assets/svg/clients-icon.svg';
 import { ReactComponent as SettingsIcon } from 'assets/svg/settings-icon.svg';
@@ -128,17 +127,6 @@ const AppNavigation = () => {
               <AppNavLinkText>Invoices</AppNavLinkText>
             </AppNavLink>
           </StyledListItem>
-
-          {/* <StyledListItem>
-          <AppNavLink
-            to={routes.appPayments}
-            activeClassName='active-app-link'
-            data-testid='payments-link'
-          >
-            <PaymentIcon />
-            <AppNavLinkText>Payments</AppNavLinkText>
-          </AppNavLink>
-        </StyledListItem> */}
 
           <StyledListItem>
             <AppNavLink

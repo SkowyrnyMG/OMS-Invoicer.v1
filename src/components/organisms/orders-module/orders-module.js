@@ -73,13 +73,6 @@ const OrdersModule = ({ ordersList }) => {
         >
           Finish order
         </Button>
-        {/* <Button
-          disabled={
-            currentOrder === null || !currentOrder.status.match(/finished/i)
-          }
-        >
-          Issue invoice
-        </Button> */}
         <Button
           disabled={
             currentOrder === null ||

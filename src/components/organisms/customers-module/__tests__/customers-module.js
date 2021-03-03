@@ -5,9 +5,7 @@ import {
   snapShotTest,
   screen,
   userEvent,
-  // waitForElementToBeRemoved,
 } from 'utils/tests/test-helper';
-// import { setLocalValue, deleteLocalValue } from 'hooks/useLocalStorage';
 import CustomersModule from '../customers-module';
 
 const customersListTest = [

@@ -11,12 +11,7 @@ describe('FormikControl', () => {
   test('should render input by default', () => {
     renderWithReduxRouter(
       <FormikTestWrapper>
-        <FormikControl
-          type='text'
-          // control='input'
-          name='name'
-          placeholder='test-placeholder'
-        />
+        <FormikControl type='text' name='name' placeholder='test-placeholder' />
       </FormikTestWrapper>,
     );
 

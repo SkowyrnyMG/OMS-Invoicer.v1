@@ -82,7 +82,7 @@ exports[`OrdersModule should display in the document with correct styles 1`] = `
 }
 
 .c6 th {
-  positon: relative;
+  position: relative;
 }
 
 .c6 th span {

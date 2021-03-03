@@ -93,7 +93,6 @@ const FormikInput = ({
 
 FormikInput.defaultProps = {
   tagType: 'input',
-  // placeholder: '',
   error: undefined,
   touched: undefined,
 };

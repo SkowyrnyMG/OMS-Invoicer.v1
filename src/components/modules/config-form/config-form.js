@@ -55,7 +55,6 @@ const ConfigOption = styled.div`
 `;
 
 const StyledFormikControl = styled(FormikControl)`
-  /* width: 7rem !important; */
   margin: 0 !important;
 `;
 
@@ -143,7 +142,6 @@ const ConfigForm = ({ onSubmit }) => {
           <ConfigWrapper>
             <HeadingBlue>Registry options</HeadingBlue>
             <ConfigOption htmlFor='mainInvoicePrefix'>
-              {/* <p>Invoice prefix</p> */}
               <StyledFormikControl
                 type='text'
                 control='input'
@@ -155,7 +153,6 @@ const ConfigForm = ({ onSubmit }) => {
               />
             </ConfigOption>
             <ConfigOption htmlFor='mainOrderPrefix'>
-              {/* <p>Order prefix</p> */}
               <StyledFormikControl
                 type='text'
                 control='input'
@@ -252,9 +249,6 @@ const ConfigForm = ({ onSubmit }) => {
             />
             <StyledButton type='submit'>Save</StyledButton>
           </ConfigWrapper>
-          {/* <ConfigWrapper>
-
-          </ConfigWrapper> */}
         </StyledForm>
       )}
     </Formik>

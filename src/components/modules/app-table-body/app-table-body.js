@@ -70,7 +70,7 @@ const StyledTable = styled.table`
     cursor: pointer;
   }
   th {
-    positon: relative;
+    position: relative;
 
     // * arrow sort svg styles
     span {

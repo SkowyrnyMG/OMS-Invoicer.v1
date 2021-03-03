@@ -58,7 +58,6 @@ const Wrapper = styled.div`
 
   .react-datepicker-popper {
     ${({ theme: { mq } }) => mq.bigDesktop} {
-      /* right: 0 !important; */
     }
   }
 
@@ -141,7 +140,6 @@ const DatePickerWrapper = styled.div`
 `;
 
 const StyledPlaceholder = styled.div`
-  /* flex-basis: 60%; */
   position: absolute;
   top: -60%;
   align-self: flex-end;

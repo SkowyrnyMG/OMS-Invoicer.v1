@@ -16,6 +16,11 @@ export const handlers = [
       }),
     );
   }),
+
+  rest.post('/api/sendEmail', (req, res, ctx) => {
+    return res(ctx.status(200), ctx.json({ data: 'Message send!' }));
+  }),
+
   rest.delete(`data/test-uuid/customers/2222222222.json`, (req, res, ctx) => {
     return res(ctx.status(200), ctx.json({ vat_number: '2222222222' }));
   }),

@@ -7,6 +7,7 @@ import {
   defaultLocalStorage,
 } from 'hooks/useLocalStorage';
 import { db } from 'utils/axios-helper';
+import { sendConfirmation } from 'utils/sendConfirmationEmail';
 
 defaultLocalStorage('uuid', '');
 defaultLocalStorage('user', '');
@@ -64,6 +65,8 @@ const registerWithEmailAndPassword = createAsyncThunk(
 
           setLocalValue('user', userInfo.email);
           setLocalValue('uuid', uuid);
+
+          await sendConfirmation(userInfo.email, userInfo.name);
 
           return {
             uuid,

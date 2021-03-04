@@ -43,8 +43,8 @@ export const detailsContent = [
         <b> orders under control! </b>
         <br />
         <br />
-        You can now create orders for customers added to your database. Statuses
-        will help with tracking proggres on each individual order.
+        You can now create orders for customers present in your database.
+        Statuses will help with tracking progress on each individual order.
       </p>
     ),
   },
@@ -59,7 +59,8 @@ export const detailsContent = [
         <br />
         Issue new invoice with just few mouse clicks. OMS invoicer will take all
         of neccesary data from orders and provide them on your bill! One thing
-        that user has to do by himself is just to accept invoice draft!
+        that user has to do by himself is just to accept draft and print the
+        invoice!
       </p>
     ),
   },
@@ -70,10 +71,10 @@ export const detailsContent = [
     body: (
       <>
         <p>
-          Adding new customer by head is just a relic of past. With OMS you can
-          fetch most important details about your customers directly from VIES
-          database. To do that you have to just provide country prefix and new
-          customer VAT EU number into invoices modal.
+          Adding new customer by hand is just a relic of the past. With OMS you
+          can fetch most important details about your customers directly from
+          VIES database. To do that you just have to provide country prefix and
+          new customer VAT EU number into invoices modal.
           <br />
           <b>What benefints do you have using VIES autofil?</b>
         </p>
@@ -81,7 +82,8 @@ export const detailsContent = [
           <li>Save your time!</li>
           <li>Avoid mistakes!</li>
           <li>
-            You will be always sure if your new customer have active VAT number
+            You will be always sure that your new customer have active VAT
+            number
           </li>
           <li>It is just easier to do!</li>
         </StyledList>
@@ -115,7 +117,7 @@ export const detailsContent = [
           important informations. For example
         </p>
         <StyledList>
-          <li>Undpaid invoices</li>
+          <li>Unpaid invoices</li>
           <li>Finished orders without invoice</li>
           <li>Pending orders</li>
           <li>Quick app nav</li>

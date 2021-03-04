@@ -39,9 +39,10 @@ const HomePageFeaturesSection = () => (
     <FeatureInfo>
       <h2>6 reasons to choose OMS invoicer</h2>
       <p>
-        OMS is here for you! Adding customer, orders and invoices never been
-        easier! Typos and simple mistakes on your invoices will never trouble
-        you again! All customer data can be fetched from VIES database!
+        OMS is here for you! Adding customers, orders and invoices have never
+        been easier! Typos and simple mistakes on your invoices will never
+        trouble you again! All necessary customer data can be fetched from VIES
+        database!
       </p>
     </FeatureInfo>
     <FeatureWrapper>

@@ -92,7 +92,7 @@ const HomePageBody = () => (
     <RevertPatternSection patternUrl={pattern}>
       <StyledBodyHeading>IMPORTANT!</StyledBodyHeading>
       <InfoBox>
-        This app was created for learning purpuses. Please do not use it to
+        This app was created for learning purposes. Please do not use it to
         issue real inovice or to keep real customer data!
       </InfoBox>
     </RevertPatternSection>

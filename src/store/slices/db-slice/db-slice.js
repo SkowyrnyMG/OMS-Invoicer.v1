@@ -14,7 +14,6 @@ export const getAllCustomers = createAsyncThunk(
           return data !== null && Object.values(data);
         });
     } catch (err) {
-      console.log(err);
       return err;
     }
   },
@@ -178,7 +177,6 @@ export const setOrderStatus = createAsyncThunk(
         });
       return { status: res, orderNumber };
     } catch (error) {
-      console.error(error);
       return error;
     }
   },

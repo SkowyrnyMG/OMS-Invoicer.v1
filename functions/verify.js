@@ -1,6 +1,6 @@
 const validate = require('validate-vat');
 
-exports.handler = function (event, context, callback) {
+exports.handler = (event, context, callback) => {
   const { vat, countrycode } = event.queryStringParameters;
 
   const response = async (err, info) => {
